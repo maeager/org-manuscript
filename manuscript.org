@@ -1,4 +1,4 @@
-#+TITLE: Chapter 3
+#+TITLE: Manuscript
 #+DATE:
 #+AUTHOR: Michael A Eager
 #+OPTIONS: toc:nil H:5
@@ -6,11 +6,9 @@
 #+SEQ_TODO:   TODO(t) INPROGRESS(i) WAITING(w@) | DONE(d) CANCELED(c@)
 #+TAGS:       Write(w) Update(u) Fix(f) Check(c) noexport(n)
 
-#+LaTeX_CLASS: UoM-draft-org-article
-#+LaTeX_CLASS_OPTIONS: [a4paper,11pt,twopage]
+#+LaTeX_CLASS: UoM-thesis-org
 #+LATEX_HEADER:\graphicspath{{./gfx/}{../figures/}{/media/data/Work/cnstellate/}{/media/data/Work/cnstellate/ResponsesNoComp/ModulationTransferFunction/}{/media/data/Work/cnstellate/golgi/}{/media/data/Work/cnstellate/TV_RateLevel/}}
 #+LATEX_HEADER:\setcounter{secnumdepth}{5}
-#+LATEX _ HEADER:\newcommand{\textpm}{\ensuremath{\pm}}
 #+BIBLIOGRAPHY: MyBib alphanat
 
 
@@ -28,7 +26,7 @@
                                      "make BUILD_STRATEGY=pdflatex Chapter3.pdf"))
     (setq org-export-latex-title-command "") 
     (setq org-entities-user '(("space" "\\ " nil " " " " " " " "))) 
-    (add-to-list 'org-export-latex-classes '("UoM-draft-org-article"
+    (add-to-list 'org-export-latex-classes '("UoM-thesis-org"
     "\% -*- \
   mode: latex; mode: tex-fold; TeX-PDF-mode: t; TeX-master t -*-
   \documentclass[draft,11pt,a4paper,titlepage,twoside,openright]{book}
@@ -101,17 +99,17 @@
                 \mainmatterheadings
 
 # Chapter 1 and literature review
-#+include: ../LiteratureReviewChapter/LitReview3.org
-                # Methods
-                \include{Chapter02}
+#+include: ../../LiteratureReviewChapter/Chapter01.org
+# Methods Chapter
+#+include: ../../MethodsChapter/Chapter02.org
 
 
 \part[Cochlear Nucleus Stellate Network]{T Stellate Microcircuit in the Cochlear Nucleus}
 
-# \chapter[Simple Responses]{The Cochlear Nucleus Stellate Network Model: Parameter fitting of synaptic variables using simple acoustic responses} 
-#+include: ../../SimpleResponsesChapter/Chapter03.org
-# \chapter[AM and Vowel Coding]{Amplitude Modulation and Vowel Coding in the Stellate Microcircuit}
-#+include: ../../VowelProcessingChapter/Chapter04.org
+# Chapter 3 without appendix
+#+include: ../../SimpleResponsesChapter/Chapter03.org :lines "-2590"
+# Chapter 4 without appendix
+#+include: ../../VowelProcessingChapter/Chapter04.org "-1734"
 
 
 \part[GA Optimisation]{Optimisation of Realistic Microcircuits using Genetic Algorithms}
@@ -164,7 +162,7 @@ and tested for the significant gradients with ideal and different
 inputs.  The best genomes parameter error was then assessed to determine
 whether the local gradients were decisive in the GA optimisation.
 
-#+include: ../GAChapter/Chapter05.org
+#+include: ../../GAChapter/Chapter05.org :lines "-3260"
 #                \include{Chapter05B}
 
 # Discussion
@@ -179,31 +177,32 @@ whether the local gradients were decisive in the GA optimisation.
         ## Appendix
         ##
         \begin{appendix}
+# Use \chapter{Appendix A}\label{appendixA} in first 
 
-                \include{appendix}
-
+#+include: ../../SimpleResponsesChapter/Chapter3.org :lines "2590-"
+#+include: ../../VowelResponsesChapter/Chapter03.org :lines "1734-"
+#+include: ../../GAChapter/Chapter05.org :lines "3261-"
         \end{appendix}
 
-        ##
-        ## Bibliography
-        ##
-        \begin{backmatter}
+##
+## Bibliography
+##
+\begin{backmatter}
 
-                \chapter*{\bibname}#
-                \markboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}#
-
-                #
-                # Uncomment the following line to produce a
-                # bibliography list of all entries in the bib database
-                #\nocite{*}
-                #
-\bibliographystyle{plainnat}#bmc_article} # Style BST file
-#  \bibliography{MyBib}
-                \bibliography{bib/MyBib}#
+\chapter*{\bibname}\markboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}
+#
+# Uncomment the following line to produce a
+# bibliography list of all entries in the bib database
+#\nocite{*}
+#
+#bmc_article} # Style BST file
+\bibliographystyle{plainnat}
+\bibliography{bib/MyBib}
+#
 #			# Place your bib database files here, for example:
 #			{bib/MyBib#,
 #		}
-        \end{back matter}
+\end{back matter}
 
 
 #... and of eight years work! :-)
