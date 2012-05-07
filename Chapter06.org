@@ -1,0 +1,16 @@
+
+
+\chapter{Discussion}\label{ch:discussion}
+
+\glsresetall[main,acronym]
+
+
+\yellownote{  This section should give a rough introduction to the themes
+   included in the thesis and how the thesis is structured}
+
+
+* The Cochlear Nucleus Stellate Microcircuit
+
+* Optimisation and Modelling of Realistic Microcircuits
+
+

@@ -1,0 +1,213 @@
+#+TITLE: Chapter 3
+#+DATE:
+#+AUTHOR: Michael A Eager
+#+OPTIONS: toc:nil H:5
+#+STARTUP: oddeven
+#+SEQ_TODO:   TODO(t) INPROGRESS(i) WAITING(w@) | DONE(d) CANCELED(c@)
+#+TAGS:       Write(w) Update(u) Fix(f) Check(c) noexport(n)
+
+#+LaTeX_CLASS: UoM-draft-org-article
+#+LaTeX_CLASS_OPTIONS: [a4paper,11pt,twopage]
+#+LATEX_HEADER:\graphicspath{{./gfx/}{../figures/}{/media/data/Work/cnstellate/}{/media/data/Work/cnstellate/ResponsesNoComp/ModulationTransferFunction/}{/media/data/Work/cnstellate/golgi/}{/media/data/Work/cnstellate/TV_RateLevel/}}
+#+LATEX_HEADER:\setcounter{secnumdepth}{5}
+#+LATEX _ HEADER:\newcommand{\textpm}{\ensuremath{\pm}}
+#+BIBLIOGRAPHY: MyBib alphanat
+
+
+
+* Prelude                                                          :noexport:
+
+#+begin_src emacs-lisp
+  (setq TeX-master t)
+    ;; (setq org-latex-to-pdf-process '("pdflatex -interaction nonstopmode %f" 
+    ;;                                  "makeglossaries %b" "bibtex %b" "pdflatex -interaction nonstopmode %f" 
+    ;;                                  "pdflatex -interaction nonstopmode %f" )) 
+    ;; (setq org-latex-to-pdf-process '("lapdf Chapter3")) 
+    (setq org-latex-to-pdf-process '("pdflatex -interaction nonstopmode %f"
+                                     "makeglossaries %b" 
+                                     "make BUILD_STRATEGY=pdflatex Chapter3.pdf"))
+    (setq org-export-latex-title-command "") 
+    (setq org-entities-user '(("space" "\\ " nil " " " " " " " "))) 
+    (add-to-list 'org-export-latex-classes '("UoM-draft-org-article"
+    "\% -*- \
+  mode: latex; mode: tex-fold; TeX-PDF-mode: t; TeX-master t -*-
+  \documentclass[draft,11pt,a4paper,titlepage,twoside,openright]{book}
+  % Use the UniMelb Dissertation Template
+  \usepackage{style/uomthesis}
+  % For drafts uncomment the following line
+  \usepackage[light,timestamp,first]{draftcopy}
+  % Comment out the following line TO MARK blank pages with the
+  % text "This page intentionally left blank."
+  \newcommand{\markblankpages}{}
+  % Comment out the following line for the copy submitted to the library
+  \newcommand{\archivalpapernote}{}
+  % User defined commands
+  \input{user-defined}
+  \usepackage[acronym]{glossaries}
+  \input{misc/glossary}
+  \makeglossaries
+  % \includeonly{Chapter05}
+  % \hypersetup{
+  % pdftitle = \myTitle,
+  % pdfauthor = Michael A Eager,
+  % pdfsubject= PhD thesis,
+  % pdfkeywords = cochlear nucleus microcircuit optimisation
+  % }
+  \graphicspath{{../SimpleResponsesChapter/gfx/}{../figures/}{/media/data/Work/cnstellate/}{/media/data/Work/cnstellate/ResponsesNoComp/ModulationTransferFunction/}}
+    [NO-DEFAULT-PACKAGES]
+    [NO-PACKAGES]" 
+    ("\\section{%s}" . "\n\\section{%s}")
+    ("\\subsection{%s}" . "\n\\subsection{%s}") 
+    ("\\subsubsection{%s}" . "\n\\subsubsection{%s}") 
+    ("\\paragraph{%s}" . "\n\\paragraph{%s}"))) 
+    (setq org-export-latex-title-command "\n
+%% Front matter
+%%
+\begin{frontmatter}
+  \frontmatterheadings
+  % Collect the dissertation information for the title page
+   \input{../manuscript/misc/metadata}
+   % Generate the title page
+   \maketitle
+   \include{../manuscript/misc/abstract}
+   % Author declaration
+   \makedeclaration
+   % Acknowledgements
+   \include{../manuscript/misc/acknowledgements}
+   % Preface
+   \include{../manuscript/misc/preface}
+   % Dedications...
+   \include{../manuscript/misc/dedication}
+   % TOC, LOF, LOT
+   {%
+           \singlespacing%
+           \pdfbookmark[1]{\contentsname}{tableofcontents} \
+           \tableofcontents
+           \pdfbookmark[1]{\listfigurename}{lof} \
+           \listoffigures%
+  % Do not include a list of tables if you have less
+  % than 10 tables, as per SGS suggestion.
+  %               \pdfbookmark[1]{\listtablename}{lot} \
+  %               \listoftables
+           \pdfbookmark[1]{Glossary of Terms}{glossary} \
+           \printglossaries
+           \clearpage
+     }%
+\end{frontmatter}") 
+  
+#+end_src
+        \begin{mainmatter}
+
+                \mainmatterheadings
+
+# Chapter 1 and literature review
+#+include: ../LiteratureReviewChapter/LitReview3.org
+                # Methods
+                \include{Chapter02}
+
+
+\part[Cochlear Nucleus Stellate Network]{T Stellate Microcircuit in the Cochlear Nucleus}
+
+# \chapter[Simple Responses]{The Cochlear Nucleus Stellate Network Model: Parameter fitting of synaptic variables using simple acoustic responses} 
+#+include: ../../SimpleResponsesChapter/Chapter03.org
+# \chapter[AM and Vowel Coding]{Amplitude Modulation and Vowel Coding in the Stellate Microcircuit}
+#+include: ../../VowelProcessingChapter/Chapter04.org
+
+
+\part[GA Optimisation]{Optimisation of Realistic Microcircuits using Genetic Algorithms}
+	\label{part:2}
+#=========================================================================
+
+\psection{Introduction to Part \thepart}
+
+#\PARstart{I}{n the} 
+
+The studies in this section evaluated the usefulness of genetic
+algorithms for determining the synaptic parameters of a
+\glsreset{BNN}. This was done by using a model of a microcircuit in the
+auditory brainstem as an example network on which to test the
+algorithm. First, a "target" model was generated with predetermined
+synaptic parameters. Then using the target model, training data of
+network responses were generated, which were then used by the genetic
+algorithm to estimate the synaptic parameters of the target model.
+Experimental observables, such as extracellular spike times,
+peri-stimulus time histograms, and intracellular voltage waveforms, were
+used to define the "fitness" functions for optimization. The ability
+of the algorithm to find the known neural parameters was assessed for
+the different fitness functions.
+
+Success of the genetic algorithm optimization was affected by intrinsic
+noise in the network and by the sensitivity of the cost functions to
+changes in each parameter. The results have shown the potential of
+genetic algorithms in constraining the synaptic parameters of \BNNs
+from experimental data.
+
+Section \ref{sec:GA:ResultDiffAN} shows the results for the most
+realistic situation for optimising \BNNs, whereby the inputs and network
+construction were all randomised.  In the
+subsection~\ref{sec:GA:param-sens-results}, the effects of parameter
+permutations were tested to evaluate the responses of each cost function
+and how the GA best genomes were able to perform relative to the
+parameter permutations.
+
+Section \ref{sec:GA:ResultIdeal}, deals with an ideal situation of
+optimisation without any noise.  The input spikes are fixed throughout
+the GA optimisation, and the target parameters are able to provide a
+perfect score of 0.  The effects of parameter perturbations were also
+assessed for this situation.
+
+Section \ref{sec:GA:IndividualSens}, explores the hypothesis that
+individual parameters play a greater role in the optimisation rather
+than thinking of the all the parameters at once.  The local gradients of
+the cost functions around each individual parameter target was evaluated
+and tested for the significant gradients with ideal and different
+inputs.  The best genomes parameter error was then assessed to determine
+whether the local gradients were decisive in the GA optimisation.
+
+#+include: ../GAChapter/Chapter05.org
+#                \include{Chapter05B}
+
+# Discussion
+#+include:  ./Chapter06.org
+
+# Conclusion
+#+include: ./Chapter07.org
+
+        \end{mainmatter}
+
+        ##
+        ## Appendix
+        ##
+        \begin{appendix}
+
+                \include{appendix}
+
+        \end{appendix}
+
+        ##
+        ## Bibliography
+        ##
+        \begin{backmatter}
+
+                \chapter*{\bibname}#
+                \markboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}#
+
+                #
+                # Uncomment the following line to produce a
+                # bibliography list of all entries in the bib database
+                #\nocite{*}
+                #
+\bibliographystyle{plainnat}#bmc_article} # Style BST file
+#  \bibliography{MyBib}
+                \bibliography{bib/MyBib}#
+#			# Place your bib database files here, for example:
+#			{bib/MyBib#,
+#		}
+        \end{back matter}
+
+
+#... and of eight years work! :-)
+
+
+
+

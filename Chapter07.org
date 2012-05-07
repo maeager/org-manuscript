@@ -1,0 +1,12 @@
+
+\glsresetall[main,acronym]
+\chapter{Conclusion}
+	\label{Ch7:conclusion}
+	
+
+* Summary of Contributions
+
+# \PARstart{T}{his} 
+
+
+* Future Research
