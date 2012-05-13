@@ -179,9 +179,9 @@ whether the local gradients were decisive in the GA optimisation.
         \begin{appendix}
 # Use \chapter{Appendix A}\label{appendixA} in first 
 
-#+include: ../../SimpleResponsesChapter/Chapter3.org :lines "2590-"
-#+include: ../../VowelResponsesChapter/Chapter03.org :lines "1734-"
-#+include: ../../GAChapter/Chapter05.org :lines "3261-"
+#+include: ../../SimpleResponsesChapter/Chapter03Appendix.org
+#+include: ../../VowelResponsesChapter/Chapter04Appendix.org
+#+include: ../../GAChapter/Chapter05Appendix.org
         \end{appendix}
 
 ##
