@@ -7,96 +7,14 @@
 #+TAGS:       Write(w) Update(u) Fix(f) Check(c) noexport(n)
 
 #+LaTeX_CLASS: UoM-thesis-org
-#+LATEX_HEADER:\graphicspath{{./gfx/}{../figures/}{/media/data/Work/cnstellate/}{/media/data/Work/cnstellate/ResponsesNoComp/ModulationTransferFunction/}{/media/data/Work/cnstellate/golgi/}{/media/data/Work/cnstellate/TV_RateLevel/}}
+#+LATEX_HEADER:\graphicspath{{./gfx/}{../figures/}{/media/data/Work/cnstellate/}{/media/data/Work/cnstellate/ResponsesNoComp/ModulationTransferFunction/}{/media/data/Work/cnstellate/golgi/}{/media/data/Work/cnstellate/TV_RateLevel/}{/media/data/Work/thesis/GAChapter/}{/media/data/Work/thesis/GAChapter/archive/}}
 #+LATEX_HEADER:\setcounter{secnumdepth}{5}
 #+BIBLIOGRAPHY: MyBib alphanat
 
 
+\begin{mainmatter}
 
-* Prelude                                                          :noexport:
-
-#+begin_src emacs-lisp
-  (setq TeX-master t)
-    ;; (setq org-latex-to-pdf-process '("pdflatex -interaction nonstopmode %f" 
-    ;;                                  "makeglossaries %b" "bibtex %b" "pdflatex -interaction nonstopmode %f" 
-    ;;                                  "pdflatex -interaction nonstopmode %f" )) 
-    ;; (setq org-latex-to-pdf-process '("lapdf Chapter3")) 
-    (setq org-latex-to-pdf-process '("pdflatex -interaction nonstopmode %f"
-                                     "makeglossaries %b" 
-                                     "make BUILD_STRATEGY=pdflatex Chapter3.pdf"))
-    (setq org-export-latex-title-command "") 
-    (setq org-entities-user '(("space" "\\ " nil " " " " " " " "))) 
-    (add-to-list 'org-export-latex-classes '("UoM-thesis-org"
-    "\% -*- \
-  mode: latex; mode: tex-fold; TeX-PDF-mode: t; TeX-master t -*-
-  \documentclass[draft,11pt,a4paper,titlepage,twoside,openright]{book}
-  % Use the UniMelb Dissertation Template
-  \usepackage{style/uomthesis}
-  % For drafts uncomment the following line
-  \usepackage[light,timestamp,first]{draftcopy}
-  % Comment out the following line TO MARK blank pages with the
-  % text "This page intentionally left blank."
-  \newcommand{\markblankpages}{}
-  % Comment out the following line for the copy submitted to the library
-  \newcommand{\archivalpapernote}{}
-  % User defined commands
-  \input{user-defined}
-  \usepackage[acronym]{glossaries}
-  \input{misc/glossary}
-  \makeglossaries
-  % \includeonly{Chapter05}
-  % \hypersetup{
-  % pdftitle = \myTitle,
-  % pdfauthor = Michael A Eager,
-  % pdfsubject= PhD thesis,
-  % pdfkeywords = cochlear nucleus microcircuit optimisation
-  % }
-  \graphicspath{{../SimpleResponsesChapter/gfx/}{../figures/}{/media/data/Work/cnstellate/}{/media/data/Work/cnstellate/ResponsesNoComp/ModulationTransferFunction/}}
-    [NO-DEFAULT-PACKAGES]
-    [NO-PACKAGES]" 
-    ("\\section{%s}" . "\n\\section{%s}")
-    ("\\subsection{%s}" . "\n\\subsection{%s}") 
-    ("\\subsubsection{%s}" . "\n\\subsubsection{%s}") 
-    ("\\paragraph{%s}" . "\n\\paragraph{%s}"))) 
-    (setq org-export-latex-title-command "\n
-%% Front matter
-%%
-\begin{frontmatter}
-  \frontmatterheadings
-  % Collect the dissertation information for the title page
-   \input{../manuscript/misc/metadata}
-   % Generate the title page
-   \maketitle
-   \include{../manuscript/misc/abstract}
-   % Author declaration
-   \makedeclaration
-   % Acknowledgements
-   \include{../manuscript/misc/acknowledgements}
-   % Preface
-   \include{../manuscript/misc/preface}
-   % Dedications...
-   \include{../manuscript/misc/dedication}
-   % TOC, LOF, LOT
-   {%
-           \singlespacing%
-           \pdfbookmark[1]{\contentsname}{tableofcontents} \
-           \tableofcontents
-           \pdfbookmark[1]{\listfigurename}{lof} \
-           \listoffigures%
-  % Do not include a list of tables if you have less
-  % than 10 tables, as per SGS suggestion.
-  %               \pdfbookmark[1]{\listtablename}{lot} \
-  %               \listoftables
-           \pdfbookmark[1]{Glossary of Terms}{glossary} \
-           \printglossaries
-           \clearpage
-     }%
-\end{frontmatter}") 
-  
-#+end_src
-        \begin{mainmatter}
-
-                \mainmatterheadings
+\mainmatterheadings
 
 # Chapter 1 and literature review
 #+include: ../../LiteratureReviewChapter/Chapter01.org
@@ -104,23 +22,26 @@
 #+include: ../../MethodsChapter/Chapter02.org
 
 
-\part[Cochlear Nucleus Stellate Network]{T Stellate Microcircuit in the Cochlear Nucleus}
+\part[Sequential Optimisation of Stellate Network]{Sequential Optimisation in the Stellate Microcircuit of the Cochlear Nucleus}
 
+\psection{Introduction to Part \thepart}
+
+\newpage
 # Chapter 3 without appendix
 #+include: ../../SimpleResponsesChapter/Chapter03.org :lines "-2590"
 # Chapter 4 without appendix
 #+include: ../../VowelProcessingChapter/Chapter04.org "-1734"
 
 
-\part[GA Optimisation]{Optimisation of Realistic Microcircuits using Genetic Algorithms}
+\part[GA Optimisation]{Simultaneous Optimisation of Realistic Microcircuits using Genetic Algorithms}
 	\label{part:2}
 #=========================================================================
 
 \psection{Introduction to Part \thepart}
 
-#\PARstart{I}{n the} 
-
-The studies in this section evaluated the usefulness of genetic
+# \PARstart{T}{he studies} 
+The studies 
+in this section evaluated the usefulness of genetic
 algorithms for determining the synaptic parameters of a
 \glsreset{BNN}. This was done by using a model of a microcircuit in the
 auditory brainstem as an example network on which to test the
@@ -165,7 +86,7 @@ whether the local gradients were decisive in the GA optimisation.
 #+include: ../../GAChapter/Chapter05.org :lines "-3260"
 #                \include{Chapter05B}
 
-# Discussion
+# Discussion and Conclusion
 #+include:  ./Chapter06.org
 
 # Conclusion
@@ -173,16 +94,15 @@ whether the local gradients were decisive in the GA optimisation.
 
         \end{mainmatter}
 
-        ##
-        ## Appendix
-        ##
-        \begin{appendix}
+##
+## Appendix
+##
+\begin{appendix}
 # Use \chapter{Appendix A}\label{appendixA} in first 
-
 #+include: ../../SimpleResponsesChapter/Chapter03Appendix.org
 #+include: ../../VowelResponsesChapter/Chapter04Appendix.org
 #+include: ../../GAChapter/Chapter05Appendix.org
-        \end{appendix}
+\end{appendix}
 
 ##
 ## Bibliography
@@ -206,6 +126,134 @@ whether the local gradients were decisive in the GA optimisation.
 
 
 #... and of eight years work! :-)
+
+
+
+
+* Prelude                                                          :noexport:
+
+#+begin_src emacs-lisp
+        ;; (setq org-latex-to-pdf-process '("pdflatex -interaction nonstopmode %f" 
+        ;;                                  "makeglossaries %b" "bibtex %b" "pdflatex -interaction nonstopmode %f" 
+        ;;                                  "pdflatex -interaction nonstopmode %f" )) 
+        ;; (setq org-latex-to-pdf-process '("lapdf Chapter3")) 
+  (add-hook 'org-export-latex-final-hook
+            (lambda ()
+              (goto-char (point-min)) 
+              (search-forward "\\begin{document}") 
+              (push-mark)
+              (replace-regexp "\\( \\|\n\\)\\\\ref" 
+                              "~\\\\ref")
+              (goto-char (mark))
+              (replace-regexp "\\( \\|\n\\)\\\\cite" 
+                              "\\\\ \\\\cite")
+    ;; shorten section titles
+              (goto-char (mark))
+              (replace-regexp "\\\\section{\\(.*\\):" 
+                              "\\\\section[\\1]{\\1:")
+    ;; Go back to start
+              (goto-char (mark))
+    ;; Correct for citations immediately after an item
+              (replace-regexp "item[~\\\\]" 
+                              "item ")
+    ;; Acronyms or Capitals at the end of a sentence cause poor spacing
+              (goto-char (mark))
+              (replace-regexp "\\([A-Z][A-Z]\\)\\.\\( \\|\n\\)" 
+                              "\\1\\\\@. ")
+    ;; Double acronyms
+              (goto-char (mark))
+              (replace-regexp "\\([A-Z][A-Zs]\\) \\([\\\\A-Z]\\)" 
+                              "\\1\\\\ \\2")
+    ;; Force a space between numbers followed by text or acronym 
+              (goto-char (mark))
+              (replace-regexp "\\([0-9]\\) \\([\\\\A-Za-z]\\)" 
+                              "\\1\\\\ \\2")
+    ;; Correct for poor tildas
+  ;                  (goto-char (mark))
+  ;                  (replace-regexp "\\\\~\\{\\}" 
+  ;                                  "~")
+    ;;Remove Bibliographies in Chapters
+              (replace "^## BIBLIOGRAPHY
+  .*
+  .*
+  .*
+  ## BIBLIOGRAPHY" "")
+              ))
+        (setq org-latex-to-pdf-process '("pdfquick %f"))
+        (add-to-list 'org-export-latex-classes '("UoM-thesis-org"
+        "\% -*- \
+      mode: latex; mode: tex-fold; TeX-PDF-mode: t; TeX-master t -*-
+      \\documentclass[12pt,a4paper,titlepage,twoside,openright]{book}
+      % Use the UniMelb Dissertation Template
+      \\usepackage{../manuscript/style/uomthesis}
+      % For drafts uncomment the following line
+      \\usepackage[light,timestamp,first]{draftcopy}
+      % Comment out the following line TO MARK blank pages with the
+      % text "This page intentionally left blank."
+      \\newcommand{\\markblankpages}{}
+      % Comment out the following line for the copy submitted to the library
+      \\newcommand{\\archivalpapernote}{}
+      % User defined commands
+      \\input{user-defined}
+      \\usepackage[acronym]{glossaries}
+      \\input{../manuscript/misc/glossary}    
+      \\input{../manuscript/user-defined}
+      \\makeglossaries
+      % \\includeonly{Chapter05}
+       \\hypersetup{
+       pdftitle = \\myTitle,
+       pdfauthor = Michael A Eager,
+       pdfsubject= PhD thesis,
+       pdfkeywords = auditory system, cochlear nucleus, microcircuit, computational neuroscience, optimisation
+       }
+      \\graphicspath{{../../SimpleResponsesChapter/gfx/}{../../VowelResponsesChapter/gfx/}{../../GAChapter/gfx/}%
+    {../../figures/}{/media/data/Work/cnstellate/golgi/}{/media/data/Work/cnstellate/TV_RateLevel/}%
+    {/media/data/Work/cnstellate/}{/media/data/Work/cnstellate/ResponsesNoComp/ModulationTransferFunction/}}
+        [NO-DEFAULT-PACKAGES]
+        [NO-PACKAGES]" 
+        ("\\section{%s}" . "\n\\section{%s}")
+        ("\\subsection{%s}" . "\n\\subsection{%s}") 
+        ("\\subsubsection{%s}" . "\n\\subsubsection{%s}") 
+        ("\\paragraph{%s}" . "\n\\paragraph{%s}"))) 
+        (setq org-export-latex-title-command "\n
+    %% Front matter
+    %%
+    \\begin{frontmatter}
+      \\frontmatterheadings
+      % Collect the dissertation information for the title page
+       \\input{../manuscript/misc/metadata}
+       % Generate the title page
+       \\maketitle
+       \\include{../manuscript/misc/abstract}
+       % Author declaration
+       \\makedeclaration
+       % Acknowledgements
+       \\include{../manuscript/misc/acknowledgements}
+       % Preface
+       \\include{../manuscript/misc/preface}
+       % Dedications...
+       \\include{../manuscript/misc/dedication}
+       % TOC, LOF, LOT
+       {%
+               \\singlespacing%
+               \\pdfbookmark[1]{\\contentsname}{tableofcontents} 
+               \\tableofcontents
+               \\pdfbookmark[1]{\\listfigurename}{lof} 
+               \\listoffigures%
+      % Do not include a list of tables if you have less
+      % than 10 tables, as per SGS suggestion.
+      %               \\pdfbookmark[1]{\\listtablename}{lot} 
+      %               \\listoftables
+               \\pdfbookmark[1]{Glossary of Terms}{glossary} 
+               \\printglossaries
+               \\clearpage
+         }%
+    \\end{frontmatter}") 
+      (setq TeX-master t)
+#+end_src
+
+#+RESULTS:
+: t
 
 
 
