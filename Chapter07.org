@@ -1,6 +1,7 @@
 
+
 \glsresetall[main,acronym]
-\chapter{Conclusion}
+\chapter{Concluding Remarks}
 	\label{Ch7:conclusion}
 	
 

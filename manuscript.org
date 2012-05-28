@@ -6,148 +6,150 @@
 #+SEQ_TODO:   TODO(t) INPROGRESS(i) WAITING(w@) | DONE(d) CANCELED(c@)
 #+TAGS:       Write(w) Update(u) Fix(f) Check(c) noexport(n)
 #+LANGUAGE: en_GB
-
 #+LaTeX_CLASS: UoM-thesis-org
 #+BIBLIOGRAPHY: MyBib alphanat
 
 
-\begin{mainmatter}
 
-\mainmatterheadings
+ 
 
 # Chapter 1 and literature review
-#+include: ../../LiteratureReview/Chapter01.org
+#+include: ../LiteratureReview/Chapter01.org :lines "-1453"
 \newpage
 # Methods Chapter
-#+include: ../../MethodsChapter/Chapter02.org
-
-\newpage
-\part[Sequential Optimisation of the Cochlear Nucleus Stellate Network]{Sequential Optimisation in the Stellate Microcircuit of the Cochlear Nucleus}
-\psection{Introduction to Part \thepart}
-
-\yellownote{More to do here}
+#+include: ../MethodsChapter/Chapter02.org  :lines "-1003"
+#+BEGIN_LaTeX
+  \newpage
+  \part[Sequential Optimisation of the Cochlear Nucleus Stellate Network]{Sequential Optimisation in the Stellate Microcircuit of the Cochlear Nucleus}
+  \psection{Introduction to Part \thepart}
+  \yellownote{More to do here}
+#+END_LaTeX
 
 \newpage
 # Chapter 3 without appendix
-#+include: ../../SimpleResponsesChapter/Chapter03.org 
+#+include: ../SimpleResponsesChapter/Chapter03.org :lines "-2513"
 \newpage
 # Chapter 4 without appendix
-#+include: ../../VowelProcessingChapter/Chapter04.org 
+#+include: ../VowelProcessingChapter/Chapter04.org :lines "-647"
 
-\newpage
-\part[GA Optimisation]{Simultaneous Optimisation of Realistic Microcircuits using Genetic Algorithms}
-	\label{part:2}
-#=========================================================================
+#+BEGIN_LaTeX
+  \newpage
+  \part[GA Optimisation]{Simultaneous Optimisation of Realistic Microcircuits using Genetic Algorithms}
+          \label{part:2}
+  %=========================================================================
+  
+  \psection{Introduction to Part \thepart}
+  
+  \glsreset{BNN}
+  
+  % \PARstart{T}{he studies} 
+  The studies 
+  in this section evaluated the usefulness of genetic
+  algorithms for determining the synaptic parameters of a
+  \BNN. This was done by using a model of a microcircuit in the
+  auditory brainstem as an example network on which to test the
+  algorithm. First, a "target" model was generated with predetermined
+  synaptic parameters. Then using the target model, training data of
+  network responses were generated, which were then used by the genetic
+  algorithm to estimate the synaptic parameters of the target model.
+  Experimental observables, such as extracellular spike times,
+  peri-stimulus time histograms, and intracellular voltage waveforms, were
+  used to define the "fitness" functions for optimization. The ability
+  of the algorithm to find the known neural parameters was assessed for
+  the different fitness functions.
+  
+  Success of the genetic algorithm optimization was affected by intrinsic
+  noise in the network and by the sensitivity of the cost functions to
+  changes in each parameter. The results have shown the potential of
+  genetic algorithms in constraining the synaptic parameters of \BNNs
+  from experimental data.
+  
+  Section \ref{sec:GA:ResultDiffAN} shows the results for the most
+  realistic situation for optimising \BNNs, whereby the inputs and network
+  construction were all randomised.  In the
+  subsection~\ref{sec:GA:param-sens-results}, the effects of parameter
+  permutations were tested to evaluate the responses of each cost function
+  and how the GA best genomes were able to perform relative to the
+  parameter permutations.
+  
+  
+  \yellownote{Section \ref{sec:GA:ResultIdeal}, deals with an ideal situation of
+  optimisation without any noise.  The input spikes are fixed throughout
+  the GA optimisation, and the target parameters are able to provide a
+  perfect score of 0.  The effects of parameter perturbations were also
+  assessed for this situation.}
+  
+  \yellownote{Section \ref{sec:GA:IndividualSens}, explores the hypothesis that
+  individual parameters play a greater role in the optimisation rather
+  than thinking of the all the parameters at once.  The local gradients of
+  the cost functions around each individual parameter target was evaluated
+  and tested for the significant gradients with ideal and different
+  inputs.  The best genomes parameter error was then assessed to determine
+  whether the local gradients were decisive in the GA optimisation.}
+#+END_LaTeX
 
-\psection{Introduction to Part \thepart}
-
-\glsreset{BNN}
-
-# \PARstart{T}{he studies} 
-The studies 
-in this section evaluated the usefulness of genetic
-algorithms for determining the synaptic parameters of a
-\BNN. This was done by using a model of a microcircuit in the
-auditory brainstem as an example network on which to test the
-algorithm. First, a "target" model was generated with predetermined
-synaptic parameters. Then using the target model, training data of
-network responses were generated, which were then used by the genetic
-algorithm to estimate the synaptic parameters of the target model.
-Experimental observables, such as extracellular spike times,
-peri-stimulus time histograms, and intracellular voltage waveforms, were
-used to define the "fitness" functions for optimization. The ability
-of the algorithm to find the known neural parameters was assessed for
-the different fitness functions.
-
-Success of the genetic algorithm optimization was affected by intrinsic
-noise in the network and by the sensitivity of the cost functions to
-changes in each parameter. The results have shown the potential of
-genetic algorithms in constraining the synaptic parameters of \BNNs
-from experimental data.
-
-Section \ref{sec:GA:ResultDiffAN} shows the results for the most
-realistic situation for optimising \BNNs, whereby the inputs and network
-construction were all randomised.  In the
-subsection~\ref{sec:GA:param-sens-results}, the effects of parameter
-permutations were tested to evaluate the responses of each cost function
-and how the GA best genomes were able to perform relative to the
-parameter permutations.
-
-\yellownote{Section \ref{sec:GA:ResultIdeal}, deals with an ideal situation of
-optimisation without any noise.  The input spikes are fixed throughout
-the GA optimisation, and the target parameters are able to provide a
-perfect score of 0.  The effects of parameter perturbations were also
-assessed for this situation.}
-
-\yellownote{Section \ref{sec:GA:IndividualSens}, explores the hypothesis that
-individual parameters play a greater role in the optimisation rather
-than thinking of the all the parameters at once.  The local gradients of
-the cost functions around each individual parameter target was evaluated
-and tested for the significant gradients with ideal and different
-inputs.  The best genomes parameter error was then assessed to determine
-whether the local gradients were decisive in the GA optimisation.}
-
-#+include: ../../GAChapter/Chapter05.org 
+# Chapter 5
+#+include: ../GAChapter/Chapter05.org :lines "-3047"
 
 \newpage
 # Discussion and Conclusion
 #+include:  ./Chapter06.org
 
 # Conclusion
-#  # + include: ./Chapter07.org
+#+include: ./Chapter07.org
 
-        \end{mainmatter}
+#+LATEX:   \end{mainmatter}
 
 ##
 ## Appendix
 ##
-   \begin{appendix}
+#+LATEX:   \begin{appendix}
 #   # Use \chapter{Appendix A}\label{appendixA} in first 
-#+include: ../../SimpleResponsesChapter/Chapter03Appendix.org
-\newpage
-# #+include: ../../VowelResponsesChapter/Chapter04Appendix.org
-* Optimisation of BNNs using Ideal inputs
-# + include: ../../GAChapter/Chapter05B.org :lines "1298-1720"
-* Sensitivity Analysis of Individual Parameters near the Global Optimum
-#+include: ../../GAChapter/Chapter05.org :lines "1722-2114"
-\newpage
-#+include: ../../GAChapter/Chapter05Appendix.org
-   \end{appendix}
+# #+include: ../SimpleResponsesChapter/Chapter03Appendix.org
+# \newpage
+# #+include: ../VowelResponsesChapter/Chapter04Appendix.org
+# * Optimisation of BNNs using Ideal inputs
+# # + include: ../GAChapter/Chapter05B.org :lines "1298-1720"
+# * Sensitivity Analysis of Individual Parameters near the Global Optimum
+# #+include: ../GAChapter/Chapter05.org :lines "1722-2114"
+# \newpage
+# #+include: ../GAChapter/Chapter05Appendix.org
+#+LATEX:   \end{appendix}
 
 ##
 ## Bibliography
 ##
-\begin{backmatter}
 
-\chapter*{\bibname}\markboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}
-#
-# Uncomment the following line to produce a
-# bibliography list of all entries in the bib database
-#\nocite{*}
-#
-#bmc_article} # Style BST file
-\bibliographystyle{plainnat}
-\bibliography{bib/MyBib}
-#
-#			# Place your bib database files here, for example:
-#			{bib/MyBib#,
-#		}
-\end{back matter}
+#+LATEX: \begin{backmatter}
+#+LATEX: \chapter*{\bibname}\markboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}
+# %
+# % Uncomment the following line to produce a
+# % bibliography list of all entries in the bib database
+# %\nocite{*}
+# %
+# %bmc_article} % Style BST file
+#+LATEX: \bibliographystyle{plainnat}
+#+LATEX: \bibliography{../MyBib}
+#+LATEX: \end{back matter}
+
 
 
 #... and of eight years work! :-)
 
-
+##DRAFTING
+\newpage
+\listoftodos
 
 
 * Prelude                                                          :noexport:
 
 #+begin_src emacs-lisp
-          (setq org-latex-to-pdf-process '("pdfquick %f"))
-          ;; (setq org-latex-to-pdf-process '("pdflatex -interaction nonstopmode %f" 
-          ;;                                  "makeglossaries %b" "bibtex %b" "pdflatex -interaction nonstopmode %f" 
-          ;;                                  "pdflatex -interaction nonstopmode %f" )) 
-          ;; (setq org-latex-to-pdf-process '("lapdf Chapter3")) 
+    (setq org-latex-to-pdf-process '("pdfquick %f"))
+    ;; (setq org-latex-to-pdf-process '("pdflatex -interaction nonstopmode %f" 
+    ;;                                  "makeglossaries %b" "bibtex %b" "pdflatex -interaction nonstopmode %f" 
+    ;;                                  "pdflatex -interaction nonstopmode %f" )) 
+    ;; (setq org-latex-to-pdf-process '("lapdf Chapter3")) 
+    (setq org-export-latex-final-hook ())
     (add-hook 'org-export-latex-final-hook
               (lambda ()
                 (goto-char (point-min)) 
@@ -156,121 +158,120 @@ whether the local gradients were decisive in the GA optimisation.}
                 (replace-regexp "\\( \\|\n\\)\\\\ref" 
                                 "~\\\\ref")
                 (goto-char (mark))
-                (replace-regexp "\\( \\|\n\\)\\\\cite" 
-                                "\\\\ \\\\cite")
-      ;; shorten section titles
+                (replace-regexp "\\( \\|\n\\)\\\\citep" 
+                                "\\\\ \\\\citep")
+                ;; shorten section titles
                 (goto-char (mark))
                 (replace-regexp "\\\\section{\\(.*\\):" 
                                 "\\\\section[\\1]{\\1:")
-      ;; Go back to start
+                ;; Go back to start
                 (goto-char (mark))
-      ;; Correct for citations immediately after an item
+                ;; Correct for citations immediately after an item
                 (replace-regexp "item[~\\\\]" 
                                 "item ")
-      ;; Acronyms or Capitals at the end of a sentence cause poor spacing
+                ;; Acronyms or Capitals at the end of a sentence cause poor spacing
                 (goto-char (mark))
                 (replace-regexp "\\([A-Z][A-Z]\\)\\.\\( \\|\n\\)" 
-                                "\\1\\\\@. ")
-      ;; Double acronyms
+  ;                              "\\1\\\\@. ")
+                ;; Double acronyms
                 (goto-char (mark))
                 (replace-regexp "\\([A-Z][A-Zs]\\) \\([\\\\A-Z]\\)" 
                                 "\\1\\\\ \\2")
-      ;; Force a space between numbers followed by text or acronym 
+                ;; Force a space between numbers followed by text or acronym 
                 (goto-char (mark))
                 (replace-regexp "\\([0-9]\\) \\([\\\\A-Za-z]\\)" 
                                 "\\1\\\\ \\2")
-      ;; Correct for poor tildas
-    ;                  (goto-char (mark))
-    ;                  (replace-regexp "\\\\~\\{\\}" 
-    ;                                  "~")
-      ;;Remove Bibliographies in Chapters
+         ;; Correct for poor tildas
+       ;                  (goto-char (mark))
+       ;                  (replace-regexp "\\\\~\\{\\}" 
+       ;                                  "~")
+                ;;Remove Bibliographies in Chapters
                 (goto-char (mark))
                 (replace "^## BIBLIOGRAPHY
-    .*
-    .*
-    .*
-    ## BIBLIOGRAPHY" "")
-      ;; Remove statements at start of Chapters' org-mode file
+.*
+.*
+.*
+## BIBLIOGRAPHY" "")
+                ;; Remove statements at start of Chapters' org-mode file
                 (goto-char (mark))
-                (replace "^# NOINCLUDE
-    .*
-    .*
-    .*
-    ## NOINCLUDE" "")
+                (replace "^## NOINCLUDE
+.*
+## NOINCLUDE" "")
                 (goto-char (mark))
                 (replace "^#\\+LATEX_HEADER:.*$" "")
-                )
-              )
+                (goto-char (mark))
+                (replace-regexp "\\\\{\\(.*\\)\\\\}" "{\\1}")
+                (goto-char (mark))
+                (replace-regexp "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ " "\\\\ ")
+                )   )
+    (add-to-list 'org-export-latex-classes 
+                 '("UoM-thesis-org"
+                   "\% -*- \
+    mode: latex; mode: tex-fold; TeX-PDF-mode: t; TeX-master t \
+    -*-
+    \\documentclass[12pt,a4paper,titlepage,twoside,openright]{book}
+    % Use the UniMelb Dissertation Template
+    \\usepackage{../hg/manuscript/style/uomthesis}
+    % For drafts uncomment the following line
+    \\usepackage[light,timestamp,first]{draftcopy}
+    % Comment out the following line TO MARK blank pages with the
+    % text This page intentionally left blank.
+    \\newcommand{\\markblankpages}{}
+    % Comment out the following line for the copy submitted to the library
+    \\newcommand{\\archivalpapernote}{}
+    % User defined commands
+    \\usepackage[acronym]{glossaries}
+    \\input{../hg/manuscript/misc/glossary}    
+    \\input{../hg/manuscript/user-defined}
+    \\setcounter{secnumdepth}{5}
+    \\makeglossaries
+    % \\includeonly{Chapter05}
+    % \\hypersetup{         pdftitle = \\myTitle,          pdfauthor = Michael A Eager,         pdfsubject= PhD thesis,         pdfkeywords = auditory system, cochlear nucleus, microcircuit, computational neuroscience, optimisation         }
+    \\graphicspath{{../LiteratureReview/gfx/}{../SimpleResponsesChapter/gfx/}{../VowelResponsesChapter/gfx/}{../figures/}{/media/data/Work/cnstellate/golgi/}{/media/data/Work/cnstellate/TV_RateLevel/}{/media/data/Work/cnstellate/}{/media/data/Work/cnstellate/ResponsesNoComp/ModulationTransferFunction/}{../GAChapter/}{../GAChapter/gfx/}{./GAChapter/archive/}}
+     [NO-DEFAULT-PACKAGES]
+     [NO-PACKAGES]" 
+                   ("\\clearpage\\newpage\\section{%s}" . "\n\\section{%s}")
+                   ("\\subsection{%s}" . "\n\\subsection{%s}") 
+                   ("\\subsubsection{%s}" . "\n\\subsubsection{%s}") 
+                   ("\\paragraph{%s}" . "\n\\paragraph{%s}"))) 
+    (setq org-export-latex-title-command "\n
+    %% Front matter
+    %%
+    \\begin{frontmatter}
+      \\frontmatterheadings
+      % Collect the dissertation information for the title page
+       \\input{../hg/manuscript/misc/metadata}
+       % Generate the title page
+       \\maketitle
+       \\input{../hg/manuscript/misc/abstract}
+       % Author declaration
+       \\makedeclaration
+       % Acknowledgements
+       \\input{../hg/manuscript/misc/acknowledgements}
+       % Preface
+       \\input{../hg/manuscript/misc/preface}
+       % Dedications...
+       \\input{../hg/manuscript/misc/dedication}
+       % TOC, LOF, LOT
+       {%
+               \\singlespacing%
+               \\pdfbookmark[1]{\\contentsname}{tableofcontents} 
+               \\tableofcontents
+               \\pdfbookmark[1]{\\listfigurename}{lof} 
+               \\listoffigures%
+      % Do not include a list of tables if you have less
+      % than 10 tables, as per SGS suggestion.
+               \\pdfbookmark[1]{\\listtablename}{lot} 
+               \\listoftables
+               \\pdfbookmark[1]{Glossary of Terms}{glossary} 
+               \\printglossaries
+               \\clearpage
+         }%
+    \\end{frontmatter} 
+    \\begin{mainmatter}
   
-          (add-to-list 'org-export-latex-classes '("UoM-thesis-org"
-          "\% -*- \
-        mode: latex; mode: tex-fold; TeX-PDF-mode: t; TeX-master t -*-
-        \\documentclass[12pt,a4paper,titlepage,twoside,openright]{book}
-        % Use the UniMelb Dissertation Template
-        \\usepackage{../manuscript/style/uomthesis}
-        % For drafts uncomment the following line
-        \\usepackage[light,timestamp,first]{draftcopy}
-        % Comment out the following line TO MARK blank pages with the
-        % text This page intentionally left blank.
-        \\newcommand{\\markblankpages}{}
-        % Comment out the following line for the copy submitted to the library
-        \\newcommand{\\archivalpapernote}{}
-        % User defined commands
-        \\input{user-defined}
-        \\usepackage[acronym]{glossaries}
-        \\input{../manuscript/misc/glossary}    
-        \\input{../manuscript/user-defined}
-        \\setcounter{secnumdepth}{5}
-        \\makeglossaries
-        % \\includeonly{Chapter05}
-         \\hypersetup{
-         pdftitle = \\myTitle,
-         pdfauthor = Michael A Eager,
-         pdfsubject= PhD thesis,
-         pdfkeywords = auditory system, cochlear nucleus, microcircuit, computational neuroscience, optimisation
-         }
-        \\graphicspath{{../../SimpleResponsesChapter/gfx/}{../../VowelResponsesChapter/gfx/}{../../figures/}{/media/data/Work/cnstellate/golgi/}{/media/data/Work/cnstellate/TV_RateLevel/}{/media/data/Work/cnstellate/}{/media/data/Work/cnstellate/ResponsesNoComp/ModulationTransferFunction/}{/media/data/Work/thesis/GAChapter/}{../../GAChapter/gfx/}{/media/data/Work/thesis/GAChapter/archive/}}
-          [NO-DEFAULT-PACKAGES]
-          [NO-PACKAGES]" 
-          ("\\clearpage\\newpage\\section{%s}" . "\n\\section{%s}")
-          ("\\subsection{%s}" . "\n\\subsection{%s}") 
-          ("\\subsubsection{%s}" . "\n\\subsubsection{%s}") 
-          ("\\paragraph{%s}" . "\n\\paragraph{%s}"))) 
-          (setq org-export-latex-title-command "\n
-      %% Front matter
-      %%
-      \\begin{frontmatter}
-        \\frontmatterheadings
-        % Collect the dissertation information for the title page
-         \\input{../manuscript/misc/metadata}
-         % Generate the title page
-         \\maketitle
-         \\include{../manuscript/misc/abstract}
-         % Author declaration
-         \\makedeclaration
-         % Acknowledgements
-         \\include{../manuscript/misc/acknowledgements}
-         % Preface
-         \\include{../manuscript/misc/preface}
-         % Dedications...
-         \\include{../manuscript/misc/dedication}
-         % TOC, LOF, LOT
-         {%
-                 \\singlespacing%
-                 \\pdfbookmark[1]{\\contentsname}{tableofcontents} 
-                 \\tableofcontents
-                 \\pdfbookmark[1]{\\listfigurename}{lof} 
-                 \\listoffigures%
-        % Do not include a list of tables if you have less
-        % than 10 tables, as per SGS suggestion.
-        %               \\pdfbookmark[1]{\\listtablename}{lot} 
-        %               \\listoftables
-                 \\pdfbookmark[1]{Glossary of Terms}{glossary} 
-                 \\printglossaries
-                 \\clearpage
-           }%
-      \\end{frontmatter}") 
-        (setq TeX-master t)
+    \\mainmatterheadings") 
+    (setq TeX-master t)
 #+end_src
 
 #+RESULTS:
