@@ -11,13 +11,11 @@
 
 
 
- 
-
 # Chapter 1 and literature review
-#+include: ../LiteratureReview/Chapter01.org :lines "-1453"
+#+include: ../LiteratureReview/Chapter01.org 
 \newpage
 # Methods Chapter
-#+include: ../MethodsChapter/Chapter02.org  :lines "-1003"
+#+include: ../MethodsChapter/Chapter02.org  
 #+BEGIN_LaTeX
   \newpage
   \part[Sequential Optimisation of the Cochlear Nucleus Stellate Network]{Sequential Optimisation in the Stellate Microcircuit of the Cochlear Nucleus}
@@ -27,10 +25,10 @@
 
 \newpage
 # Chapter 3 without appendix
-#+include: ../SimpleResponsesChapter/Chapter03.org :lines "-2513"
+#+include: ../SimpleResponsesChapter/Chapter03.org 
 \newpage
 # Chapter 4 without appendix
-#+include: ../VowelProcessingChapter/Chapter04.org :lines "-647"
+#+include: ../VowelProcessingChapter/Chapter04.org 
 
 #+BEGIN_LaTeX
   \newpage
@@ -89,14 +87,13 @@
 #+END_LaTeX
 
 # Chapter 5
-#+include: ../GAChapter/Chapter05.org :lines "-3047"
-
+#+include: ../GAChapter/Chapter05.org 
 \newpage
 # Discussion and Conclusion
 #+include:  ./Chapter06.org
 
 # Conclusion
-#+include: ./Chapter07.org
+# + include: ./Chapter07.org
 
 #+LATEX:   \end{mainmatter}
 
@@ -104,7 +101,7 @@
 ## Appendix
 ##
 #+LATEX:   \begin{appendix}
-#   # Use \chapter{Appendix A}\label{appendixA} in first 
+# # Use \chapter{Appendix A}\label{appendixA} in first 
 # #+include: ../SimpleResponsesChapter/Chapter03Appendix.org
 # \newpage
 # #+include: ../VowelResponsesChapter/Chapter04Appendix.org
@@ -129,7 +126,7 @@
 # %
 # %bmc_article} % Style BST file
 #+LATEX: \bibliographystyle{plainnat}
-#+LATEX: \bibliography{../MyBib}
+#+LATEX: \bibliography{../hg/manuscript/bib/MyBib}
 #+LATEX: \end{back matter}
 
 
@@ -144,134 +141,146 @@
 * Prelude                                                          :noexport:
 
 #+begin_src emacs-lisp
-    (setq org-latex-to-pdf-process '("pdfquick %f"))
-    ;; (setq org-latex-to-pdf-process '("pdflatex -interaction nonstopmode %f" 
-    ;;                                  "makeglossaries %b" "bibtex %b" "pdflatex -interaction nonstopmode %f" 
-    ;;                                  "pdflatex -interaction nonstopmode %f" )) 
-    ;; (setq org-latex-to-pdf-process '("lapdf Chapter3")) 
-    (setq org-export-latex-final-hook ())
-    (add-hook 'org-export-latex-final-hook
-              (lambda ()
-                (goto-char (point-min)) 
-                (search-forward "\\begin{document}") 
-                (push-mark)
-                (replace-regexp "\\( \\|\n\\)\\\\ref" 
-                                "~\\\\ref")
-                (goto-char (mark))
-                (replace-regexp "\\( \\|\n\\)\\\\citep" 
-                                "\\\\ \\\\citep")
-                ;; shorten section titles
-                (goto-char (mark))
-                (replace-regexp "\\\\section{\\(.*\\):" 
-                                "\\\\section[\\1]{\\1:")
-                ;; Go back to start
-                (goto-char (mark))
-                ;; Correct for citations immediately after an item
-                (replace-regexp "item[~\\\\]" 
-                                "item ")
-                ;; Acronyms or Capitals at the end of a sentence cause poor spacing
-                (goto-char (mark))
-                (replace-regexp "\\([A-Z][A-Z]\\)\\.\\( \\|\n\\)" 
-  ;                              "\\1\\\\@. ")
-                ;; Double acronyms
-                (goto-char (mark))
-                (replace-regexp "\\([A-Z][A-Zs]\\) \\([\\\\A-Z]\\)" 
-                                "\\1\\\\ \\2")
-                ;; Force a space between numbers followed by text or acronym 
-                (goto-char (mark))
-                (replace-regexp "\\([0-9]\\) \\([\\\\A-Za-z]\\)" 
-                                "\\1\\\\ \\2")
-         ;; Correct for poor tildas
-       ;                  (goto-char (mark))
-       ;                  (replace-regexp "\\\\~\\{\\}" 
-       ;                                  "~")
-                ;;Remove Bibliographies in Chapters
-                (goto-char (mark))
-                (replace "^## BIBLIOGRAPHY
+  (setq org-latex-to-pdf-process '("pdfquick %f"))
+  ;; (setq org-latex-to-pdf-process '("pdflatex -interaction nonstopmode %f" 
+  ;;                                  "makeglossaries %b" "bibtex %b" "pdflatex -interaction nonstopmode %f" 
+  ;;                                  "pdflatex -interaction nonstopmode %f" )) 
+  ;; (setq org-latex-to-pdf-process '("lapdf Chapter3")) 
+  (setq org-export-latex-final-hook ())
+  (add-hook 'org-export-latex-final-hook
+            (lambda ()
+              (goto-char (point-min)) 
+              (search-forward "\\begin{document}") 
+              (push-mark)
+              (replace-regexp "\\( \\|\n\\)\\\\ref" 
+                              "~\\\\ref")
+              (goto-char (mark))
+              (replace-regexp "\\( \\|\n\\)\\\\citep" 
+                              "\\\\ \\\\citep")
+              ;; silly repeats corrected
+              (goto-char (mark))
+              (replace-regexp "\\\\}\\([^{]*\\)\\\\{" 
+                              "}\\1{")
+              (goto-char (mark))
+              (replace-regexp "\\\\{" 
+                              "{")
+              (goto-char (mark))
+              (replace-regexp "\\\\}" 
+                              "}")
+
+              ;; shorten section titles
+              (goto-char (mark))
+              (replace-regexp "\\\\section{\\(.*\\):" 
+                              "\\\\section[\\1]{\\1:")
+              ;; Go back to start
+              (goto-char (mark))
+              ;; Correct for citations immediately after an item
+              (replace-regexp "item[~\\\\]" 
+                              "item ")
+              ;; Acronyms or Capitals at the end of a sentence cause poor spacing
+              (goto-char (mark))
+              (replace-regexp "\\([A-Z][A-Z]\\)\\.\\( \\|\n\\)" 
+                              "\\1\\\\@. ")
+              ;; Double acronyms
+              (goto-char (mark))
+              (replace-regexp "\\([A-Z][A-Zs]\\) \\([\\\\A-Z]\\)" 
+                              "\\1\\\\ \\2")
+              ;; Force a space between numbers followed by text or acronym 
+              (goto-char (mark))
+              (replace-regexp "\\([0-9]\\) \\([\\\\A-Za-z]\\)" 
+                              "\\1\\\\ \\2")
+       ;; Correct for poor tildas
+     ;                  (goto-char (mark))
+     ;                  (replace-regexp "\\\\~\\{\\}" 
+     ;                                  "~")
+              ;;Remove Bibliographies in Chapters
+              (goto-char (mark))
+              (replace "^## BIBLIOGRAPHY
 .*
 .*
 .*
 ## BIBLIOGRAPHY" "")
-                ;; Remove statements at start of Chapters' org-mode file
-                (goto-char (mark))
-                (replace "^## NOINCLUDE
+                  ;; Remove statements at start of Chapters' org-mode file
+              (goto-char (mark))
+              (replace "^## NOINCLUDE
 .*
 ## NOINCLUDE" "")
-                (goto-char (mark))
-                (replace "^#\\+LATEX_HEADER:.*$" "")
-                (goto-char (mark))
-                (replace-regexp "\\\\{\\(.*\\)\\\\}" "{\\1}")
-                (goto-char (mark))
-                (replace-regexp "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ " "\\\\ ")
-                )   )
-    (add-to-list 'org-export-latex-classes 
-                 '("UoM-thesis-org"
-                   "\% -*- \
-    mode: latex; mode: tex-fold; TeX-PDF-mode: t; TeX-master t \
-    -*-
-    \\documentclass[12pt,a4paper,titlepage,twoside,openright]{book}
-    % Use the UniMelb Dissertation Template
-    \\usepackage{../hg/manuscript/style/uomthesis}
-    % For drafts uncomment the following line
-    \\usepackage[light,timestamp,first]{draftcopy}
-    % Comment out the following line TO MARK blank pages with the
-    % text This page intentionally left blank.
-    \\newcommand{\\markblankpages}{}
-    % Comment out the following line for the copy submitted to the library
-    \\newcommand{\\archivalpapernote}{}
-    % User defined commands
-    \\usepackage[acronym]{glossaries}
-    \\input{../hg/manuscript/misc/glossary}    
-    \\input{../hg/manuscript/user-defined}
-    \\setcounter{secnumdepth}{5}
-    \\makeglossaries
-    % \\includeonly{Chapter05}
-    % \\hypersetup{         pdftitle = \\myTitle,          pdfauthor = Michael A Eager,         pdfsubject= PhD thesis,         pdfkeywords = auditory system, cochlear nucleus, microcircuit, computational neuroscience, optimisation         }
-    \\graphicspath{{../LiteratureReview/gfx/}{../SimpleResponsesChapter/gfx/}{../VowelResponsesChapter/gfx/}{../figures/}{/media/data/Work/cnstellate/golgi/}{/media/data/Work/cnstellate/TV_RateLevel/}{/media/data/Work/cnstellate/}{/media/data/Work/cnstellate/ResponsesNoComp/ModulationTransferFunction/}{../GAChapter/}{../GAChapter/gfx/}{./GAChapter/archive/}}
-     [NO-DEFAULT-PACKAGES]
-     [NO-PACKAGES]" 
-                   ("\\clearpage\\newpage\\section{%s}" . "\n\\section{%s}")
-                   ("\\subsection{%s}" . "\n\\subsection{%s}") 
-                   ("\\subsubsection{%s}" . "\n\\subsubsection{%s}") 
-                   ("\\paragraph{%s}" . "\n\\paragraph{%s}"))) 
-    (setq org-export-latex-title-command "\n
-    %% Front matter
-    %%
-    \\begin{frontmatter}
-      \\frontmatterheadings
-      % Collect the dissertation information for the title page
-       \\input{../hg/manuscript/misc/metadata}
-       % Generate the title page
-       \\maketitle
-       \\input{../hg/manuscript/misc/abstract}
-       % Author declaration
-       \\makedeclaration
-       % Acknowledgements
-       \\input{../hg/manuscript/misc/acknowledgements}
-       % Preface
-       \\input{../hg/manuscript/misc/preface}
-       % Dedications...
-       \\input{../hg/manuscript/misc/dedication}
-       % TOC, LOF, LOT
-       {%
-               \\singlespacing%
-               \\pdfbookmark[1]{\\contentsname}{tableofcontents} 
-               \\tableofcontents
-               \\pdfbookmark[1]{\\listfigurename}{lof} 
-               \\listoffigures%
-      % Do not include a list of tables if you have less
-      % than 10 tables, as per SGS suggestion.
-               \\pdfbookmark[1]{\\listtablename}{lot} 
-               \\listoftables
-               \\pdfbookmark[1]{Glossary of Terms}{glossary} 
-               \\printglossaries
-               \\clearpage
-         }%
-    \\end{frontmatter} 
-    \\begin{mainmatter}
-  
-    \\mainmatterheadings") 
-    (setq TeX-master t)
+             (goto-char (mark))
+             (replace "^#\\+LATEX_HEADER:.*$" "")
+             (goto-char (mark))
+             (replace-regexp "\\\\{\\(.*\\)\\\\}" "{\\1}")
+             (goto-char (mark))
+             (replace-regexp "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ " "\\\\ ")
+             )   )
+ (add-to-list 'org-export-latex-classes 
+              '("UoM-thesis-org"
+                "\% -*- \
+ mode: latex; mode: tex-fold; TeX-PDF-mode: t; TeX-master t \
+ -*-
+ \\documentclass[12pt,a4paper,titlepage,twoside,openright]{book}
+ % Use the UniMelb Dissertation Template
+ \\usepackage{../hg/manuscript/style/uomthesis}
+ % For drafts uncomment the following line
+ \\usepackage[light,timestamp,first]{draftcopy}
+ % Comment out the following line TO MARK blank pages with the
+ % text This page intentionally left blank.
+ \\newcommand{\\markblankpages}{}
+ % Comment out the following line for the copy submitted to the library
+ \\newcommand{\\archivalpapernote}{}
+ % User defined commands
+ \\usepackage[acronym]{glossaries}
+ \\input{../hg/manuscript/misc/glossary}    
+ \\input{../hg/manuscript/user-defined}
+ \\setcounter{secnumdepth}{5}
+ \\makeglossaries
+ % \\includeonly{Chapter05}
+ % \\hypersetup{         pdftitle = \\myTitle,          pdfauthor = Michael A Eager,         pdfsubject= PhD thesis,         pdfkeywords = auditory system, cochlear nucleus, microcircuit, computational neuroscience, optimisation         }
+ \\graphicspath{{../LiteratureReview/gfx/}{../SimpleResponsesChapter/gfx/}{../VowelResponsesChapter/gfx/}{../figures/}{/media/data/Work/cnstellate/golgi/}{/media/data/Work/cnstellate/TV_RateLevel/}{/media/data/Work/cnstellate/}{/media/data/Work/cnstellate/ResponsesNoComp/ModulationTransferFunction/}{../GAChapter/}{../GAChapter/gfx/}{./GAChapter/archive/}}
+ \\newcommand{\\manuscript}{}
+  [NO-DEFAULT-PACKAGES]
+  [NO-PACKAGES]" 
+                ("\\clearpage\n\n\\section{%s}" . "\n\n\\section{%s}")
+                ("\n\n\\subsection{%s}" . "\n\n\\subsection{%s}") 
+                ("\n\n\\subsubsection{%s}" . "\n\n\\subsubsection{%s}") 
+                ("\\paragraph{%s}" . "\n\\paragraph{%s}"))) 
+ (setq org-export-latex-title-command "\n
+ %% Front matter
+ %%
+ \\begin{frontmatter}
+   \\frontmatterheadings
+   % Collect the dissertation information for the title page
+    \\input{../hg/manuscript/misc/metadata}
+    % Generate the title page
+    \\maketitle
+    \\input{../hg/manuscript/misc/abstract}
+    % Author declaration
+    \\makedeclaration
+    % Acknowledgements
+    \\input{../hg/manuscript/misc/acknowledgements}
+    % Preface
+    \\input{../hg/manuscript/misc/preface}
+    % Dedications...
+    \\input{../hg/manuscript/misc/dedication}
+    % TOC, LOF, LOT
+    {%
+            \\singlespacing%
+            \\pdfbookmark[1]{\\contentsname}{tableofcontents} 
+            \\tableofcontents
+            \\pdfbookmark[1]{\\listfigurename}{lof} 
+            \\listoffigures%
+   % Do not include a list of tables if you have less
+   % than 10 tables, as per SGS suggestion.
+            \\pdfbookmark[1]{\\listtablename}{lot} 
+            \\listoftables
+            \\pdfbookmark[1]{Glossary of Terms}{glossary} 
+            \\printglossaries
+            \\clearpage
+      }%
+ \\end{frontmatter} 
+ \\begin{mainmatter}
+
+ \\mainmatterheadings") 
+ (setq TeX-master t)
 #+end_src
 
 #+RESULTS:
