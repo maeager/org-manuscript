@@ -88,7 +88,7 @@
 
 # Chapter 5
 #+include: ../GAChapter/Chapter05.org 
-\newpage
+\clearpage\newpage
 # Discussion and Conclusion
 #+include:  ./Chapter06.org
 
@@ -127,7 +127,7 @@
 # %bmc_article} % Style BST file
 #+LATEX: \bibliographystyle{plainnat}
 #+LATEX: \bibliography{../hg/manuscript/bib/MyBib}
-#+LATEX: \end{back matter}
+#+LATEX: \end{backmatter}
 
 
 
@@ -256,11 +256,11 @@
     % Author declaration
     \\makedeclaration
     % Acknowledgements
-    \\input{../hg/manuscript/misc/acknowledgements}
+    % \\input{../hg/manuscript/misc/acknowledgements}
     % Preface
     \\input{../hg/manuscript/misc/preface}
     % Dedications...
-    \\input{../hg/manuscript/misc/dedication}
+    % \\input{../hg/manuscript/misc/dedication}
     % TOC, LOF, LOT
     {%
             \\singlespacing%
