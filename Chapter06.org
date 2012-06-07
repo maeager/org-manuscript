@@ -4,9 +4,8 @@
 
 \glsresetall[main,acronym]
 
+* The Cochlear Nucleus Stellate Microcircuit
 
-# \yellownote{  This section should give a rough introduction to the themes
-#    included in the thesis and how the thesis is structured.}
 
 # \yellownote{Conclusion section should restate purpose, consolidate research space with a varied array of steps, recommend future research
 # and cover practical applications, implications or recommendations
@@ -17,7 +16,6 @@
 # \yellownote{
 
 # Usually the discussion has the following parts:
-
 #     It should state the main findings of the study in one or two sentences.
 #     The discussion should consider the methods, and address possible shortcomings. Defend your answers, if necessary, by explaining both why your answer is satisfactory and why others are not. Only by giving both sides to the argument can you make your explanation convincing.
 #     Identify potential weaknesses, and comment the relative importance of these to your interpretation of the results and how they may affect the validity of the findings. When identifying limits and weaknesses, avoid using an apologetic tone.
@@ -28,10 +26,52 @@
 # }
 
 
+\yellownote{ Restating in the aims of the thesis }
+This project was undertaken to design ...... and evaluate .....
 
-* The Cochlear Nucleus Stellate Microcircuit
+\yellownote{Summary of the findings and general implications}
+These findings suggest that in general ......
+The results of this research support the idea that .......
+
+
+
+
+- CONTRIBUTION TO RESEARCH
+These findings enhance our understanding of ......
+
+This research will serve as a base for future studies and ......
+
+The findings from this study make several contributions to the current literature. First,……
+
+
+The methods used for this X may be applied to other Xs elsewhere in the world.
+
+- Implications
+
+- Limitations
+A number of caveats need to be noted regarding the present study.
+
+The current research was not specifically designed to evaluate factors related to ......
+
+- Future work
+
+- Implications and recommendations
+
 
 * Optimisation and Modelling of Realistic Microcircuits
+
+As mentioned in the literature review, little has been done in replication of
+microcircuits and medium sized neural networks from experimental data sets.
+Very little was found in the literature on the question of replicating neural
+outputs from multiple neurons of different cell-types.  This thesis set out with
+the aim of assessing the importance of optimisation in biophysically realistic
+neural microcircuits through either sequential or simultaneous methods.
+
+\yellownote{Statements of result with reference to results sections}
+
+The results of genetic algorithm optimisation show/indicate that .......
+
+This experiment did not detect any evidence for ......
 
 * Future Research
 
