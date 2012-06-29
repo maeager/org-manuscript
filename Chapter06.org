@@ -7,14 +7,12 @@
 * The Cochlear Nucleus Stellate Microcircuit
 
 
-# \yellownote{Conclusion section should restate purpose, consolidate research space with a varied array of steps, recommend future research
-# and cover practical applications, implications or recommendations
-# }
+\yellownote{Conclusion section should restate purpose, consolidate research space with a varied array of steps, recommend future research
+and cover practical applications, implications or recommendations}
 
 
 
 # \yellownote{
-
 # Usually the discussion has the following parts:
 #     It should state the main findings of the study in one or two sentences.
 #     The discussion should consider the methods, and address possible shortcomings. Defend your answers, if necessary, by explaining both why your answer is satisfactory and why others are not. Only by giving both sides to the argument can you make your explanation convincing.
