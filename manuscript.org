@@ -21,15 +21,15 @@
 ## + LaTeX: \cleardoublepage\chapter{General Methods}\label{sec:MethodsChapter}
 #+include: ../MethodsChapter/Chapter02.org  
 
-#+BEGIN_LaTeX
- \cleardoublepage
- \part[Sequential Optimisation of the Cochlear Nucleus Stellate Network]{Sequential Optimisation in the Stellate Microcircuit of the Cochlear Nucleus}
- \psection{Introduction to Part \thepart}
- \yellownote{Small introduction to first part.}
-#+END_LaTeX
 
+# #+BEGIN_LaTeX
+#   \cleardoublepage\part[Sequential Optimisation of the Cochlear Nucleus Stellate Network]{Sequential Optimisation in the Stellate Microcircuit of the Cochlear Nucleus}
+#   \psection{Introduction to Part \thepart}
+#   \yellownote{Small introduction to first part.}
+# #+END_LaTeX
+ 
 ## Chapter 3 without appendix
-#+include:  ../SimpleResponsesChapter/Chapter03.org 
+#+include: ../SimpleResponsesChapter/Chapter03.org 
 
 # \cleardoublepage
 ## Chapter 4 without appendix
@@ -111,15 +111,15 @@
 ##
 #+LATEX:   \begin{appendix}
 # Use \chapter{Appendix A}\label{appendixA} in first 
-# + include: ../SimpleResponsesChapter/Chapter03Appendix.org
+#+include: ../SimpleResponsesChapter/Chapter03Appendix.org
 # \newpage
 # + include: ../VowelResponsesChapter/Chapter04Appendix.org
 # Optimisation of BNNs using Ideal inputs
 # + include: ../GAChapter/Chapter05B.org :lines "1298-1720"
 # Sensitivity Analysis of Individual Parameters near the Global Optimum
 # + include: ../GAChapter/Chapter05.org :lines "1722-2114"
-# \newpage
-# + include: ../GAChapter/Chapter05Appendix.org
+#\newpage
+#+include: ../GAChapter/Chapter05Appendix.org
 #+LATEX:   \end{appendix}
 
 ##
@@ -165,8 +165,7 @@
                                  "~\\\\ref")
                 (goto-char (mark))
                 (replace-regexp "\\( \\|\n\\)\\\\citep" 
-                                "\\\\ \\\\citep")
-  
+                                "\\\\ \\\\citep")  
                 ;; shorten section titles
                 (goto-char (mark))
                 (replace-regexp "\\\\section{\\(.*\\):" 
@@ -258,11 +257,11 @@
       % Author declaration
       \\makedeclaration
       % Acknowledgements
-      % \\input{../hg/manuscript/misc/acknowledgements}
+       \\input{../hg/manuscript/misc/acknowledgements}
       % Preface
       \\input{../hg/manuscript/misc/preface}
       % Dedications...
-      % \\input{../hg/manuscript/misc/dedication}
+       \\input{../hg/manuscript/misc/dedication}
       % TOC, LOF, LOT
       {%
               \\singlespacing%
@@ -288,6 +287,8 @@
 
 #+RESULTS:
 : t
+
+
 
 
 
