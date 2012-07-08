@@ -1,10 +1,10 @@
 
 
-\chapter{General Discussion and Conclusion}\label{ch:discussion}
+#+LaTeX: \chapter{General Discussion and Conclusion}\label{sec:Discussion}
 
-\glsresetall[main,acronym]
+# \glsresetall[main,acronym]
 
-* The Cochlear Nucleus Stellate Microcircuit
+* The Cochlear Nucleus Stellate Microcircuit Model
 
 
 \yellownote{Conclusion section should restate purpose, consolidate research space with a varied array of steps, recommend future research
@@ -56,7 +56,7 @@ The current research was not specifically designed to evaluate factors related t
 - Implications and recommendations
 
 
-* Optimisation and Modelling of Realistic Microcircuits
+* Optimisation Methods and Modelling of Biophysically-Realistic Microcircuits
 
 As mentioned in the literature review, little has been done in replication of
 microcircuits and medium sized neural networks from experimental data sets.
