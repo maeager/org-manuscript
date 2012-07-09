@@ -31,80 +31,80 @@
 ## Chapter 3 without appendix
 #+include: ../SimpleResponsesChapter/Chapter03.org 
 
-# # \cleardoublepage
-# ## Chapter 4 without appendix
-# #+include:  ../VowelProcessingChapter/Chapter04.org 
+# \clearpage
+## Chapter 4 without appendix
+#+include:  ../VowelProcessingChapter/Chapter04.org 
 
-# #+BEGIN_LaTeX
-#   \cleardoublepage
-#   \part[GA Optimisation]{Simultaneous Optimisation of Realistic Microcircuits using Genetic Algorithms}
-#           \label{part:2}
-#   %=========================================================================
+#+BEGIN_LaTeX
+  \cleardoublepage
+  \part[GA Optimisation]{Simultaneous Optimisation of Realistic Microcircuits using Genetic Algorithms}
+          \label{part:2}
+  %=========================================================================
   
-#   \psection{Introduction to Part \thepart}
+  \psection{Introduction to Part \thepart}
   
-#   \glsreset{BNN}
+  \glsreset{BNN}
   
-#   % \PARstart{T}{he studies} 
-#   The studies 
-#   in this section evaluated the usefulness of genetic
-#   algorithms for determining the synaptic parameters of a
-#   \BNN. This was done by using a model of a microcircuit in the
-#   auditory brainstem as an example network on which to test the
-#   algorithm. First, a "target" model was generated with predetermined
-#   synaptic parameters. Then using the target model, training data of
-#   network responses were generated, which were then used by the genetic
-#   algorithm to estimate the synaptic parameters of the target model.
-#   Experimental observables, such as extracellular spike times,
-#   peri-stimulus time histograms, and intracellular voltage waveforms, were
-#   used to define the "fitness" functions for optimization. The ability
-#   of the algorithm to find the known neural parameters was assessed for
-#   the different fitness functions.
+  % \PARstart{T}{he studies} 
+  The studies 
+  in this section evaluated the usefulness of genetic
+  algorithms for determining the synaptic parameters of a
+  \BNN. This was done by using a model of a microcircuit in the
+  auditory brainstem as an example network on which to test the
+  algorithm. First, a "target" model was generated with predetermined
+  synaptic parameters. Then using the target model, training data of
+  network responses were generated, which were then used by the genetic
+  algorithm to estimate the synaptic parameters of the target model.
+  Experimental observables, such as extracellular spike times,
+  peri-stimulus time histograms, and intracellular voltage waveforms, were
+  used to define the "fitness" functions for optimization. The ability
+  of the algorithm to find the known neural parameters was assessed for
+  the different fitness functions.
   
-#   Success of the genetic algorithm optimization was affected by intrinsic
-#   noise in the network and by the sensitivity of the cost functions to
-#   changes in each parameter. The results have shown the potential of
-#   genetic algorithms in constraining the synaptic parameters of \BNNs
-#   from experimental data.
+  Success of the genetic algorithm optimization was affected by intrinsic
+  noise in the network and by the sensitivity of the cost functions to
+  changes in each parameter. The results have shown the potential of
+  genetic algorithms in constraining the synaptic parameters of \BNNs
+  from experimental data.
   
-#   Section \ref{sec:GA:ResultDiffAN} shows the results for the most
-#   realistic situation for optimising \BNNs, whereby the inputs and network
-#   construction were all randomised.  In the
-#   subsection~\ref{sec:GA:param-sens-results}, the effects of parameter
-#   permutations were tested to evaluate the responses of each cost function
-#   and how the GA best genomes were able to perform relative to the
-#   parameter permutations.
+  Section \ref{sec:GA:ResultDiffAN} shows the results for the most
+  realistic situation for optimising \BNNs, whereby the inputs and network
+  construction were all randomised.  In the
+  subsection~\ref{sec:GA:param-sens-results}, the effects of parameter
+  permutations were tested to evaluate the responses of each cost function
+  and how the GA best genomes were able to perform relative to the
+  parameter permutations.
   
   
-#   \yellownote{Section \ref{sec:GA:ResultIdeal}, deals with an ideal situation of
-#   optimisation without any noise.  The input spikes are fixed throughout
-#   the GA optimisation, and the target parameters are able to provide a
-#   perfect score of 0.  The effects of parameter perturbations were also
-#   assessed for this situation.}
+  \yellownote{Section \ref{sec:GA:ResultIdeal}, deals with an ideal situation of
+  optimisation without any noise.  The input spikes are fixed throughout
+  the GA optimisation, and the target parameters are able to provide a
+  perfect score of 0.  The effects of parameter perturbations were also
+  assessed for this situation.}
   
-#   \yellownote{Section \ref{sec:GA:IndividualSens}, explores the hypothesis that
-#   individual parameters play a greater role in the optimisation rather
-#   than thinking of the all the parameters at once.  The local gradients of
-#   the cost functions around each individual parameter target was evaluated
-#   and tested for the significant gradients with ideal and different
-#   inputs.  The best genomes parameter error was then assessed to determine
-#   whether the local gradients were decisive in the GA optimisation.}
-# #+END_LaTeX
+  \yellownote{Section \ref{sec:GA:IndividualSens}, explores the hypothesis that
+  individual parameters play a greater role in the optimisation rather
+  than thinking of the all the parameters at once.  The local gradients of
+  the cost functions around each individual parameter target was evaluated
+  and tested for the significant gradients with ideal and different
+  inputs.  The best genomes parameter error was then assessed to determine
+  whether the local gradients were decisive in the GA optimisation.}
+#+END_LaTeX
 
-# ## Chapter 5
-# ## + LaTeX: \chapter[GA Optimisation]{Simultaneous Optimisation of Microcircuits using Genetic Algorithms}\label{sec:GAChapter}
-# #+include: ../GAChapter/Chapter05.org 
-
+## Chapter 5
+## + LaTeX: \chapter[GA Optimisation]{Simultaneous Optimisation of Microcircuits using Genetic Algorithms}\label{sec:GAChapter}
+#+include: ../GAChapter/Chapter05.org 
+ 
 
 # \cleardoublepage
 # \setcounter{tocdepth}{0}
 # ## Discussion and Conclusion
 # #+include:  ./Chapter06.org
 
-# ## Conclusion
-# ## + include: ./Chapter07.org
+## Conclusion
+## + include: ./Chapter07.org
 
-# #+LATEX:   \end{mainmatter}
+#+LATEX:   \end{mainmatter}
 
 # ##
 # ## Appendix
@@ -122,21 +122,21 @@
 # #+include: ../GAChapter/Chapter05Appendix.org
 # #+LATEX:   \end{appendix}
 
-# ##
-# ## Bibliography
-# ##
+##
+## Bibliography
+##
 
-# #+LATEX: \begin{backmatter}
-# #+LATEX: \chapter*{\bibname}\markboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}
-# # %
-# # % Uncomment the following line to produce a
-# # % bibliography list of all entries in the bib database
-# # %\nocite{*}
-# # %
-# # %bmc_article} % Style BST file
-# #+LATEX: \bibliographystyle{plainnat}
-# #+LATEX: \bibliography{../hg/manuscript/bib/MyBib}
-# #+LATEX: \end{backmatter}
+#+LATEX: \begin{backmatter}
+#+LATEX: \chapter*{\bibname}\markboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}
+# %
+# % Uncomment the following line to produce a
+# % bibliography list of all entries in the bib database
+# %\nocite{*}
+# %
+# %bmc_article} % Style BST file
+#+LATEX: \bibliographystyle{plainnat}
+#+LATEX: \bibliography{../hg/manuscript/bib/MyBib}
+#+LATEX: \end{backmatter}
 
 
 
