@@ -30,7 +30,7 @@
 #
 fileinfo	:= LaTeX Makefile
 author		:= Chris Monson
-version		:= 2.2.1-alpha8
+version		:= 2.2.1-alpha9
 #
 .DEFAULT_GOAL	:= all
 # Note that the user-global version is imported *after* the source directory,
@@ -117,6 +117,9 @@ neverclean		?= *.pdf
 #
 #
 # CHANGES:
+# Chris Monson (2012-06-25):
+# * Bumped version to 2.2.1-alpha9
+# * Built with Holger Dell's changes to fix multiple unnecessary compilations.
 # Chris Monson (2011-11-10):
 # * Issue 144: Help patch from girard.nicolas applied
 # Andrew McNabb (2011-09-30):
@@ -936,9 +939,12 @@ WRITE_TRANSCRIPT ?=
 set-run-reason = export run_reason="$1"
 # Log command to the transcript file
 # $(call set-run-reason,command,job_name)
-transcript = $(if $(WRITE_TRANSCRIPT), \
+define transcript
+$(if $(WRITE_TRANSCRIPT), \
 						 $(ECHO) "Running $1 ($$run_reason)" >> $2.transcript.make; \
-						 export run_reason="",$(sh_true))
+	export run_reason="", \
+	$(sh_true))
+endef
 
 # Don't call this directly - it is here to avoid calling wildcard more than
 # once in remove-files.
@@ -1927,7 +1933,7 @@ endef
 #
 # $(call die-on-no-aux,<aux stem>)
 define die-on-no-aux
-if [ ! -e '$1.aux' ]; then \
+if $(call test-not-exists,$1.aux); then \
 	$(call colorize-latex-errors,$1.log); \
 	$(ECHO) "$(C_ERROR)Error: failed to create $1.aux$(C_RESET)"; \
 	exit 1; \
@@ -1973,6 +1979,7 @@ define get-bibs
 $(SED) \
 -e '/^\\bibdata/!d' \
 -e 's/\\bibdata{\([^}]*\)}/\1,/' \
+-e 's/[^,]\{1,\}-blx//' \
 -e 's/,\{2,\}/,/g' \
 -e 's/[[:space:]]/\\&/g' \
 -e 's/,/.bib /g' \
@@ -2399,7 +2406,10 @@ $(SED) \
 enlarge_beamer	= $(PSNUP) -l -1 -W128mm -H96mm -pletter
 
 # $(call test-run-again,<source stem>)
-test-run-again	= $(EGREP) '^(.*Rerun .*|No file $1\.[^.]+\.)$$' $1.log | $(EGREP) -q -v '^(Package: rerunfilecheck.*Rerun checks for auxiliary files.*)$$'
+define test-run-again
+$(EGREP) '^(.*Rerun .*|No file $1\.[^.]+\.)$$' $1.log \
+| $(EGREP) -q -v '^(Package: rerunfilecheck.*Rerun checks for auxiliary files.*)$$'
+endef
 
 # This tests whether the build target commands should be run at all, from
 # viewing the log file.
@@ -2438,7 +2448,7 @@ then \
 	$(call colorize-makeindex-errors,$3); \
 	$(RM) -f '$2'; \
 	success=0; \
-  $(call transcript,makeindex,$1) \
+	$(call transcript,makeindex,$1); \
 fi; \
 [ "$$success" = "1" ] && $(sh_true) || $(sh_false);
 endef
@@ -2450,7 +2460,7 @@ if ! $(XINDY) -q -o $2 -L $(XINDYLANG) -C $(XINDYENC) -I xindy -M $3 -t $4 $1 > 
 	$(call colorize-xindy-errors,$4); \
 	$(RM) -f '$2'; \
 	success=0; \
-  $(call transcript,xindy,$1) \
+  $(call transcript,xindy,$1); \
 fi; \
 [ "$$success" = "1" ] && $(sh_true) || $(sh_false);
 endef
@@ -2471,7 +2481,8 @@ endef
 #
 # $(call run-script,<interpreter>,<input>,<output>)
 define run-script
-$(call test-not-exists,$2.cookie) && $(ECHO) "restarts=$(RESTARTS)" > $2.cookie && $(ECHO) "level=$(MAKELEVEL)" >> $2.cookie; \
+$(call test-not-exists,$2.cookie) && $(ECHO) "restarts=$(RESTARTS)" \
+	> $2.cookie && $(ECHO) "level=$(MAKELEVEL)" >> $2.cookie; \
 restarts=`$(SED) -n -e 's/^restarts=//p' $2.cookie`; \
 level=`$(SED) -n -e 's/^level=//p' $2.cookie`; \
 if $(EXPR) $(MAKELEVEL) '<=' $$level '&' $(RESTARTS) '<=' $$restarts >/dev/null; then \
@@ -2530,8 +2541,8 @@ gpi-fontname = Helvetica
 # Get the terminal settings for a given gpi and its intended output file
 define gpi-terminal
 $(if $(filter %.pdf,$2),pdfcairo enhanced,postscript enhanced eps) \
-$(call gpi-monochrome,$1,$3) solid \
-font "$(call gpi-fontname),$(call gpi-font-entry,$2,$(call gpi-fontsize,$1,$2))" 
+$(call gpi-monochrome,$1,$3) solid font "$(call gpi-fontname), \
+$(call gpi-font-entry,$2,$(call gpi-fontsize,$1,$2))" 
 endef
 
 # $(call gpi-embed-pdf-fonts,<input file>,<output file>)
@@ -2573,7 +2584,8 @@ elif [ x"$(suffix $2)" = x".pdf" ]; then \
 		$(call move-if-exists,$2.embed.tmp.make,$2); \
 	fi; \
 fi; \
-$(if $(gpi_sed),$(call remove-temporary-files,$1.temp.make);,) \  #$(call remove-temporary-files,$1head.make); 
+$(if $(gpi_sed),$(call remove-temporary-files,$1.temp.make);,) \
+$(call remove-temporary-files,$1head.make); \
 [ "$$success" = "1" ] && $(sh_true) || $(sh_false);
 endef
 
@@ -3029,6 +3041,7 @@ endif
 	$(call remove-temporary-files,$*.bbl.cookie $*.run.cookie); \
 	$(MV) $*.auxtarget.cookie $*.auxtarget.make; \
 	if [ x"$$run" = x"1" ]; then \
+		$(call remove-files,$@.1st.make); \
 		for i in 2 3 4 5; do \
 			$(if $(findstring 3.79,$(MAKE_VERSION)),\
 				$(call echo-build,$*.tex,$@,$(RESTARTS)-$$$$i),\
@@ -3043,7 +3056,7 @@ endif
 			fi; \
 		done; \
 	else \
-		$(CP) '$@.1st.make' '$@'; \
+		$(MV) '$@.1st.make' '$@'; \
 	fi; \
 	$(call copy-with-logging,$@,$(BINARY_TARGET_DIR)); \
 	$(call latex-color-log,$*)

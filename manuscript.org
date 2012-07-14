@@ -4,21 +4,24 @@
 #+OPTIONS: toc:nil author:nil H:5 <:t >:t tasks:nil
 #+STARTUP: oddeven
 #+TODO: REFTEX
+#+LANGUAGE: en_GB-ise-wo_accents
+#+BIBLIOGRAPHY: MyBib alphanat
 #+SEQ_TODO:   TODO(t) INPROGRESS(i) WAITING(w@) | DONE(d) CANCELED(c@)
 #+TAGS:       Write(w) Update(u) Fix(f) Check(c) noexport(n)
-#+LANGUAGE: en_GB
+
 #+LaTeX_CLASS: UoM-thesis-org
-#+BIBLIOGRAPHY: MyBib alphanat
+
 
 
 * My Thesis
 
 
-## Chapter 1 and literature review
-## + LaTeX: \cleardoublepage\chapter{Introduction}\label{sec:Chapter1}
+## Chapter 1: intro and literature review
+#+LaTeX :\cleardoublepage
 #+include: ../LiteratureReview/Chapter01.org 
+
 # ## Methods Chapter
-# ## + LaTeX: \cleardoublepage\chapter{General Methods}\label{sec:MethodsChapter}
+#+LaTeX: \cleardoublepage
 #+include: ../MethodsChapter/Chapter02.org  
 
 
@@ -31,9 +34,10 @@
 ## Chapter 3 without appendix
 #+include: ../SimpleResponsesChapter/Chapter03.org 
 
-# \clearpage
+
 ## Chapter 4 without appendix
-#+include:  ../VowelProcessingChapter/Chapter04.org 
+#+LaTeX: \clearpage
+#+include: ../VowelProcessingChapter/Chapter04.org 
 
 #+BEGIN_LaTeX
   \cleardoublepage
@@ -99,7 +103,7 @@
 # \cleardoublepage
 # \setcounter{tocdepth}{0}
 # ## Discussion and Conclusion
-# #+include:  ./Chapter06.org
+#+include:  ./Chapter06.org
 
 ## Conclusion
 ## + include: ./Chapter07.org
@@ -128,12 +132,12 @@
 
 #+LATEX: \begin{backmatter}
 #+LATEX: \chapter*{\bibname}\markboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}
-# %
-# % Uncomment the following line to produce a
-# % bibliography list of all entries in the bib database
-# %\nocite{*}
-# %
-# %bmc_article} % Style BST file
+#   %
+#   % Uncomment the following line to produce a
+#   % bibliography list of all entries in the bib database
+#   %\nocite{*}
+#   %
+#   %bmc_article} % Style BST file
 #+LATEX: \bibliographystyle{plainnat}
 #+LATEX: \bibliography{../hg/manuscript/bib/MyBib}
 #+LATEX: \end{backmatter}
@@ -201,11 +205,6 @@
   ;;      ;                  (goto-char (mark))
   ;;      ;                  (replace-regexp "\\\\~\\{\\}" 
   ;;      ;                                  "~")
-  ;;               ;; Remove statements at start of Chapters' org-mode file
-  ;;               (goto-char (mark))
-  ;;               (replace "^## NOINCLUDE
-  ;; .*
-  ;; ## NOINCLUDE" "")
   ;;              (goto-char (mark))
   ;;              (replace "^#\\+LATEX_HEADER:.*$" "")
   ;;             (goto-char (mark))
@@ -242,10 +241,10 @@
    \\newcommand{\\manuscript}{}
     [NO-DEFAULT-PACKAGES]
     [NO-PACKAGES]" 
-                  ("\n\n\\section{%s}" . "\\section{%s}")
-                  ("\n\n\\subsection{%s}" . "\\subsection{%s}") 
-                  ("\n\n\\subsubsection{%s}" . "\\subsubsection{%s}") 
-                  ("\\paragraph{%s}" . "\n\\paragraph{%s}"))) 
+                  ("\n\n\\section{%s}" . "\n\n\\section{%s}")
+                  ("\n\n\\subsection{%s}" . "\n\n\\subsection{%s}") 
+                  ("\n\n\\subsubsection{%s}" . "\n\\subsubsection{%s}") 
+                  ("\n\\paragraph{%s}" . "\n\\paragraph{%s}"))) 
    (setq org-export-latex-title-command "\n
    %% Front matter
    %%
