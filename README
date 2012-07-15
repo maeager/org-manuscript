@@ -1,0 +1,195 @@
+
+Notes on org-mode manuscript 
+
+* set up
+  - org-mode export configuration is done in ~/.emacs.d/my-org-config.el and ~/.emacs.d/my-org-extras.el
+  - using reftex in org-mode files, see setup at http://tincman.wordpress.com/2011/01/04/research-paper-management-with-emacs-org-mode-and-reftex/
+  - use org-mode's babel for using source code blocks
+  - create special latex header by adding to =org-export-latex-classes=.  I have
+    ones for the master manuscript, the individual chapters, and one for beamer
+    presentations.
+  - set =org-export-latex-final-hook= to replace common errors in conversion (from Org-mode's paper v46i03). 
+
+
+
+
+* LaTeX export organisation and template skeleton
+  - LaTeX skeleton based on  John Papandriopoulos' latex template for thesis called uomthesis 
+  - front matter, main matter, appendicies, and backmatter  separated into =\begin/\end= blocks
+  - glossaries and acronyms are organised by makeglossaries package and all
+    entries are in misc/glossaries.  To short calls, "\gls{*}" commands were
+    declared in new latex commands (for example, \newacronym{CN}{CN}{Cochlear
+    Nucleus} 
+  - master org-mode file includes chapter org-mode files using =#+include: =
+ - Appendices, unfortunately these have to be in separate files 
+
+** Org-mode files
+  -each org-mode file should have the following header options 
+: #+TITLE: <title>
+: #+DATE:
+: #+AUTHOR: Michael A Eager
+: #+OPTIONS: toc:nil author:nil H:5 <:t >:t tasks:nil
+: #+STARTUP: oddeven
+: #+TODO: REFTEX
+: #+LANGUAGE: en_GB-ise-wo_accents
+: #+BIBLIOGRAPHY: MyBib alphanat
+: #+SEQ_TODO:   TODO(t) INPROGRESS(i) WAITING(w@) | DONE(d) CANCELED(c@)
+: #+TAGS:       Write(w) Update(u) Fix(f) Check(c) noexport(n)
+
+ - in a =:noexport:= section (I generally use Prelude) to list
+   =org-export-latex-title-command= and =org-export-latex-title-command=. Local
+   compilation can be modified with =org-latex-to-pdf-process=.
+   =org-export-latex-final-hook=. To compile an org-mode file, make sure the
+   local file's export options are set. Execute the emacs-lisp src block using
+   =C-c C-c=, then export to PDF using =C-c C-e d=.
+
+ - table of contents 
+  - disable org-mode's default export =#+OPTIONS: toc:nil=
+  - set org-export-latex-title-command in master and chapter files 
+
+
+
+
+*** Master latex class
+ - the master org-mode header should include
+: #+LaTeX_CLASS: UoM-thesis-org
+ - UoM-thesis-class is defined in the config file, but can also be placed in the
+   prelude emacs-lisp source block to make on-the-fly changes to the class
+
+:  (add-to-list 'org-export-latex-classes 
+:               '("UoM-thesis-org"
+: "\%\% -*- mode: latex; mode: tex-fold; TeX-PDF-mode: t; TeX-master t  -*-
+:  \\documentclass[12pt,a4paper,titlepage,twoside,openright]{book}
+:  % Use the UniMelb Dissertation Template
+:  \\usepackage{./style/uomthesis}
+:  % For drafts uncomment the following line
+:  \\usepackage[light,timestamp,first]{draftcopy}
+:  % Comment out the following line TO MARK blank pages with the
+:  % text This page intentionally left blank.
+:  \\newcommand{\\markblankpages}{}
+:  % Comment out the following line for the copy submitted to the library
+:  \\newcommand{\\archivalpapernote}{}
+:  % User defined commands
+:  \\usepackage[acronym]{glossaries}
+:  \\input{./misc/glossary}    
+:  \\input{./user-defined}
+:  \\setcounter{secnumdepth}{5}
+:  \\makeglossaries
+:  % \\includeonly{Chapter05}
+:  % \\hypersetup{ pdftitle = \\myTitle, pdfauthor = Michael A Eager, pdfsubject= PhD thesis, pdfkeywords = auditory system, cochlear nucleus, microcircuit, computational neuroscience, optimisation  }
+:  \\graphicspath{{../LiteratureReview/gfx/}{../SimpleResponsesChapter/gfx/}{../VowelResponsesChapter/gfx/}{../figures/}{/media/data/Work/cnstellate/golgi/}{/media/data/Work/cnstellate/TV_RateLevel/}{/media/data/Work/cnstellate/}{/media/data/Work/cnstellate/ResponsesNoComp/ModulationTransferFunction/}{../GAChapter/}{../GAChapter/gfx/}{./GAChapter/archive/}}
+:  \\newcommand{\\manuscript}{}
+:   [NO-DEFAULT-PACKAGES]
+:   [NO-PACKAGES]" 
+:                 ("\n\n\\section{%s}" . "\n\n\\section{%s}")
+:                 ("\n\n\\subsection{%s}" . "\n\n\\subsection{%s}") 
+:                 ("\n\n\\subsubsection{%s}" . "\n\\subsubsection{%s}") 
+:                 ("\n\\paragraph{%s}" . "\n\\paragraph{%s}"))) 
+
+
+ - title command (text to go after \begin{document}  
+
+:  (setq org-export-latex-title-command "\n
+:  %% Front matter
+:  %%
+:  \\begin{frontmatter}
+:    \\frontmatterheadings
+:    % Collect the dissertation information for the title page
+:     \\input{../hg/manuscript/misc/metadata}
+:     % Generate the title page
+:     \\maketitle
+:     \\input{../hg/manuscript/misc/abstract}
+:     % Author declaration
+:     \\makedeclaration
+:     % Acknowledgements
+:      \\input{../hg/manuscript/misc/acknowledgements}
+:     % Preface
+:     \\input{../hg/manuscript/misc/preface}
+:     % Dedications...
+:      \\input{../hg/manuscript/misc/dedication}
+:     % TOC, LOF, LOT
+:     {%
+:             \\singlespacing%
+:             \\pdfbookmark[1]{\\contentsname}{tableofcontents} 
+:             \\tableofcontents
+:             \\pdfbookmark[1]{\\listfigurename}{lof} 
+:             \\listoffigures%
+:    % Do not include a list of tables if you have less
+:    % than 10 tables, as per SGS suggestion.
+:             \\pdfbookmark[1]{\\listtablename}{lot} 
+:             \\listoftables
+:             \\pdfbookmark[1]{Glossary of Terms}{glossary} 
+:             \\printglossaries
+:             \\clearpage
+:       }%
+:  \\end{frontmatter} 
+:  \\begin{mainmatter}
+:  \\mainmatterheadings
+: ") 
+
+
+*** Chapter or article template
+ - Include the latex class and headers
+: #+LaTeX_CLASS: UoM-draft-org-article
+: #+LaTeX_CLASS_OPTIONS: [a4paper,11pt,twopage]
+: #+LATEX_HEADER:\setcounter{secnumdepth}{5}
+: #+LATEX_HEADER:\lfoot{\footnotesize\today\ at \thistime}
+
+ - the UoM-draft-org-article is set in the config but is also 
+:  (add-to-list 'org-export-latex-classes
+:               '("UoM-draft-org-article"
+: "\\documentclass[12pt,a4paper,twoside,openright]{book}
+:  \\usepackage{../org-manuscript/style/uomthesis}
+:  \\input{../org-manuscript/user-defined}
+:  \\usepackage[acronym]{glossaries}
+:  \\input{../org-manuscript/misc/glossary}
+:  \\makeglossaries
+:  \\pretolerance=150
+:  \\tolerance=100
+:  \\setlength{\\emergencystretch}{3em}
+:  \\overfullrule=1mm
+: %%  \\usepackage[notcite]{showkeys}
+:  \\lfoot{\\footnotesize\\today\\ at \\thistime}
+:        [NO-DEFAULT-PACKAGES]
+:        [NO-PACKAGES]"
+:                 ("\\section{%s}" . "\n\\section{%s}")
+:                 ("\\subsection{%s}" . "\n\\subsection{%s}")
+:                 ("\\subsubsection{%s}" . "\n\\subsubsection{%s}")
+:                 ("\\paragraph{%s}" . "\n\\paragraph{%s}")
+:                 ("\\subparagraph{%s}" . "\n\\subparagraph{%s}")))
+
+
+
+
+* local file includes
+  - all graphics should be listed relative to both local and the master manuscript file
+  - it helps to set up the chapters in main thesis folder (thesis/Chapter1,  thesis/Chapter2, etc.), and the master in its own folder level to the chapters (thesis/org-manuscript/).  any shared figures folders should be in a common directory (i.e. thesis/figures/)  
+  - the master may be empty of section headers 
+
+
+* automatic corrections in org-mode to latex conversion 
+   - use org-export-latex-final-hook to make the corrections for you
+   - set a mark after =\begin{document}= then do a replace-regexp
+:      ;; add shortened section titles using colon as a marker
+:      (goto-char (mark))
+:      (replace-regexp "\\\\section{\\(.*\\):" 
+:                      "\\\\section[\\1]{\\1:")
+   - use regex-builder to help because regex in emacs-lisp scares most grep and perl users
+
+* local and manuscript latex commands/text
+  - use a boolean latex variable or ifthenelse  command to tell whether compilation is in local chapter or on the whole manuscript
+  - in the master file's org-export-latex-classes, include
+:    \\newcommand{\\manuscript}{}
+  - to insert a bibliography and list of TODOs in my chapters for local compilation, but not during full compilation I used
+: #+BEGIN_LaTeX
+:   \ifthenelse{\isundefined{\manuscript}}{\newpage\singlespacing\bibliographystyle{plainnat} \bibliography{../hg/manuscript/bib/MyBib}\newpage \listoftodos}{}
+: #+END_LaTeX
+
+* Known errors
+  - begin\_latex has no end 
+    - ensure src block has the correct indentation
+    - inside block call =C-c '= then go to buffer and return using =C-c '= again
+  - missing text 
+    - errors in missing text before first section (i.e. chapter heading and intro) when previously called file had a noexport section as the last section.
+    - move the :noexport: section to  higher up in the file, preferably first (after chapter heading text).
+
