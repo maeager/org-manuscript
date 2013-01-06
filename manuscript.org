@@ -153,6 +153,7 @@
 
 * Prelude                                                          :noexport:
 
+#+name: my-thesis-latex-export
 #+begin_src emacs-lisp
     (setq org-latex-to-pdf-process '("pdfquick %f"))
     ;; (setq org-latex-to-pdf-process '("pdflatex -interaction nonstopmode %f" 
