@@ -50,20 +50,18 @@
   \glsreset{BNN}
   
   % \PARstart{T}{he studies} 
-  The studies 
-  in this section evaluated the usefulness of genetic
-  algorithms for determining the synaptic parameters of a
-  \BNN. This was done by using a model of a microcircuit in the
-  auditory brainstem as an example network on which to test the
-  algorithm. First, a "target" model was generated with predetermined
-  synaptic parameters. Then using the target model, training data of
-  network responses were generated, which were then used by the genetic
-  algorithm to estimate the synaptic parameters of the target model.
-  Experimental observables, such as extracellular spike times,
-  peri-stimulus time histograms, and intracellular voltage waveforms, were
-  used to define the "fitness" functions for optimization. The ability
-  of the algorithm to find the known neural parameters was assessed for
-  the different fitness functions.
+  The studies in this section evaluated the
+  usefulness of genetic algorithms for determining the synaptic parameters of a
+  \BNN. This was done by using a model of a microcircuit in the auditory
+  brainstem as an example network on which to test the algorithm. First, a
+  "target" model was generated with predetermined synaptic parameters. Then
+  using the target model, training data of network responses were generated,
+  which were then used by the genetic algorithm to estimate the synaptic
+  parameters of the target model.  Experimental observables, such as
+  extracellular spike times, peri-stimulus time histograms, and intracellular
+  voltage waveforms, were used to define the "fitness" functions for
+  optimization. The ability of the algorithm to find the known neural parameters
+  was assessed for the different fitness functions.
   
   Success of the genetic algorithm optimization was affected by intrinsic
   noise in the network and by the sensitivity of the cost functions to
