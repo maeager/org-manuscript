@@ -61,35 +61,35 @@
  \ifpdf
    \pdfoutput=1
    \usepackage[pdftex]{graphicx}  % uncomment if using graphicx
-\usepackage[final,          % override "draft" which means "do nothing"
+   \usepackage[final,          % override "draft" which means "do nothing"
             colorlinks,     % rather than outlining them in boxes
             linkcolor=black, % override truly awful colour choices
             citecolor=black, %   (ditto)
             urlcolor=black,  %   (ditto)
             ]{hyperref}
 
- \ifx\pdfoutput\undefined \usepackage[ps2pdf,
- bookmarks=true,
- bookmarksnumbered=true,
- breaklinks=true,
-            final,          % override "draft" which means "do nothing"
-            colorlinks,     % rather than outlining them in boxes
-            linkcolor=black, % override truly awful colour choices
-            citecolor=black, %   (ditto)
-            urlcolor=black,  %   (ditto)
-            ]{hyperref}
+\ifx\pdfoutput\undefined \usepackage[ps2pdf,
+bookmarks=true,
+bookmarksnumbered=true,
+breaklinks=true,
+final,          % override "draft" which means "do nothing"
+colorlinks,     % rather than outlining them in boxes
+linkcolor=black, % override truly awful colour choices
+citecolor=black, %   (ditto)
+urlcolor=black,  %   (ditto)
+]{hyperref}
 
 % \usepackage[pdftex]{hyperref}  % uncomment if using hyperref
 %  \usepackage[ps2pdf]{thumbpdf}
  \DeclareGraphicsExtensions{.eps,.bmp}
-  \else
+ \else
  \DeclareGraphicsExtensions{.png,.pdf,.jpg,.JPEG}
-  \usepackage{epstopdf}
+ \usepackage{epstopdf}
  %\usepackage[pdftex,bookmarks=true,bookmarksnumbered=true,breaklinks=true]{hyperref}
   \pdfadjustspacing=1
   \usepackage[pdftex]{thumbpdf}
   \fi
- \else
+  \else
    \usepackage[dvips]{graphicx}  % uncomment if using graphicx
     % comment if not using hyperref
  \usepackage[final,          % override "draft" which means "do nothing"
@@ -99,6 +99,8 @@
             urlcolor=black,  %   (ditto)
              ]{hyperref}
  \DeclareGraphicsExtensions{.eps,.bmp}
+\usepackage{breakurl} % necessary to break URLs when using LaTeX-> dvips -> Ps2PDF, must be after hyperref
+
 \fi
 % Enable IEEE macros
 %\usepackage{IEEEtrantools}
@@ -116,7 +118,6 @@
 \usepackage{color}
 %\usepackage[noadjust]{cite}
 \usepackage{caption}
-\usepackage{breakurl} % necessary to break URLs when using LaTeX-> dvips -> Ps2PDF, must be after hyperref
 
 % For cool tables
 \usepackage{array}
