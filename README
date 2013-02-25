@@ -3,35 +3,50 @@
 Notes on using Emacs' org-mode for creating a PhD manuscript 
 
 * Set up
-  - org-mode export configuration is done in ~/.emacs.d/my-org-config.el and ~/.emacs.d/my-org-extras.el
-  - using reftex in org-mode files, see setup at http://tincman.wordpress.com/2011/01/04/research-paper-management-with-emacs-org-mode-and-reftex/
+  - org-mode latex export configuration is done in init.el
+  - using reftex in org-mode files, see setup at
+    http://tincman.wordpress.com/2011/01/04/research-paper-management-with-emacs-org-mode-and-reftex/
   - use org-mode's babel for using source code blocks
   - create special latex header by adding to =org-export-latex-classes=.  I have
     ones for the master manuscript, the individual chapters, and one for beamer
     presentations.
-  - set =org-export-latex-final-hook= to replace common errors in conversion (from Org-mode's paper v46i03). See my-org-extras.el.
+  - set =org-export-latex-final-hook= to replace common errors in conversion
+    (from Org-mode's paper v46i03). See the regular expression replacements in
+    init.el
 
 * Makefile 
 
-I use latex-makefile as the basis in generating the final PDF. 
+I use latex-makefile as the basis in generating the final manuscript and each
+chapter individually.  The makefile searches for graphics and other included
+files for dependencies -- and re-compiles when necessary.  The =Variables.ini=
+file in each subdirectory contains additional commands where required.
 
 
 * Org-mode files
 
 ** LaTeX export organisation and template skeleton
-  - LaTeX skeleton based on  John Papandriopoulos' latex template for thesis called uomthesis 
-  - front matter, main matter, appendicies, and backmatter  separated into =\begin/\end= blocks
+  - University of Melbourne LaTeX skeleton based on John Papandriopoulos' latex
+    template for thesis called uomthesis
+  - front matter, main matter, appendicies, and backmatter separated into
+    =\begin/\end= blocks -- these are wrapped in org-mode latex source blocks
   - glossaries and acronyms are organised by makeglossaries package and all
-    entries are in misc/glossaries.  To short calls, "\gls{*}" commands were
-    declared in new latex commands (for example, \newacronym{CN}{CN}{Cochlear
-    Nucleus} 
-  - master org-mode file includes chapter org-mode files using =#+include: file=
+    entries are in =misc/glossaries.tex=.  To shorten calls,  /\gls{*}/ commands were
+    declared in new latex commands, including plurals. For example: 
+
+: \newacronym{ANF}{ANF}{Auditory nerve fibre}
+: \newcommand{\ANF}{\gls{ANF}}
+: \newcommand{\ANFs}{\glspl{ANF}}
+ 
+     
+
+  - The master manuscript includes chapter org-mode files using =#+include: file=
   - Appendices, unfortunately these have to be in separate files 
     - you can use sections from a file using arguments to the =#+include:
       file :lines "<>"=, see the manual (=info org 'include files'=).
 
 
-  - each org-mode file should have the following header options 
+  - each Chapter org-mode file should have the following header options 
+
 : #+TITLE: <title>
 : #+DATE:
 : #+AUTHOR: Michael A Eager
@@ -54,12 +69,14 @@ I use latex-makefile as the basis in generating the final PDF.
 
  - table of contents 
   - disable org-mode's default export =#+OPTIONS: toc:nil=
-  - set org-export-latex-title-command in master and chapter files 
+  - set =org-export-latex-title-command= in master and chapter files 
 
 
-** Master latex class
- - the master org-mode header should include
+** Full thesis latex class: UoM-thesis-org
+ - the manuscript org-mode header should include
+
 : #+LaTeX_CLASS: UoM-thesis-org
+
  - UoM-thesis-class is defined in the config file, but can also be placed in the
    prelude emacs-lisp source block to make on-the-fly changes to the class
 
@@ -135,15 +152,16 @@ I use latex-makefile as the basis in generating the final PDF.
 : ") 
 
 
-** Chapter or article template
+** Chapter or article template: UoM-draft-org-article
 
- - Include the latex class and headers
+ - Include the latex class and headers at the beginning of the file
+
 : #+LaTeX_CLASS: UoM-draft-org-article
 : #+LaTeX_CLASS_OPTIONS: [a4paper,11pt,twopage]
 : #+LATEX_HEADER:\setcounter{secnumdepth}{5}
 : #+LATEX_HEADER:\lfoot{\footnotesize\today\ at \thistime}
 
- - the UoM-draft-org-article is set in the config but is also 
+ - the UoM-draft-org-article is set in init.el 
 :  (add-to-list 'org-export-latex-classes
 :               '("UoM-draft-org-article"
 : "\\documentclass[12pt,a4paper,twoside,openright]{book}
@@ -172,7 +190,7 @@ I use latex-makefile as the basis in generating the final PDF.
     manuscript file
   - it helps to set up the chapters in main thesis folder (thesis/Chapter1,
     thesis/Chapter2, etc.), and the master in its own folder level to the
-    chapters (thesis/org-manuscript/).  any shared figures folders should be in
+    chapters (thesis/manuscript/).  any shared figures folders should be in
     a common directory (i.e. thesis/figures/)
   - the master may be empty of section headers 
 
@@ -180,26 +198,34 @@ I use latex-makefile as the basis in generating the final PDF.
 ** automatic corrections in org-mode to latex conversion 
    - use org-export-latex-final-hook to make the corrections for you
    - set a mark after =\begin{document}= then do a replace-regexp
+
 :      ;; add shortened section titles using colon as a marker
 :      (goto-char (mark))
 :      (replace-regexp "\\\\section{\\(.*\\):" 
 :                      "\\\\section[\\1]{\\1:")
-   - use regex-builder to help because regex in emacs-lisp scares most grep and perl users
+   - use regex-builder to help because regex in emacs-lisp confuses most grep
+     and perl users
 
 ** local and manuscript latex commands/text
-  - use a boolean latex variable or ifthenelse  command to tell whether compilation is in local chapter or on the whole manuscript
+  - use a boolean latex variable or ifthenelse command to tell whether
+    compilation is in local chapter or on the whole manuscript
   - in the master file's org-export-latex-classes, include
 :    \\newcommand{\\manuscript}{}
-  - to insert a bibliography and list of TODOs in my chapters for local compilation, but not during full compilation I used
+  - to insert a bibliography and list of TODOs in my chapters for local
+    compilation, but not during full compilation I used
 : #+BEGIN_LaTeX
 :   \ifthenelse{\isundefined{\manuscript}}{\newpage\singlespacing\bibliographystyle{plainnat} \bibliography{../hg/manuscript/bib/MyBib}\newpage \listoftodos}{}
 : #+END_LaTeX
 
 * Known errors
-  - begin\_latex has no end 
+  - claims begin\_latex has no end\_latex 
     - ensure src block has the correct indentation
-    - inside block call =C-c '= then go to buffer and return using =C-c '= again (do not save in the temporary buffer)
+    - inside block call =C-c '= then go to buffer and return using =C-c '= again
+      (do not save in the temporary buffer)
   - missing text 
-    - errors in missing text before first section (i.e. chapter heading and intro) when previously called file had a noexport section as the last section.
-    - move the :noexport: section to  higher up in the file, preferably first (after chapter heading text).
+    - errors in missing text before first section (i.e. chapter heading and
+      intro) when previously called file had a noexport section as the last
+      section.
+    - move the :noexport: section to higher up in the file, preferably first
+      (after chapter heading text).
 
