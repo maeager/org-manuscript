@@ -78,19 +78,19 @@
   parameter permutations.
   
   
-  \yellownote{Section \ref{sec:GA:ResultIdeal}, deals with an ideal situation of
-  optimisation without any noise.  The input spikes are fixed throughout
-  the GA optimisation, and the target parameters are able to provide a
-  perfect score of 0.  The effects of parameter perturbations were also
-  assessed for this situation.}
+  % \yellownote{Section \ref{sec:GA:ResultIdeal}, deals with an ideal situation of
+  % optimisation without any noise.  The input spikes are fixed throughout
+  % the GA optimisation, and the target parameters are able to provide a
+  % perfect score of 0.  The effects of parameter perturbations were also
+  % assessed for this situation.}
   
-  \yellownote{Section \ref{sec:GA:IndividualSens}, explores the hypothesis that
-  individual parameters play a greater role in the optimisation rather
-  than thinking of the all the parameters at once.  The local gradients of
-  the cost functions around each individual parameter target was evaluated
-  and tested for the significant gradients with ideal and different
-  inputs.  The best genomes parameter error was then assessed to determine
-  whether the local gradients were decisive in the GA optimisation.}
+  % \yellownote{Section \ref{sec:GA:IndividualSens}, explores the hypothesis that
+  % individual parameters play a greater role in the optimisation rather
+  % than thinking of the all the parameters at once.  The local gradients of
+  % the cost functions around each individual parameter target was evaluated
+  % and tested for the significant gradients with ideal and different
+  % inputs.  The best genomes parameter error was then assessed to determine
+  % whether the local gradients were decisive in the GA optimisation.}
 #+END_LaTeX
 
 ## Chapter 5
@@ -137,7 +137,7 @@
 #   %
 #   %bmc_article} % Style BST file
 #+LATEX: \bibliographystyle{plainnat}
-#+LATEX: \bibliography{../hg/manuscript/bib/MyBib}
+#+LATEX: \bibliography{../org-manuscript/bib/MyBib}
 #+LATEX: \end{backmatter}
 
 
@@ -154,9 +154,9 @@
 #+name: my-thesis-latex-export
 #+begin_src emacs-lisp
     (setq org-latex-to-pdf-process '("pdfquick %f"))
-    ;; (setq org-latex-to-pdf-process '("pdflatex -interaction nonstopmode %f" 
-    ;;                                  "makeglossaries %b" "bibtex %b" "pdflatex -interaction nonstopmode %f" 
-    ;;                                  "pdflatex -interaction nonstopmode %f" )) 
+    ;; (setq org-latex-to-pdf-process '("xelatex -interaction nonstopmode %f" 
+    ;;                                  "makeglossaries %b" "bibtex %b" "xelatex -interaction nonstopmode %f" 
+    ;;                                  "xelatex -interaction nonstopmode %f" )) 
     ;; (setq org-latex-to-pdf-process '("lapdf Chapter3")) 
     (setq org-export-latex-final-hook ())
     (add-hook 'org-export-latex-final-hook
