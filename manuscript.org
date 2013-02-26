@@ -26,9 +26,9 @@
 
 
 #+BEGIN_LaTeX
-   \cleardoublepage\part[Sequential Optimisation of the Cochlear Nucleus Stellate Network]{Sequential Optimisation in the Stellate Microcircuit of the Cochlear Nucleus}
-   \psection{Introduction to Part \thepart}
-   \yellownote{Small introduction to first part.}
+  \cleardoublepage\part[Sequential Optimisation of the Cochlear Nucleus Stellate Network]{Sequential Optimisation in the Stellate Microcircuit of the Cochlear Nucleus}
+  \psection{Introduction to Part \thepart}
+  \yellownote{Small introduction to first part.}
 #+END_LaTeX
  
 ## Chapter 3 without appendix
@@ -109,7 +109,7 @@
 #+LATEX:   \end{mainmatter}
 
 # ##
-# ## Appendix
+# ## Appendicies
 # ##
 # #+LATEX:   \begin{appendix}
 # # Use \chapter{Appendix A}\label{appendixA} in first 
@@ -284,9 +284,12 @@
   ") 
    (setq TeX-master t)
 #+end_src
+: t
+
+#+RESULTS: my-thesis-latex-export
+: t
 
 #+RESULTS:
-: t
 
 
 
