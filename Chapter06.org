@@ -37,23 +37,64 @@ The results of this research support the idea that .......
 - CONTRIBUTION TO RESEARCH
 These findings enhance our understanding of ......
 
-This research will serve as a base for future studies and ......
+This research will serve as a base for future studies and ...
 
-The findings from this study make several contributions to the current literature. First,……
-
+The findings from this study make several contributions to the current literature. First,...
 
 The methods used for this X may be applied to other Xs elsewhere in the world.
 
-- Implications
 
-- Limitations
+\yellownote{ Suggesting implications }
+ 
+Evidence from this study suggest that ...
+
+The results of this study indicate that
+
+The results of this research support the idea that ...
+
+
+\yellownote{Significance and Research contribution}
+
+This research will serve as a base for future studies ...
+
+This model has gone some way towards enhancing our understanding of ...
+
+The present work makes several noteworthy cintributions to ...
+
+
+
+
+\yellownote{ Limitations }
+
+A number of caveats need to be noted regarding the present study.
+
+The most important limitation lies in the fact that ...
+
+The current model was unable to analyse these variables
+
+The current model was not designed to evaluate factors relating to
+
+Our findings in this thess are subject to at lest three limitations.  Firstly, ...
+
+Several limitations of this model need to be acknowledged ...
+
+
 A number of caveats need to be noted regarding the present study.
 
 The current research was not specifically designed to evaluate factors related to ......
 
-- Future work
+** Recommendations for Future work
 
-- Implications and recommendations
+
+
+** Implications and recommendations for practice and policy
+
+using standard phenomenologically accurate models
+
+using publically available models
+
+replication and reproducibility
+
 
 
 * Optimisation Methods and Modelling of Biophysically-Realistic Microcircuits
@@ -69,25 +110,37 @@ neural microcircuits through either sequential or simultaneous methods.
 
 The results of genetic algorithm optimisation show/indicate that .......
 
+
+
 This experiment did not detect any evidence for ......
+
 
 * Future Research
 
-# \yellownote{
-# Future Work: 
-# Don’t view this necessarily as a list of the limitations of your thesis
-# Think of what you would do if you had an extra year in your Ph.D.
-# Don’t worry – this is not for your advisor to hold your feet to the fire
-# Think of 2-3 other follow-on Ph.D. dissertations that you can envision
+\yellownote{Future Work: 
+Don’t view this necessarily as a list of the limitations of your thesis.
+Think of what you would do if you had an extra year in your Ph.D.
+Don’t worry – this is not for your advisor to hold your feet to the fire.
+Think of 2-3 other follow-on Ph.D. dissertations that you can envision}
 
-# Conclusions:
-# Be reflective and honest
-# What were the lessons learned?
-# What were the overall insights?
-# Did you solve the problem completely? How much progress have we made
-# in your field because of your work
-# Don’t bore the reader with a cut-and-paste of your Introduction chapter
-# }
+
+\yellownote{Further studies in simulating effects of blocking specific connections}
+Further simulations on the pharmacological effects of GABA and glycine blockers 
+\citep{EvansZhao:1998,EvansZhao:1993a,BackoffShadduckEtAl:1999,CasparyBackoffEtAl:1994,PalombiCaspary:1992}
+or other modulating neurotransmitters from non-auditory inputs \citep{MuldersPaoliniEtAl:2003}
+
+
+\yellownote{ CNSM model in ipsi lateral only.  Further studies on commissural inputs?}
+Labelled \DS cells project widely to the VCN and  DCN; and in some cases to the contralateral CN in the same manner
+\citep{SmithMassieEtAl:2005,ArnottWallaceEtAl:2004}  
+In vivo studies have already shown the effects of commisural inhibition of first spike responses to tones
+\citep{NeedhamPaolini:2007,NeedhamPaolini:2006,NeedhamPaolini:2003}.
+
+\yellownote{Explore better GA techniques on limited data from multiunit recordings}
+
 
 
 * Conclusion
+
+\yellownote{Conclusions: Be reflective and honest. What were the lessons learned? What were the overall insights? Did you solve the problem completely? How much progress have we made
+in your field because of your work. Don’t bore the reader with a cut-and-paste of your Introduction chapter.}
