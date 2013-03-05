@@ -59,7 +59,7 @@ This research will serve as a base for future studies ...
 
 This model has gone some way towards enhancing our understanding of ...
 
-The present work makes several noteworthy cintributions to ...
+The present work makes several noteworthy contributions to ...
 
 
 
@@ -105,6 +105,10 @@ Very little was found in the literature on the question of replicating neural
 outputs from multiple neurons of different cell-types.  This thesis set out with
 the aim of assessing the importance of optimisation in biophysically realistic
 neural microcircuits through either sequential or simultaneous methods.
+
+
+
+
 
 \yellownote{Statements of result with reference to results sections}
 
