@@ -237,7 +237,7 @@
   "\%\% -*- mode: latex; mode: tex-fold; TeX-PDF-mode: t; TeX-master t  -*-
    \\documentclass[12pt,a4paper,titlepage,twoside,openright]{book}
    % Use the UniMelb Dissertation Template
-   \\usepackage{../hg/manuscript/style/uomthesis}
+   \\usepackage{../org-manuscript/style/uomthesis}
    % For drafts uncomment the following line
    \\usepackage[light,timestamp,first]{draftcopy}
    % Comment out the following line TO MARK blank pages with the
@@ -247,8 +247,8 @@
    \\newcommand{\\archivalpapernote}{}
    % User defined commands
    \\usepackage[nonumberlist,acronym]{glossaries}
-   \\input{../hg/manuscript/misc/glossary}    
-   \\input{../hg/manuscript/misc/user-defined}
+   \\input{../org-manuscript/misc/glossary}    
+   \\input{../org-manuscript/misc/user-defined}
    \\setcounter{secnumdepth}{5}
    \\makeglossaries
    % \\includeonly{Chapter05}
@@ -275,7 +275,7 @@
   "\%\% -*- mode: latex; mode: tex-fold; TeX-PDF-mode: t; TeX-master t  -*-
    \\documentclass[12pt,a4paper,titlepage,twoside,openright]{book}
    % Use the UniMelb Dissertation Template
-   \\usepackage{../hg/manuscript/style/uomthesis}
+   \\usepackage{../org-manuscript/style/uomthesis}
    % For drafts uncomment the following line
    \\usepackage[light,timestamp,first]{draftcopy}
    % Comment out the following line TO MARK blank pages with the
@@ -285,8 +285,8 @@
    \\newcommand{\\archivalpapernote}{}
    % User defined commands
    \\usepackage[nonumberlist,acronym]{glossaries}
-   \\input{../hg/manuscript/misc/glossary}    
-   \\input{../hg/manuscript/misc/user-defined}
+   \\input{../org-manuscript/misc/glossary}    
+   \\input{../org-manuscript/misc/user-defined}
    \\setcounter{secnumdepth}{5}
    \\makeglossaries
    % \\includeonly{Chapter05}
@@ -403,9 +403,6 @@
 (setq org-entities-user 
       '("space" "\\ " nil " " " " " " " ")) 
 
-
-(setq org-export-latex-title-command
-  "{\n\\singlespacing\n\\tableofcontents\n}\n") 
 (setq org-export-latex-hyperref-format "\\ref{%s}")
 
 

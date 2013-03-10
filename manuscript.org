@@ -50,6 +50,7 @@
   \glsreset{BNN}
   
   % \PARstart{T}{he studies} 
+
   The studies in this section evaluated the
   usefulness of genetic algorithms for determining the synaptic parameters of a
   \BNN. This was done by using a model of a microcircuit in the auditory
@@ -292,6 +293,56 @@
 #+RESULTS:
 
 
+****  Source blocks :noexport:
+
+# Get optimisation parameter: default
+#+name: opt_param
+#+BEGIN_SRC sh :results replace raw
+ par=`echo "$param" | sed -e 's/\([^\\]\)\[/\1\\\\[/g' -e 's/\([^\\]\)\]/\1\\\\]/g'`
+ grep ${par} ../SimpleResponsesChapter/gfx/TStellate_${type}/TStellate.Fit.dat | awk -F' ' '{print $3}'
+#+END_SRC
+
+# Get optimisation parameter: Floating point with optional exponent format 
+#+name: opt_paramf
+#+BEGIN_SRC sh :results replace raw
+ par=`echo "$param" | sed -e 's/\([^\\]\)\[/\1\\\\[/g' -e 's/\([^\\]\)\]/\1\\\\]/g'`
+ grep ${par} ../SimpleResponsesChapter/gfx/TStellate_${type}/TStellate.Fit.dat | awk -F' ' '{printf("%.3g",$3)}'
+#+END_SRC
+
+
+# get the ts_gleak parameter : forced exponent format
+#+name: param_ts_gleak
+#+BEGIN_SRC sh :results replace raw
+ grep param.ts_gleak gfx/TStellate_${type}/TStellate.Fit.dat | awk '{printf(" %.3e ",$3)}'
+#+END_SRC
+
+#+name: opt_error
+#+BEGIN_SRC sh :results replace raw
+ grep 'final error' gfx/TStellate_${type}/TStellate.Fit.dat | awk -F'=' '{printf("%.3g",$2)}'
+#+END_SRC
+
+
+
+#+name: CS_rate
+#+BEGIN_SRC sh :exports none
+  grep -A 14 'at spl '$SPLreTh''  ~/Work/cnstellate/TStellate2_CS/TStellate.Fit.dat | tail -6  | awk 'BEGIN{sum=0;} {sum+=$3;} END{printf("$%.1f$",sum/5.0)}'
+#+END_SRC
+
+#+name: CT1_rate
+#+BEGIN_SRC sh  :exports none 
+  grep -A 14 'at spl '$SPLreTh''  ~/Work/cnstellate/TStellate2_CT1/TStellate.Fit.dat |  tail -6  | awk 'BEGIN{sum=0;} {sum+=$3;} END{printf("$%.1f$",sum/5.0)}'
+#+END_SRC
+
+
+#+name: CT2_rate
+#+BEGIN_SRC sh :exports none
+  grep -A 14 'at spl '$SPLreTh''  ~/Work/cnstellate/TStellate2_CT2/TStellate.Fit.dat | tail -6  | awk 'BEGIN{sum=0;} {sum+=$3;} END{printf("$%.1f$",sum/5.0)}'
+#+END_SRC
+
+#+name: CT2_fsl
+#+BEGIN_SRC sh :exports none
+   grep -A33 'at spl '$SPLreTh'' ~/Work/cnstellate/TStellate2_CT2/TStellate.Fit.dat | tail -1 | tr ',' ' '  | awk '{printf("$%.2f \\pm %.2f$\n",$4,$7)}'
+#+END_SRC
 
 
 
