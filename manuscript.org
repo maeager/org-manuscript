@@ -16,7 +16,7 @@
 * My Thesis
 
 
-## Chapter 1: intro and literature review
+# # Chapter 1: intro and literature review
 #+LaTeX :\cleardoublepage
 #+include: ../LiteratureReview/Chapter01.org 
 
@@ -31,11 +31,11 @@
   \yellownote{Small introduction to first part.}
 #+END_LaTeX
  
-## Chapter 3 without appendix
+# # Chapter 3 without appendix
 #+include: ../SimpleResponsesChapter/Chapter03.org 
 
 
-## Chapter 4 without appendix
+# # Chapter 4 without appendix
 #+LaTeX: \clearpage
 #+include: ../VowelProcessingChapter/Chapter04.org 
 
@@ -94,8 +94,8 @@
   % whether the local gradients were decisive in the GA optimisation.}
 #+END_LaTeX
 
-## Chapter 5
-## + LaTeX: \chapter[GA Optimisation]{Simultaneous Optimisation of Microcircuits using Genetic Algorithms}\label{sec:GAChapter}
+# # Chapter 5
+# # + LaTeX: \chapter[GA Optimisation]{Simultaneous Optimisation of Microcircuits using Genetic Algorithms}\label{sec:GAChapter}
 #+include: ../GAChapter/Chapter05.org 
  
 
@@ -104,8 +104,8 @@
 # ## Discussion and Conclusion
 #+include:  ./Chapter06.org
 
-## Conclusion
-## + include: ./Chapter07.org
+# # Conclusion
+# # + include: ./Chapter07.org
 
 #+LATEX:   \end{mainmatter}
 
@@ -125,9 +125,9 @@
 # #+include: ../GAChapter/Chapter05Appendix.org
 # #+LATEX:   \end{appendix}
 
-##
-## Bibliography
-##
+# #
+# # Bibliography
+# #
 
 #+LATEX: \begin{backmatter}
 #+LATEX: \chapter*{\bibname}\markboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}
@@ -145,7 +145,7 @@
 
 #... and of eight years work! :-)
 
-##DRAFTING
+# # DRAFTING
 \newpage
 \listoftodos
 
