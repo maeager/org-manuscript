@@ -1,14 +1,248 @@
 
+#+LaTeX: \chapter{Conclusion}\label{sec:Discussion}
 
-#+LaTeX: \chapter{General Discussion and Conclusion}\label{sec:Discussion}
 
-# \glsresetall[main,acronym]
+* Introduction
+
+This thesis investigated the important physiological mechanisms involved in
+neural processing in the \CNSM. It focused specifically on spectral and temporal
+enhancement in the microcircuits regulating the output of \TS cells. It achieved
+this through the development and testing of a novel \CNSM model. Computer
+modelling enhances our knowledge of complex neural interactions in \TS cells and
+provided further understanding of inputs to higher centres.  By developing a BNN
+with a high degree of realism at the individual cell level, this thesis has
+contributed to our understanding of the influence of synaptic organisation of
+physiological behaviour in the \CNSM.
+
+This chapter concludes the thesis by drawing together the results of the design
+and optimisation of the \CNSM model.  It describes the usefulness of the model
+as well as the optimisation methods used throughout the thesis.  It reflects on
+the implications of the research for the design and optimisation of BNNs.
+Finally it describes the limitations of the research and makes recommendations
+for future work arising out of the thesis.
+
+
+# This thesis has provided ...
+# Through studies of XYZ ..., the thesis has shown that ABC
+# I have argued
+# I have demonstrated
+# I have further developed ..
+# Draws together the findings of the design and optimisation of the CNSM model.
+# It describes the usefulness of the model as well as the optimisation methods used throughout the thesis.
+# It canvasses the limitations of the research and makes recommendations for future work.
+
+
+
+ 
+
+
+* Overview of Research Findings 
+
+\yellownote{Summary of the findings and general implications}
+These findings suggest that in general ......
+The results of this research support the idea that .......
+
+using standard phenomenologically accurate models
+
+using publically available models
+
+replication and reproducibility
+
+
+
+Chapter 1
+
+
+Chapter 2
+
+
+Chapter 3
+
+Chapter 4
+
+Chapter 5
+
+The next part of this chapter brings together the forgoing findings
+
+synthesis of findings and sets out the contributions of the thesis.
+
+
+
+* Synthesis and Contributions
+
+This thesis contributes to the understanding ... \\
+
+- CONTRIBUTION TO RESEARCH
+These findings enhance our understanding of ...... \\
+
+The findings from this study make several contributions to the current literature. First,... \\
+
+The methods used for this X may be applied to other Xs elsewhere in the world. \\
+
+
+This research will serve as a basis for future studies ... \\
+
+This model has gone some way towards enhancing our understanding of ... \\
+
+The present work makes several noteworthy contributions to ...
+
+
+
+
+As mentioned in the literature review, little has been done in replication of
+microcircuits and medium sized neural networks from experimental data sets.
+Very little was found in the literature on the question of replicating neural
+outputs from multiple neurons of different cell-types.  This thesis set out with
+the aim of assessing the importance of optimisation in biophysically realistic
+neural microcircuits through either sequential or simultaneous methods.
+
+
+
+
+
+\yellownote{Statements of result with reference to results sections}
+
+The results of genetic algorithm optimisation show/indicate that .......
+
+This experiment did not detect any evidence for ......
+
+
+** The CNSM model
+
+good model
+
+
+fit to experimental data
+
+** Optimisation methods for BNNs
+
+substantial progression of the use of BNNs in neuroscience
+
+worthwhile sequential or simultaneous optimisation 
+
+
+* Limitation of the Research
+
+THe specific limitations of the studies
+
+A number of caveats need to be noted regarding the present study.
+
+The most important limitation lies in the fact that ...
+
+The current model was unable to analyse these variables
+
+The current model was not designed to evaluate factors relating to
+
+Our findings in this thess are subject to at lest three limitations.  Firstly, ...
+
+Several limitations of this model need to be acknowledged ...
+
+
+A number of caveats need to be noted regarding the present study.
+
+The current research was not specifically designed to evaluate factors related to ......
+
+
+
+
+* Recommendations for future work
+
+Fundamental questions about the behaviour of TS cells remain for exploration
+\citep{OertelWrightEtAl:2011}.  Do intrinsic membrane mechanism or network and
+synaptic mechanisms play a greater role in the behaviour of TS cells?  How are
+the different categories of \ANFs (\LSR and \HSR) processed by \TS cell
+microcircuit?  What are the effects of connections across isofrequency laminae
+and how does this effect the spectral representation across the population of
+\TS cells?  While answering these questions was beyond the scope of this thesis,
+the model and optimisation methods established in the thesis provide valuable
+tools for use in those inquiries.
+
+
+Additionally, enhanced understanding of the complex processing done by the
+cochlear nucleus may also contribute to refinement of hearing-impairment
+devices.  Further understanding how the processing of sound in noisy
+environments works within the network could aid in developing new sound
+processing strategies for the cochlear implant and hearing aids.
+
+
+This thesis identifies  a number of of priorities for further research.
+
+bang bang bang xyz
+
+
+using standard phenomenologically accurate models
+
+using publically available models
+
+replication and reproducibility
+
+
+
+\yellownote{Future Work: 
+Don’t view this necessarily as a list of the limitations of your thesis.
+Think of what you would do if you had an extra year in your Ph.D.
+Don’t worry – this is not for your advisor to hold your feet to the fire.
+Think of 2-3 other follow-on Ph.D. dissertations that you can envision}
+
+
+\yellownote{Further studies in simulating effects of blocking specific connections}
+Further simulations on the pharmacological effects of GABA and glycine blockers 
+\citep{EvansZhao:1998,EvansZhao:1993a,BackoffShadduckEtAl:1999,CasparyBackoffEtAl:1994,PalombiCaspary:1992}
+or other modulating neurotransmitters from non-auditory inputs \citep{MuldersPaoliniEtAl:2003}
+
+
+\yellownote{ CNSM model in ipsi lateral only.  Further studies on commissural inputs?}
+Labelled \DS cells project widely to the VCN and  DCN; and in some cases to the contralateral CN in the same manner
+\citep{SmithMassieEtAl:2005,ArnottWallaceEtAl:2004}  
+In vivo studies have already shown the effects of commisural inhibition of first spike responses to tones
+\citep{NeedhamPaolini:2007,NeedhamPaolini:2006,NeedhamPaolini:2003}.
+
+\yellownote{Explore better GA techniques on limited data from multiunit recordings}
+
+
+
+
+
+
+ Further development is needed to enhance the robustness of
+ the cost function methods to input noise, especially for sensitivity and
+ robustness of inhibitory connections in the \CN stellate network.
+
+
+
+
+
+* Concluding Remarks
+
+
+In computational neuroscience the development of BNN models is a promising means
+by which we can understand highly complex neural processing.  The accuracy of
+this understanding relies on the quality of design and optimisation methods used
+upon the experimental data.  This thesis presented a novel BNN model of the
+cochlear nucleus stellate microcircuit, which was optimised using rigorous
+sequential methods and simultaneous genetic algorithms.  The thesis demonstrates
+the utility of this approach for BNN models and out understanding of neural
+processing.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 * The Cochlear Nucleus Stellate Microcircuit Model
-
-
-\yellownote{Conclusion section should restate purpose, consolidate research space with a varied array of steps, recommend future research
-and cover practical applications, implications or recommendations}
 
 
 
@@ -55,92 +289,10 @@ The results of this research support the idea that ...
 
 \yellownote{Significance and Research contribution}
 
-This research will serve as a base for future studies ...
-
-This model has gone some way towards enhancing our understanding of ...
-
-The present work makes several noteworthy contributions to ...
 
 
 
 
-\yellownote{ Limitations }
-
-A number of caveats need to be noted regarding the present study.
-
-The most important limitation lies in the fact that ...
-
-The current model was unable to analyse these variables
-
-The current model was not designed to evaluate factors relating to
-
-Our findings in this thess are subject to at lest three limitations.  Firstly, ...
-
-Several limitations of this model need to be acknowledged ...
-
-
-A number of caveats need to be noted regarding the present study.
-
-The current research was not specifically designed to evaluate factors related to ......
-
-** Recommendations for Future work
-
-
-
-** Implications and recommendations for practice and policy
-
-using standard phenomenologically accurate models
-
-using publically available models
-
-replication and reproducibility
-
-
-
-* Optimisation Methods and Modelling of Biophysically-Realistic Microcircuits
-
-As mentioned in the literature review, little has been done in replication of
-microcircuits and medium sized neural networks from experimental data sets.
-Very little was found in the literature on the question of replicating neural
-outputs from multiple neurons of different cell-types.  This thesis set out with
-the aim of assessing the importance of optimisation in biophysically realistic
-neural microcircuits through either sequential or simultaneous methods.
-
-
-
-
-
-\yellownote{Statements of result with reference to results sections}
-
-The results of genetic algorithm optimisation show/indicate that .......
-
-
-
-This experiment did not detect any evidence for ......
-
-
-* Future Research
-
-\yellownote{Future Work: 
-Don’t view this necessarily as a list of the limitations of your thesis.
-Think of what you would do if you had an extra year in your Ph.D.
-Don’t worry – this is not for your advisor to hold your feet to the fire.
-Think of 2-3 other follow-on Ph.D. dissertations that you can envision}
-
-
-\yellownote{Further studies in simulating effects of blocking specific connections}
-Further simulations on the pharmacological effects of GABA and glycine blockers 
-\citep{EvansZhao:1998,EvansZhao:1993a,BackoffShadduckEtAl:1999,CasparyBackoffEtAl:1994,PalombiCaspary:1992}
-or other modulating neurotransmitters from non-auditory inputs \citep{MuldersPaoliniEtAl:2003}
-
-
-\yellownote{ CNSM model in ipsi lateral only.  Further studies on commissural inputs?}
-Labelled \DS cells project widely to the VCN and  DCN; and in some cases to the contralateral CN in the same manner
-\citep{SmithMassieEtAl:2005,ArnottWallaceEtAl:2004}  
-In vivo studies have already shown the effects of commisural inhibition of first spike responses to tones
-\citep{NeedhamPaolini:2007,NeedhamPaolini:2006,NeedhamPaolini:2003}.
-
-\yellownote{Explore better GA techniques on limited data from multiunit recordings}
 
 
 
