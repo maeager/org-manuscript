@@ -1,28 +1,31 @@
 #+TITLE: Thesis Manuscript
 #+DATE:
 #+AUTHOR: Michael A Eager
-#+OPTIONS: toc:nil author:nil H:5 <:t >:t tasks:nil
-#+STARTUP: oddeven
+#+OPTIONS: toc:nil H:6 <:t >:t tasks:nil
+#+STARTUP: oddeven inlineimages hideblocks fold align hidestars 
+
 #+TODO: REFTEX
 #+LANGUAGE: en_GB-ise-wo_accents
 #+BIBLIOGRAPHY: MyBib alphanat
 #+SEQ_TODO:   TODO(t) INPROGRESS(i) WAITING(w@) | DONE(d) CANCELED(c@)
 #+TAGS:       Write(w) Update(u) Fix(f) Check(c) noexport(n)
+#+BIBLIOGRAPHY: ../org-manuscript/bib/MyBib plainnat
 
 #+LaTeX_CLASS: UoM-thesis-org
+# + LATEX_HEADER: \graphicspath{{../LiteratureReview/gfx/}{../SimpleResponsesChapter/gfx/}{../VowelProcessingChapter/gfx}{/media/data/Work/cnstellate/}{../GAChapter/gfx/}}
 
 
 
-* My Thesis
+* ThesisStart
 
 
 # # Chapter 1: intro and literature review
 #+LaTeX :\cleardoublepage
-#+include: ../LiteratureReview/Chapter01.org 
+#+INCLUDE: ../LiteratureReview/Chapter01.org 
 
 # ## Methods Chapter
 #+LaTeX: \cleardoublepage
-#+include: ../MethodsChapter/Chapter02.org  
+#+INCLUDE: ../MethodsChapter/Chapter02.org  
 
 
 #+BEGIN_LaTeX
@@ -32,12 +35,12 @@
 #+END_LaTeX
  
 # # Chapter 3 without appendix
-#+include: ../SimpleResponsesChapter/Chapter03.org 
+#+INCLUDE: ../SimpleResponsesChapter/Chapter03.org 
 
 
 # # Chapter 4 without appendix
 #+LaTeX: \clearpage
-#+include: ../VowelProcessingChapter/Chapter04.org 
+#+INCLUDE: ../VowelProcessingChapter/Chapter04.org 
 
 #+BEGIN_LaTeX
   \cleardoublepage
@@ -96,13 +99,13 @@
 
 # # Chapter 5
 # # + LaTeX: \chapter[GA Optimisation]{Simultaneous Optimisation of Microcircuits using Genetic Algorithms}\label{sec:GAChapter}
-#+include: ../GAChapter/Chapter05.org 
+#+INCLUDE: ../GAChapter/Chapter05.org 
  
 
-# \cleardoublepage
+#+LaTeX: \cleardoublepage
 # \setcounter{tocdepth}{0}
-# ## Discussion and Conclusion
-#+include:  ./Chapter06.org
+# # # Discussion and Conclusion
+#+INCLUDE:  Chapter06.org
 
 # # Conclusion
 # # + include: ./Chapter07.org
@@ -112,9 +115,9 @@
 # ##
 # ## Appendicies
 # ##
-# #+LATEX:   \begin{appendix}
+# # + LATEX:   \begin{appendix}
 # # Use \chapter{Appendix A}\label{appendixA} in first 
-# #+include: ../SimpleResponsesChapter/Chapter03Appendix.org
+# # + include: ../SimpleResponsesChapter/Chapter03Appendix.org
 # # \newpage
 # # + include: ../VowelResponsesChapter/Chapter04Appendix.org
 # # Optimisation of BNNs using Ideal inputs
@@ -123,7 +126,7 @@
 # # + include: ../GAChapter/Chapter05.org :lines "1722-2114"
 # #\newpage
 # #+include: ../GAChapter/Chapter05Appendix.org
-# #+LATEX:   \end{appendix}
+# # + LATEX:   \end{appendix}
 
 # #
 # # Bibliography
@@ -143,7 +146,7 @@
 
 
 
-#... and of eight years work! :-)
+# ... and of eight years work! :-)
 
 # # DRAFTING
 \newpage
@@ -212,7 +215,7 @@
   ;;              (goto-char (mark))
   ;;              (replace-regexp "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ " "\\\\ ")
                 (goto-char (mark))
-                (replace-regexp "\\\\section{My Thesis}\n\\\\label{sec-1}" 
+                (replace-regexp "\\\\section{ThesisStart}\n\\\\label{sec-1}" 
                                 " ") 
     
                )   )
@@ -221,7 +224,7 @@
   "\%\% -*- mode: latex; mode: tex-fold; TeX-PDF-mode: t; TeX-master t  -*-
    \\documentclass[12pt,a4paper,titlepage,twoside,openright]{book}
    % Use the UniMelb Dissertation Template
-   \\usepackage{../hg/manuscript/style/uomthesis}
+   \\usepackage{../org-manuscript/style/uomthesis}
    % For drafts uncomment the following line
    \\usepackage[light,timestamp,first]{draftcopy}
    % Comment out the following line TO MARK blank pages with the
@@ -231,8 +234,8 @@
    \\newcommand{\\archivalpapernote}{}
    % User defined commands
    \\usepackage[acronym]{glossaries}
-   \\input{../hg/manuscript/misc/glossary}    
-   \\input{../hg/manuscript/user-defined}
+   \\input{../org-manuscript/misc/glossary}    
+   \\input{../org-manuscript/misc/user-defined}
    \\setcounter{secnumdepth}{5}
    \\makeglossaries
    % \\includeonly{Chapter05}
@@ -251,18 +254,18 @@
    \\begin{frontmatter}
      \\frontmatterheadings
      % Collect the dissertation information for the title page
-      \\input{../hg/manuscript/misc/metadata}
+      \\input{..org-manuscript/misc/metadata}
       % Generate the title page
       \\maketitle
-      \\input{../hg/manuscript/misc/abstract}
+      \\input{../org-manuscript/misc/abstract}
       % Author declaration
       \\makedeclaration
       % Acknowledgements
-       \\input{../hg/manuscript/misc/acknowledgements}
+       \\input{../org-manuscript/misc/acknowledgements}
       % Preface
-      \\input{../hg/manuscript/misc/preface}
+      \\input{../org-manuscript/misc/preface}
       % Dedications...
-       \\input{../hg/manuscript/misc/dedication}
+       \\input{../org-manuscript/misc/dedication}
       % TOC, LOF, LOT
       {%
               \\singlespacing%

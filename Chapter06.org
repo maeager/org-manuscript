@@ -7,19 +7,23 @@
 This thesis investigated the important physiological mechanisms involved in
 neural processing in the \CNSM. It focused specifically on spectral and temporal
 enhancement in the microcircuits regulating the output of \TS cells. It achieved
-this through the development and testing of a novel \CNSM model. Computer
-modelling enhances our knowledge of complex neural interactions in \TS cells and
-provided further understanding of inputs to higher centres.  By developing a BNN
-with a high degree of realism at the individual cell level, this thesis has
-contributed to our understanding of the influence of synaptic organisation of
-physiological behaviour in the \CNSM.
+this through the development and testing of a novel \CNSM model and methods used
+to set parameters based on experimental data. Computer modelling enhances our
+knowledge of complex neural interactions in \TS cells and provided further
+understanding of inputs to higher centres.  By developing a \BNN with a high
+degree of realism at the individual cell level, this thesis has contributed to
+our understanding of the influence of synaptic organisation of physiological
+behaviour in the \CNSM.
 
 This chapter concludes the thesis by drawing together the results of the design
 and optimisation of the \CNSM model.  It describes the usefulness of the model
 as well as the optimisation methods used throughout the thesis.  It reflects on
-the implications of the research for the design and optimisation of BNNs.
+the implications of the research for the design and optimisation of \BNNs.
 Finally it describes the limitations of the research and makes recommendations
 for future work arising out of the thesis.
+
+# \yellownote{ Restating in the aims of the thesis }
+# This project was undertaken to design ...... and evaluate .....
 
 
 # This thesis has provided ...
@@ -50,19 +54,19 @@ replication and reproducibility
 
 
 
-Chapter 1
+Chapter 1 ...
 
 
-Chapter 2
+Chapter 2 ...
 
 
-Chapter 3
+Chapter 3 ...
 
-Chapter 4
+Chapter 4 ...
 
-Chapter 5
+Chapter 5 ...
 
-The next part of this chapter brings together the forgoing findings
+The next part of this chapter brings together the forgoing findings ... 
 
 synthesis of findings and sets out the contributions of the thesis.
 
@@ -70,19 +74,22 @@ synthesis of findings and sets out the contributions of the thesis.
 
 * Synthesis and Contributions
 
-This thesis contributes to the understanding ... \\
-
-- CONTRIBUTION TO RESEARCH
-These findings enhance our understanding of ...... \\
-
-The findings from this study make several contributions to the current literature. First,... \\
-
-The methods used for this X may be applied to other Xs elsewhere in the world. \\
+This thesis contributes to the understanding ... 
 
 
-This research will serve as a basis for future studies ... \\
+These findings enhance our understanding of ...
 
-This model has gone some way towards enhancing our understanding of ... \\
+The findings from this study make several contributions to the current literature. First,... 
+
+
+The methods used for this X may be applied to other Xs elsewhere in the world. 
+
+
+This research will serve as a basis for future studies ... 
+
+
+This model has gone some way towards enhancing our understanding of ... 
+
 
 The present work makes several noteworthy contributions to ...
 
@@ -98,27 +105,39 @@ neural microcircuits through either sequential or simultaneous methods.
 
 
 
-
-
-\yellownote{Statements of result with reference to results sections}
-
-The results of genetic algorithm optimisation show/indicate that .......
-
-This experiment did not detect any evidence for ......
-
-
-** The CNSM model
+** The CNSM Model
 
 good model
 
 
 fit to experimental data
 
-** Optimisation methods for BNNs
 
-substantial progression of the use of BNNs in neuroscience
+** Optimisation Methods for BNNs
 
-worthwhile sequential or simultaneous optimisation 
+
+The results of Chapters 3 and 5 show that optimisation techniques ... sequential or simultaneous methods worthwhile. 
+The results of genetic algorithm optimisation show/indicate that ...
+
+
+
+Substantial progression of the use of BNNs in neuroscience ...
+
+
+
+
+Using standard phenomenologically accurate models from inputs to membrane
+currents to recognised connections.
+
+
+
+
+Replication and reproducibility is an important factor in numerical modelling
+and science in general. Information contained within the compact tables in
+Chapters 3 and 4 show the methods for model replication suggested by
+\citet{NordlieGewaltigEtAl:2009}.  Reproducibility of simulations is best
+performed through using publically available, open source software of the model
+and analysis scripts.  
 
 
 * Limitation of the Research
@@ -145,7 +164,14 @@ The current research was not specifically designed to evaluate factors related t
 
 
 
-* Recommendations for future work
+* Recommendations for Future Work
+
+\yellownote{Future Work: 
+Don’t view this necessarily as a list of the limitations of your thesis.
+Think of what you would do if you had an extra year in your Ph.D.
+Don’t worry – this is not for your advisor to hold your feet to the fire.
+Think of 2-3 other follow-on Ph.D. dissertations that you can envision}
+
 
 Fundamental questions about the behaviour of TS cells remain for exploration
 \citep{OertelWrightEtAl:2011}.  Do intrinsic membrane mechanism or network and
@@ -157,6 +183,26 @@ and how does this effect the spectral representation across the population of
 the model and optimisation methods established in the thesis provide valuable
 tools for use in those inquiries.
 
+\yellownote{Further studies in simulating effects of blocking specific
+connections can be achieved through manipulation of the \CNSM model's
+parameters.  Further simulations on the pharmacological effects of GABA and
+glycine blockers
+\citep{EvansZhao:1998,EvansZhao:1993a,BackoffShadduckEtAl:1999,CasparyBackoffEtAl:1994,PalombiCaspary:1992}
+or other modulating neurotransmitters from non-auditory inputs
+\citep{MuldersPaoliniEtAl:2003}}
+
+
+\yellownote{Further studies on commissural inputs?Labelled \DS cells project
+widely to the VCN and DCN; and in some cases to the contralateral CN in the same
+manner \citep{SmithMassieEtAl:2005,ArnottWallaceEtAl:2004} In vivo studies have
+already shown the effects of commisural inhibition of first spike responses to
+tones \citep{NeedhamPaolini:2007,NeedhamPaolini:2006,NeedhamPaolini:2003}.}
+
+\yellownote{Explore better GA techniques on limited data from multiunit
+recordings.  Explore better GAs or hybrid algorithms that enhance the best
+parameters with localised search}
+
+
 
 Additionally, enhanced understanding of the complex processing done by the
 cochlear nucleus may also contribute to refinement of hearing-impairment
@@ -165,39 +211,21 @@ environments works within the network could aid in developing new sound
 processing strategies for the cochlear implant and hearing aids.
 
 
-This thesis identifies  a number of of priorities for further research.
+# This thesis identifies  a number of of priorities for further research.
 
-bang bang bang xyz
-
-
-using standard phenomenologically accurate models
-
-using publically available models
-
-replication and reproducibility
+# bang bang bang xyz
 
 
+# using standard phenomenologically accurate models
 
-\yellownote{Future Work: 
-Don’t view this necessarily as a list of the limitations of your thesis.
-Think of what you would do if you had an extra year in your Ph.D.
-Don’t worry – this is not for your advisor to hold your feet to the fire.
-Think of 2-3 other follow-on Ph.D. dissertations that you can envision}
+# using publically available models
 
-
-\yellownote{Further studies in simulating effects of blocking specific connections}
-Further simulations on the pharmacological effects of GABA and glycine blockers 
-\citep{EvansZhao:1998,EvansZhao:1993a,BackoffShadduckEtAl:1999,CasparyBackoffEtAl:1994,PalombiCaspary:1992}
-or other modulating neurotransmitters from non-auditory inputs \citep{MuldersPaoliniEtAl:2003}
+# replication and reproducibility
 
 
-\yellownote{ CNSM model in ipsi lateral only.  Further studies on commissural inputs?}
-Labelled \DS cells project widely to the VCN and  DCN; and in some cases to the contralateral CN in the same manner
-\citep{SmithMassieEtAl:2005,ArnottWallaceEtAl:2004}  
-In vivo studies have already shown the effects of commisural inhibition of first spike responses to tones
-\citep{NeedhamPaolini:2007,NeedhamPaolini:2006,NeedhamPaolini:2003}.
 
-\yellownote{Explore better GA techniques on limited data from multiunit recordings}
+
+
 
 
 
@@ -228,24 +256,6 @@ processing.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-* The Cochlear Nucleus Stellate Microcircuit Model
-
-
-
 # \yellownote{
 # Usually the discussion has the following parts:
 #     It should state the main findings of the study in one or two sentences.
@@ -258,45 +268,40 @@ processing.
 # }
 
 
-\yellownote{ Restating in the aims of the thesis }
-This project was undertaken to design ...... and evaluate .....
 
-\yellownote{Summary of the findings and general implications}
-These findings suggest that in general ......
-The results of this research support the idea that .......
+# \yellownote{Summary of the findings and general implications}
+# These findings suggest that in general ......
+# The results of this research support the idea that .......
 
 
+# These findings enhance our understanding of ......
+
+# This research will serve as a base for future studies and ...
+
+# The findings from this study make several contributions to the current literature. First,...
+
+# The methods used for this X may be applied to other Xs elsewhere in the world.
 
 
-- CONTRIBUTION TO RESEARCH
-These findings enhance our understanding of ......
-
-This research will serve as a base for future studies and ...
-
-The findings from this study make several contributions to the current literature. First,...
-
-The methods used for this X may be applied to other Xs elsewhere in the world.
-
-
-\yellownote{ Suggesting implications }
+# \yellownote{ Suggesting implications }
  
-Evidence from this study suggest that ...
+# Evidence from this study suggest that ...
 
-The results of this study indicate that
+# The results of this study indicate that
 
-The results of this research support the idea that ...
-
-
-\yellownote{Significance and Research contribution}
+# The results of this research support the idea that ...
 
 
+# \yellownote{Significance and Research contribution}
 
 
 
 
 
 
-* Conclusion
 
-\yellownote{Conclusions: Be reflective and honest. What were the lessons learned? What were the overall insights? Did you solve the problem completely? How much progress have we made
-in your field because of your work. Don’t bore the reader with a cut-and-paste of your Introduction chapter.}
+
+# * Conclusion
+
+# \yellownote{Conclusions: Be reflective and honest. What were the lessons learned? What were the overall insights? Did you solve the problem completely? How much progress have we made
+# in your field because of your work. Don’t bore the reader with a cut-and-paste of your Introduction chapter.}
