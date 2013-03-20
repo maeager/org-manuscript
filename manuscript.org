@@ -3,10 +3,8 @@
 #+AUTHOR: Michael A Eager
 #+OPTIONS: toc:nil H:6 <:t >:t tasks:nil
 #+STARTUP: oddeven inlineimages hideblocks fold align hidestars 
-
 #+TODO: REFTEX
 #+LANGUAGE: en_GB-ise-wo_accents
-#+BIBLIOGRAPHY: MyBib alphanat
 #+SEQ_TODO:   TODO(t) INPROGRESS(i) WAITING(w@) | DONE(d) CANCELED(c@)
 #+TAGS:       Write(w) Update(u) Fix(f) Check(c) noexport(n)
 #+BIBLIOGRAPHY: ../org-manuscript/bib/MyBib plainnat
@@ -165,7 +163,8 @@
     (setq org-export-latex-final-hook ())
     (add-hook 'org-export-latex-final-hook
                (lambda ()
-                 (goto-char (point-min)) 
+                 setq case-fold-search nil)
+	    ((goto-char (point-min)) 
                  (search-forward "\\begin{document}") 
                  (push-mark)
                  (replace-regexp "\\( \\|\n\\)\\\\ref" 
@@ -219,6 +218,7 @@
                                 " ") 
     
                )   )
+
    (add-to-list 'org-export-latex-classes 
                 '("UoM-thesis-org"
   "\%\% -*- mode: latex; mode: tex-fold; TeX-PDF-mode: t; TeX-master t  -*-
@@ -254,14 +254,14 @@
    \\begin{frontmatter}
      \\frontmatterheadings
      % Collect the dissertation information for the title page
-      \\input{..org-manuscript/misc/metadata}
+      \\input{../org-manuscript/misc/metadata}
       % Generate the title page
       \\maketitle
       \\input{../org-manuscript/misc/abstract}
       % Author declaration
       \\makedeclaration
       % Acknowledgements
-       \\input{../org-manuscript/misc/acknowledgements}
+%       \\input{../org-manuscript/misc/acknowledgements}
       % Preface
       \\input{../org-manuscript/misc/preface}
       % Dedications...
@@ -294,6 +294,98 @@
 : t
 
 #+RESULTS:
+
+
+#+BEGIN_SRC emacs-lisp
+  
+  (setq  org-export-latex-final-hook nil)
+  (add-hook 'org-export-latex-final-hook
+            (lambda ()
+              (setq case-fold-search nil)
+              (goto-char (point-min))
+              (search-forward "\\begin{document}")
+              (push-mark)
+  
+              ;; Force hard space before references
+              (while (re-search-forward "\\( \\|\n\\)\\\\ref" nil t)
+                (replace-match "~\\\\ref" nil nil))
+  
+              ;; Force space before citation
+              (goto-char (mark))
+              (while (re-search-forward "\\( \\|\n\\)\\\\cite" nil t)
+                (replace-match "\\\\ \\\\cite" nil nil))
+  
+              ;; add shortened section titles
+              (goto-char (mark))
+              (while (re-search-forward "\\\\section{\\(.*\\):" nil t)
+                (replace-match "\\\\section[\\1]{\\1:" nil nil))
+  
+              ;; Correct for citations immediately after an item
+              (goto-char (mark))
+              (while (re-search-forward "item[~\\\\]" nil t)
+                (replace-match "item " nil nil))
+  
+              ;; Force space between double acronyms or acronyms and slashs
+              (goto-char (mark))
+              ;(replace-regexp "\\([A-Zu][A-Zsm]\\) \\([\\\\A-Z]\\)"
+  ;                   "\\1\\\\ \\2")
+              (while (re-search-forward  "\\([A-Z][A-Zs]\\) \\([\\\\A-Z]\\)" nil t)
+                (replace-match "\\1\\\\ \\2" nil nil))
+  
+              ;; Force \@ between acronyms and period.
+              (goto-char (mark))
+  ;           (while (re-search-forward  "\\([A-Zu][A-Z]\\)[\\.] " nil t)
+  ;             (replace-match "\\1\\\\@. " nil nil))
+  
+              ;; Acronyms or Capitals at the end of a sentence cause poor spacing.
+              ;; White space reproduced for occurance preceeding \item
+              ;; (goto-char (mark))
+              ;; (replace-regexp "\\([A-Z][A-Zs]\\)\\.\\( \\|\n\\)"
+              ;;                 "\\1\\\\@.  \\2")
+  
+              ;; Force space after acronym '\um'
+              (goto-char (mark))
+              (while (re-search-forward "\\(\\\\um\\)\\( \\|\n\\)" nil t)
+                (replace-match "\\1\\\\ \\2" nil nil))
+  
+              ;; Force a space between numbers followed by text or acronym
+              (goto-char (mark))
+              (while (re-search-forward "\\([0-9]\\) \\([\\\\A-Za-z]\\)" nil t)
+                (replace-match "\\1\\\\ \\2" nil nil))
+  
+              ;; Force a space between numbers followed by text or acronym
+              (goto-char (mark))
+              (while (re-search-forward "i\\.e\\. " nil t)
+                (replace-match "i.e.\\\\ " nil nil))
+  
+              ;; Force  floating tables and figures to be at the top
+              (goto-char (mark))
+              (while (re-search-forward "htb" nil t)
+                (replace-match "t!" nil nil))
+  
+              ;; Correct org-babel source block formatted outputs
+              (goto-char (mark))
+              (while (re-search-forward "\\\\texttt{\\\\$\\(.*\\)\\\\$}" nil t)
+                (replace-match "$\\1$" nil nil))
+  
+              (goto-char (mark))
+              ;; Correct for poor tilda conversions
+                                          ;                  (goto-char (mark))
+                                          ;                  (replace-regexp "\\\\~\\{\\}"
+                                          ;                                  "~")
+              ;; double check \{ ... \}
+              (goto-char (mark))
+              (while (re-search-forward "\\\\{\\(.*\\)\\\\}" nil t)
+                (replace-match "{\\1}" nil nil))
+  
+                  (goto-char (mark))
+                  (replace-regexp "\\\\section{ThesisStart}\n\\\\label{sec-1}" 
+                                  " ") 
+  
+              ))
+  
+  
+#+END_SRC
 
 
 ****  Source blocks :noexport:

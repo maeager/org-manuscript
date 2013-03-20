@@ -166,7 +166,6 @@
 ;	    (while (re-search-forward  "\\([A-Zu][A-Z]\\)[\\.] " nil t)
 ;	      (replace-match "\\1\\\\@. " nil nil))
 
-
 	    ;; Acronyms or Capitals at the end of a sentence cause poor spacing.
 	    ;; White space reproduced for occurance preceeding \item
 	    ;; (goto-char (mark))
@@ -264,13 +263,52 @@
                   ("\n\n\\subsubsection{%s}" . "\n\\subsubsection{%s}") 
                   ("\n\\paragraph{%s}" . "\n\\paragraph{%s}"))) 
 
+   (setq org-export-latex-title-command "\n
+   %% Front matter
+   %%
+   \\begin{frontmatter}
+     \\frontmatterheadings
+     % Collect the dissertation information for the title page
+      \\input{misc/metadata}
+      % Generate the title page
+      \\maketitle
+      \\input{misc/abstract}
+      % Author declaration
+      \\makedeclaration
+      % Acknowledgements
+       \\input{misc/acknowledgements}
+      % Preface
+      \\input{misc/preface}
+      % Dedications...
+       \\input{misc/dedication}
+      % TOC, LOF, LOT
+      {%
+              \\singlespacing%
+              \\pdfbookmark[1]{\\contentsname}{tableofcontents} 
+              \\tableofcontents
+              \\pdfbookmark[1]{\\listfigurename}{lof} 
+              \\listoffigures%
+     % Do not include a list of tables if you have less
+     % than 10 tables, as per SGS suggestion.
+              \\pdfbookmark[1]{\\listtablename}{lot} 
+              \\listoftables
+              \\pdfbookmark[1]{Glossary of Terms}{glossary} 
+              \\printglossaries
+              \\clearpage
+        }%
+   \\end{frontmatter} 
+   \\begin{mainmatter}
+  
+   \\mainmatterheadings
+  ") 
+
 
 (add-to-list 'org-export-latex-classes
   '("UoM-xelatex-thesis"
   "\%\% -*- mode: latex; mode: tex-fold; TeX-PDF-mode: t; TeX-master t  -*-
    \\documentclass[12pt,a4paper,titlepage,twoside,openright]{book}
    % Use the UniMelb Dissertation Template
-   \\usepackage{../org-manuscript/style/uomthesis}
+   \\usepackage{style/uomthesis}
    % For drafts uncomment the following line
    \\usepackage[light,timestamp,first]{draftcopy}
    % Comment out the following line TO MARK blank pages with the
@@ -280,8 +318,8 @@
    \\newcommand{\\archivalpapernote}{}
    % User defined commands
    \\usepackage[nonumberlist,acronym]{glossaries}
-   \\input{../org-manuscript/misc/glossary}    
-   \\input{../org-manuscript/misc/user-defined}
+   \\input{misc/glossary}    
+   \\input{misc/user-defined}
    \\setcounter{secnumdepth}{5}
    \\makeglossaries
    % \\includeonly{Chapter05}
@@ -329,68 +367,7 @@
 
 
 
-   (setq org-export-latex-title-command "\n
-   %% Front matter
-   %%
-   \\begin{frontmatter}
-     \\frontmatterheadings
-     % Collect the dissertation information for the title page
-      \\input{misc/metadata}
-      % Generate the title page
-      \\maketitle
-      \\input{misc/abstract}
-      % Author declaration
-      \\makedeclaration
-      % Acknowledgements
-       \\input{misc/acknowledgements}
-      % Preface
-      \\input{misc/preface}
-      % Dedications...
-       \\input{misc/dedication}
-      % TOC, LOF, LOT
-      {%
-              \\singlespacing%
-              \\pdfbookmark[1]{\\contentsname}{tableofcontents} 
-              \\tableofcontents
-              \\pdfbookmark[1]{\\listfigurename}{lof} 
-              \\listoffigures%
-     % Do not include a list of tables if you have less
-     % than 10 tables, as per SGS suggestion.
-              \\pdfbookmark[1]{\\listtablename}{lot} 
-              \\listoftables
-              \\pdfbookmark[1]{Glossary of Terms}{glossary} 
-              \\printglossaries
-              \\clearpage
-        }%
-   \\end{frontmatter} 
-   \\begin{mainmatter}
-  
-   \\mainmatterheadings
-  ") 
    (setq TeX-master t)
-
-
-
-;; my-latex-export
-(add-to-list 'org-export-latex-classes 
-	     '("UoM-draft-org-article"
-	       "\% -*- mode: latex; mode: visual-line; TeX-master: t; TeX-PDF-mode: t -*-
-     \\documentclass[11pt,a4paper,twoside,openright]{book}
-       \\usepackage{../org-manuscript/style/uomthesis} 
-       \\input{../org-manuscript/misc/user-defined}
-       \\usepackage[nonumberlist,acronym]{glossaries}
-       \\input{../org-manuscript/misc/glossary} 
-       \\makeglossaries
-       \\pretolerance=150 \\tolerance=100
-       \\setlength{\\emergencystretch}{3em} 
-       \\overfullrule=1mm 
-       \\lfoot{\\footnotesize\\today\\ at \\thistime}"
-; [NO-DEFAULT-PACKAGES]
-;       [NO-PACKAGES]" 
-	       ("\\newpage\n\\section{%s}" . "\n\\section{%s}")
-	       ("\\subsection{%s}"         . "\n\\subsection{%s}") 
-	       ("\\subsubsection{%s}"      . "\n\\subsubsection{%s}") 
-	       ("\\paragraph{%s}"          . "\n\\paragraph{%s}"))) 
 
 (setq org-entities-user 
       '("ref" "~\\ref" nil "" "" "" ""))
