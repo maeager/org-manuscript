@@ -10,7 +10,7 @@
 #+BIBLIOGRAPHY: ../org-manuscript/bib/MyBib plainnat
 
 #+LaTeX_CLASS: UoM-thesis-org
-# + LATEX_HEADER: \graphicspath{{../LiteratureReview/gfx/}{../SimpleResponsesChapter/gfx/}{../VowelProcessingChapter/gfx}{/media/data/Work/cnstellate/}{../GAChapter/gfx/}}
+# + LaTeX_CLASS: UoM-xelatex-thesis
 
 
 
@@ -163,8 +163,8 @@
     (setq org-export-latex-final-hook ())
     (add-hook 'org-export-latex-final-hook
                (lambda ()
-                 setq case-fold-search nil)
-	    ((goto-char (point-min)) 
+                 (setq case-fold-search nil)
+	         (goto-char (point-min)
                  (search-forward "\\begin{document}") 
                  (push-mark)
                  (replace-regexp "\\( \\|\n\\)\\\\ref" 
@@ -224,7 +224,7 @@
   "\%\% -*- mode: latex; mode: tex-fold; TeX-PDF-mode: t; TeX-master t  -*-
    \\documentclass[12pt,a4paper,titlepage,twoside,openright]{book}
    % Use the UniMelb Dissertation Template
-   \\usepackage{../org-manuscript/style/uomthesis}
+   \\usepackage{style/uomthesis}
    % For drafts uncomment the following line
    \\usepackage[light,timestamp,first]{draftcopy}
    % Comment out the following line TO MARK blank pages with the
@@ -233,14 +233,21 @@
    % Comment out the following line for the copy submitted to the library
    \\newcommand{\\archivalpapernote}{}
    % User defined commands
-   \\usepackage[acronym]{glossaries}
-   \\input{../org-manuscript/misc/glossary}    
-   \\input{../org-manuscript/misc/user-defined}
+   \\usepackage[nonumberlist,acronym]{glossaries}
+   \\input{misc/glossary}    
+   \\input{misc/user-defined}
    \\setcounter{secnumdepth}{5}
    \\makeglossaries
    % \\includeonly{Chapter05}
-   % \\hypersetup{ pdftitle = \\myTitle, pdfauthor = Michael A Eager, pdfsubject= PhD thesis, pdfkeywords = auditory system, cochlear nucleus, microcircuit, computational neuroscience, optimisation  }
-   \\graphicspath{{../LiteratureReview/gfx/}{../SimpleResponsesChapter/gfx/}{../VowelResponsesChapter/gfx/}{../figures/}{/media/data/Work/cnstellate/golgi/}{/media/data/Work/cnstellate/TV_RateLevel/}{/media/data/Work/cnstellate/}{/media/data/Work/cnstellate/ResponsesNoComp/ModulationTransferFunction/}{../GAChapter/}{../GAChapter/gfx/}{./GAChapter/archive/}}
+   % \\hypersetup{ pdftitle = \\myTitle, pdfauthor = Michael A Eager, pdfsubject= PhD thesis, pdfkeywords = auditory system, cochlear nucleus, microcircuit, computational neuroscience, optimisation  , T-stellate cells, biophysically-realistic neural networks}
+   \\graphicspath{{../LiteratureReview/gfx/}%
+   {../SimpleResponsesChapter/gfx/}%
+   {../VowelResponsesChapter/gfx/}{../figures/}%
+   {/media/data/Work/cnstellate/golgi/}%
+   {/media/data/Work/cnstellate/TV_RateLevel/}%
+   {/media/data/Work/cnstellate/}%
+   {/media/data/Work/cnstellate/ResponsesNoComp/ModulationTransferFunction/}%
+   {../GAChapter/}{../GAChapter/gfx/}{./GAChapter/archive/}}
    \\newcommand{\\manuscript}{}
     [NO-DEFAULT-PACKAGES]
     [NO-PACKAGES]" 
@@ -248,6 +255,54 @@
                   ("\n\n\\subsection{%s}" . "\n\n\\subsection{%s}") 
                   ("\n\n\\subsubsection{%s}" . "\n\\subsubsection{%s}") 
                   ("\n\\paragraph{%s}" . "\n\\paragraph{%s}"))) 
+(add-to-list 'org-export-latex-classes
+  '("UoM-xelatex-thesis"
+  "\%\% -*- mode: latex; mode: tex-fold; TeX-PDF-mode: t; TeX-master t  -*-
+   \\documentclass[12pt,a4paper,titlepage,twoside,openright]{book}
+   % Use the UniMelb Dissertation Template
+   \\usepackage{style/uomthesis}
+   % For drafts uncomment the following line
+   \\usepackage[light,timestamp,first]{draftcopy}
+   % Comment out the following line TO MARK blank pages with the
+   % text This page intentionally left blank.
+   \\newcommand{\\markblankpages}{}
+   % Comment out the following line for the copy submitted to the library
+   \\newcommand{\\archivalpapernote}{}
+   % User defined commands
+   \\usepackage[nonumberlist,acronym]{glossaries}
+   \\input{misc/glossary}    
+   \\input{misc/user-defined}
+   \\setcounter{secnumdepth}{5}
+   \\makeglossaries
+   % \\includeonly{Chapter05}
+   % \\hypersetup{ pdftitle = \\myTitle, pdfauthor = Michael A Eager, pdfsubject= PhD thesis, pdfkeywords = auditory system, cochlear nucleus, microcircuit, computational neuroscience, optimisation, T-stellate cells, biophysically-realistic neural networks  }
+   \\graphicspath{{../LiteratureReview/gfx/}%
+   {../SimpleResponsesChapter/gfx/}%
+   {../VowelResponsesChapter/gfx/}{../figures/}%
+   {/media/data/Work/cnstellate/golgi/}%
+   {/media/data/Work/cnstellate/TV_RateLevel/}%
+   {/media/data/Work/cnstellate/}%
+   {/media/data/Work/cnstellate/ResponsesNoComp/ModulationTransferFunction/}%
+   {../GAChapter/}{../GAChapter/gfx/}{./GAChapter/archive/}}
+   \\newcommand{\\manuscript}{}
+
+\\usepackage[T1]{fontenc}
+\\usepackage{fontspec}
+\\defaultfontfeatures{Mapping=tex-text}
+\\setromanfont{Gentium}
+\\setromanfont [BoldFont={Gentium Basic Bold},
+                ItalicFont={Gentium Basic Italic}]{Gentium Basic}
+\\setsansfont{Charis SIL}
+\\setmonofont[Scale=0.8]{DejaVu Sans Mono}
+      [NO-DEFAULT-PACKAGES]
+      [NO-PACKAGES]"
+                  ("\n\n\\section{%s}" . "\n\n\\section{%s}")
+                  ("\n\n\\subsection{%s}" . "\n\n\\subsection{%s}") 
+                  ("\n\n\\subsubsection{%s}" . "\n\\subsubsection{%s}") 
+                  ("\n\\paragraph{%s}" . "\n\\paragraph{%s}")
+     ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+
    (setq org-export-latex-title-command "\n
    %% Front matter
    %%

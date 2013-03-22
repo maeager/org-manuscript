@@ -3,6 +3,10 @@
 
 
 * Introduction
+:PROPERTIES:
+:CUSTOM_ID: sec:Conc:Into
+:END:
+
 
 This thesis investigated the important physiological mechanisms involved in
 neural processing in the \CNSM. It focused specifically on spectral and temporal
@@ -14,6 +18,23 @@ understanding of inputs to higher centres.  By developing a \BNN with a high
 degree of realism at the individual cell level, this thesis has contributed to
 our understanding of the influence of synaptic organisation of physiological
 behaviour in the \CNSM.
+
+This thesis argued that the current state of \BNN models of the \CN or models of
+individual cells in the \CNSM was not considerate of the current physiological
+and known experimental data.
+
+It demonstrates through rigorous sequential optimisation that the cell models
+and connectivity parameters in the \CNSM model can be created to replicate known
+behaviour to tones and noise.
+
+Further insight into the temporal 
+response optimised \CNSM model's response to 
+BNN optimisation  ---
+
+
+
+
+
 
 This chapter concludes the thesis by drawing together the results of the design
 and optimisation of the \CNSM model.  It describes the usefulness of the model
@@ -41,6 +62,9 @@ for future work arising out of the thesis.
 
 
 * Overview of Research Findings 
+:PROPERTIES:
+:CUSTOM_ID: sec:Conc:OverviewRF
+:END:
 
 \yellownote{Summary of the findings and general implications}
 These findings suggest that in general ......
@@ -48,31 +72,58 @@ The results of this research support the idea that .......
 
 using standard phenomenologically accurate models
 
-using publically available models
+using publicly available models
 
 replication and reproducibility
 
 
 
-Chapter 1 ...
+*Chapter 1* ...
+introduced the importance of the TS cell and the \CNSM to the auditory pathway 
+
+need to create  
+
+The gap in the literature biophysically-realistic models of TS cells and its constituent microcircuit (the CNSM) using 
+accurate input models, accurate membrane current models 
 
 
-Chapter 2 ...
+Chapter 1 also introduced the general techniques of parameter setting in BNN models.
+
+Analytical optimisation techniques of spiking neural networks and individual current channels are not suitable to BNN models which have large numbers of parameters and noisy search spaces.    
+
+Communication of how parameters are discovered/fitted/optimised in BNN models in existing models of the CN are limited .
 
 
-Chapter 3 ...
+*Chapter 2* ...
+presented the general methods used to create and optimise the CNSM model.
 
-Chapter 4 ...
+This included introducing the Carney periphery AN model and its particular version used in this thesis. The Zilany version of the Carney model is most recent detailed model of the AN periphery phenomenological model 
 
-Chapter 5 ...
+
+
+The sequential optimisation of cell models and connectivity in the CNSM model *Chapter 3* ...
+
+
+*Chapter 4* ...
+investigated the output of the optimised CNSM model to AM tones. 
+
+
+
+*Chapter 5* ...
+
 
 The next part of this chapter brings together the forgoing findings ... 
+
 
 synthesis of findings and sets out the contributions of the thesis.
 
 
 
 * Synthesis and Contributions
+:PROPERTIES:
+:CUSTOM_ID: sec:Conc:Contrib
+:END:
+
 
 This thesis contributes to the understanding ... 
 
@@ -106,6 +157,9 @@ neural microcircuits through either sequential or simultaneous methods.
 
 
 ** The CNSM Model
+:PROPERTIES:
+:CUSTOM_ID: sec:Conc:CNSM
+:END:
 
 good model
 
@@ -114,6 +168,9 @@ fit to experimental data
 
 
 ** Optimisation Methods for BNNs
+:PROPERTIES:
+:CUSTOM_ID: sec:Conc:OptBNN
+:END:
 
 
 The results of Chapters 3 and 5 show that optimisation techniques ... sequential or simultaneous methods worthwhile. 
@@ -141,6 +198,10 @@ and analysis scripts.
 
 
 * Limitation of the Research
+:PROPERTIES:
+:CUSTOM_ID: sec:Conc:Limitations
+:END:
+
 
 THe specific limitations of the studies
 
@@ -165,6 +226,10 @@ The current research was not specifically designed to evaluate factors related t
 
 
 * Recommendations for Future Work
+:PROPERTIES:
+:CUSTOM_ID: sec:Conc:FutureWork
+:END:
+
 
 \yellownote{Future Work: 
 Don’t view this necessarily as a list of the limitations of your thesis.
@@ -241,6 +306,9 @@ processing strategies for the cochlear implant and hearing aids.
 
 
 * Concluding Remarks
+:PROPERTIES:
+:CUSTOM_ID: sec:Conc:ConcludingRemarks
+:END:
 
 
 In computational neuroscience the development of BNN models is a promising means
