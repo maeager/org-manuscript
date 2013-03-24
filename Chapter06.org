@@ -1,6 +1,25 @@
+#+title: Discussion and Conclusion
+#+AUTHOR: Michael A Eager
+#+DATE:
+#+LATEX_CLASS: UoM-draft-org-article
+#+BIBLIOGRAPHY: ../org-manuscript/bib/MyBib plainnat
+#+TODO: REFTEX
+
 
 #+LaTeX: \chapter{Conclusion}\label{sec:Discussion}
 
+# \yellownote{
+# Usually the discussion has the following parts:
+#     It should state the main findings of the study in one or two sentences.
+#     The discussion should consider the methods, and address possible shortcomings. Defend your answers, if necessary, by explaining both why your answer is satisfactory and why others are not. Only by giving both sides to the argument can you make your explanation convincing.
+#     Identify potential weaknesses, and comment the relative importance of these to your interpretation of the results and how they may affect the validity of the findings. When identifying limits and weaknesses, avoid using an apologetic tone.
+#     Support the answers with the results. State why they are acceptable and how they are consistent with previously published knowledge on the topic.
+#     Discuss any unexpected findings. When discussing an unexpected finding, begin the paragraph with the finding and then describe it.
+#     Explain how the results and conclusions of this study are important and how they influence our knowledge or understanding of the problem being examined.
+#     Provide no more than two recommendations for further research. Do not offer suggestions which could have been done within the study, as this shows there has been inadequate examination and interpretation of the data.
+# }
+
+\yellownote{This chapter in not complete and will undergo severe changes.}
 
 * Introduction
 :PROPERTIES:
@@ -20,7 +39,7 @@ our understanding of the influence of synaptic organisation of physiological
 behaviour in the \CNSM.
 
 This thesis argued that the current state of \BNN models of the \CN or models of
-individual cells in the \CNSM was not considerate of the current physiological
+individual cells in the \CNSM model was not considerate of the current physiological
 and known experimental data.
 
 It demonstrates through rigorous sequential optimisation that the cell models
@@ -79,11 +98,11 @@ replication and reproducibility
 
 
 *Chapter 1* ...
-introduced the importance of the TS cell and the \CNSM to the auditory pathway 
+introduced the importance of the TS cell and the \CN stellate microcircuit to the auditory pathway 
 
 need to create  
 
-The gap in the literature biophysically-realistic models of TS cells and its constituent microcircuit (the CNSM) using 
+The gap in the literature ... biophysically-realistic models of TS cells and its constituent microcircuit (the CNSM) using 
 accurate input models, accurate membrane current models 
 
 
@@ -93,23 +112,35 @@ Analytical optimisation techniques of spiking neural networks and individual cur
 
 Communication of how parameters are discovered/fitted/optimised in BNN models in existing models of the CN are limited .
 
-
+--------------------
 *Chapter 2* ...
 presented the general methods used to create and optimise the CNSM model.
 
-This included introducing the Carney periphery AN model and its particular version used in this thesis. The Zilany version of the Carney model is most recent detailed model of the AN periphery phenomenological model 
+This included introducing the Carney periphery AN model, membrane current models of \citet{RothmanManis:2003b}
 
 
+ and its particular version used in this thesis. The Zilany version of the Carney model is most recent detailed model of the AN periphery phenomenological model 
 
-The sequential optimisation of cell models and connectivity in the CNSM model *Chapter 3* ...
+
+--------------
+In *Chapter 3*, sequential simple optimisation was used in the development of cell models and their connectivity in the CNSM model  ...
 
 
+Development of a novel filter-based neural model for the \GLG cell, whose input and intrinsic parameters were fitted to the only study of known \GCD units.
+
+The DS cell model, inlcuding its synaptic inputs from ANF and GLG cells, was optimised using responses to tones, noise and click pairs. 
+
+
+-------------------
 *Chapter 4* ...
 investigated the output of the optimised CNSM model to AM tones. 
 
 
 
 *Chapter 5* ...
+
+
+
 
 
 The next part of this chapter brings together the forgoing findings ... 
@@ -150,7 +181,7 @@ The present work makes several noteworthy contributions to ...
 As mentioned in the literature review, little has been done in replication of
 microcircuits and medium sized neural networks from experimental data sets.
 Very little was found in the literature on the question of replicating neural
-outputs from multiple neurons of different cell-types.  This thesis set out with
+outputs from multiple neurons of different cell types.  This thesis set out with
 the aim of assessing the importance of optimisation in biophysically realistic
 neural microcircuits through either sequential or simultaneous methods.
 
@@ -324,16 +355,6 @@ processing.
 
 
 
-# \yellownote{
-# Usually the discussion has the following parts:
-#     It should state the main findings of the study in one or two sentences.
-#     The discussion should consider the methods, and address possible shortcomings. Defend your answers, if necessary, by explaining both why your answer is satisfactory and why others are not. Only by giving both sides to the argument can you make your explanation convincing.
-#     Identify potential weaknesses, and comment the relative importance of these to your interpretation of the results and how they may affect the validity of the findings. When identifying limits and weaknesses, avoid using an apologetic tone.
-#     Support the answers with the results. State why they are acceptable and how they are consistent with previously published knowledge on the topic.
-#     Discuss any unexpected findings. When discussing an unexpected finding, begin the paragraph with the finding and then describe it.
-#     Explain how the results and conclusions of this study are important and how they influence our knowledge or understanding of the problem being examined.
-#     Provide no more than two recommendations for further research. Do not offer suggestions which could have been done within the study, as this shows there has been inadequate examination and interpretation of the data.
-# }
 
 
 
@@ -371,5 +392,5 @@ processing.
 
 # * Conclusion
 
-# \yellownote{Conclusions: Be reflective and honest. What were the lessons learned? What were the overall insights? Did you solve the problem completely? How much progress have we made
-# in your field because of your work. Don’t bore the reader with a cut-and-paste of your Introduction chapter.}
+ \yellownote{Conclusions: Be reflective and honest. What were the lessons learned? What were the overall insights? Did you solve the problem completely? How much progress have we made
+ in your field because of your work. Don’t bore the reader with a cut-and-paste of your Introduction chapter.}
