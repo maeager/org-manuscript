@@ -6,7 +6,7 @@
 #+TODO: REFTEX
 
 
-#+LaTeX: \chapter{Conclusion}\label{sec:Discussion}
+#+LaTeX: \chapter{Discussion and Conclusion}\label{sec:Discussion}
 
 # \yellownote{
 # Usually the discussion has the following parts:
