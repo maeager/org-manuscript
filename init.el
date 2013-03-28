@@ -123,6 +123,16 @@
 
 
 
+(setq org-latex-to-pdf-process '("pdfquick %b")) 
+;; (setq org-latex-to-pdf-process '("pdflatex -interaction nonstopmode -halt-on-error %f  || exit 0" 
+;;                                  "bibtex %b" "makeglossaries %b"  "pdflatex -interaction nonstopmode %f" 
+;;                                  "pdflatex -interaction nonstopmode %f" )) 
+
+;; allow for export=>beamer by placing
+;; #+LaTeX_CLASS: beamer in org files
+(unless (boundp 'org-export-latex-classes)
+  (setq org-export-latex-classes nil))
+(setq org-export-latex-title-command "") 
 
 ;; fix latex output
 ;; Warnings related to replace-regexp can be ignored until I find a better regex method in lisp or just do it in sed
@@ -210,93 +220,84 @@
                 (goto-char (mark))
                 (replace-regexp "\\\\section{ThesisStart}\n\\\\label{sec-1}" 
                                 " ") 
+
 	    ))
+   (add-to-list 'org-export-latex-classes 
+                '("UoM-thesis-org"
+  "\%\% -*- mode: latex; mode: tex-fold; TeX-PDF-mode: t; TeX-master t  -*-
+   \\documentclass[12pt,a4paper,titlepage,twoside,openright]{book}
+   % Use the UniMelb Dissertation Template
+   \\usepackage{style/uomthesis}
+   % For drafts uncomment the following line
+   \\usepackage[light,timestamp,first]{draftcopy}
+   % Comment out the following line TO MARK blank pages with the
+   % text This page intentionally left blank.
+   \\newcommand{\\markblankpages}{}
+   % Comment out the following line for the copy submitted to the library
+   \\newcommand{\\archivalpapernote}{}
+   % User defined commands
+   \\usepackage[nonumberlist,acronym]{glossaries}
+   \\input{misc/glossary}    
+   \\input{misc/user-defined}
+   \\setcounter{secnumdepth}{5}
+   \\makeglossaries
+   % \\includeonly{Chapter05}
+   % \\hypersetup{ pdftitle = \\myTitle, pdfauthor = Michael A Eager, pdfsubject= PhD thesis, pdfkeywords = auditory system, cochlear nucleus, microcircuit, computational neuroscience, optimisation  }
+   \\graphicspath{{../LiteratureReview/gfx/}%
+   {../SimpleResponsesChapter/gfx/}%
+   {../VowelProcessingChapter/gfx/}%
+   {/media/data/Work/cnstellate/golgi/}%
+   {/media/data/Work/cnstellate/TV_RateLevel/}%
+   {/media/data/Work/cnstellate/}%
+   {/media/data/Work/cnstellate/ResponsesNoComp/ModulationTransferFunction/}%
+   {../GAChapter/gfx/}}
+   \\newcommand{\\manuscript}{}
+    [NO-DEFAULT-PACKAGES]
+    [NO-PACKAGES]" 
+                  ("\\section{%s}" . "\\section{%s}")
+                  ("\\subsection{%s}" . "\\subsection{%s}") 
+                  ("\\subsubsection{%s}" . "\\subsubsection{%s}") 
+                  ("\\paragraph{%s}" . "\\paragraph{%s}"))) 
 
-
-(setq org-latex-to-pdf-process '("pdfquick %b")) 
-;; (setq org-latex-to-pdf-process '("pdflatex -interaction nonstopmode -halt-on-error %f  || exit 0" 
-;;                                  "bibtex %b" "makeglossaries %b"  "pdflatex -interaction nonstopmode %f" 
-;;                                  "pdflatex -interaction nonstopmode %f" )) 
-
-;; allow for export=>beamer by placing
-;; #+LaTeX_CLASS: beamer in org files
-(unless (boundp 'org-export-latex-classes)
-  (setq org-export-latex-classes nil))
-(setq org-export-latex-title-command "") 
-(add-to-list 'org-export-latex-classes 
-	     '("UoM-thesis-org"
-	       "\%\% -*- mode: latex; mode: tex-fold; TeX-PDF-mode: t; TeX-master t  -*-
-\\documentclass[12pt,a4paper,titlepage,twoside,openright]{book}
-% Use the UniMelb Dissertation Template
-\\usepackage{style/uomthesis}
-% For drafts uncomment the following line
-\\usepackage[light,timestamp,first]{draftcopy}
-% Comment out the following line TO MARK blank pages with the
-% text This page intentionally left blank.
-\\newcommand{\\markblankpages}{}
-% Comment out the following line for the copy submitted to the library
-\\newcommand{\\archivalpapernote}{}
-% User defined commands
-\\usepackage[nonumberlist,acronym]{glossaries}
-\\input{misc/glossary}    
-\\input{misc/user-defined}
-\\setcounter{secnumdepth}{5}
-\\makeglossaries
-% \\hypersetup{ pdftitle = \\myTitle, pdfauthor = Michael A Eager, pdfsubject= PhD thesis, pdfkeywords = auditory system, cochlear nucleus, microcircuit, computational neuroscience, optimisation  }
-\\graphicspath{{../LiteratureReview/gfx/}%
-{../SimpleResponsesChapter/gfx/}%
-{../VowelProcessingChapter/gfx/}{../figures/}%
-{/media/data/Work/cnstellate/golgi/}%
-{/media/data/Work/cnstellate/TV_RateLevel/}%
-{/media/data/Work/cnstellate/}%
-{/media/data/Work/cnstellate/ResponsesNoComp/ModulationTransferFunction/}%
-{../GAChapter/}{../GAChapter/gfx/}}
-\\newcommand{\\manuscript}{}
- [NO-DEFAULT-PACKAGES]
- [NO-PACKAGES]" 
-	       ("\n\n\\section{%s}" . "\n\n\\section{%s}")
-	       ("\n\n\\subsection{%s}" . "\n\n\\subsection{%s}") 
-	       ("\n\n\\subsubsection{%s}" . "\n\\subsubsection{%s}") 
-	       ("\n\\paragraph{%s}" . "\n\\paragraph{%s}"))) 
-
-(setq org-export-latex-title-command "\n
-%% Front matter
-%%
-\\begin{frontmatter}
-  \\frontmatterheadings
-  % Collect the dissertation information for the title page
-   \\input{misc/metadata}
-   % Generate the title page
-   \\maketitle
-   \\input{misc/abstract}
-   % Author declaration
-   \\makedeclaration
-   % Acknowledgements
-%    \\input{misc/acknowledgements}
-   % Preface
-   \\input{misc/preface}
-   % Dedications...
-    \\input{misc/dedication}
-   % TOC, LOF, LOT
-   {%
-	   \\singlespacing%
-	   \\pdfbookmark[1]{\\contentsname}{tableofcontents} 
-	   \\tableofcontents
-	   \\pdfbookmark[1]{\\listfigurename}{lof} 
-	   \\listoffigures%
-  % Do not include a list of tables if you have less
-  % than 10 tables, as per SGS suggestion.
-	   \\pdfbookmark[1]{\\listtablename}{lot} 
-	   \\listoftables
-	   \\pdfbookmark[1]{Glossary of Terms}{glossary} 
-	   \\printglossaries
-	   \\clearpage
-     }%
-\\end{frontmatter} 
-\\begin{mainmatter}
-\\mainmatterheadings
-") 
-
+   (setq org-export-latex-title-command "\n
+   %% Front matter
+   %%
+   \\begin{frontmatter}
+     \\frontmatterheadings
+     % Collect the dissertation information for the title page
+      \\input{misc/metadata}
+      % Generate the title page
+      \\maketitle
+      \\input{misc/abstract}
+      % Author declaration
+      \\makedeclaration
+      % Acknowledgements
+       \\input{misc/acknowledgements}
+      % Preface
+      \\input{misc/preface}
+      % Dedications...
+       \\input{misc/dedication}
+      % TOC, LOF, LOT
+      {%
+              \\singlespacing%
+              \\pdfbookmark[1]{\\contentsname}{tableofcontents} 
+              \\tableofcontents
+              \\pdfbookmark[1]{\\listfigurename}{lof} 
+              \\listoffigures%
+     % Do not include a list of tables if you have less
+     % than 10 tables, as per SGS suggestion.
+              \\pdfbookmark[1]{\\listtablename}{lot} 
+              \\listoftables
+              \\pdfbookmark[1]{Glossary of Terms}{glossary} 
+              \\printglossaries
+              \\clearpage
+        }%
+   \\end{frontmatter} 
+   \\begin{mainmatter}
+  
+   \\mainmatterheadings
+  ") 
+   (setq TeX-master t)
 
 (add-to-list 'org-export-latex-classes
   '("UoM-xelatex-thesis"
