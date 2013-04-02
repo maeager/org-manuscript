@@ -6,7 +6,7 @@
 #+TODO: REFTEX
 
 
-#+LaTeX: \chapter{Discussion and Conclusion}\label{sec:DiscussionChapter}
+#+LaTeX: \chapter{Discussion and Conclusion}\label{sec:FinalChapter}
 
 # \yellownote{
 # Usually the discussion has the following parts:
@@ -23,12 +23,12 @@
 
 * Introduction
 :PROPERTIES:
-:CUSTOM_ID: sec:Conc:Into
+:CUSTOM_ID: sec:FinalChapter:Intro
 :END:
 
 
 This thesis investigated the important physiological mechanisms involved in
-neural processing in the \CNSM. It focused specifically on spectral and temporal
+neural processing in the stellate microcircuit of the cochlear nucleus. It focused specifically on spectral and temporal
 enhancement in the microcircuits regulating the output of \TS cells. It achieved
 this through the development and testing of a novel \CNSM model and methods used
 to set parameters based on experimental data. Computer modelling enhances our
@@ -86,9 +86,6 @@ for future work arising out of the thesis.
 
 
 * Overview of Research Findings 
-:PROPERTIES:
-:CUSTOM_ID: sec:Conc:OverviewRF
-:END:
 
 \yellownote{Summary of the findings and general implications}
 
@@ -104,38 +101,85 @@ replication and reproducibility
 
 
 # ------------------
-*Chapter \ref{sec:IntroChapter}* introduced the importance of the TS cell and the \CN stellate
-microcircuit to the auditory pathway
+*Chapter \ref{sec:IntroChapter}* identified a range of deficiencies in previous
+ approaches to modelling and optimisation in the \CN.  
+In particular, previous modelling studies of \TS cells and their microcircuit
+were limited by their outdated input \AN models, errors in network connectivity
+and lack of documentation of parameter optimistation methods.  Additionally,
+previous network-based approaches used insufficiently complex neural models that
+pre-dated the kinetic current models of \citet{RothmanManis:2003b}.  
+These deficiencies limit our insight into neural processing in the CN, and call
+for refined model development and optimisation approaches.
 
-need to create  
 
-The gap in the literature ... biophysically-realistic models of TS cells and its
-constituent microcircuit (the CNSM) using accurate input models, accurate
-membrane current models
+# Taken together, 
+# To overcome these deficiencies 
+# create challenges for getting the best out of BNN models of the auditory system.
+# Making increased use 
+
+# Designed better models and better testing of the models 
 
 
-Chapter \ref{sec:IntroChapter} also introduced the general techniques of parameter setting in BNN
-models.
 
-Analytical optimisation techniques of spiking neural networks and individual
-current channels are not suitable to BNN models which have large numbers of
-parameters and noisy search spaces.
 
-Communication of how parameters are discovered/fitted/optimised in BNN models in
-existing models of the CN are limited .
+
+# In particular, the neural cell models used in previous modelling research did not
+#  use advances in current models introduced by Rothman and Manis
+#  previous modelling research in the CN has not
+
+# integration  of 
+
+# AN model deficiencies in previous CN models
+# Rothman and Manis highly specialised current models unique to the mammalian VCN
+# Use of synaptic connections with sound evidence support
+# Demonstration of methods to show how netpwkr parameters were achieved
+
+
+
+# introduced the importance of the TS cell and the \CN stellate
+# microcircuit to the auditory pathway
+
+# need to create  
+
+# The gap in the literature ... biophysically-realistic models of TS cells and its
+# constituent microcircuit (the CNSM) using accurate input models, accurate
+# membrane current models
+
+
+# Chapter \ref{sec:IntroChapter} also introduced the general techniques of
+# parameter setting in BNN models.
+
+# Analytical optimisation techniques of spiking neural networks and individual
+# current channels are not suitable to BNN models which have large numbers of
+# parameters and noisy search spaces.
+
+# Communication of how parameters are discovered/fitted/optimised in BNN models in
+# existing models of the CN are limited .
 
 # --------------------
 *Chapter \ref{sec:MethodsChapter}* ...
 presented the general methods used to create and optimise the CNSM model.
+The methods were used to improve the design and development of the CNSM model as a
+NEURON package, [[latex:progname][cnstellate]].
+This model collates extensive studies in AN models, physiological
+ experimentation data at the synapse level and  cell level, and more broadly the
+ connectivity across the nuclei into a more realistic model.
 
-This included introducing the Carney periphery AN model, membrane current models
-of \citet{RothmanManis:2003b}
+
+# Taken together, the methods introduced in Chapter \ref{sec:MethodsChapter} were
+# packaged to form the basis for the \CNSM model.
+
+# The Carney AN model, the Rothman and Manis neural models, and synaptic
+# connectivity of the stellate microcircuit were packaged into a NEURON BNN model.
 
 
- and its particular version used in this thesis. The Zilany version of the
- Carney model is most recent detailed model of the AN periphery phenomenological
- model
+# This included introducing the Carney periphery AN model, membrane current models
+# of \citet{RothmanManis:2003b}
 
+
+#  and its particular version used in this thesis. The Zilany version of the
+#  Carney model is most recent detailed model of the AN periphery phenomenological
+#  model
 
 # -------------- 
 In *Chapter \ref{sec:ModelChapter}*, sequential simple optimisation was used in the
@@ -145,8 +189,24 @@ development of cell models and their connectivity in the CNSM model ...
 Development of a novel filter-based neural model for the \GLG cell, whose input
 and intrinsic parameters were fitted to the only study of known \GCD units.
 
-The DS cell model, inlcuding its synaptic inputs from ANF and GLG cells, was
+The DS cell model, including their synaptic inputs from ANF and GLG cells, was
 optimised using responses to tones, noise and click pairs.
+
+
+The TV cell model's synaptic inputs were optimised using rate level curves of
+tones and noise to fit the typical type II \DCN unit behaviour
+\citep{SpirouDavisEtAl:1999}.  A further optimisation of the offset parameter in
+DS cell to TV cell connectivity using notch noise did not confirm the asymmetry
+suggested by \citet{ReissYoung:2005}; however the model proposed a different
+hypothesis that LSR inputs are the contributor to the asymmetry in type II units
+to notch noise.  
+
+The classification of TS cells into three chopper subtypes using spike-based and
+average intracellular responses to tones by \citep{PaoliniClareyEtAl:2005} was
+reversed to optimise the \TS cell model and their inputs.
+
+
+
 
 
 # -------------------
@@ -170,15 +230,12 @@ synthesis of findings and sets out the contributions of the thesis.
 
 * Synthesis and Contributions
 :PROPERTIES:
-:CUSTOM_ID: sec:Conc:Contrib
+:CUSTOM_ID: sec:LastChapter:Contrib
 :END:
 
 
 
 ** The CNSM Model is an advance in BNN models of the stellate microcircuit
-:PROPERTIES:
-:CUSTOM_ID: sec:Conc:CNSM
-:END:
 
 Key statement: The CNSM model is an advance on existing BNN models 
 
@@ -224,14 +281,15 @@ fit to experimental data
 
 ** Optimisation Methods for BNNs must be shared and explored for reproducibility and integrity
 :PROPERTIES:
-:CUSTOM_ID: sec:Conc:OptBNN
+:CUSTOM_ID: sec:LastChapter:OptBNN
 :END:
 
 
  Experimental evidence used in optimisation is challenging but Worthwhile
 
 
-Optimisation methods can provide valuable evidence in developing valid and reproducible BNN models.
+Optimisation methods can provide valuable evidence in developing valid and
+reproducible BNN models.
 
 
 The results of Chapters 3 and 5 show that optimisation techniques ... sequential
@@ -240,7 +298,9 @@ or simultaneous methods worthwhile.
 
 Methodologies 
 
+
 Tools and practices
+
 
 The effort to achieve objectives ... create their own kinds of uncertainties.
 
@@ -276,7 +336,7 @@ and analysis scripts.
 
 * Limitation of the Research
 :PROPERTIES:
-:CUSTOM_ID: sec:Conc:Limitations
+:CUSTOM_ID: sec:LastChapter:Limitations
 :END:
 
 
@@ -308,7 +368,7 @@ The current research was not specifically designed to evaluate factors related t
 
 * Recommendations for Future Work
 :PROPERTIES:
-:CUSTOM_ID: sec:Conc:FutureWork
+:CUSTOM_ID: sec:LastChapter:FutureWork
 :END:
 
 
@@ -387,9 +447,7 @@ processing strategies for the cochlear implant and hearing aids.
 
 
 * Concluding Remarks
-:PROPERTIES:
-:CUSTOM_ID: sec:Conc:ConcludingRemarks
-:END:
+
 
 
 In computational neuroscience the development of BNN models is a promising means
