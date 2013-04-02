@@ -1,0 +1,103 @@
+#  TITLE: The stellate microcircuit of the cochlear nucleus: design and optimisation of a biophysically-realistic neural network
+
+
+
+Biophysically-realistic neural network (BNN) models require
+quality design and optimisation methods in order to best
+advance understanding of complex neural processing.  This
+thesis presents a novel BNN model of the cochlear nucleus stellate
+microcircuit, which provides a robust spectral
+representation of sound and plays an essential part in speech
+communication.  The model was optimised using rigorous
+sequential methods and simultaneous genetic algorithms.
+The results of the analysis demonstrate the
+utility of this approach for improving BNN models.
+
+
+# Biophysically-realistic neural network (BNN) models require quality design and
+# optimisation methods in order to best advance understanding of complex
+# neural processing.  This thesis presents a BNN model of the cochlear nucleus
+# stellate microcircuit. The output of the microcircuit, \TS cells, provide a
+# robust spectral representation of sound and play an essential part in speech
+# communication.  The model was optimised using rigorous sequential methods and
+# simultaneous genetic algorithms.  These methods demonstrated the utility of this
+# approach for improving BNN models.
+
+
+
+# These methods generated a viable model and 
+
+
+# the design and optimisation of
+
+# In computational neuroscience the development of biophysically-realistic neural
+# network (BNN)  models is a promising means by which we can understand highly complex
+# neural processing.  The accuracy of this understanding relies on the quality of
+# design and optimisation methods used upon the experimental data.
+
+
+# Drawing on the wealth of experimental data accumulated in auditory
+# neuroscience, 
+
+# The model design draws on the wealth of experimental data
+ 
+# Two methods were used to
+
+# computational neuroscience
+
+# This thesis presents a study
+
+# The purpose of the optimisation experiments was to
+# develop a biophysically-realistic neural network model of the stellate
+# microcircuit in the cochlear nucleus.  
+
+# The methods used in this section
+# are a practical and realistic means for constructing microcircuits with
+# sensory or feature-based topography. 
+
+# They exploit extensive experimental
+# evidence that describes the behaviour of each interneuron in the
+# network.  
+
+
+# draws on the wealth of experimental data accumulated in auditory
+# neuroscience to create a detailed \BNN model of the T stellate
+# microcircuit in the cochlear nucleus (hereafter referred to as the \CNSM
+# model, as described in Chapter \ref{sec:MethodsChapter}).  
+
+# The design
+# and methods used for the construction of the model provide insights
+# relevant to other neural network models of the brain, especially those
+# that use sensory pathways.
+
+# Despite advances in computational neuroscience, it remains a challenging
+# task to develop an accurate representation of the complex behaviour of
+# real neural networks.  
+
+# Choices, guesses and assumptions continue to be
+# integral parts of neuronal modelling \citep{SegevBurkeEtAl:1998}.  
+
+# With
+# the acceleration of computational power and enhanced experimental
+# techniques in multi-unit recordings, it is possible to develop more
+# detailed neural models.
+
+# In order to create a realistic microcircuit, the parameter optimisation
+# routine needs to be developed in sequential stages.  
+
+# The connections
+# within the \CNSM model (Figure \ref{fig:microcircuit}) were developed
+# using such a sequential method of optimisation steps.  
+
+# Parameters in the
+# microcircuit can be separated into two classes: cell-based and
+# connectivity-based.
+
+# The development of methods for constraining new models is an important step for
+# generating microcircuits and larger networks.  The study reported in this
+# chapter has shown that the \GA is an adequate method for parameter optimisation
+# and that the \ST and \AIV cost functions are comparably good methods for
+# constraining \BNNs. Further development is needed to enhance the robustness of
+# the cost function methods to input noise, especially for sensitivity and
+# robustness of inhibitory connections in the \CN stellate network.
+

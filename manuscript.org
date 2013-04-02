@@ -1,0 +1,395 @@
+#+TITLE: Thesis Manuscript
+#+DATE:
+#+AUTHOR: Michael A Eager
+#+LANGUAGE: en_GB-ise-wo_accents 
+#+OPTIONS:   H:5 num:t toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t >:t 
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+TODO: REFTEX
+#+STARTUP: oddeven inlineimages hideblocks fold align hidestars 
+#+SEQ_TODO:   TODO(t) INPROGRESS(i) WAITING(w@) | DONE(d) CANCELED(c@)
+#+TAGS:       Write(w) Update(u) Fix(f) Check(c) noexport(n)
+#+BIBLIOGRAPHY: ../org-manuscript/bib/MyBib plainnat
+
+#+LaTeX_CLASS: UoM-thesis-org
+#+LaTeX_CLASS_OPTIONS: [a4paper,12pt,titlepage,twopage,openright]
+# + LaTeX_CLASS: UoM-xelatex-thesis
+#+LATEX_HEADER:\setcounter{secnumdepth}{6}
+
+
+* ThesisStart
+
+
+# # Chapter 1: intro and literature review
+#+LaTeX: \cleardoublepage
+#+INCLUDE: ../LiteratureReview/Chapter01.org 
+
+# ## Methods Chapter
+#+LaTeX: \cleardoublepage
+#+INCLUDE: ../MethodsChapter/Chapter02.org  
+
+# # Chapter 3 without appendix
+#+LaTeX: \cleardoublepage
+#+INCLUDE: ../SimpleResponsesChapter/Chapter03.org 
+
+
+# # Chapter 4 without appendix
+#+LaTeX: \clearpage
+#+INCLUDE: ../VowelProcessingChapter/Chapter04.org 
+
+# # Chapter 5
+#+LaTeX: \cleardoublepage
+#+INCLUDE: ../GAChapter/Chapter05.org 
+ 
+
+#+LaTeX: \cleardoublepage
+# \setcounter{tocdepth}{0}
+# # # Discussion and Conclusion
+#+INCLUDE:  Chapter06.org
+
+# # Conclusion
+# # + include: ./Chapter07.org
+
+#+LATEX:   \end{mainmatter}
+
+# ##
+# ## Appendicies
+# ##
+# # + LATEX:   \begin{appendix}
+# # Use \chapter{Appendix A}\label{appendixA} in first 
+# # + include: ../SimpleResponsesChapter/Chapter03Appendix.org
+# # \newpage
+# # + include: ../VowelResponsesChapter/Chapter04Appendix.org
+# # Optimisation of BNNs using Ideal inputs
+# # + include: ../GAChapter/Chapter05B.org :lines "1298-1720"
+# # Sensitivity Analysis of Individual Parameters near the Global Optimum
+# # + include: ../GAChapter/Chapter05.org :lines "1722-2114"
+# #\newpage
+# #+include: ../GAChapter/Chapter05Appendix.org
+# # + LATEX:   \end{appendix}
+
+# #
+# # Bibliography
+# #
+
+#+LATEX: \begin{backmatter}
+#+LATEX: \chapter*{\bibname}\markboth{\MakeUppercase\bibname}{\MakeUppercase\bibname}
+#   %
+#   % Uncomment the following line to produce a
+#   % bibliography list of all entries in the bib database
+#   %\nocite{*}
+#   %
+#   %bmc_article} % Style BST file
+#+LATEX: \bibliographystyle{plainnat}
+#+LATEX: \bibliography{../org-manuscript/bib/MyBib}
+#+LATEX: \end{backmatter}
+
+
+
+# ... and of eight years work! :-)
+
+# # DRAFTING
+\newpage
+\listoftodos
+
+
+* Prelude                                                          :noexport:
+
+#+name: my-thesis-latex-export
+#+begin_src emacs-lisp
+  
+  (setq org-latex-to-pdf-process '("pdfquick %f"))
+  ;; (setq org-latex-to-pdf-process '("xelatex -interaction nonstopmode %f" 
+  ;;                                  "makeglossaries %b" "bibtex %b" "xelatex -interaction nonstopmode %f" 
+  ;;                                  "xelatex -interaction nonstopmode %f" )) 
+  ;; (setq org-latex-to-pdf-process '("lapdf Chapter3")) 
+  (setq org-export-latex-final-hook ())
+  (add-hook 'org-export-latex-final-hook
+            (lambda ()
+              (setq case-fold-search nil)
+              (goto-char (point-min))
+              (search-forward "\\begin{document}") 
+              (push-mark)
+              (replace-regexp "\\( \\|\n\\)\\\\ref" 
+                              "~\\\\ref")
+              (goto-char (mark))
+              (replace-regexp "\\( \\|\n\\)\\\\citep" 
+                              "\\\\ \\\\citep")  
+              ;; shorten section titles
+              (goto-char (mark))
+              (replace-regexp "\\\\section{\\(.*\\):" 
+                              "\\\\section[\\1]{\\1:")
+              ;; Go back to start
+              (goto-char (mark))
+              ;; Correct for citations immediately after an item
+              (replace-regexp "item[~\\\\]" 
+                              "item ")
+              ;; Acronyms or Capitals at the end of a sentence cause poor spacing
+              (goto-char (mark))
+              (replace-regexp "\\([A-Z][A-Z]\\)\\.\\( \\|\n\\)" 
+                              "\\1\\\\@. ")
+              ;; Double acronyms
+              (goto-char (mark))
+              (replace-regexp "\\([A-Z][A-Zs]\\) \\([\\\\A-Z]\\)" 
+                              "\\1\\\\ \\2")
+              ;; Force a space between numbers followed by text or acronym 
+              (goto-char (mark))
+              (replace-regexp "\\([0-9]\\) \\([\\\\A-Za-z]\\)" 
+                              "\\1\\\\ \\2")
+              ;; silly repeats corrected
+              (goto-char (mark))
+              (replace-regexp "\\\\}\\([^{]*\\)\\\\{" 
+                              "}\\1{")
+              (goto-char (mark))
+              (replace-regexp "\\\\{" 
+                              "{")
+              (goto-char (mark))
+              (replace-regexp "\\\\}" 
+                              "}")
+              ;;        ;; Correct for poor tildas
+              ;;      ;                  (goto-char (mark))
+              ;;      ;                  (replace-regexp "\\\\~\\{\\}" 
+              ;;      ;                                  "~")
+              ;;              (goto-char (mark))
+              ;;              (replace "^#\\+LATEX_HEADER:.*$" "")
+              ;;             (goto-char (mark))
+              ;;              (replace-regexp "i\\.e\\. "  "i.e.\\\\ ")
+              ;;              (goto-char (mark))
+              ;;              (replace-regexp "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ " "\\\\ ")
+              (goto-char (mark))
+              (replace-regexp "\\\\section{ThesisStart}\n\\\\label{sec-1}" 
+                              " ") 
+              ))  
+  (add-to-list 'org-export-latex-classes 
+               '("UoM-thesis-org"
+                 "\%\% -*- mode: latex; mode: tex-fold; TeX-PDF-mode: t; TeX-master t  -*-
+  \\documentclass[12pt,a4paper,titlepage,twoside,openright]{book}
+  % Use the UniMelb Dissertation Template
+  \\usepackage{style/uomthesis}
+  % For drafts uncomment the following line
+  \\usepackage[light,timestamp,first]{draftcopy}
+  % Comment out the following line TO MARK blank pages with the
+  % text This page intentionally left blank.
+  \\newcommand{\\markblankpages}{}
+  % Comment out the following line for the copy submitted to the library
+  \\newcommand{\\archivalpapernote}{}
+  % User defined commands
+  \\usepackage[nonumberlist,acronym]{glossaries}
+  \\input{misc/glossary}    
+  \\input{misc/user-defined}
+  \\setcounter{secnumdepth}{5}
+  \\makeglossaries
+  % \\includeonly{Chapter05}
+  % \\hypersetup{ pdftitle = \\myTitle, pdfauthor = Michael A Eager, pdfsubject= PhD thesis, pdfkeywords = auditory system, cochlear nucleus, microcircuit, computational neuroscience, optimisation  , T-stellate cells, biophysically-realistic neural networks}
+  \\graphicspath{{../LiteratureReview/gfx/}%
+  {../SimpleResponsesChapter/gfx/}%
+  {../VowelResponsesChapter/gfx/}{../figures/}%
+  {/media/data/Work/cnstellate/golgi/}%
+  {/media/data/Work/cnstellate/TV_RateLevel/}%
+  {/media/data/Work/cnstellate/}%
+  {/media/data/Work/cnstellate/ResponsesNoComp/ModulationTransferFunction/}%
+  {../GAChapter/}{../GAChapter/gfx/}{./GAChapter/archive/}}
+  \\newcommand{\\manuscript}{}
+   [NO-DEFAULT-PACKAGES]
+   [NO-PACKAGES]" 
+                 ("\\section{%s}" . "\\section{%s}")
+                 ("\\subsection{%s}" . "\\subsection{%s}") 
+                 ("\\subsubsection{%s}" . "\\subsubsection{%s}") 
+                 ("\\paragraph{%s}" . "\\paragraph{%s}"))) 
+  (setq org-export-latex-title-command "\n
+  %% Front matter
+  %%
+  \\begin{frontmatter}
+  \\frontmatterheadings
+  % Collect the dissertation information for the title page
+  \\input{../org-manuscript/misc/metadata}
+  % Generate the title page
+  \\maketitle
+  \\input{../org-manuscript/misc/abstract}
+     % Author declaration
+     \\makedeclaration
+     % Acknowledgements
+  %       \\input{../org-manuscript/misc/acknowledgements}
+  % Preface
+  \\input{../org-manuscript/misc/preface}
+  % Dedications...
+  \\input{../org-manuscript/misc/dedication}
+  % TOC, LOF, LOT
+  {%
+    \\singlespacing%
+    \\pdfbookmark[1]{\\contentsname}{tableofcontents} 
+    \\tableofcontents
+    \\pdfbookmark[1]{\\listfigurename}{lof} 
+    \\listoffigures%
+  % Do not include a list of tables if you have less
+  % than 10 tables, as per SGS suggestion.
+    \\pdfbookmark[1]{\\listtablename}{lot} 
+    \\listoftables
+    \\pdfbookmark[1]{Glossary of Terms}{glossary} 
+    \\printglossaries
+    \\clearpage
+  }%
+  \\end{frontmatter} 
+  \\begin{mainmatter}
+  \\mainmatterheadings
+  ") 
+  (setq TeX-master t)
+#+end_src
+: t
+
+#+RESULTS: my-thesis-latex-export
+: t
+
+#+RESULTS:
+
+
+#+BEGIN_SRC emacs-lisp
+  
+  (setq  org-export-latex-final-hook nil)
+  (add-hook 'org-export-latex-final-hook
+            (lambda ()
+              (setq case-fold-search nil)
+              (goto-char (point-min))
+              (search-forward "\\begin{document}")
+              (push-mark)
+  
+              ;; Force hard space before references
+              (while (re-search-forward "\\( \\|\n\\)\\\\ref" nil t)
+                (replace-match "~\\\\ref" nil nil))
+  
+              ;; Force space before citation
+              (goto-char (mark))
+              (while (re-search-forward "\\( \\|\n\\)\\\\cite" nil t)
+                (replace-match "\\\\ \\\\cite" nil nil))
+  
+              ;; add shortened section titles
+              (goto-char (mark))
+              (while (re-search-forward "\\\\section{\\(.*\\):" nil t)
+                (replace-match "\\\\section[\\1]{\\1:" nil nil))
+  
+              ;; Correct for citations immediately after an item
+              (goto-char (mark))
+              (while (re-search-forward "item[~\\\\]" nil t)
+                (replace-match "item " nil nil))
+  
+              ;; Force space between double acronyms or acronyms and slashs
+              (goto-char (mark))
+              ;(replace-regexp "\\([A-Zu][A-Zsm]\\) \\([\\\\A-Z]\\)"
+  ;                   "\\1\\\\ \\2")
+              (while (re-search-forward  "\\([A-Z][A-Zs]\\) \\([\\\\A-Z]\\)" nil t)
+                (replace-match "\\1\\\\ \\2" nil nil))
+  
+              ;; Force \@ between acronyms and period.
+              (goto-char (mark))
+  ;           (while (re-search-forward  "\\([A-Zu][A-Z]\\)[\\.] " nil t)
+  ;             (replace-match "\\1\\\\@. " nil nil))
+  
+              ;; Acronyms or Capitals at the end of a sentence cause poor spacing.
+              ;; White space reproduced for occurance preceeding \item
+              ;; (goto-char (mark))
+              ;; (replace-regexp "\\([A-Z][A-Zs]\\)\\.\\( \\|\n\\)"
+              ;;                 "\\1\\\\@.  \\2")
+  
+              ;; Force space after acronym '\um'
+              (goto-char (mark))
+              (while (re-search-forward "\\(\\\\um\\)\\( \\|\n\\)" nil t)
+                (replace-match "\\1\\\\ \\2" nil nil))
+  
+              ;; Force a space between numbers followed by text or acronym
+              (goto-char (mark))
+              (while (re-search-forward "\\([0-9]\\) \\([\\\\A-Za-z]\\)" nil t)
+                (replace-match "\\1\\\\ \\2" nil nil))
+  
+              ;; Force a space between numbers followed by text or acronym
+              (goto-char (mark))
+              (while (re-search-forward "i\\.e\\. " nil t)
+                (replace-match "i.e.\\\\ " nil nil))
+  
+              ;; Force  floating tables and figures to be at the top
+              (goto-char (mark))
+              (while (re-search-forward "htb" nil t)
+                (replace-match "t!" nil nil))
+  
+              ;; Correct org-babel source block formatted outputs
+              (goto-char (mark))
+              (while (re-search-forward "\\\\texttt{\\\\$\\(.*\\)\\\\$}" nil t)
+                (replace-match "$\\1$" nil nil))
+  
+              (goto-char (mark))
+              ;; Correct for poor tilda conversions
+                                          ;                  (goto-char (mark))
+                                          ;                  (replace-regexp "\\\\~\\{\\}"
+                                          ;                                  "~")
+              ;; double check \{ ... \}
+              (goto-char (mark))
+              (while (re-search-forward "\\\\{\\(.*\\)\\\\}" nil t)
+                (replace-match "{\\1}" nil nil))
+  
+                  (goto-char (mark))
+                  (replace-regexp "\\\\section{ThesisStart}\n\\\\label{sec-1}" 
+                                  " ") 
+  
+              ))
+  
+  
+#+END_SRC
+
+#+RESULTS:
+| lambda | nil | (setq case-fold-search nil) | (goto-char (point-min)) | (search-forward \begin{document}) | (push-mark) | (while (re-search-forward \( \ | \n\)\\ref nil t) (replace-match ~\\ref nil nil)) | (goto-char (mark)) | (while (re-search-forward \( \ | \n\)\\cite nil t) (replace-match \\ \\cite nil nil)) | (goto-char (mark)) | (while (re-search-forward \\section{\(.*\): nil t) (replace-match \\section[\1]{\1: nil nil)) | (goto-char (mark)) | (while (re-search-forward item[~\\] nil t) (replace-match item  nil nil)) | (goto-char (mark)) | (while (re-search-forward \([A-Z][A-Zs]\) \([\\A-Z]\) nil t) (replace-match \1\\ \2 nil nil)) | (goto-char (mark)) | (goto-char (mark)) | (while (re-search-forward \(\\um\)\( \ | \n\) nil t) (replace-match \1\\ \2 nil nil)) | (goto-char (mark)) | (while (re-search-forward \([0-9]\) \([\\A-Za-z]\) nil t) (replace-match \1\\ \2 nil nil)) | (goto-char (mark)) | (while (re-search-forward i\.e\.  nil t) (replace-match i.e.\\  nil nil)) | (goto-char (mark)) | (while (re-search-forward htb nil t) (replace-match t! nil nil)) | (goto-char (mark)) | (while (re-search-forward \\texttt{\\$\(.*\)\\$} nil t) (replace-match $\1$ nil nil)) | (goto-char (mark)) | (goto-char (mark)) | (while (re-search-forward \\{\(.*\)\\} nil t) (replace-match {\1} nil nil)) | (goto-char (mark)) | (replace-regexp \\section{ThesisStart}\n\\label{sec-1}  ) |
+
+
+****  Source blocks :noexport:
+
+# Get optimisation parameter: default
+#+name: opt_param
+#+BEGIN_SRC sh :results replace raw
+ par=`echo "$param" | sed -e 's/\([^\\]\)\[/\1\\\\[/g' -e 's/\([^\\]\)\]/\1\\\\]/g'`
+ grep ${par} ../SimpleResponsesChapter/gfx/TStellate_${type}/TStellate.Fit.dat | awk -F' ' '{print $3}'
+#+END_SRC
+
+# Get optimisation parameter: Floating point with optional exponent format 
+#+name: opt_paramf
+#+BEGIN_SRC sh :results replace raw
+ par=`echo "$param" | sed -e 's/\([^\\]\)\[/\1\\\\[/g' -e 's/\([^\\]\)\]/\1\\\\]/g'`
+ grep ${par} ../SimpleResponsesChapter/gfx/TStellate_${type}/TStellate.Fit.dat | awk -F' ' '{printf("%.3g",$3)}'
+#+END_SRC
+
+
+# get the ts_gleak parameter : forced exponent format
+#+name: param_ts_gleak
+#+BEGIN_SRC sh :results replace raw
+ grep param.ts_gleak gfx/TStellate_${type}/TStellate.Fit.dat | awk '{printf(" %.3e ",$3)}'
+#+END_SRC
+
+#+name: opt_error
+#+BEGIN_SRC sh :results replace raw
+ grep 'final error' gfx/TStellate_${type}/TStellate.Fit.dat | awk -F'=' '{printf("%.3g",$2)}'
+#+END_SRC
+
+
+
+#+name: CS_rate
+#+BEGIN_SRC sh :exports none
+  grep -A 14 'at spl '$SPLreTh''  ~/Work/cnstellate/TStellate2_CS/TStellate.Fit.dat | tail -6  | awk 'BEGIN{sum=0;} {sum+=$3;} END{printf("$%.1f$",sum/5.0)}'
+#+END_SRC
+
+#+name: CT1_rate
+#+BEGIN_SRC sh  :exports none 
+  grep -A 14 'at spl '$SPLreTh''  ~/Work/cnstellate/TStellate2_CT1/TStellate.Fit.dat |  tail -6  | awk 'BEGIN{sum=0;} {sum+=$3;} END{printf("$%.1f$",sum/5.0)}'
+#+END_SRC
+
+
+#+name: CT2_rate
+#+BEGIN_SRC sh :exports none
+  grep -A 14 'at spl '$SPLreTh''  ~/Work/cnstellate/TStellate2_CT2/TStellate.Fit.dat | tail -6  | awk 'BEGIN{sum=0;} {sum+=$3;} END{printf("$%.1f$",sum/5.0)}'
+#+END_SRC
+
+#+name: CT2_fsl
+#+BEGIN_SRC sh :exports none
+   grep -A33 'at spl '$SPLreTh'' ~/Work/cnstellate/TStellate2_CT2/TStellate.Fit.dat | tail -1 | tr ',' ' '  | awk '{printf("$%.2f \\pm %.2f$\n",$4,$7)}'
+#+END_SRC
+
+
+
+
