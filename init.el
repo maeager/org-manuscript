@@ -123,6 +123,16 @@
 
 
 
+(setq org-latex-to-pdf-process '("pdfquick %b")) 
+;; (setq org-latex-to-pdf-process '("pdflatex -interaction nonstopmode -halt-on-error %f  || exit 0" 
+;;                                  "bibtex %b" "makeglossaries %b"  "pdflatex -interaction nonstopmode %f" 
+;;                                  "pdflatex -interaction nonstopmode %f" )) 
+
+;; allow for export=>beamer by placing
+;; #+LaTeX_CLASS: beamer in org files
+(unless (boundp 'org-export-latex-classes)
+  (setq org-export-latex-classes nil))
+(setq org-export-latex-title-command "") 
 
 ;; fix latex output
 ;; Warnings related to replace-regexp can be ignored until I find a better regex method in lisp or just do it in sed
