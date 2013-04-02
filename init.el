@@ -297,6 +297,27 @@
 \\mainmatterheadings
 ") 
 
+(add-to-list 'org-export-latex-classes 
+	     '("UoM-draft-org-article"
+	       "\% -*- mode: latex; mode: visual-line; TeX-master: t; TeX-PDF-mode: t -*-
+     \\documentclass[11pt,a4paper,twoside,openright]{book}
+       \\usepackage{../org-manuscript/style/uomthesis} 
+       \\input{../org-manuscript/misc/user-defined}
+       \\usepackage[nonumberlist,acronym]{glossaries}
+       \\input{../org-manuscript/misc/glossary} 
+       \\makeglossaries
+       \\pretolerance=150 \\tolerance=100
+       \\setlength{\\emergencystretch}{3em} 
+       \\overfullrule=1mm 
+     % \\usepackage[notcite]{showkeys} 
+       \\lfoot{\\footnotesize\\today\\ at \\thistime}"
+; [NO-DEFAULT-PACKAGES]
+;       [NO-PACKAGES]" 
+	       ("\\newpage\n\\section{%s}" . "\n\\section{%s}")
+	       ("\\subsection{%s}"         . "\n\\subsection{%s}") 
+	       ("\\subsubsection{%s}"      . "\n\\subsubsection{%s}") 
+	       ("\\paragraph{%s}"          . "\n\\paragraph{%s}"))) 
+
 
 (add-to-list 'org-export-latex-classes
   '("UoM-xelatex-thesis"

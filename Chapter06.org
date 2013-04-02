@@ -6,7 +6,7 @@
 #+TODO: REFTEX
 
 
-#+LaTeX: \chapter{Discussion and Conclusion}\label{sec:Discussion}
+#+LaTeX: \chapter{Discussion and Conclusion}\label{sec:DiscussionChapter}
 
 # \yellownote{
 # Usually the discussion has the following parts:
@@ -19,7 +19,7 @@
 #     Provide no more than two recommendations for further research. Do not offer suggestions which could have been done within the study, as this shows there has been inadequate examination and interpretation of the data.
 # }
 
-\yellownote{This chapter in not complete and will undergo severe changes.}
+\yellownote{This chapter in not complete and will undergo changes.}
 
 * Introduction
 :PROPERTIES:
@@ -45,6 +45,11 @@ and known experimental data.
 It demonstrates through rigorous sequential optimisation that the cell models
 and connectivity parameters in the \CNSM model can be created to replicate known
 behaviour to tones and noise.
+
+
+
+
+
 
 Further insight into the temporal 
 response optimised \CNSM model's response to 
@@ -86,7 +91,9 @@ for future work arising out of the thesis.
 :END:
 
 \yellownote{Summary of the findings and general implications}
+
 These findings suggest that in general ......
+
 The results of this research support the idea that .......
 
 using standard phenomenologically accurate models
@@ -96,48 +103,59 @@ using publicly available models
 replication and reproducibility
 
 
-
-*Chapter 1* ...
-introduced the importance of the TS cell and the \CN stellate microcircuit to the auditory pathway 
+# ------------------
+*Chapter \ref{sec:IntroChapter}* introduced the importance of the TS cell and the \CN stellate
+microcircuit to the auditory pathway
 
 need to create  
 
-The gap in the literature ... biophysically-realistic models of TS cells and its constituent microcircuit (the CNSM) using 
-accurate input models, accurate membrane current models 
+The gap in the literature ... biophysically-realistic models of TS cells and its
+constituent microcircuit (the CNSM) using accurate input models, accurate
+membrane current models
 
 
-Chapter 1 also introduced the general techniques of parameter setting in BNN models.
+Chapter \ref{sec:IntroChapter} also introduced the general techniques of parameter setting in BNN
+models.
 
-Analytical optimisation techniques of spiking neural networks and individual current channels are not suitable to BNN models which have large numbers of parameters and noisy search spaces.    
+Analytical optimisation techniques of spiking neural networks and individual
+current channels are not suitable to BNN models which have large numbers of
+parameters and noisy search spaces.
 
-Communication of how parameters are discovered/fitted/optimised in BNN models in existing models of the CN are limited .
+Communication of how parameters are discovered/fitted/optimised in BNN models in
+existing models of the CN are limited .
 
---------------------
-*Chapter 2* ...
+# --------------------
+*Chapter \ref{sec:MethodsChapter}* ...
 presented the general methods used to create and optimise the CNSM model.
 
-This included introducing the Carney periphery AN model, membrane current models of \citet{RothmanManis:2003b}
+This included introducing the Carney periphery AN model, membrane current models
+of \citet{RothmanManis:2003b}
 
 
- and its particular version used in this thesis. The Zilany version of the Carney model is most recent detailed model of the AN periphery phenomenological model 
+ and its particular version used in this thesis. The Zilany version of the
+ Carney model is most recent detailed model of the AN periphery phenomenological
+ model
 
 
---------------
-In *Chapter 3*, sequential simple optimisation was used in the development of cell models and their connectivity in the CNSM model  ...
+# -------------- 
+In *Chapter \ref{sec:ModelChapter}*, sequential simple optimisation was used in the
+development of cell models and their connectivity in the CNSM model ...
 
 
-Development of a novel filter-based neural model for the \GLG cell, whose input and intrinsic parameters were fitted to the only study of known \GCD units.
+Development of a novel filter-based neural model for the \GLG cell, whose input
+and intrinsic parameters were fitted to the only study of known \GCD units.
 
-The DS cell model, inlcuding its synaptic inputs from ANF and GLG cells, was optimised using responses to tones, noise and click pairs. 
+The DS cell model, inlcuding its synaptic inputs from ANF and GLG cells, was
+optimised using responses to tones, noise and click pairs.
 
 
--------------------
-*Chapter 4* ...
+# -------------------
+*Chapter \ref{sec:AMChapter}* ...
 investigated the output of the optimised CNSM model to AM tones. 
 
 
 
-*Chapter 5* ...
+*Chapter \ref{sec:GAChapter}* ...
 
 
 
@@ -156,10 +174,21 @@ synthesis of findings and sets out the contributions of the thesis.
 :END:
 
 
+
+** The CNSM Model is an advance in BNN models of the stellate microcircuit
+:PROPERTIES:
+:CUSTOM_ID: sec:Conc:CNSM
+:END:
+
+Key statement: The CNSM model is an advance on existing BNN models 
+
+
 This thesis contributes to the understanding ... 
 
 
 These findings enhance our understanding of ...
+
+
 
 The findings from this study make several contributions to the current literature. First,... 
 
@@ -187,31 +216,46 @@ neural microcircuits through either sequential or simultaneous methods.
 
 
 
-** The CNSM Model
-:PROPERTIES:
-:CUSTOM_ID: sec:Conc:CNSM
-:END:
-
 good model
 
 
 fit to experimental data
 
 
-** Optimisation Methods for BNNs
+** Optimisation Methods for BNNs must be shared and explored for reproducibility and integrity
 :PROPERTIES:
 :CUSTOM_ID: sec:Conc:OptBNN
 :END:
 
 
-The results of Chapters 3 and 5 show that optimisation techniques ... sequential or simultaneous methods worthwhile. 
-The results of genetic algorithm optimisation show/indicate that ...
+ Experimental evidence used in optimisation is challenging but Worthwhile
+
+
+Optimisation methods can provide valuable evidence in developing valid and reproducible BNN models.
+
+
+The results of Chapters 3 and 5 show that optimisation techniques ... sequential
+or simultaneous methods worthwhile.  
+
+
+Methodologies 
+
+Tools and practices
+
+The effort to achieve objectives ... create their own kinds of uncertainties.
+
+Limitation and constraints set out in fitness functions ... facilitate ...
+
+Rigorous sequential methods
+
+The results of genetic algorithm
+optimisation show/indicate that ...
+
+Simultaneous  -- 
 
 
 
 Substantial progression of the use of BNNs in neuroscience ...
-
-
 
 
 Using standard phenomenologically accurate models from inputs to membrane
@@ -228,13 +272,19 @@ performed through using publically available, open source software of the model
 and analysis scripts.  
 
 
+
+
 * Limitation of the Research
 :PROPERTIES:
 :CUSTOM_ID: sec:Conc:Limitations
 :END:
 
 
-THe specific limitations of the studies
+
+The specific limitations of the studies in this thesis were canvassed in the relevant chapters.
+
+The limitations of the CNSM model, described and developed in Chapter 3, relate to the specificity of the neural models, the exclusion of synaptic connections without solid foundations,
+includsion or exclusion of experimental data used in each optimisation step
 
 A number of caveats need to be noted regarding the present study.
 
@@ -269,9 +319,9 @@ Don’t worry – this is not for your advisor to hold your feet to the fire.
 Think of 2-3 other follow-on Ph.D. dissertations that you can envision}
 
 
-Fundamental questions about the behaviour of TS cells remain for exploration
+Fundamental questions about the behaviour of \TS cells remain for exploration
 \citep{OertelWrightEtAl:2011}.  Do intrinsic membrane mechanism or network and
-synaptic mechanisms play a greater role in the behaviour of TS cells?  How are
+synaptic mechanisms play a greater role in the behaviour of \TS cells?  How are
 the different categories of \ANFs (\LSR and \HSR) processed by \TS cell
 microcircuit?  What are the effects of connections across isofrequency laminae
 and how does this effect the spectral representation across the population of
@@ -392,5 +442,11 @@ processing.
 
 # * Conclusion
 
- \yellownote{Conclusions: Be reflective and honest. What were the lessons learned? What were the overall insights? Did you solve the problem completely? How much progress have we made
- in your field because of your work. Don’t bore the reader with a cut-and-paste of your Introduction chapter.}
+ \yellownote{Conclusions: Be reflective and honest. What were the lessons
+ learned? What were the overall insights? Did you solve the problem completely?
+ How much progress have we made in your field because of your work. Don’t bore
+ the reader with a cut-and-paste of your Introduction chapter.}
+
+#+BEGIN_LaTeX
+  \ifthenelse{\isundefined{\manuscript}}{\newpage\singlespacing\bibliographystyle{plainnat} \bibliography{../org-manuscript/bib/MyBib}\newpage \printglossaries\newpage\listoftodos}{}
+#+END_LaTeX
