@@ -5,7 +5,7 @@
 #+BIBLIOGRAPHY: ../org-manuscript/bib/MyBib plainnat
 #+TODO: REFTEX
 
-
+#+LaTeX:\setcounter{chapter}{5}
 #+LaTeX: \chapter{Discussion and Conclusion}\label{sec:FinalChapter}
 
 # \yellownote{
@@ -19,7 +19,7 @@
 #     Provide no more than two recommendations for further research. Do not offer suggestions which could have been done within the study, as this shows there has been inadequate examination and interpretation of the data.
 # }
 
-\yellownote{This chapter in not complete and will undergo changes.}
+# \yellownote{This chapter in not complete and will undergo changes.}
 
 * Introduction
 :PROPERTIES:
@@ -225,16 +225,17 @@ average intracellular responses to tones by \citep{PaoliniClareyEtAl:2005} was
 reversed to optimise the \TS cell model and their inputs.
 
 # -------------------
-*Chapter \ref{sec:AMChapter}* was an extension of the verification procedures in
-Chapter 3 with a focus on responses of the \CNSM model cells to AM tones.
-Temporal information in the auditory system is important for animal communications and location of
-sounds.  Encoding of temporal information in the AN is through fine-timing of
-spikes, phase-locking to the envelope of the stimulus. This poses problems in
-loud, noisy and reverberant environments and also in neural transfer.  The
-stellate microcircuit is the first step in transforming timing-based temporal
-information to a more stable rate-based code in the IC.
-
-
+The study of AM tone responses of the CNSM model in *Chapter
+\ref{sec:AMChapter}* investigated the rate and temporal responses of cells in
+the stellate microcircuit and further validates model responses against known
+experimental evidence.
+# Temporal information in the auditory system is important for animal
+# communications and location of sounds.
+Encoding of temporal information in the AN is through fine-timing of spikes,
+phase-locking to the envelope of the stimulus. This poses problems in loud,
+noisy and reverberant environments and also in neural transfer.  The stellate
+microcircuit is the first step in transforming timing-based temporal information
+to a more stable rate-based code in the IC.
 The rate and temporal responses of each cell in the CNSM model was investigated
 after being presented with AM tones of varying sound intensity and varying
 envelope modulation frequency.
@@ -259,13 +260,13 @@ the limitation of the auditory system is exacerbated by encoding of temporal inf
 saturation at the IHC-AN synapse 
 
 
-
-*Chapter \ref{sec:GAChapter}* ...  reported on the use of GAs and three novel
-cost functions on optimising BNN parameters simultaneously.
+*Chapter \ref{sec:GAChapter}* reported on the use of genetic algorithms and three novel
+cost functions on optimising BNN parameters simultaneously. A simplified CNSM
+model was used as the exemplar BNN model.
 
 Real experimental data was substituted for a known BNN target network
 
-It showed the benefits of 
+It showed the limited benefits of stimulus repetitions to overcome noise in the stimulus, synaptic inputs and smoothing of neural outputs.
 
 
 It demonstrated simultaneous optimisation methods of all network parameters in
@@ -278,81 +279,80 @@ responses, spike times, and time-varying rate.
 
 
 
-The next part of this chapter brings together the forgoing findings ... 
+# The next part of this chapter brings together the forgoing findings ... 
 
 
-synthesis of findings and sets out the contributions of the thesis.
+# synthesis of findings and sets out the contributions of the thesis.
 
 
 
 * Synthesis and Contributions
 :PROPERTIES:
-:CUSTOM_ID: sec:LastChapter:Contrib
+:CUSTOM_ID: sec:FinalChapter:Contrib
 :END:
 
 
 
 ** The CNSM Model is an advance in BNN models of the stellate microcircuit
 
-Key statement: The CNSM model is an advance on existing BNN models 
 
+This thesis contributes to the understanding of neural processing performed
+within the stellate microcircuit of the CN.  It provided a framework of
+neural models, synapse models and connectivity reflecting substantial evidence
+to create a model of the CNSM.  
+The optimisation and reporting studies comprising the thesis ...
+The variety of methods used throughout the thesis generated insights into neural modelling optimisation and 
+understanding of the CNSM.
 
-This thesis contributes to the understanding ... 
-
+A critical and rigorous analysis of histological, immuno-histochemical,
+ electro-physiological and extracellular /in vivo/ physiological data of TS
+ cells and the constituent cells of the stellate microcircuit was performed.  An equally
+ critical analysis of existing modelling studies was also performed and a
+ substantial gap in the literature was found which this thesis tries to address.
 
 These findings enhance our understanding of ...
 
 
-
 The findings from this study make several contributions to the current literature. First,... 
-
 
 The methods used for this X may be applied to other Xs elsewhere in the world. 
 
-
 This research will serve as a basis for future studies ... 
 
-
 This model has gone some way towards enhancing our understanding of ... 
-
 
 The present work makes several noteworthy contributions to ...
 
 
+** Optimisation Methods for BNNs are challenging but must be shared for reproducibility and integrity of models
+ :PROPERTIES:
+ :CUSTOM_ID: sec:FinalChapter:OptBNN
+ :END:
 
-
+# Par 1
 As mentioned in the literature review, little has been done in replication of
 microcircuits and medium sized neural networks from experimental data sets.
 Very little was found in the literature on the question of replicating neural
 outputs from multiple neurons of different cell types.  This thesis set out with
+
 the aim of assessing the importance of optimisation in biophysically realistic
 neural microcircuits through either sequential or simultaneous methods.
 
 
-
-good model
-
-
-fit to experimental data
-
-
-** Optimisation Methods for BNNs must be shared and explored for reproducibility and integrity
-:PROPERTIES:
-:CUSTOM_ID: sec:LastChapter:OptBNN
-:END:
-
-
- Experimental evidence used in optimisation is challenging but Worthwhile
+#Par 2
+Experimental evidence used in optimisation is challenging but Worthwhile
 
 
 Optimisation methods can provide valuable evidence in developing valid and
 reproducible BNN models.
 
 
-The results of Chapters 3 and 5 show that optimisation techniques ... sequential
+The results of Chapters 3 and 5 show that optimisation techniques ... 
+
+sequential
 or simultaneous methods worthwhile.  
 
-
+# Par 3
 Methodologies 
 
 
@@ -374,13 +374,11 @@ Simultaneous  --
 
 Substantial progression of the use of BNNs in neuroscience ...
 
-
 Using standard phenomenologically accurate models from inputs to membrane
 currents to recognised connections.
 
 
-
-
+# Par 4
 Replication and reproducibility is an important factor in numerical modelling
 and science in general. Information contained within the compact tables in
 Chapters 3 and 4 show the methods for model replication suggested by
@@ -392,19 +390,18 @@ and analysis scripts.
 
 
 * Limitation of the Research
-:PROPERTIES:
-:CUSTOM_ID: sec:LastChapter:Limitations
-:END:
-
+ :PROPERTIES:
+ :CUSTOM_ID: sec:FinalChapter:Limitations
+ :END:
 
 
 The specific limitations of the studies in this thesis were canvassed in the
-relevant chapters.
+relevant chapters. The limitations of the CNSM model, described and developed in Chapter 3, relate
+to the specificity of the neural models' morphology and the exclusion of synaptic connections
+without solid foundations
 
-The limitations of the CNSM model, described and developed in Chapter 3, relate
-to the specificity of the neural models, the exclusion of synaptic connections
-without solid foundations, includsion or exclusion of experimental data used in
-each optimisation step
+ inclusion or exclusion of experimental data used in each optimisation step
+
 
 A number of caveats need to be noted regarding the present study.
 
@@ -427,16 +424,15 @@ The current research was not specifically designed to evaluate factors related t
 
 
 * Recommendations for Future Work
-:PROPERTIES:
-:CUSTOM_ID: sec:LastChapter:FutureWork
-:END:
+ :PROPERTIES:
+ :CUSTOM_ID: sec:FinalChapter:FutureWork
+ :END:
 
-
-\yellownote{Future Work: 
-Don’t view this necessarily as a list of the limitations of your thesis.
-Think of what you would do if you had an extra year in your Ph.D.
-Don’t worry – this is not for your advisor to hold your feet to the fire.
-Think of 2-3 other follow-on Ph.D. dissertations that you can envision}
+# \yellownote{Future Work: 
+# Don’t view this necessarily as a list of the limitations of your thesis.
+# Think of what you would do if you had an extra year in your Ph.D.
+# Don’t worry – this is not for your advisor to hold your feet to the fire.
+# Think of 2-3 other follow-on Ph.D. dissertations that you can envision}
 
 
 Fundamental questions about the behaviour of \TS cells remain for exploration
@@ -455,10 +451,10 @@ parameters.  Further simulations on the pharmacological effects of GABA and
 glycine blockers
 \citep{EvansZhao:1998,EvansZhao:1993a,BackoffShadduckEtAl:1999,CasparyBackoffEtAl:1994,PalombiCaspary:1992}
 or other modulating neurotransmitters from non-auditory inputs
-\citep{MuldersPaoliniEtAl:2003}}
+\citep{MuldersPaoliniEtAl:2003}.}
 
 
-\yellownote{Further studies on commissural inputs?Labelled \DS cells project
+\yellownote{Further studies on commissural inputs? Labelled \DS cells project
 widely to the VCN and DCN; and in some cases to the contralateral CN in the same
 manner \citep{SmithMassieEtAl:2005,ArnottWallaceEtAl:2004} In vivo studies have
 already shown the effects of commisural inhibition of first spike responses to
@@ -507,7 +503,6 @@ processing strategies for the cochlear implant and hearing aids.
 
 
 * Concluding Remarks
-
 
 
 In computational neuroscience the development of BNN models is a promising means
