@@ -28,35 +28,34 @@
 
 
 This thesis investigated the important physiological mechanisms involved in
-neural processing in the stellate microcircuit of the cochlear nucleus. It focused specifically on spectral and temporal
-enhancement in the microcircuits regulating the output of \TS cells. It achieved
-this through the development and testing of a novel \CNSM model and methods used
-to set parameters based on experimental data. Computer modelling enhances our
-knowledge of complex neural interactions in \TS cells and provided further
-understanding of inputs to higher centres.  By developing a \BNN with a high
-degree of realism at the individual cell level, this thesis has contributed to
-our understanding of the influence of synaptic organisation of physiological
-behaviour in the \CNSM.
+neural processing in the stellate microcircuit of the cochlear nucleus. It
+focused specifically on rate-place and temporal processing enhancement in the microcircuits
+regulating the output of \TS cells. It achieved this through the development and
+testing of a novel \CNSM model and methods used to set parameters based on
+experimental data. Computer modelling enhances our knowledge of complex neural
+interactions in \TS cells and provided further understanding of inputs to higher
+centres.  By developing a \BNN with a high degree of realism at the individual
+cell level, this thesis has contributed to our understanding of the influence of
+synaptic organisation of physiological behaviour in the \CNSM.
 
-This thesis argued that the current state of \BNN models of the \CN or models of
-individual cells in the \CNSM model was not considerate of the current physiological
+This thesis argued that the \BNN models of the \CN or models of
+individual cells in the \CNSM have not been sufficiently considerate of the most current physiological
 and known experimental data.
 
-It demonstrates through rigorous sequential optimisation that the cell models
+To address(overcome) these deficiencies, the thesis presents, develops, and
+tests a new model of the CNSM.
+
+It demonstrated through rigorous sequential optimisation that the cell models
 and connectivity parameters in the \CNSM model can be created to replicate known
-behaviour to tones and noise.
+behaviour to tones and noise.  The temporal responses of the optimised \CNSM
+model's neurons to AM tones were also investigated.  
 
-
-
-
-
-
-Further insight into the temporal 
-response optimised \CNSM model's response to 
-BNN optimisation  ---
-
-
-
+Additionally, the thesis
+used simultaneous optimisation methods of all network parameters in the CNSM
+model using GAs and the sensitivity of parameters given the noise in neural
+inputs.  It further developed novel cost functions to condense neural outputs of
+a whole network into a single value, which included intracellular responses,
+spike times, and time-varying rate.
 
 
 
@@ -82,6 +81,7 @@ for future work arising out of the thesis.
 
 
 
+
  
 
 
@@ -93,16 +93,16 @@ These findings suggest that in general ......
 
 The results of this research support the idea that .......
 
-using standard phenomenologically accurate models
+# using standard phenomenologically accurate models
 
-using publicly available models
+# using publicly available models
 
-replication and reproducibility
+# replication and reproducibility
 
 
 # ------------------
 *Chapter \ref{sec:IntroChapter}* identified a range of deficiencies in previous
- approaches to modelling and optimisation in the \CN.  
+approaches to modelling and optimisation in the \CN.  
 In particular, previous modelling studies of \TS cells and their microcircuit
 were limited by their outdated input \AN models, errors in network connectivity
 and lack of documentation of parameter optimistation methods.  Additionally,
@@ -116,31 +116,20 @@ for refined model development and optimisation approaches.
 # To overcome these deficiencies 
 # create challenges for getting the best out of BNN models of the auditory system.
 # Making increased use 
-
-# Designed better models and better testing of the models 
-
-
-
-
-
-# In particular, the neural cell models used in previous modelling research did not
+# - Designed better models and better testing of the models 
+# - In particular, the neural cell models used in previous modelling research did not
 #  use advances in current models introduced by Rothman and Manis
 #  previous modelling research in the CN has not
-
-# integration  of 
 
 # AN model deficiencies in previous CN models
 # Rothman and Manis highly specialised current models unique to the mammalian VCN
 # Use of synaptic connections with sound evidence support
 # Demonstration of methods to show how netpwkr parameters were achieved
 
-
-
 # introduced the importance of the TS cell and the \CN stellate
 # microcircuit to the auditory pathway
 
 # need to create  
-
 # The gap in the literature ... biophysically-realistic models of TS cells and its
 # constituent microcircuit (the CNSM) using accurate input models, accurate
 # membrane current models
@@ -148,7 +137,6 @@ for refined model development and optimisation approaches.
 
 # Chapter \ref{sec:IntroChapter} also introduced the general techniques of
 # parameter setting in BNN models.
-
 # Analytical optimisation techniques of spiking neural networks and individual
 # current channels are not suitable to BNN models which have large numbers of
 # parameters and noisy search spaces.
@@ -186,11 +174,33 @@ In *Chapter \ref{sec:ModelChapter}*, sequential simple optimisation was used in 
 development of cell models and their connectivity in the CNSM model ...
 
 
-Development of a novel filter-based neural model for the \GLG cell, whose input
-and intrinsic parameters were fitted to the only study of known \GCD units.
+*Chapter \ref{sec:ModelChapter}* developed output responses of each neuron in
+ the \CNSM model through rigorous sequential optimisation using simple stimuli.
+# and connectivity parameters in the \CNSM model can be created to replicate known
+# behaviour to tones and noise.
 
-The DS cell model, including their synaptic inputs from ANF and GLG cells, was
-optimised using responses to tones, noise and click pairs.
+The \GLG cell model was developed using a novel filter-based neural model due to
+the limited intracellular and extracellular data.  Its parameters optimised to
+rate-level responses to the only study of known \GCD units
+\citep{GhoshalKim:1996}.  \GLG cells are critical to controlling the activity of
+granule cells in the GCD, DS and TS cells with increasing sound intensity through
+tonic, GABAergic inhibition.
+
+
+The DS cell model's intrinsic and extrinsic parameters were optimised using
+responses to tones, noise and click pairs.  DS cells are known to be wide band,
+onset, glycinergic inhibitors of the stellate microcircuit.  Their intracellular
+behaviour is characteristic of a coincidence detector and was modelled using the
+type I-II RM neural model.  The leak conductance of the model and parameters
+controlling synaptic connections from ANF and GLG units were optimised to mimic
+the physiological responses of DS cells to tones and noise
+\citep{ArnottWallaceEtAl:2004}.  Further optimisation was required to modify the
+\GABAa synapse on DS cells to best model the response recovery to click pairs
+\citep{BackoffPalombiEtAl:1997}. The role of DS cells in the microcircuit is
+primarily as a lateral inhibitor (enhancing rate-place response in TS and TV
+cells) but further research has shown the importance of precisely timed phasic
+input to enhance temporal output in TS cells.
+
 
 
 The TV cell model's synaptic inputs were optimised using rate level curves of
@@ -201,21 +211,68 @@ suggested by \citet{ReissYoung:2005}; however the model proposed a different
 hypothesis that LSR inputs are the contributor to the asymmetry in type II units
 to notch noise.  
 
+
+TS cells, the main focus of many experimental and modelling studies of the \CN,
+
+ have heterogeneous responses to 
+stimuli due to their unique membrane channels (\IKA is not present in any other neurons) and 
+variability in synaptic inputs 
+(receiving inputs from all other neurons in the microcircuit)
+
+
 The classification of TS cells into three chopper subtypes using spike-based and
 average intracellular responses to tones by \citep{PaoliniClareyEtAl:2005} was
 reversed to optimise the \TS cell model and their inputs.
 
-
-
-
-
 # -------------------
-*Chapter \ref{sec:AMChapter}* ...
-investigated the output of the optimised CNSM model to AM tones. 
+*Chapter \ref{sec:AMChapter}* was an extension of the verification procedures in
+Chapter 3 with a focus on responses of the \CNSM model cells to AM tones.
+Temporal information in the auditory system is important for animal communications and location of
+sounds.  Encoding of temporal information in the AN is through fine-timing of
+spikes, phase-locking to the envelope of the stimulus. This poses problems in
+loud, noisy and reverberant environments and also in neural transfer.  The
+stellate microcircuit is the first step in transforming timing-based temporal
+information to a more stable rate-based code in the IC.
+
+
+The rate and temporal responses of each cell in the CNSM model was investigated
+after being presented with AM tones of varying sound intensity and varying
+envelope modulation frequency.
+
+In the absence of experimental evidence of GLG cells' response to AM tones, the 
+novel GLG cell model proposes that GLG cells diminish timing-information contained in their ANF inputs.
+It enforces the hypothesis that GLG cells are purely rate-level encoders and contribute to 
+automatic gain mechanisms in the microcircuit.  
+
+Phase-locking in DS cells is greatly enhanced, relative to ANFs, due to collating large numbers of ANF inputs 
+and fast intrinsic membrane mechanisms.
+The DS cell model's response to AM tones  
+
+
+Experimental evidence of AM responses in TV cells is inconclusive. ---
+
+
+The non-linear temporal behaviour of the AN to increasing AM sound intensity shows 
+
+the limitation of the auditory system is exacerbated by encoding of temporal information 
+
+saturation at the IHC-AN synapse 
 
 
 
-*Chapter \ref{sec:GAChapter}* ...
+*Chapter \ref{sec:GAChapter}* ...  reported on the use of GAs and three novel
+cost functions on optimising BNN parameters simultaneously.
+
+Real experimental data was substituted for a known BNN target network
+
+It showed the benefits of 
+
+
+It demonstrated simultaneous optimisation methods of all network parameters in
+the CNSM model using GAs and the sensitivity of parameters given the noise in
+neural inputs.  It further developed novel cost functions to condense neural
+outputs of a whole network into a single value, which included intracellular
+responses, spike times, and time-varying rate.
 
 
 
@@ -341,10 +398,13 @@ and analysis scripts.
 
 
 
-The specific limitations of the studies in this thesis were canvassed in the relevant chapters.
+The specific limitations of the studies in this thesis were canvassed in the
+relevant chapters.
 
-The limitations of the CNSM model, described and developed in Chapter 3, relate to the specificity of the neural models, the exclusion of synaptic connections without solid foundations,
-includsion or exclusion of experimental data used in each optimisation step
+The limitations of the CNSM model, described and developed in Chapter 3, relate
+to the specificity of the neural models, the exclusion of synaptic connections
+without solid foundations, includsion or exclusion of experimental data used in
+each optimisation step
 
 A number of caveats need to be noted regarding the present study.
 
