@@ -1,3 +1,4 @@
+
 #+title: Discussion and Conclusion
 #+AUTHOR: Michael A Eager
 #+DATE:
@@ -87,7 +88,7 @@ for future work arising out of the thesis.
 
 * Overview of Research Findings 
 
-\yellownote{Summary of the findings and general implications}
+# \yellownote{Summary of the findings and general implications}
 
 These findings suggest that in general ......
 
@@ -297,12 +298,11 @@ responses, spike times, and time-varying rate.
 
 
 This thesis contributes to the understanding of neural processing performed
-within the stellate microcircuit of the CN.  It provided a framework of
-neural models, synapse models and connectivity reflecting substantial evidence
-to create a model of the CNSM.  
-The optimisation and reporting studies comprising the thesis ...
-The variety of methods used throughout the thesis generated insights into neural modelling optimisation and 
-understanding of the CNSM.
+within the stellate microcircuit of the \CN.  It provided a framework of neural
+models, synapse models and connectivity reflecting substantial evidence to
+create a model of the CNSM.  The optimisation and reporting studies comprising
+the thesis ...  The variety of methods used throughout the thesis generated
+insights into neural modelling optimisation and understanding of the CNSM.
 
 A critical and rigorous analysis of histological, immuno-histochemical,
  electro-physiological and extracellular /in vivo/ physiological data of TS
@@ -310,6 +310,7 @@ A critical and rigorous analysis of histological, immuno-histochemical,
  critical analysis of existing modelling studies was also performed and a
  substantial gap in the literature was found which this thesis tries to address.
 
+# Par 3
 These findings enhance our understanding of ...
 
 
@@ -323,6 +324,15 @@ This model has gone some way towards enhancing our understanding of ...
 
 The present work makes several noteworthy contributions to ...
 
+# Par 4
+Reliability and predictability of phenomenological behaviour is essential in \BNN models.
+The \CNSM model comprises a phenomenologically-realistic \AN input model \citep{ZilanyCarney:2010} 
+that allows arbitrary stimuli to be used in simulations, especially temporally complex sounds such as speech.
+The neural and synaptic models in the \CNSM model are deterministic.  
+The introduction of noise comes from the spike generators of the \ANF and \GLG cell models, and the 
+allocation of synaptic connections in the \CNSM model.
+
+ 
 
 ** Optimisation Methods for BNNs are challenging but must be shared for reproducibility and integrity of models
  :PROPERTIES:
@@ -334,12 +344,11 @@ As mentioned in the literature review, little has been done in replication of
 microcircuits and medium sized neural networks from experimental data sets.
 Very little was found in the literature on the question of replicating neural
 outputs from multiple neurons of different cell types.  This thesis set out with
-
 the aim of assessing the importance of optimisation in biophysically realistic
 neural microcircuits through either sequential or simultaneous methods.
 
 
-#Par 2
+# Par 2
 Experimental evidence used in optimisation is challenging but Worthwhile
 
 
@@ -396,7 +405,7 @@ and analysis scripts.
 
 
 The specific limitations of the studies in this thesis were canvassed in the
-relevant chapters. The limitations of the CNSM model, described and developed in Chapter 3, relate
+relevant chapters. The limitations of the \CNSM model, described and developed in Chapter 3, relate
 to the specificity of the neural models' morphology and the exclusion of synaptic connections
 without solid foundations
 
@@ -405,7 +414,22 @@ without solid foundations
 
 A number of caveats need to be noted regarding the present study.
 
-The most important limitation lies in the fact that ...
+The most important limitation lies in the fact that the \CNSM model does not have
+cells and synaptic connections that have known interactions with neurons in the
+microcircuit.  An example of these are the variety of \DCN cells connecting with
+TV cells, commisural neurons of the contralateral \CN, 
+GABAergic collaterals of the periolivary region and cholinergic \MOC
+collaterals interacting with neurons in the \VCN.
+
+Several limitations of this model need to be acknowledged 
+
+spatial resolution of the filterbank \AN and \CN 
+CF fields
+
+morphologically complex neural models 
+
+
+
 
 The current model was unable to analyse these variables
 
@@ -413,7 +437,7 @@ The current model was not designed to evaluate factors relating to
 
 Our findings in this thess are subject to at lest three limitations.  Firstly, ...
 
-Several limitations of this model need to be acknowledged ...
+
 
 
 A number of caveats need to be noted regarding the present study.
@@ -439,11 +463,13 @@ Fundamental questions about the behaviour of \TS cells remain for exploration
 \citep{OertelWrightEtAl:2011}.  Do intrinsic membrane mechanism or network and
 synaptic mechanisms play a greater role in the behaviour of \TS cells?  How are
 the different categories of \ANFs (\LSR and \HSR) processed by \TS cell
-microcircuit?  What are the effects of connections across isofrequency laminae
-and how does this effect the spectral representation across the population of
-\TS cells?  While answering these questions was beyond the scope of this thesis,
-the model and optimisation methods established in the thesis provide valuable
-tools for use in those inquiries.
+microcircuit?  What are the effects of synaptic connections and how do these
+effect the temporal and spectral representation across the population of \TS
+cells?  Can the optimised \CNSM model reproduce responses to complex stimuli
+(vowels, double vowels, comodulation masking release)?  While answering these
+questions was beyond the scope of this thesis, the model and optimisation
+methods established in the thesis provide valuable tools for use in those
+inquiries.
 
 \yellownote{Further studies in simulating effects of blocking specific
 connections can be achieved through manipulation of the \CNSM model's
