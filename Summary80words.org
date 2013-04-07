@@ -101,3 +101,23 @@ utility of this approach for improving BNN models.
 # the cost function methods to input noise, especially for sensitivity and
 # robustness of inhibitory connections in the \CN stellate network.
 
+
+
+** Abstract for completion seminar
+
+Biophysically-realistic neural network (BNN) models require quality design and
+optimisation methods in order to best advance understanding of complex neural
+processing.  This thesis presents a novel BNN model of the cochlear nucleus
+stellate microcircuit, which provides a robust spectral representation of sound
+and plays an essential part in speech communication.  The model was optimised
+using rigorous sequential methods and simultaneous genetic algorithms.  The
+results of the analysis demonstrate the utility of this approach for improving
+BNN models.
+
+
+Michael Eager is a PhD candidate at the University of Melbourne. He has a
+Bachelor of Science (majoring in Physiology) and a Bachelor in Engineering
+(Electrical and Systems Engineering) with honours from Monash
+University. Michael works as a research software developer at Monash Biomedical
+Imaging.
+
