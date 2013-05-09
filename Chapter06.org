@@ -6,6 +6,7 @@
 #+BIBLIOGRAPHY: ../org-manuscript/bib/MyBib plainnat
 #+TODO: REFTEX
 
+#+LaTeX:\glsunsetall
 #+LaTeX:\setcounter{chapter}{5}
 #+LaTeX: \chapter{Discussion and Conclusion}\label{sec:FinalChapter}
 
