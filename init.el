@@ -282,11 +282,11 @@
    % Author declaration
    \\makedeclaration
    % Acknowledgements
-%    \\input{misc/acknowledgements}
+   %    \\input{misc/acknowledgements}
    % Preface
    \\input{misc/preface}
    % Dedications...
-    \\input{misc/dedication}
+   %   \\input{misc/dedication}
    % TOC, LOF, LOT
    {%
 	   \\singlespacing%
