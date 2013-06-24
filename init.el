@@ -264,7 +264,7 @@
 \\newcommand{\\manuscript}{}
  [NO-DEFAULT-PACKAGES]
  [NO-PACKAGES]" 
-	       ("\n\n\\section{%s}" . "\n\n\\section{%s}")
+	       ("\n\\newpage\n\\section{%s}" . "\n\\newpage\n\\section{%s}")
 	       ("\n\n\\subsection{%s}" . "\n\n\\subsection{%s}") 
 	       ("\n\n\\subsubsection{%s}" . "\n\\subsubsection{%s}") 
 	       ("\n\\paragraph{%s}" . "\n\\paragraph{%s}"))) 
@@ -323,7 +323,7 @@
        \\lfoot{\\footnotesize\\today\\ at \\thistime}"
 ; [NO-DEFAULT-PACKAGES]
 ;       [NO-PACKAGES]" 
-	       ("\\section{%s}" . "\n\\section{%s}")
+	       ("\\section{%s}" . "\n\\newpage\n\\section{%s}")
 	       ("\\subsection{%s}"         . "\n\\subsection{%s}") 
 	       ("\\subsubsection{%s}"      . "\n\\subsubsection{%s}") 
 	       ("\\paragraph{%s}"          . "\n\\paragraph{%s}"))) 
@@ -369,7 +369,7 @@
 \\setmonofont[Scale=0.8]{DejaVu Sans Mono}
       [NO-DEFAULT-PACKAGES]
       [NO-PACKAGES]"
-  ("\\section{%s}" . "\\section{%s}")
+  ("\\section{%s}" . "\n\\newpage\n\\section{%s}")
   ("\\subsection{%s}" . "\\subsection{%s}") 
   ("\\subsubsection{%s}" . "\\subsubsection{%s}") 
   ("\\paragraph{%s}" . "\\paragraph{%s}")
