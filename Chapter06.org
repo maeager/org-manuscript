@@ -2,7 +2,7 @@
 #+AUTHOR: Michael A Eager
 #+DATE:
 #+LATEX_CLASS: UoM-draft-org-article
-#+LATEX_HEADER: \usepackage[notcite]{showkeys} 
+#+LATEX_HEADER: \usepackage[notcite]{showkeys}
 #+BIBLIOGRAPHY: ../org-manuscript/bib/MyBib plainnat
 #+TODO: REFTEX
 
@@ -10,7 +10,7 @@
 #+LaTeX:\setcounter{chapter}{5}
 #+LaTeX: \chapter{Discussion and Conclusion}\label{sec:FinalChapter}
 
-# \yellownote{
+# \note{
 # Usually the discussion has the following parts:
 #     It should state the main findings of the study in one or two sentences.
 #     The discussion should consider the methods, and address possible shortcomings. Defend your answers, if necessary, by explaining both why your answer is satisfactory and why others are not. Only by giving both sides to the argument can you make your explanation convincing.
@@ -21,7 +21,6 @@
 #     Provide no more than two recommendations for further research. Do not offer suggestions which could have been done within the study, as this shows there has been inadequate examination and interpretation of the data.
 # }
 
-# \yellownote{This chapter in not complete and will undergo changes.}
 
 * Introduction
 :PROPERTIES:
@@ -76,7 +75,7 @@ for future work arising out of the thesis.
 # It canvasses the limitations of the research and makes recommendations for future work.
 
 
-* Overview of Research Findings 
+* Overview of Research Findings
 
 # \yellownote{Summary of the findings and general implications}
 # These findings suggest that in general ......
@@ -95,11 +94,11 @@ pre-dated the kinetic current models of \citet{RothmanManis:2003b}.  These
 deficiencies limit our insight into neural processing in the \CN, and call for
 refined model development and optimisation approaches.
 
-# Taken together, 
-# To overcome these deficiencies 
+# Taken together,
+# To overcome these deficiencies
 # create challenges for getting the best out of BNN models of the auditory system.
-# Making increased use 
-# - Designed better models and better testing of the models 
+# Making increased use
+# - Designed better models and better testing of the models
 # - In particular, the neural cell models used in previous modelling research did not
 #  use advances in current models introduced by Rothman and Manis
 #  previous modelling research in the CN has not
@@ -109,7 +108,7 @@ refined model development and optimisation approaches.
 # - Demonstration of methods to show how netpwkr parameters were achieved
 # - introduced the importance of the TS cell and the \CN stellate
 # microcircuit to the auditory pathway
-#   
+#
 # The gap in the literature ... biophysically-realistic models of TS cells and its
 # constituent microcircuit (the CNSM) using accurate input models, accurate
 # membrane current models
@@ -142,7 +141,7 @@ into a more realistic model.
 #  and its particular version used in this thesis. The Zilany version of the
 #  Carney model is most recent detailed model of the AN periphery phenomenological
 #  model
-# -------------- 
+# --------------
 # In *Chapter \ref{sec:ModelChapter}*, sequential simple optimisation was used in the
 # development of cell models and their connectivity in the CNSM model ...
 
@@ -202,7 +201,7 @@ frequency.
 The non-linear \fz response of the \AN model to increasing \AM sound intensity
 showed the limiting effect of the \ANFs on \CF, which is exacerbated by
 saturation at the IHC-AN synapse.
-# The \rMTF responses of \HSR\space \ANFs 
+# The \rMTF responses of \HSR\space \ANFs
 Encoding of temporal information in \MTFs of \HSR\space \ANFs is strongest in
 the lateral frequency sidebands of the stimulus energy.  \Gls{LSR}\space \ANFs
 had moderate to high temporal encoding of AM tones throughout their response
@@ -221,7 +220,7 @@ integration of predominantly LSR inputs and strong inhibition from \DS cells,
 meant that the \TV cell model's AM tone responses were equivalent to a half-wave
 rectification and low-pass filter transformation.
 
-## TODO -- TS cells  ## 
+## TODO -- TS cells  ##
 
 Chapter \ref{sec:GAChapter} reported on the use of \GAs and three novel cost
 functions to simultaneously optimise \BNN parameters. For this analysis, a
@@ -261,9 +260,9 @@ across the whole nuclei.  Its methodology demonstrates the steps required to fit
 a large number of parameters to achieve necessary neural outputs in an ordered
 and sequential manner using variety of experimental data.
 
-# The optimisation and reporting studies comprising the thesis ...  
+# The optimisation and reporting studies comprising the thesis ...
 # The variety of methods used throughout the thesis generated insights into neural modelling optimisation and understanding of the CNSM.
-## 
+##
 
 # par 2
 #  A critical and rigorous analysis of histological, immuno-histochemical,
@@ -275,19 +274,19 @@ and sequential manner using variety of experimental data.
 # Par 3
 # These findings enhance our understanding of ...
 
-# The findings from this study make several contributions to the current literature. First,... 
+# The findings from this study make several contributions to the current literature. First,...
 
-# The methods used for this X may be applied to other Xs elsewhere in the world. 
+# The methods used for this X may be applied to other Xs elsewhere in the world.
 
-# This research will serve as a basis for future studies ... 
+# This research will serve as a basis for future studies ...
 
-# This model has gone some way towards enhancing our understanding of ... 
+# This model has gone some way towards enhancing our understanding of ...
 
 # The present work makes several noteworthy contributions to ...
 
-## FIXME ^^^^^^^ 
+## FIXME ^^^^^^^
 
- 
+
 
 ** Optimisation Methods Must be Shared to Facilitate Model Reproducibility
  :PROPERTIES:
@@ -315,7 +314,7 @@ contributes to the reproducibility of techniques in modelling the CNSM.
 # microcircuits and medium sized neural networks from experimental data sets.
 
 # Very little was found in the literature on the question of replicating neural
-# outputs from multiple neurons of different cell types.  
+# outputs from multiple neurons of different cell types.
 
 # This thesis set out with
 # the aim of assessing the importance of optimisation in biophysically realistic
@@ -323,16 +322,16 @@ contributes to the reproducibility of techniques in modelling the CNSM.
 
 
 # Par 2
-# \yellownote{ TODO 
+# \yellownote{ TODO
 # Experimental evidence used in optimisation is challenging but worthwhile.
 # Optimisation methods can provide valuable evidence in developing valid and
 # reproducible BNN models.
 # Rigorous sequential methods
-# The results of Chapters 3 and 5 show that optimisation techniques ... 
+# The results of Chapters 3 and 5 show that optimisation techniques ...
 # sequential
 # or simultaneous methods worthwhile. }
-  
-# ## FIXME ^^^^^^^ 
+
+# ## FIXME ^^^^^^^
 
 # # Par 3
 # \yellownote{
@@ -341,12 +340,12 @@ contributes to the reproducibility of techniques in modelling the CNSM.
 # Understanding the limitations of experimental data facilitates setting out constraints in fitness functions.
 # The results of Chapter 5 indicate that genetic algorithms are a suitable tool for optimisation in medium to large BNN models.
 # }
-## FIXME ^^^^^^^ 
+## FIXME ^^^^^^^
 
-# Simultaneous  -- 
+# Simultaneous  --
 # Substantial progression of the use of BNNs in neuroscience ...
 # Using standard phenomenologically accurate models from inputs to membrane currents to recognised connections.
-## FIXME ^^^^^^^ 
+## FIXME ^^^^^^^
 
 
 
@@ -364,7 +363,7 @@ to the specificity of the neural models' morphology and the exclusion of synapti
 without solid empirical foundations.
 # inclusion or exclusion of experimental data used in each optimisation step
 # A number of caveats need to be noted regarding the present study.
-#The most important limitation lies in the fact that 
+#The most important limitation lies in the fact that
 The \CNSM model does not include cells and synaptic connections that have known
 interactions with neurons in the microcircuit.  Key examples of these are the
 \DCN cells connecting with TV cells
@@ -380,10 +379,10 @@ field.
 
 
 # \yellownote{
-# Several limitations of this model need to be acknowledged 
-# spatial resolution of the filterbank \AN and \CN 
+# Several limitations of this model need to be acknowledged
+# spatial resolution of the filterbank \AN and \CN
 # CF fields
-# morphologically complex neural models 
+# morphologically complex neural models
 # }
 
 
@@ -403,7 +402,7 @@ field.
  :CUSTOM_ID: sec:FinalChapter:FutureWork
  :END:
 
-# \yellownote{Future Work: 
+# \yellownote{Future Work:
 # Don’t view this necessarily as a list of the limitations of your thesis.
 # Think of what you would do if you had an extra year in your Ph.D.
 # Don’t worry – this is not for your advisor to hold your feet to the fire.
@@ -419,7 +418,7 @@ representation across the population of \TS cells?  Can the optimised \CNSM
 model reproduce responses to complex stimuli, particularly vowel encoding in
 sustained and transient chopper units?  While answering these questions was
 beyond the scope of this thesis, the model and optimisation methods established
-by the thesis provide valuable tools for use in those inquiries.  
+by the thesis provide valuable tools for use in those inquiries.
 
 \yellownote{DG expand on how recommendations can be achieved using detailed explanations}
 
@@ -432,7 +431,7 @@ by the thesis provide valuable tools for use in those inquiries.
 # \citep{MuldersPaoliniEtAl:2003}.}
 # \yellownote{Further studies on commissural inputs? Labelled \DS cells project
 # widely to the VCN and DCN; and in some cases to the contralateral CN in the same
-# manner \citep{SmithMassieEtAl:2005,ArnottWallaceEtAl:2004} 
+# manner \citep{SmithMassieEtAl:2005,ArnottWallaceEtAl:2004}
 # In vivo studies have
 # already shown the effects of commisural inhibition of first spike responses to
 # tones \citep{NeedhamPaolini:2007,NeedhamPaolini:2006,NeedhamPaolini:2003}.}
