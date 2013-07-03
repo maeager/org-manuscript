@@ -1,0 +1,326 @@
+
+%%
+%% Custom Hyphenations
+%%
+%%
+\hyphenation{cross-talk au-di-tory adap-t-a-tion phe-nom-en-o-lo-g-i-cal
+  syn-a-pse co-inc-id-ence Tub-er-culo-vent-ral glyc-in-ergic psycho-phys-ical
+  asym-met-ric ex-plor-at-ory pot-as-sium op-ti-mi-sa-tion au-di-t-ory sys-tem
+  Neuro-in-for-mat-ics mar-g-in-al par-a-m-eters Rh-ode Neu-ro-fit-ter
+  elec-tro-phys-io-log-i-cal in-fer-ring the con-nec-tiv-i-ty with-in
+  non-lin-ear ap-pr-oa-ch-es stel-late mi-cro-cir-cuit show-ing synap-tic
+  in-ter-ac-tion iso-lam-inar pop-u-la-tion evo-l-ved com-part-ment
+  con-duc-tance mod-els Hod-g-kin Hux-l-ey gluta-m-at-er-gic gen-o-mes
+  Theu-nis-sen re-sp-on-se co-inc-id-ence det-e-ctor exp-eri-men-tal
+  ac-cu-mu-lated neu-ro-science cre-ate de-tailed ex-ten-sively stud-ied
+  In-tra-cel-lu-lar neur-rons in-tra-cel-lu-lar in-ves-ti-ga-tion se-quen-tial
+  de-ter-min-ed cat-e-gor-is-ed im-me-di-ate sen-si-tiv-ity bicu-cu-line
+  mul-ti-ple in-hib-it-ory com-mis-sural path-way re-cip-ro-cal fre-quency
+  po-si-tion func-tion de-lay prep-a-ra-tions iso-lated oct-o-pus in-sen-si-tive
+  Chop-per im-preg-na-tion phys-i-o-log-i-cal ef-fect GABA-er-gic in-puts on-set
+  chop-pers pri-mar-ily  gen-er-ate ar-ray gaus-sian ran-dom num-bers
+  in-ves-ti-gat-ing im-p-or-tant phys-i-o-log-i-cal mech-a-nisms
+  nox-ious stim-u-la-tion Neur-os-cience Re-search Com-mu-nic-a-tions
+  De-part-ment  Elec-trical Elec-tronic En-gin-eer-ing phe-nom-en-o-lo-g-i-cal-ly
+ acous-tic sig-nal un-der-stood re-view Oh-lro-gge}
+%%
+%% Sample custom-configuration
+%%
+%%   You are encouraged to modify the following section with any of your
+%%   own custom commands, packages, etc.
+%%
+
+%error 'You should modify this section and remove this error.'
+
+% for URLs
+\usepackage{url}
+
+% AMS packages
+%\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[fleqn]{amsmath}   % displayed equations flush left
+%\setlength{\mathindent}{0em}
+%\usepackage{amsthm}
+\usepackage[mathscr]{eucal}
+
+\newcommand{\vect}[1]{\mathbf{#1}}
+
+
+% Allow equations to break over pages...
+\interdisplaylinepenalty=2500
+% Command to stop equation breaks
+% Note: enclose this in braces when used...
+\newcommand{\donotsplitoverpages}{\interdisplaylinepenalty=10000}
+
+%% Graphics
+% \ifx\pdftexversion\undefined
+%  \usepackage[dvips]{graphicx}
+% \else
+%  \usepackage[pdftex]{graphicx}
+% \fi
+
+%% My Graphics and Hyperlinks stuff
+\usepackage{ifpdf}
+ \ifpdf
+   \pdfoutput=1
+   \usepackage[pdftex]{graphicx}  % uncomment if using graphicx
+   \usepackage[final,          % override "draft" which means "do nothing"
+            colorlinks,     % rather than outlining them in boxes
+            linkcolor=black, % override truly awful colour choices
+            citecolor=black, %   (ditto)
+            urlcolor=black,  %   (ditto)
+            ]{hyperref}
+
+\ifx\pdfoutput\undefined \usepackage[ps2pdf,
+bookmarks=true,
+bookmarksnumbered=true,
+breaklinks=true,
+final,          % override "draft" which means "do nothing"
+colorlinks,     % rather than outlining them in boxes
+linkcolor=black, % override truly awful colour choices
+citecolor=black, %   (ditto)
+urlcolor=black,  %   (ditto)
+]{hyperref}
+
+% \usepackage[pdftex]{hyperref}  % uncomment if using hyperref
+%  \usepackage[ps2pdf]{thumbpdf}
+ \DeclareGraphicsExtensions{.eps,.bmp}
+ \else
+ \DeclareGraphicsExtensions{.png,.pdf,.jpg,.JPEG}
+ \usepackage{epstopdf}
+ %\usepackage[pdftex,bookmarks=true,bookmarksnumbered=true,breaklinks=true]{hyperref}
+  \pdfadjustspacing=1
+  \usepackage[pdftex]{thumbpdf}
+  \fi
+  \else
+   \usepackage[dvips]{graphicx}  % uncomment if using graphicx
+    % comment if not using hyperref
+ \usepackage[final,          % override "draft" which means "do nothing"
+            colorlinks,     % rather than outlining them in boxes
+            linkcolor=black, % override truly awful colour choices
+            citecolor=black, %   (ditto)
+            urlcolor=black,  %   (ditto)
+             ]{hyperref}
+ \DeclareGraphicsExtensions{.eps,.bmp}
+\usepackage{breakurl} % necessary to break URLs when using LaTeX-> dvips -> Ps2PDF, must be after hyperref
+
+\fi
+% Enable IEEE macros
+%\usepackage{IEEEtrantools}
+
+% Use a plain bibliography style
+%\bibliographystyle{plain}
+% Use the IEEE bibliography style (sorted)
+%\bibliographystyle{IEEEtrans}
+% Use the IEEE bibliography style (unsorted; order of reference)
+%\bibliographystyle{IEEEtran}
+
+% For isolated bibliographies
+\usepackage{bibunits}
+
+\usepackage{color}
+%\usepackage[noadjust]{cite}
+\usepackage{caption}
+
+% For cool tables
+\usepackage{array}
+\usepackage{tabularx}  % automatically adjusts column width in tables
+\usepackage{multirow}  % allows entries spanning several rows
+\usepackage{colortbl}  % allows coloring tables
+
+
+% For algorithms
+%\usepackage{algorithm}
+%\usepackage{algorithmic}
+
+% For cases
+\usepackage{sublabel}
+
+% For theroem numbers having the chapter included
+%\usepackage{style/chngcntr}
+
+% For cool theorem styles
+%\usepackage[amsthm]{ntheorem}
+%%\theorembodyfont{\normalfont}
+%
+%% Theorem definition
+%\newtheorem{theorem}{Theorem}
+%\counterwithin{theorem}{chapter}
+%
+%% Corollary definition
+%\newtheorem{corollary}{Corollary}
+%\counterwithin{corollary}{chapter}
+%
+%% Result definition
+%\newtheorem{result}{Result}
+%\counterwithin{result}{chapter}
+%
+%% Lemma definition
+%\newtheorem{lemma}{Lemma}
+%\counterwithin{lemma}{chapter}
+%
+%% Proposition definition
+%\newtheorem{proposition}{Proposition}
+%\counterwithin{proposition}{chapter}
+%
+%% Definition definition!
+%\newtheorem{definition}{Definition}
+%\counterwithin{definition}{chapter}
+%
+%% Remark definition (no counter?)
+%\newenvironment{remark}{\emph{Remark:~}}{}
+%
+%% Fact definition (no counter?)
+%\newenvironment{fact}{\emph{Fact:~}}{}
+
+% (Re)Set the figure path
+\newcommand{\setfigurepath}[1]{%
+\ifx\figurepath\undefined
+	\newcommand{\figurepath}{#1}
+\else
+	\renewcommand{\figurepath}{#1}
+\fi%
+}
+
+% Used in the continued list environment below
+\newcounter{continuedlist}
+
+% Continued list environment
+\newenvironment{continuedlist}{%
+	\begin{enumerate}%
+		% Space out each item
+		\setlength{\itemsep}{1.25em}%
+		% Start the enumeration from the previous value
+		\setcounter{enumi}{\value{continuedlist}} %
+}{ %
+  % Save the counter to continue it later
+  \setcounter{continuedlist}{\value{enumi}}%
+  \end{enumerate}%
+  % \vspace{1.25em}% 
+  \vspace{1em}%
+}
+
+% Spaced out list environment
+\newenvironment{spacedoutlist}{%
+	\begin{itemize}%
+		% Space out each item
+		\setlength{\itemsep}{1.25em}%
+}{\end{itemize}}
+
+
+%% My added packages
+
+
+\usepackage[usenames,dvipsnames]{xcolor}
+\definecolor{halfgray}{gray}{0.55}
+
+\usepackage{listings}
+\lstset{language=C++,%[LaTeX]Tex,%
+    keywordstyle=\color{RoyalBlue},%\bfseries,
+    basicstyle=\small\sffamily,
+    identifierstyle=\color{NavyBlue},
+    commentstyle=\color{Green}\rmfamily,
+    stringstyle=\sffamily,
+    numbers=left,%none,%
+    numberstyle=\scriptsize,%\tiny
+    stepnumber=5,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    %frameround=ftff,
+    %frame=single
+    %frame=L
+    lineskip=-5pt
+}
+
+
+% \lstset{language=Octave,                % choose the language of the code
+% basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+% numbers=left,                   % where to put the line-numbers
+% numberstyle=\footnotesize,      % the size of the fonts that are used for the line-numbers
+% stepnumber=2,                   % the step between two line-numbers. If it's 1 each line will be numbered
+% numbersep=5pt,                  % how far the line-numbers are from the code
+% backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+% showspaces=false,               % show spaces adding particular underscores
+% showstringspaces=false,         % underline spaces within strings
+% showtabs=false,                 % show tabs within strings adding particular underscores
+% frame=single,			% adds a frame around the code
+% tabsize=2,			% sets default tabsize to 2 spaces
+% captionpos=b,			% sets the caption-position to bottom
+% breaklines=true,		% sets automatic line breaking
+% breakatwhitespace=false,	% sets if automatic breaks should only happen at whitespace
+% lineskip=-5pt  %
+% }
+
+\ifx\setcitestyle\undefined
+\usepackage[sort,round,authoryear]{natbib}
+\setcitestyle{aysep={}} % J Neurophys formatting
+\fi
+
+\usepackage{xspace}
+\usepackage{rotating}
+\usepackage{tikz}
+\usepackage{calc}
+
+\newcommand{\hdr}[3]{%
+\multicolumn{#1}{|l|}{\color{white}\cellcolor[gray]{0.0}%
+\textbf{\makebox[0.05\linewidth][l]{#2}\hspace{0.45\linewidth}\makebox[0pt][c]{#3}}%
+%\textbf{\makebox[0pt]{#2}\hspace{0.5\linewidth}\makebox[0pt][c]{#3}}%
+}}
+ % Nordelie table environment
+\newenvironment{ntab}[4]{
+\noindent\begin{tabularx}{\linewidth}{#1}\hline 
+\multicolumn{#2}{|l|}{\color{white}\cellcolor[gray]{0.0}\textbf{#3\hfill{}{#4}\hfill{}}}
+}{
+\end{tabularx}
+\vspace{1ex}
+}
+
+
+
+\usepackage[colorinlistoftodos,backgroundcolor=yellow!35,textsize=footnotesize]{todonotes}
+%todonotes depends on ifthen, tikz, calc, xkeyval, graphicx (is loaded via the
+%tikz package), and xcolor
+
+\setlength{\marginparwidth}{2cm}
+\newcommand{\yellownote}[1]{\todo[inline]{#1}}
+%\newcommand{\yellownote}[1]{\todo{#1}}
+\newcounter{mycomment}
+\newcommand{\mycomment}[2][]{%
+% initials of the author (optional) + note in the margin
+\refstepcounter{mycomment}%
+{%
+\setstretch{0.7}% spacing
+\todo[color={red!100!green!33},size=\small]{%
+\textbf{Comment [\uppercase{#1}\themycomment]:}~#2}%
+}}
+
+
+\usepackage{scrtime}
+%\usepackage{mparhack}
+
+%\setlength{\parskip}{0ex} or {1.2ex}
+%\setlength{\parindent}{0em} or {0ex}
+
+\usepackage[australian]{babel}
+
+\usepackage{booktabs,ltxtable,ctable,dcolumn}
+\newcommand{\otoprule}{\midrule[\heavyrulewidth]}
+
+\usepackage{doipubmed}
+
+% For subfigures
+\usepackage{keyval}
+\usepackage[config,labelfont={sf,bf}]{subfig}
+%\captionsetup[table]{position=top}
+%\captionsetup[subtable]{position=top}
+%\usepackage[heightadjust=all,valign=t]{floatrow}
+%\usepackage{fr-subfig}
+%\floatsetup{style=Plaintop}
+%\usepackage{subfigure}
+
+\usepackage{lscape}
+
+\newcommand{\code}[1]{\mbox{\normalfont\texttt{#1}}}
+\newcommand{\progname}[1]{\mbox{\normalfont\textsf{#1}}}
+\newcommand{\figfont}[1]{\large{\textbf{\textsf{#1}}}}

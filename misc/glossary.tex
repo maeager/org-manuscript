@@ -1,0 +1,479 @@
+
+% ANF to Golgi
+\newcommand{\ANFGLG}{\protect{\textrm{{ANF}}\ensuremath{\to}\textrm{{GLG}}}\xspace}
+\newcommand{\HSRGLG}{\protect\ensuremath{\textrm{{HSR}}\to\textrm{{GLG}}}\xspace}
+\newcommand{\LSRGLG}{\protect\ensuremath{\textrm{{LSR}}\to\textrm{{GLG}}}\xspace}
+\newcommand{\wANFGLG}{\protect\ensuremath{w_{\ANFGLG}}\xspace}
+\newcommand{\wLSRGLG}{\protect\ensuremath{w_{\LSRGLG}}\xspace}
+\newcommand{\wHSRGLG}{\protect\ensuremath{w_{\HSRGLG}}\xspace}
+\newcommand{\nLSRGLG}{\protect\ensuremath{n_{\LSRGLG}}\xspace}
+\newcommand{\nHSRGLG}{\protect\ensuremath{n_{\HSRGLG}}\xspace}
+\newcommand{\sANFGLG}{\protect\ensuremath{s_{\ANFGLG}}\xspace}
+\newcommand{\sLSRGLG}{\protect\ensuremath{s_{\LSRGLG}}\xspace}
+\newcommand{\sHSRGLG}{\protect\ensuremath{s_{\HSRGLG}}\xspace}
+\newcommand{\dANFGLG}{\protect\ensuremath{d_{\ANFGLG}}\xspace}
+%ANF to D-stellate
+\newcommand{\ANFDS}{\protect\ensuremath{\textrm{{ANF}}\to\textrm{{DS}}}\xspace}
+\newcommand{\HSRDS}{\protect\ensuremath{\textrm{{HSR}}\to\textrm{{DS}}}\xspace}
+\newcommand{\LSRDS}{\protect\ensuremath{\textrm{{LSR}}\to\textrm{{DS}}}\xspace}
+\newcommand{\wANFDS}{\protect\ensuremath{w_{\ANFDS}}\xspace}
+\newcommand{\wLSRDS}{\protect\ensuremath{w_{\LSRDS}}\xspace}
+\newcommand{\wHSRDS}{\protect\ensuremath{w_{\HSRDS}}\xspace}
+\newcommand{\nANFDS}{\protect\ensuremath{n_{\ANFDS}}\xspace}
+\newcommand{\nLSRDS}{\protect\ensuremath{n_{\LSRDS}}\xspace}
+\newcommand{\nHSRDS}{\protect\ensuremath{n_{\HSRDS}}\xspace}
+\newcommand{\dANFDS}{\protect\ensuremath{d_{\ANFDS}}\xspace}
+\newcommand{\sANFDSh}{\protect\ensuremath{s^+_{\ANFDS}}\xspace}
+\newcommand{\sANFDSl}{\protect\ensuremath{s^-_{\ANFDS}}\xspace}
+
+%ANF to T-stellate
+\newcommand{\ANFTS}{\protect\ensuremath{\textrm{{ANF}}\to\textrm{{TS}}}\xspace}
+\newcommand{\HSRTS}{\protect\ensuremath{\textrm{{HSR}}\to\textrm{{TS}}}\xspace}
+\newcommand{\LSRTS}{\protect\ensuremath{\textrm{{LSR}}\to\textrm{{TS}}}\xspace}
+\newcommand{\wANFTS}{\protect\ensuremath{w_{\ANFTS}}\xspace}
+\newcommand{\wLSRTS}{\protect\ensuremath{w_{\LSRTS}}\xspace}
+\newcommand{\wHSRTS}{\protect\ensuremath{w_{\HSRTS}}\xspace}
+\newcommand{\nLSRTS}{\protect\ensuremath{n_{\LSRTS}}\xspace}
+\newcommand{\nHSRTS}{\protect\ensuremath{n_{\HSRTS}}\xspace}
+\newcommand{\sANFTS}{\protect\ensuremath{s_{\ANFTS}}\xspace}
+\newcommand{\dANFTS}{\protect\ensuremath{d_{\ANFTS}}\xspace}
+
+%ANF to Tuberculoventral
+\newcommand{\ANFTV}{\protect\ensuremath{\textrm{{ANF}}\to\textrm{{TV}}}\xspace}
+\newcommand{\HSRTV}{\protect\ensuremath{\textrm{{HSR}}\to\textrm{{TV}}}\xspace}
+\newcommand{\LSRTV}{\protect\ensuremath{\textrm{{LSR}}\to\textrm{{TV}}}\xspace}
+\newcommand{\wANFTV}{\protect\ensuremath{w_{\ANFTV}}\xspace}
+\newcommand{\wLSRTV}{\protect\ensuremath{w_{\LSRTV}}\xspace}
+\newcommand{\wHSRTV}{\protect\ensuremath{w_{\HSRTV}}\xspace}
+\newcommand{\nLSRTV}{\protect\ensuremath{n_{\LSRTV}}\xspace}
+\newcommand{\nHSRTV}{\protect\ensuremath{n_{\HSRTV}}\xspace}
+\newcommand{\sANFTV}{\protect\ensuremath{s_{\ANFTV}}\xspace}
+\newcommand{\dANFTV}{\protect\ensuremath{d_{\ANFTV}}\xspace}
+
+%GLG to T-stellate
+\newcommand{\GLGTS}{\protect\ensuremath{\textrm{GLG}\to\textrm{TS}}\xspace}
+\newcommand{\wGLGTS}{\protect\ensuremath{w_{\GLGTS}}\xspace}
+\newcommand{\nGLGTS}{\protect\ensuremath{n_{\GLGTS}}\xspace}
+\newcommand{\sGLGTS}{\protect\ensuremath{s_{\GLGTS}}\xspace}
+\newcommand{\dGLGTS}{\protect\ensuremath{d_{\GLGTS}}\xspace}
+
+%GLG to D-stellate
+\newcommand{\GLGDS}{\protect\ensuremath{\textrm{GLG}\to\textrm{{DS}}}\xspace}
+\newcommand{\wGLGDS}{\protect\ensuremath{w_{\GLGDS}}\xspace}
+\newcommand{\nGLGDS}{\protect\ensuremath{n_{\GLGDS}}\xspace}
+\newcommand{\sGLGDS}{\protect\ensuremath{s_{\GLGDS}}\xspace}
+\newcommand{\dGLGDS}{\protect\ensuremath{d_{\GLGDS}}\xspace}
+
+% % TS to Golgi
+\newcommand{\TSGLG}{\protect\ensuremath{\textrm{{TS}}\to\textrm{{GLG}}}\xspace}
+% \newcommand{\wTSGLG}{\ensuremath{w_{}}}\xspace}
+% \newcommand{\nTSGLG}{\ensuremath{n_{\textrm{TS}\to\textrm{GLG}}}\xspace}
+% \newcommand{\sTSGLG}{\ensuremath{s_{\textrm{TS}\to\textrm{GLG}}}\xspace}
+% \newcommand{\dTSGLG}{\ensuremath{d_{\textrm{TS}\to\textrm{GLG}}}\xspace}
+
+%TS to D-stellate
+\newcommand{\TSDS}{\protect\ensuremath{\textrm{{TS}}\to\textrm{{DS}}}\xspace}
+\newcommand{\wTSDS}{\protect\ensuremath{w_{\TSDS}}\xspace}
+\newcommand{\nTSDS}{\protect\ensuremath{n_{\TSDS}}\xspace}
+\newcommand{\sTSDS}{\protect\ensuremath{s_{\TSDS}}\xspace}
+\newcommand{\dTSDS}{\protect\ensuremath{d_{\TSDS}}\xspace}
+
+%TS to T-stellate
+\newcommand{\TSTS}{\protect\ensuremath{\textrm{TS}\to\textrm{TS}}\xspace}
+\newcommand{\wTSTS}{\protect\ensuremath{w_{\TSTS}}\xspace}
+\newcommand{\nTSTS}{\protect\ensuremath{n_{\TSTS}}\xspace}
+\newcommand{\sTSTS}{\protect\ensuremath{s_{\TSTS}}\xspace}
+\newcommand{\dTSTS}{\protect\ensuremath{d_{\TSTS}}\xspace}
+
+%TS to Tuberculoventral
+\newcommand{\TSTV}{\protect\ensuremath{\textrm{{TS}}\to\textrm{{TV}}}\xspace}
+\newcommand{\wTSTV}{\protect\ensuremath{w_{\TSTV}}\xspace}
+\newcommand{\nTSTV}{\protect\ensuremath{n_{\TSTV}}\xspace}
+\newcommand{\sTSTV}{\protect\ensuremath{s_{\TSTV}}\xspace}
+\newcommand{\dTSTV}{\protect\ensuremath{d_{\TSTV}}\xspace}
+
+% DS to Golgi
+\newcommand{\DSGLG}{\protect\ensuremath{\textrm{{DS}}\to\textrm{{GLG}}}\xspace}
+\newcommand{\wDSGLG}{\protect\ensuremath{w_{\DSGLG}}\xspace}
+\newcommand{\nDSGLG}{\protect\ensuremath{n_{\DSGLG}}\xspace}
+\newcommand{\sDSGLG}{\protect\ensuremath{s_{\DSGLG}}\xspace}
+\newcommand{\dDSGLG}{\protect\ensuremath{d_{\DSGLG}}\xspace}
+
+% %DS to D-stellate
+ \newcommand{\DSDS}{\ensuremath{\textrm{{DS}}\to\textrm{{DS}}}\xspace}
+% \newcommand{\wDSDS}{\ensuremath{w_{\DSDS}}\xspace}
+% \newcommand{\nDSDS}{\ensuremath{n_{\DSDS}}\xspace}
+% \newcommand{\sDSDS}{\ensuremath{s_{\DSDS}}\xspace}
+% \newcommand{\dDSDS}{\ensuremath{d_{\DSDS}}\xspace}
+
+%DS to T-stellate
+\newcommand{\DSTS}{\protect\ensuremath{\textrm{DS}\to\textrm{TS}}\xspace}
+\newcommand{\wDSTS}{\protect\ensuremath{w_{\DSTS}}\xspace}
+\newcommand{\nDSTS}{\protect\ensuremath{n_{\DSTS}}\xspace}
+\newcommand{\sDSTS}{\protect\ensuremath{s_{\DSTS}}\xspace}
+\newcommand{\dDSTS}{\protect\ensuremath{d_{\DSTS}}\xspace}
+
+%DS to Tuberculoventral
+\newcommand{\DSTV}{\protect\ensuremath{\textrm{{DS}}\to\textrm{{TV}}}\xspace}
+\newcommand{\wDSTV}{\protect\ensuremath{w_{\DSTV}}\xspace}
+\newcommand{\nDSTV}{\protect\ensuremath{n_{\DSTV}}\xspace}
+\newcommand{\sDSTV}{\protect\ensuremath{s_{\DSTV}}\xspace}
+\newcommand{\dDSTV}{\protect\ensuremath{d_{\DSTV}}\xspace}
+\newcommand{\oDSTV}{\protect\ensuremath{o_{\DSTV}}\xspace}
+
+% TV to Golgi
+\newcommand{\TVGLG}{\protect\ensuremath{\textrm{{TV}}\to\textrm{{GLG}}}\xspace}
+\newcommand{\wTVGLG}{\protect\ensuremath{w_{\TVGLG}}\xspace}
+\newcommand{\nTVGLG}{\protect\ensuremath{n_{\TVGLG}}\xspace}
+\newcommand{\sTVGLG}{\protect\ensuremath{s_{\TVGLG}}\xspace}
+\newcommand{\dTVGLG}{\protect\ensuremath{d_{\TVGLG}}\xspace}
+
+%TV to D-stellate
+\newcommand{\TVDS}{\protect\ensuremath{\textrm{{TV}}\to\textrm{{DS}}}\xspace}
+\newcommand{\wTVDS}{\protect\ensuremath{w_{\TVDS}}\xspace}
+\newcommand{\nTVDS}{\protect\ensuremath{n_{\TVDS}}\xspace}
+\newcommand{\sTVDS}{\protect\ensuremath{s_{\TVDS}}\xspace}
+\newcommand{\dTVDS}{\protect\ensuremath{d_{\TVDS}}\xspace}
+
+%TV to T-stellate
+\newcommand{\TVTS}{\protect\ensuremath{\textrm{{TV}}\to\textrm{{TS}}}\xspace}
+\newcommand{\wTVTS}{\protect\ensuremath{w_{\TVTS}}\xspace}
+\newcommand{\nTVTS}{\protect\ensuremath{n_{\TVTS}}\xspace}
+\newcommand{\sTVTS}{\protect\ensuremath{s_{\TVTS}}\xspace}
+\newcommand{\dTVTS}{\protect\ensuremath{d_{\TVTS}}\xspace}
+
+%TV to Tuberculoventral
+\newcommand{\TVTV}{\protect\ensuremath{\textrm{{TV}}\to\textrm{{TV}}}\xspace}
+\newcommand{\wTVTV}{\protect\ensuremath{w_{\TVTV}}\xspace}
+\newcommand{\nTVTV}{\protect\ensuremath{n_{\TVTV}}\xspace}
+\newcommand{\sTVTV}{\protect\ensuremath{s_{\TVTV}}\xspace}
+\newcommand{\dTVTV}{\protect\ensuremath{d_{\TVTV}}\xspace}
+
+
+%Other common symbols
+\newcommand{\gleak}{\protect\ensuremath{\overline{g}_{\textrm{leak}}}\xspace}
+\newcommand{\gh}{\protect\ensuremath{\overline{g}_{\textrm{h}}}\xspace}
+\newcommand{\gNa}{\protect\ensuremath{\overline{g}_{\textrm{Na}}}\xspace}
+\newcommand{\gKHT}{\protect\ensuremath{\overline{g}_{\textrm{KHT}}}\xspace}
+\newcommand{\gKLT}{\protect\ensuremath{\overline{g}_{\textrm{KLT}}}\xspace}
+\newcommand{\gKA}{\protect\ensuremath{\overline{g}_{\textrm{KA}}}\xspace}
+\newcommand{\Ileak}{\protect\ensuremath{\overline{g}_{\textrm{leak}}}\xspace}
+\newcommand{\Ih}{\protect\ensuremath{I_{\textrm{h}}}\xspace}
+\newcommand{\INa}{\protect\ensuremath{I_{\textrm{Na}}}\xspace}
+\newcommand{\IKHT}{\protect\ensuremath{I_{\textrm{KHT}}}\xspace}
+\newcommand{\IKLT}{\protect\ensuremath{I_{\textrm{KLT}}}\xspace}
+\newcommand{\IKA}{\protect\ensuremath{I_{\textrm{KA}}}\xspace}
+\newcommand{\ISYN}{\protect\ensuremath{I_{\textrm{SYN}}}\xspace}
+\newcommand{\GABAA}{\protect{GABA}$_{\textrm{A}}$\xspace}
+\newcommand{\Gspon}{\protect\ensuremath{\textrm{SR}_{\textrm{GLG}}}\xspace}
+\newcommand{\Gtau}{\protect\ensuremath{\tau_{\textrm{GLG}}}\xspace}
+\newcommand{\Eleak}{\protect\ensuremath{E_{\textrm{leak}}}\xspace}
+\newcommand{\Erev}{\protect\ensuremath{E_{\textrm{Rev}}}\xspace}
+\newcommand{\ENa}{\protect\ensuremath{E_{\textrm{Na}}}\xspace}
+\newcommand{\EK}{\protect\ensuremath{E_{\textrm{K}}}\xspace}
+\newcommand{\Eh}{\protect\ensuremath{E_{\textrm{h}}}\xspace}
+\newcommand{\tfast}{\protect\ensuremath{\tau_{\textrm{fast}}}\xspace}
+\newcommand{\tslow}{\protect\ensuremath{\tau_{\textrm{slow}}}\xspace}
+\newcommand{\twd}{\protect\ensuremath{\tau_{\textrm{wd}}}\xspace}
+\newcommand{\Qten}{\protect\ensuremath{\textrm{Q}_{\textrm{10}}}\xspace}
+\newcommand{\PsiST}{\protect\ensuremath{\Psi_{\textrm{ST}}}\xspace}
+\newcommand{\PsiIFR}{\protect\ensuremath{\Psi_{\textrm{IFR}}}\xspace}
+\newcommand{\PsiAIV}{\protect\ensuremath{\Psi_{\textrm{AIV}}}\xspace}
+
+\newcommand{\tAMPA}{\protect\ensuremath{\tau_{\textrm{AMPA}}}\xspace}
+\newcommand{\tGlyone}{\protect\ensuremath{\tau_{\textrm{Gly1}}}\xspace}
+\newcommand{\tGlytwo}{\protect\ensuremath{\tau_{\textrm{Gly2}}}\xspace}
+\newcommand{\tGABAone}{\protect\ensuremath{\tau_{\textrm{GABA1}}}\xspace}
+\newcommand{\tGABAtwo}{\protect\ensuremath{\tau_{\textrm{GABA2}}}\xspace}
+
+\newcommand{\GaussHSRGLG}{\ensuremath{\wHSRGLG\times\mathcal{N}(\mu=i, \sigma^2=\sHSRGLG)}, from i=0 to N\ensuremath{_{\textrm{channel}}}}
+\newcommand{\GaussLSRGLG}{\ensuremath{\wLSRGLG\times\mathcal{N}(\mu=i,\sigma^2=\sLSRGLG)}, from i=0 to N\ensuremath{_{\textrm{channel}}}}
+\newcommand{\Nchannels}{\ensuremath{N_{\textrm{channels}}}}
+
+%% Glossary General
+\newacronym{AP}{AP}{action potential}
+\newacronym{ANN}{ANN}{artificial neural network}
+\newacronym{BNN}{BNN}{biophysically-realistic neural network}
+\newacronym{GA}{GA}{genetic algorithm}
+\newacronym{HH}{HH}{Hodgkin-Huxley}
+\newacronym{BBN}{BBN}{broadband noise}
+\newacronym{CNSM}{CNSM}{Cochlear Nucleus Stellate Microcircuit}
+\newacronym{DSAM}{DSAM}{Development system for auditory modelling}
+
+%Names
+\newacronym{SGC}{SGC}{spiral ganglion cell}
+\newacronym{IHC}{IHC}{inner hair cell}
+\newacronym{OHC}{OHC}{outer hair cell}
+
+\newacronym{ANF}{ANF}{auditory nerve fibre}
+\newacronym{HSR}{HSR}{high spontaneous rate}
+\newacronym{LSR}{LSR}{low spontaneous rate}
+\newacronym{AN}{AN}{auditory nerve}
+\newacronym{TS}{TS}{T~stellate}
+\newacronym{DS}{DS}{D~stellate}
+\newacronym{TV}{TV}{Tuberculoventral}
+\newacronym{GLG}{GLG}{Golgi}
+\newacronym{RM}{RM}{Rothman and Manis}
+%\newacronym{RM}{\protect{R\&M}}{Rothman and Manis model}
+\newacronym{RMS}{RMS}{root mean square}
+%regions
+\newacronym{CN}{CN}{cochlear nucleus}
+\newacronym{VCN}{VCN}{ventral cochlear nucleus}
+\newacronym{PVCN}{PVCN}{posteroventral cochlear nucleus}
+\newacronym{AVCN}{AVCN}{anteroventral cochlear nucleus}
+\newacronym{IC}{IC}{inferior colliculus}
+\newacronym{DCN}{DCN}{dorsal cochlear nucleus}
+\newacronym{GCD}{GCD}{granule cell domain}
+\newacronym{SCC}{SCC}{small cell crust}
+\newacronym{VNTB}{VNTB}{ventral nucleus of the trapezoidal body}
+\newacronym{LNTB}{LNTB}{lateral nucleus of the trapezoidal body}
+\newacronym{MNTB}{MNTB}{medial nucleus of the trapezoidal body}
+\newacronym{DMPN}{DMPN}{dorsomedial periolivary nucleus}
+\newacronym{SPN}{SPN}{superior paraolivary nucleus}
+
+\newacronym{VNLL}{VNLL}{ventral nucleus of the lateral leminiscus}
+
+\newacronym{LSO}{LSO}{lateral superior olive}
+\newacronym{MSO}{MSO}{medial superior olive}
+\newacronym{OCB}{OCB}{olivocochlear bundle}
+\newacronym{MOC}{MOC}{medial olivocochlear efferent neurons}
+\newacronym{LOC}{LOC}{lateral olivocochlear efferent neurons}
+%characteristics
+\newacronym{SR}{SR}{spontaneous rate}
+\newacronym{FSL}{FSL}{first spike latency}
+\newacronym{CV}{CV}{coefficient of variation}
+\newacronym{AM}{AM}{amplitude modulation}
+\newacronym{MTF}{MTF}{modulation transfer function}
+\newacronym{fz}{\ensuremath{f_{\mathrm{0}}}}{fundamental frequency}
+\newacronym{fm}{\ensuremath{f_{\mathrm{m}}}}{modulation frequency}
+\newacronym{fc}{\ensuremath{f_{\mathrm{c}}}}{carrier frequency}
+\newacronym{SI}{SI}{synchronisation index}
+\newacronym{ISI}{ISI}{inter-spike interval}
+\newacronym{ISIH}{ISIH}{inter-spike interval histogram}
+\newacronym{PSTH}{PSTH}{peri-stimulus time histogram}
+\newacronym{EIRA}{EIRA}{excitatory-inhibitory response area}
+\newacronym{ST}{ST}{spike timing}
+\newacronym{IFR}{IFR}{instantaneous firing rate}
+\newacronym{AIV}{AIV}{average intracellular voltage}
+\newacronym{CF}{CF}{characteristic frequency}
+\newacronym{BF}{BF}{best frequency}
+\newacronym{BMF}{BMF}{best modulation frequency}
+\newacronym{SPL}{SPL}{sound pressure level}
+\newacronym{OnI}{On$_{\rm I}$}{onset ideal}
+\newacronym{OnC}{On$_{\rm C}$}{onset chopper}
+\newacronym{OnL}{On$_{\rm L}$}{onset with latent response}
+\newacronym{ChS}{ChS}{sustained chopper}
+\newacronym{ChT}{ChT}{transient chopper}
+\newacronym{PL}{PL}{primary-like}
+\newacronym{PLn}{PLn}{primary-like with notch}
+
+%Synapse/Transmitters/Currents
+\newacronym{GABA}{GABA}{gamma-aminobutyric acid}
+\newacronym{Gly}{Gly}{glycine neurotransmitter}
+\newacronym{GluR}{GluR}{ionotrophic glutamate receptor}
+\newacronym{GAD}{GAD}{glutamic acid decarboxylase}
+\newacronym{AMPA}{AMPA}{$\alpha$-amino-3-hydroxy-5-methyl-4-isoxazolepropioc acid}
+\newacronym{NMDA}{NMDA}{N-Methyl-D-aspartic acid}
+\newacronym{DNQX}{DNQX}{6,7-dinitroquinoxaline-2,3-dione}
+\newacronym{GlyR}{GlyR}{glycine receptor}
+\newacronym{GABAa}{GABA$_{\rm A}$}{{GABA}ergic subtype A}
+\newacronym{ACh}{ACh}{Acetylcholine}
+\newacronym{AChE}{AChE}{Acetylcholine-esterase}
+
+
+% \newacronym{Gspon}{\Gspon}{spontaneous rate in Golgi cells}
+% \newacronym{Gtau}{\Gtau}{membrane time-constant in Golgi cells}
+\newacronym{KLT}{KLT}{low-threshold potassium channel}
+\newacronym{KHT}{KHT}{high-threshold potassium channel}
+\newacronym{RMP}{RMP}{resting membrane potential}
+\newacronym{IPSP}{IPSP}{inhibitory postsynaptic potential}
+\newacronym{IPSC}{IPSC}{inhibitory postsynaptic current}
+\newacronym{EPSP}{EPSP}{excitatory postsynaptic potential}
+\newacronym{mEPSP}{mEPSP}{miniature EPSP}
+\newacronym{mIPSC}{mIPSC}{miniature IPSC}
+
+\newacronym{EPSC}{EPSC}{excitatory postsynaptic current}
+\newacronym{PSP}{PSP}{postsynaptic potential}
+\newacronym{PSC}{PSC}{postsynaptic current}
+\newacronym{NA}{NA}{Noradrenaline}
+
+%Other common symbols
+\newacronym{TAC}{TAC}{total area coverage}
+\newacronym{SNR}{SNR}{signal-to-noise ratio}
+
+% % ANF to Golgi
+% \newacronym{ANFGLG}{\ANFGLG}{connection from auditory nerve fibres to golgi cells}
+% \newacronym{HSRGLG}{\HSRGLG}{connection from high-spontaneous rate ANFs to golgi cells}
+% \newacronym{LSRGLG}{\LSRGLG}{connection from low-spontaneous rate ANFs to golgi cells}
+
+% \newacronym{w}{\protect\ensuremath{w_{\textrm{{Pre}}\to\textrm{{Post}}}\xspace}}{synaptic weight of presynaptic cell type's synapse onto postsynaptic cell}
+% \newacronym{n}{\protect\ensuremath{n_{\textrm{{Pre}}\to\textrm{{Post}}}\xspace}}{number of synapses from presynaptic cell type onto one postsynaptic cell}
+% \newacronym{s}{\protect\ensuremath{s_{\textrm{{Pre}}\to\textrm{{Post}}}\xspace}}{frequency/spatial spread or distribution of presynaptic cell type onto one postsynaptic cell}
+% \newacronym{o}{\protect\ensuremath{o_{\textrm{{Pre}}\to\textrm{{Post}}}\xspace}}{frequency/spatial offset (from centre frequency of postsynaptic cell) of presynaptic cell type onto postsynaptic cell}
+% \newacronym{d}{\protect\ensuremath{d_{\textrm{{Pre}}\to\textrm{{Post}}}\xspace}}{delay of activation between presynaptic cell activation and postsynaptic cell receiving input}
+
+
+%ANF to D-stellate
+%\newacronym{ANFDS}{\ANFDS}{connection from auditory nerve fibres to D-stellate cells}
+%\newacronym{HSRDS}{\HSRDS}{connection from high-spontaneous rate ANFs to D-stellate cells}
+%\newacronym{LSRDS}{\LSRDS}{connection from low-spontaneous rate ANFs to D-stellate cells}
+
+%ANF to T-stellate
+%\newacronym{ANFTS}{\ANFTS}{connection from auditory nerve fibres to T-stellate cells}
+%\newacronym{HSRTS}{\HSRTS}{connection from high-spontaneous rate ANFs to T-stellate cells}
+%\newacronym{LSRTS}{\LSRTS}{connection from low-spontaneous rate ANFs to T-stellate cells}
+
+%ANF to Tuberculoventral
+%\newacronym{ANFTV}{\ANFTV}{connection from auditory nerve fibres to Tuberculoventral cells}
+%\newacronym{HSRTV}{\HSRTV}{connection from high-spontaneous rate ANFs to Tuberculoventral cells}
+%\newacronym{LSRTV}{\LSRTV}{connection from low-spontaneous rate ANFs to Tuberculoventral cells}
+
+%GLG to T-stellate
+%\newacronym{GLGTS}{\GLGTS}{connection from golgi cells to T-stellate cells }
+%GLG to D-stellate
+%\newacronym{GLGDS}{\GLGDS}{connection from golgi cells to D-stellate cells}
+%TS to D-stellate
+%newacronym{TSDS}{\TSDS}{connection from T-stellate cells to D-stellate cells}
+%TS to T-stellate
+%\newacronym{TSTS}{\TSTS}{connection from T-stellate cells to other T-stellate cells}
+
+%TS to Tuberculoventral
+%\newacronym{TSTV}{\TSTV}{connection from T-stellate cells to Tuberculoventral cells}
+% DS to Golgi
+%\newacronym{DSGLG}{\DSGLG}{connection from  D-stellate cells to golgi cells}
+% %DS to D-stellate
+% \newacronym{DSDS}{\DSDS}{connection from  D-stellate cells to other D-stellate cells}
+%DS to T-stellate
+%\newacronym{DSTV}{\DSTV}{connection from  D-stellate cells to Tuberculoventral cells}
+%DS to Tuberculoventral
+%\newacronym{DSTS}{\DSTS}{connection from  D-stellate cells to T-stellate cells}
+% TV to Golgi
+%\newacronym{TVGLG}{\TVGLG}{connection from Tuberculoventral cells to golgi cells}
+%TV to D-stellate
+%\newacronym{TVDS}{\TVDS}{connection from Tuberculoventral cells to D-stellate cells}
+%TV to T-stellate
+%\newacronym{TVTS}{\TVTS}{connection from Tuberculoventral cells to T-stellate cells}
+
+%TV to Tuberculoventral
+%\newacronym{TVTV}{\TVTV}{connection from Tuberculoventral cells to other TV cells}
+
+
+% Save time and space by creating command to simplify glossary items
+\newcommand{\CNSM}{\gls{CNSM}\xspace}
+\newcommand{\VCN}{{\gls{VCN}}\xspace}
+\newcommand{\PVCN}{{\gls{PVCN}}\xspace}
+\newcommand{\AVCN}{{\gls{AVCN}}\xspace}
+\newcommand{\DCN}{{\gls{DCN}}\xspace}
+\newcommand{\CN}{{\gls{CN}}\xspace}
+\newcommand{\SCC}{{\gls{SCC}}\xspace}
+\newcommand{\VNTB}{{\gls{VNTB}}\xspace}              \newcommand{\VNLL}{{\gls{VNLL}}\xspace}
+
+\newcommand{\LNTB}{{\gls{LNTB}}\xspace}
+\newcommand{\MNTB}{{\gls{MNTB}}\xspace}
+\newcommand{\DMPN}{{\gls{DMPN}}\xspace}
+\newcommand{\SPN}{{\gls{SPN}}\xspace}
+\newcommand{\LSO}{{\gls{LSO}}\xspace}
+\newcommand{\MSO}{{\gls{MSO}}\xspace}
+\newcommand{\MOC}{{\gls{MOC}}\xspace}                \newcommand{\OCB}{{\gls{OCB}}\xspace}
+
+\newcommand{\LOC}{{\gls{LOC}}\xspace}
+\newcommand{\AP}{{\gls{AP}}\xspace}              \newcommand{\APs}{{\glspl{AP}}\xspace}
+\newcommand{\AN}{{\gls{AN}}\xspace}
+\newcommand{\GluR}{{\gls{GluR}}\xspace}              \newcommand{\GluRs}{{\glspl{GluR}}\xspace}
+
+\newcommand{\MTF}{{\gls{MTF}}\xspace}            \newcommand{\MTFs}{{\glspl{MTF}}\xspace}
+\newcommand{\IC}{{\gls{IC}}\xspace}
+\newcommand{\tMTF}{{t{}\gls{MTF}}\xspace}   \newcommand{\tMTFs}{{t{}\glspl{MTF}}\xspace}
+\newcommand{\rMTF}{{r{}\gls{MTF}}\xspace}
+
+\newcommand{\AM}{{\gls{AM}}\xspace}
+\newcommand{\fm}{{\gls{fm}}\xspace}        \newcommand{\fms}{{\glspl{fm}}\xspace}              
+\newcommand{\fc}{{\gls{fc}}\xspace}
+\newcommand{\fz}{{\gls{fz}}\xspace}  
+
+
+\newcommand{\IHC}{{\gls{IHC}}\xspace}              \newcommand{\IHCs}{{\glspl{IHC}}\xspace}
+\newcommand{\OHC}{{\gls{OHC}}\xspace}              \newcommand{\OHCs}{{\glspl{OHC}}\xspace}   
+
+\newcommand{\ANF}{{\gls{ANF}}\xspace}              \newcommand{\ANFs}{{\glspl{ANF}}\xspace}
+\newcommand{\BNN}{{\gls{BNN}}\xspace}              \newcommand{\BNNs}{{\glspl{BNN}}\xspace}   
+\newcommand{\CF}{{\gls{CF}}\xspace}                \newcommand{\CFs}{{\glspl{CF}}\xspace}
+\newcommand{\GA}{{\gls{GA}}\xspace}                \newcommand{\GAs}{{\glspl{GA}}\xspace}
+\newcommand{\FSL}{{\gls{FSL}}\xspace}              \newcommand{\sFSL}{{\protect{\ensuremath{\sigma}\gls{FSL}}}\xspace}    \newcommand{\uFSL}{{\protect{\ensuremath{\mu}\gls{FSL}}}\xspace}
+
+\newcommand{\OnC}{{\gls{OnC}}\xspace}              \newcommand{\OnCs}{{\glspl{OnC}}\xspace}
+\newcommand{\OnL}{{\gls{OnL}}\xspace}              \newcommand{\OnLs}{{\glspl{OnL}}\xspace}
+\newcommand{\ChS}{{\gls{ChS}}\xspace}              \newcommand{\ChSs}{{\glspl{ChS}}\xspace}
+\newcommand{\ChT}{{\gls{ChT}}\xspace}              \newcommand{\ChTs}{{\glspl{ChT}}\xspace}
+\newcommand{\ChTone}{{\gls{ChT}\ensuremath{_{1}}}\xspace}              \newcommand{\ChTtwo}{{\gls{ChT}\ensuremath{_{2}}}\xspace}
+\newcommand{\PSTH}{{\gls{PSTH}}\xspace}            \newcommand{\PSTHs}{{\glspl{PSTH}}\xspace}
+\newcommand{\EIRA}{{\gls{EIRA}}\xspace}
+\newcommand{\PL}{{\gls{PL}}\xspace}
+\newcommand{\PLn}{{\gls{PLn}}\xspace}
+\newcommand{\SI}{{\gls{SI}}\xspace}              \newcommand{\SIs}{{\glspl{SIs}}\xspace}
+\newcommand{\ISI}{{\gls{ISI}}\xspace}              \newcommand{\ISIs}{{\glspl{ISIs}}\xspace}
+\newcommand{\ISIH}{{\gls{ISIH}}\xspace}              \newcommand{\ISIHs}{{\glspl{ISIHs}}\xspace}
+\newcommand{\ST}{{\gls{ST}}\xspace}
+\newcommand{\IFR}{{\gls{IFR}}\xspace}
+\newcommand{\AIV}{{\gls{AIV}}\xspace}
+\newcommand{\HH}{{\gls{HH}}\xspace}
+\newcommand{\SR}{{\gls{SR}}\xspace}
+\newcommand{\LSR}{{\gls{LSR}}\xspace}
+\newcommand{\HSR}{{\gls{HSR}}\xspace}
+\newcommand{\BF}{{\gls{BF}}\xspace}                
+\newcommand{\BMF}{{\gls{BMF}}\xspace} \newcommand{\BMFs}{{\glspl{BMF}}\xspace}
+\newcommand{\TS}{{\Gls{TS}}\xspace}
+\newcommand{\DS}{{\Gls{DS}}\xspace}
+\newcommand{\TV}{{\Gls{TV}}\xspace}
+\newcommand{\GLG}{{\Gls{GLG}}\xspace}
+\newcommand{\GCD}{{\gls{GCD}}\xspace}              \newcommand{\GAD}{{\gls{GAD}}\xspace}
+
+\newcommand{\AMPA}{{\gls{AMPA}}\xspace}
+\newcommand{\GlyR}{{\gls{GlyR}}\xspace}
+\newcommand{\GABAa}{{\gls{GABAa}}\xspace}
+\newcommand{\GABA}{{\gls{GABA}}\xspace}
+\newcommand{\ACh}{{\gls{ACh}}\xspace}            \newcommand{\AChE}{{\gls{AChE}}\xspace}
+
+\newcommand{\EPSP}{{\gls{EPSP}}\xspace}            \newcommand{\EPSPs}{{\glspl{EPSP}}\xspace}
+\newcommand{\mEPSP}{{\gls{mEPSP}}\xspace}            \newcommand{\mEPSPs}{{\glspl{mEPSP}}\xspace}
+\newcommand{\EPSC}{{\gls{EPSC}}\xspace}            \newcommand{\EPSCs}{{\glspl{EPSC}}\xspace}
+\newcommand{\PSP}{{\gls{PSP}}\xspace}              \newcommand{\PSPs}{{\glspl{PSP}}\xspace}
+\newcommand{\IPSP}{{\gls{IPSP}}\xspace}            \newcommand{\IPSPs}{{\glspl{IPSP}}\xspace}
+\newcommand{\IPSC}{{\gls{IPSC}}\xspace}              \newcommand{\IPSCs}{{\glspl{IPSC}}\xspace}
+\newcommand{\mIPSC}{{\gls{mIPSC}}\xspace}              \newcommand{\mIPSCs}{{\glspl{mIPSC}}\xspace}
+
+\newcommand{\NMDA}{{\gls{NMDA}}\xspace}
+\newcommand{\DNQX}{{\gls{DNQX}}\xspace}
+
+\newcommand{\SPL}{{\gls{SPL}}\xspace}
+\newcommand{\KLT}{{\gls{KLT}}\xspace}
+\newcommand{\KHT}{{\gls{KHT}}\xspace}
+\newcommand{\RMP}{{\gls{RMP}}\xspace}
+\newcommand{\RM}{{\gls{RM}}\xspace}
+\newcommand{\RMS}{{\gls{RMS}}\xspace}
+\newcommand{\DSAM}{{\gls{DSAM}}\xspace}
+
+\newcommand{\TAC}{{\gls{TAC}}\xspace}
+\newcommand{\BBN}{{\gls{BBN}}\xspace}
+\newcommand{\CV}{{\gls{CV}}\xspace}
+
+\newcommand{\SNR}{{\gls{SNR}}\xspace}
+
+
+\newcommand{\uS}{\ensuremath{\mu\mathrm{S}}\xspace}
+\newcommand{\Scmsq}{\ensuremath{\mathrm{S\,cm}^{-2}}\xspace}
+
+\newcommand{\um}{\ensuremath{\mu\mathrm{m}}\xspace}
+\newcommand{\umsq}{\ensuremath{\mu\mathrm{m}^2}\xspace}
+\newcommand{\degC}{$^\circ${}C\xspace}
+
+\newcommand{\cochleaxf}{\protect{\textsf{cochlea\_x2f}}\xspace}
+\newcommand{\cochleafx}{\protect{\textsf{cochlea\_f2x}}\xspace}
+\newcommand{\delayspecies}{\protect{\textsf{delay\_species}}\xspace}
+
+%%% Local Variables:
+%%% mode: latex
+%%% mode: tex-fold
+%%% TeX-master: "../manuscipt"
+%%% TeX-PDF-mode: nil
+%%% End:

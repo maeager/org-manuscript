@@ -1,0 +1,483 @@
+#+title: Discussion and Conclusion
+#+AUTHOR: Michael A Eager
+#+DATE:
+#+LATEX_CLASS: UoM-draft-org-article
+#+LATEX_HEADER: \usepackage[notcite]{showkeys}
+#+BIBLIOGRAPHY: ../org-manuscript/bib/MyBib plainnat
+#+TODO: REFTEX
+
+#+LaTeX:\glsunsetall
+#+LaTeX:\setcounter{chapter}{5}
+#+LaTeX: \chapter{Discussion and Conclusion}\label{sec:FinalChapter}
+
+# \note{
+# Usually the discussion has the following parts:
+#     It should state the main findings of the study in one or two sentences.
+#     The discussion should consider the methods, and address possible shortcomings. Defend your answers, if necessary, by explaining both why your answer is satisfactory and why others are not. Only by giving both sides to the argument can you make your explanation convincing.
+#     Identify potential weaknesses, and comment the relative importance of these to your interpretation of the results and how they may affect the validity of the findings. When identifying limits and weaknesses, avoid using an apologetic tone.
+#     Support the answers with the results. State why they are acceptable and how they are consistent with previously published knowledge on the topic.
+#     Discuss any unexpected findings. When discussing an unexpected finding, begin the paragraph with the finding and then describe it.
+#     Explain how the results and conclusions of this study are important and how they influence our knowledge or understanding of the problem being examined.
+#     Provide no more than two recommendations for further research. Do not offer suggestions which could have been done within the study, as this shows there has been inadequate examination and interpretation of the data.
+# }
+
+
+* Introduction
+:PROPERTIES:
+:CUSTOM_ID: sec:FinalChapter:Intro
+:END:
+
+This thesis investigated the key physiological mechanisms involved in neural
+processing in the stellate microcircuit of the \CN.  It focused specifically on
+rate-place and temporal processing enhancement in the microcircuits regulating
+the output of \TS cells.  It achieved this through the development and testing
+of a novel \CNSM model and methods used to set parameters based on experimental
+data.  Computer modelling enhances our knowledge of complex neural interactions
+in \TS cells and provides further understanding of inputs to higher centres.  By
+developing a \BNN with a high degree of realism at the individual cell level,
+this thesis has contributed to our understanding of the influence of synaptic
+organisation on physiological behaviour in the stellate microcircuit.
+
+This thesis argued that the \BNN models of the \CN or models of individual cells
+in the \CNSM model have not been sufficiently considerate of the most current
+physiological and known experimental data.  To address these deficiencies, the
+thesis designed, optimised and tested a new model of the stellate microcircuit.
+It demonstrated through rigorous sequential optimisation that the cell models
+and connectivity parameters in the \CNSM model can be created to replicate known
+cell type behaviour in response simple stimuli.  The temporal responses of the
+optimised \CNSM model's neurons to \AM tones were also investigated.
+
+Additionally, the thesis applied simultaneous optimisation methods to all
+network parameters in the \CNSM model using \GAs and the sensitivity of
+parameters given the noise in neural inputs.  It further developed novel cost
+functions to condense the neural outputs of the whole network into a single
+value, which included intracellular responses, spike times, and time-varying
+average firing rate.
+
+This chapter concludes the thesis by drawing together the results of the design
+and optimisation of the \CNSM model.  It describes the usefulness of the model
+as well as the optimisation methods used throughout the thesis.  It reflects on
+the implications of the research for the design and optimisation of \BNNs.
+Finally, it describes the limitations of the research and makes recommendations
+for future work arising out of the thesis.
+
+# \yellownote{ Restating in the aims of the thesis }
+# This project was undertaken to design ...... and evaluate .....
+
+
+# This thesis has provided ...
+# Through studies of XYZ ..., the thesis has shown that ABC
+# I have argued
+# I have demonstrated
+# I have further developed ..
+# Draws together the findings of the design and optimisation of the CNSM model.
+# It describes the usefulness of the model as well as the optimisation methods used throughout the thesis.
+# It canvasses the limitations of the research and makes recommendations for future work.
+
+
+* Overview of Research Findings
+
+# \yellownote{Summary of the findings and general implications}
+# These findings suggest that in general ......
+# The results of this research support the idea that .......
+# using standard phenomenologically accurate models
+# using publicly available models
+# replication and reproducibility
+# ------------------
+Chapter \ref{sec:IntroChapter} identified a range of deficiencies in previous
+approaches to modelling and optimisation in the \CN.  In particular, previous
+modelling studies of \TS cells and their microcircuit were limited by their
+outdated input \AN models, errors in network connectivity and lack of
+documentation of parameter optimistation methods.  Additionally, previous
+network-based approaches used insufficiently complex neural models that
+pre-dated the kinetic current models of \citet{RothmanManis:2003b}.  These
+deficiencies limit our insight into neural processing in the \CN, and call for
+refined model development and optimisation approaches.
+
+# Taken together,
+# To overcome these deficiencies
+# create challenges for getting the best out of BNN models of the auditory system.
+# Making increased use
+# - Designed better models and better testing of the models
+# - In particular, the neural cell models used in previous modelling research did not
+#  use advances in current models introduced by Rothman and Manis
+#  previous modelling research in the CN has not
+# - AN model deficiencies in previous CN models
+# - Rothman and Manis highly specialised current models unique to the mammalian VCN
+# - Use of synaptic connections with sound evidence support
+# - Demonstration of methods to show how netpwkr parameters were achieved
+# - introduced the importance of the TS cell and the \CN stellate
+# microcircuit to the auditory pathway
+#
+# The gap in the literature ... biophysically-realistic models of TS cells and its
+# constituent microcircuit (the CNSM) using accurate input models, accurate
+# membrane current models
+
+
+# Chapter \ref{sec:IntroChapter} also introduced the general techniques of
+# parameter setting in BNN models.
+# Analytical optimisation techniques of spiking neural networks and individual
+# current channels are not suitable to BNN models which have large numbers of
+# parameters and noisy search spaces.
+
+# Communication of how parameters are discovered/fitted/optimised in BNN models in
+# existing models of the CN are limited .
+
+# --------------------
+Chapter \ref{sec:MethodsChapter} presented the general methods used to create
+and optimise the CNSM model.  The methods were used to improve the design and
+development of the CNSM model as a NEURON package, [[latex:progname][cnstellate]].  This model
+collated extensive studies of AN models, physiological experimentation data at
+the synapse and cell levels, and more broadly the connectivity across the nuclei
+into a more realistic model.
+
+
+# Taken together, the methods introduced in Chapter \ref{sec:MethodsChapter} were
+# packaged to form the basis for the \CNSM model.
+# The Carney AN model, the Rothman and Manis neural models, and synaptic
+# connectivity of the stellate microcircuit were packaged into a NEURON BNN model.
+# This included introducing the Carney periphery AN model, membrane current models
+# of \citet{RothmanManis:2003b}
+#  and its particular version used in this thesis. The Zilany version of the
+#  Carney model is most recent detailed model of the AN periphery phenomenological
+#  model
+# --------------
+# In *Chapter \ref{sec:ModelChapter}*, sequential simple optimisation was used in the
+# development of cell models and their connectivity in the CNSM model ...
+
+Chapter \ref{sec:ModelChapter} developed output responses of each neuron in the
+\CNSM model through rigorous sequential optimisation using simple stimuli.
+# and connectivity parameters in the \CNSM model can be created to replicate known
+# behaviour to tones and noise.
+The \GLG cell model was developed using a novel filter-based neural model due to
+the limited intracellular and extracellular data.  Its parameters were optimised
+to rate-level responses in the leading study of \GCD units
+\citep{GhoshalKim:1996}.  \GLG cells are critical to controlling the activity of
+granule cells in the \GCD, \DS and \TS cells with increasing sound intensity
+through tonic, GABAergic inhibition.
+
+The \DS cell model's intrinsic and extrinsic parameters were optimised using
+responses to tones, noise and click pairs.  \DS cells are known to be wide band,
+onset, glycinergic inhibitors of the stellate microcircuit.  Their intracellular
+behaviour is characteristic of a coincidence detector and was modelled using the
+type I-II \RM neural model.  The leak conductance of the model and parameters
+controlling synaptic connections were optimised to mimic the physiological
+responses of DS cells to tones and noise \citep{ArnottWallaceEtAl:2004}.
+Further optimisation was required to modify the \GABAa synapse on DS cells to
+best model the response recovery to click pairs \citep{BackoffPalombiEtAl:1997}.
+The primary function of \DS cells in the microcircuit is lateral inhibition
+(enhancing rate-place response in \TS and \TV cells) but further research has
+shown the importance of precisely timed phasic input to enhance temporal output
+in \TS cells.
+
+The \TV cell model's synaptic inputs were optimised using rate level curves of
+tones and noise to fit the typical type II \DCN unit behaviour
+\citep{SpirouDavisEtAl:1999}.  A further optimisation of the offset parameter in
+\DS cell to \TV cell connectivity using notch noise did not confirm the
+asymmetry suggested by \citet{ReissYoung:2005}; however, the model demonstrated
+that LSR inputs contribute to the asymmetry in the response of type II units to
+notch noise.  TS cells, the main focus of many experimental and modelling
+studies of the \CN, have heterogeneous responses to stimuli due to their unique
+membrane channels (\IKA is not present in any other neurons) and variability in
+synaptic inputs (receiving inputs from all other neurons in the microcircuit).
+In the CNSM model, the TS cells were classified into three chopper subtypes
+using spike-based and average intracellular responses to tones
+\citep{PaoliniClareyEtAl:2005}.
+
+# -------------------
+The study of AM tone responses in the \CNSM model in Chapter \ref{sec:AMChapter}
+investigated the rate and temporal responses of cells in the stellate
+microcircuit.
+# Temporal information in the auditory system is important for animal communications and location of sounds.
+In the AN, temporal information is encoded through finely timed spikes,
+phase-locking to the envelope of the stimulus.  This poses problems for hearing
+in loud, noisy and reverberant environments and also in neural transfer.  The
+stellate microcircuit is the first step in transforming timing-based temporal
+information to a more stable rate-based code in the \IC.  The rate and temporal
+responses of each cell in the \CNSM model were investigated after the
+presentation of \AM tones of varying sound intensity and envelope modulation
+frequency.
+
+The non-linear \fz response of the \AN model to increasing \AM sound intensity
+showed the limiting effect of the \ANFs on \CF, which is exacerbated by
+saturation at the IHC-AN synapse.
+# The \rMTF responses of \HSR\space \ANFs
+Encoding of temporal information in \MTFs of \HSR\space \ANFs is strongest in
+the lateral frequency sidebands of the stimulus energy.  \Gls{LSR}\space \ANFs
+had moderate to high temporal encoding of AM tones throughout their response
+area.  In the absence of experimental evidence of \GLG cells' response to \AM
+tones, the novel \GLG cell model within the \CNSM model proposed that GLG cells
+diminish timing information contained in their ANF inputs.  This approach
+derives from the hypothesis that \GLG cells are purely rate-level encoders and
+contribute to automatic gain mechanisms in the microcircuit
+\citep{FerragamoGoldingEtAl:1998}.  The DS cell model's response to AM tones
+matched the extensive experimental evidence of DS cells
+\citep{RhodeGreenberg:1994,JorisSchreinerEtAl:2004,FrisinaSmithEtAl:1990}.
+Phase-locking in DS cells is greatly enhanced, relative to ANFs, due to their
+receipt of large numbers of \ANF inputs and fast intrinsic membrane mechanisms.
+Experimental evidence of \TV cells' response to AM tones is inconclusive.  The
+integration of predominantly LSR inputs and strong inhibition from \DS cells,
+meant that the \TV cell model's AM tone responses were equivalent to a half-wave
+rectification and low-pass filter transformation.
+
+## TODO -- TS cells  ##
+
+Chapter \ref{sec:GAChapter} reported on the use of \GAs and three novel cost
+functions to simultaneously optimise \BNN parameters. For this analysis, a
+simplified \CNSM model was used as the exemplar \BNN model and real experimental
+data was substituted for a known BNN target network.  The results showed the
+limited benefits of stimulus repetitions for overcoming noise in the stimulus,
+synaptic inputs and smoothing of neural outputs.  The spike timing cost
+function, using dynamic programming to compare multi-neuronal spike trains,
+performed better than the intracellular responses or time-varying rate cost
+functions.  The next part of this chapter draws together the contributions of
+the thesis and their implications.
+
+* Synthesis and Contributions
+:PROPERTIES:
+:CUSTOM_ID: sec:FinalChapter:Contrib
+:END:
+
+** The CNSM Model Advances BNN Models of the Stellate Microcircuit
+
+# Par 4
+# Reliability and predictability of phenomenological behaviour is essential in \BNN models.
+
+The \CNSM model comprises a phenomenologically-realistic \AN input model
+\citep{ZilanyCarney:2010} that allows arbitrary stimuli to be used in
+simulations, especially temporally complex sounds such as speech.  The neural
+and synaptic models in the \CNSM model are deterministic.  The introduction of
+noise comes from the spike generators of the \ANF and \GLG cell models, and the
+allocation of synaptic connections in the \CNSM model.
+
+# present tense
+# Par 1
+This thesis contributes to the understanding of neural processing performed
+within the stellate microcircuit of the \CN.  It utilises a framework of
+state-of-the-art input, neural, and synapse models along with connectivity
+reflecting substantial evidence to create a \BNN model of the microcircuit
+across the whole nuclei.  Its methodology demonstrates the steps required to fit
+a large number of parameters to achieve necessary neural outputs in an ordered
+and sequential manner using variety of experimental data.
+
+# The optimisation and reporting studies comprising the thesis ...
+# The variety of methods used throughout the thesis generated insights into neural modelling optimisation and understanding of the CNSM.
+##
+
+# par 2
+#  A critical and rigorous analysis of histological, immuno-histochemical,
+# electro-physiological and extracellular /in vivo/ physiological data of TS cells
+# and the constituent cells of the stellate microcircuit was performed.  An
+# equally critical analysis of existing modelling studies was also performed and a
+# substantial gap in the literature was found which this thesis tries to address.
+
+# Par 3
+# These findings enhance our understanding of ...
+
+# The findings from this study make several contributions to the current literature. First,...
+
+# The methods used for this X may be applied to other Xs elsewhere in the world.
+
+# This research will serve as a basis for future studies ...
+
+# This model has gone some way towards enhancing our understanding of ...
+
+# The present work makes several noteworthy contributions to ...
+
+## FIXME ^^^^^^^
+
+
+
+** Optimisation Methods Must be Shared to Facilitate Model Reproducibility
+ :PROPERTIES:
+ :CUSTOM_ID: sec:FinalChapter:OptBNN
+ :END:
+
+# Par 1
+As Chapter 1 showed, there is inconsistent documentation of optimisation methods
+in the literature on \BNN models.  The lack of such documentation creates
+important challenges for the development of research in the field.  Firstly, it
+inhibits comprehensive evaluation of the quality of the research. Secondly, it
+makes replication of existing research difficult.
+
+# Par 4
+Replication and reproducibility are critical to the development of computational
+models of the brain.  Information contained within the compact tables in
+Chapters 3 and 4 show the methods for model replication suggested by
+\citet{NordlieGewaltigEtAl:2009}.  Reproducibility of simulations is best
+supported by making software of the model and analysis scripts publicly
+available and open source.  It is intended that code developed in this thesis
+will be made available online.  Through the use if these approach, the thesis
+contributes to the reproducibility of techniques in modelling the CNSM.
+
+
+# microcircuits and medium sized neural networks from experimental data sets.
+
+# Very little was found in the literature on the question of replicating neural
+# outputs from multiple neurons of different cell types.
+
+# This thesis set out with
+# the aim of assessing the importance of optimisation in biophysically realistic
+# neural microcircuits through either sequential or simultaneous methods.
+
+
+# Par 2
+# \yellownote{ TODO
+# Experimental evidence used in optimisation is challenging but worthwhile.
+# Optimisation methods can provide valuable evidence in developing valid and
+# reproducible BNN models.
+# Rigorous sequential methods
+# The results of Chapters 3 and 5 show that optimisation techniques ...
+# sequential
+# or simultaneous methods worthwhile. }
+
+# ## FIXME ^^^^^^^
+
+# # Par 3
+# \yellownote{
+# Methodologies, Tools and practices
+# The effort to achieve objectives ... create their own kinds of uncertainties.
+# Understanding the limitations of experimental data facilitates setting out constraints in fitness functions.
+# The results of Chapter 5 indicate that genetic algorithms are a suitable tool for optimisation in medium to large BNN models.
+# }
+## FIXME ^^^^^^^
+
+# Simultaneous  --
+# Substantial progression of the use of BNNs in neuroscience ...
+# Using standard phenomenologically accurate models from inputs to membrane currents to recognised connections.
+## FIXME ^^^^^^^
+
+
+
+
+
+* Limitation of the Research
+ :PROPERTIES:
+ :CUSTOM_ID: sec:FinalChapter:Limitations
+ :END:
+
+
+The specific limitations of the studies in this thesis were canvassed in the
+relevant chapters. The limitations of the \CNSM model, described and developed in Chapter 3, relate
+to the specificity of the neural models' morphology and the exclusion of synaptic connections
+without solid empirical foundations.
+# inclusion or exclusion of experimental data used in each optimisation step
+# A number of caveats need to be noted regarding the present study.
+#The most important limitation lies in the fact that
+The \CNSM model does not include cells and synaptic connections that have known
+interactions with neurons in the microcircuit.  Key examples of these are the
+\DCN cells connecting with TV cells
+\citep{SpirouDavisEtAl:1999,YoungDavis:2002}; commisural inhibition from DS
+neurons of the contralateral \CN
+\citep{NeedhamPaolini:2007,NeedhamPaolini:2006,NeedhamPaolini:2003}; GABAergic
+collaterals of the periolivary region
+\citep{EvansZhao:1998,EvansZhao:1993a,BackoffShadduckEtAl:1999,CasparyBackoffEtAl:1994,PalombiCaspary:1992};
+and cholinergic \MOC collaterals interacting with neurons in the \VCN
+\citep{MuldersPaoliniEtAl:2003}.  The inclusion of these interactions was beyond
+the scope of this thesis, and could be addressed in further research in the
+field.
+
+
+# \yellownote{
+# Several limitations of this model need to be acknowledged
+# spatial resolution of the filterbank \AN and \CN
+# CF fields
+# morphologically complex neural models
+# }
+
+
+# The current model was unable to analyse these variables
+
+# The current model was not designed to evaluate factors relating to
+
+# Our findings in this thess are subject to at lest three limitations.  Firstly, ...
+
+# A number of caveats need to be noted regarding the present study.
+
+# The current research was not specifically designed to evaluate factors related to ......
+
+
+* Recommendations for Future Work
+ :PROPERTIES:
+ :CUSTOM_ID: sec:FinalChapter:FutureWork
+ :END:
+
+# \yellownote{Future Work:
+# Don’t view this necessarily as a list of the limitations of your thesis.
+# Think of what you would do if you had an extra year in your Ph.D.
+# Don’t worry – this is not for your advisor to hold your feet to the fire.
+# Think of 2-3 other follow-on Ph.D. dissertations that you can envision}
+
+Despite the contribution of the thesis, fundamental questions about the
+behaviour of \TS cells remain for exploration \citep{OertelWrightEtAl:2011}.  Do
+intrinsic membrane mechanism or network and synaptic mechanisms play a greater
+role in the behaviour of \TS cells?  How are the different categories of \ANFs
+(\LSR and \HSR) processed by the stellate microcircuit?  What are the effects of
+synaptic connections and how do these impact upon the temporal and spectral
+representation across the population of \TS cells?  Can the optimised \CNSM
+model reproduce responses to complex stimuli, particularly vowel encoding in
+sustained and transient chopper units?  While answering these questions was
+beyond the scope of this thesis, the model and optimisation methods established
+by the thesis provide valuable tools for use in those inquiries.
+
+\yellownote{DG expand on how recommendations can be achieved using detailed explanations}
+
+# \yellownote{Further studies in simulating effects of blocking specific
+# connections can be achieved through manipulation of the \CNSM model's
+# parameters.  Further simulations on the pharmacological effects of GABA and
+# glycine blockers
+# \citep{EvansZhao:1998,EvansZhao:1993a,BackoffShadduckEtAl:1999,CasparyBackoffEtAl:1994,PalombiCaspary:1992}
+# or other modulating neurotransmitters from non-auditory inputs
+# \citep{MuldersPaoliniEtAl:2003}.}
+# \yellownote{Further studies on commissural inputs? Labelled \DS cells project
+# widely to the VCN and DCN; and in some cases to the contralateral CN in the same
+# manner \citep{SmithMassieEtAl:2005,ArnottWallaceEtAl:2004}
+# In vivo studies have
+# already shown the effects of commisural inhibition of first spike responses to
+# tones \citep{NeedhamPaolini:2007,NeedhamPaolini:2006,NeedhamPaolini:2003}.}
+
+Additionally, enhanced understanding of the complex neural processing done by
+the CNSM has strong potential to contribute to the refinement of
+hearing-impairment devices.  Further insight into the processing of sound in
+noisy environments within the network could aid in developing new sound
+processing strategies for the cochlear implant and hearing aids.
+
+
+# This thesis identifies  a number of priorities for further research.
+
+# using standard phenomenologically accurate models
+
+# using publically available models
+
+# replication and reproducibility
+
+Simultaneous optimisation of \BNN models requires further exploration.  In
+particular, attention is required to improve the final best parameter outcome
+using modification of GAs or hybrid algorithms.  Multi-unit recording of
+populations of neurons opens new doors to understanding microcircuits and
+introduces additional problems for modelling.  Cost function methods need to be
+developed which can use the limited number of neural outputs and enhance the
+their robustness to various sources of noise.
+
+# , especially for sensitivity and
+# robustness of inhibitory connections in the \CN stellate network.
+
+* Concluding Remarks
+
+In computational neuroscience the development of \BNN models is a promising means
+by which we can understand highly complex neural processing.  The accuracy of
+this understanding relies on the quality of design and optimisation methods, and
+ experimental data used.  This thesis presented a novel \BNN model of the
+ stellate microcircuit of the \CN, which was optimised using rigorous
+sequential and simultaneous methods.  The thesis demonstrates
+the utility of this approach for BNN models and enhancing our understanding of neural
+processing in the \CN.
+
+# \yellownote{Conclusions: Be reflective and honest. What were the lessons
+# learned? What were the overall insights? Did you solve the problem completely?
+# How much progress have we made in your field because of your work. Don’t bore
+# the reader with a cut-and-paste of your Introduction chapter.}
+
+#+BEGIN_LaTeX
+  \ifthenelse{\isundefined{\manuscript}}{\newpage\singlespacing\bibliographystyle{plainnat} \bibliography{../org-manuscript/bib/MyBib}\newpage \printglossaries\newpage\listoftodos}{}
+#+END_LaTeX
