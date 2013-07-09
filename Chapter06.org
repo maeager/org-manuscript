@@ -220,7 +220,7 @@ integration of predominantly LSR inputs and strong inhibition from \DS cells,
 meant that the \TV cell model's AM tone responses were equivalent to a half-wave
 rectification and low-pass filter transformation.
 
-## TODO -- TS cells  ##
+\yellownote{TODO -- TS cells in ch 4 }
 
 Chapter \ref{sec:GAChapter} reported on the use of \GAs and three novel cost
 functions to simultaneously optimise \BNN parameters. For this analysis, a
@@ -232,6 +232,7 @@ function, using dynamic programming to compare multi-neuronal spike trains,
 performed better than the intracellular responses or time-varying rate cost
 functions.  The next part of this chapter draws together the contributions of
 the thesis and their implications.
+
 
 * Synthesis and Contributions
 :PROPERTIES:
@@ -262,7 +263,7 @@ and sequential manner using variety of experimental data.
 
 # The optimisation and reporting studies comprising the thesis ...
 # The variety of methods used throughout the thesis generated insights into neural modelling optimisation and understanding of the CNSM.
-##
+# #
 
 # par 2
 #  A critical and rigorous analysis of histological, immuno-histochemical,
@@ -284,7 +285,7 @@ and sequential manner using variety of experimental data.
 
 # The present work makes several noteworthy contributions to ...
 
-## FIXME ^^^^^^^
+# # FIXME ^^^^^^^
 
 
 
@@ -294,7 +295,7 @@ and sequential manner using variety of experimental data.
  :END:
 
 # Par 1
-As Chapter 1 showed, there is inconsistent documentation of optimisation methods
+As Chapter \ref{sec:IntroChapter} showed, there is inconsistent documentation of optimisation methods
 in the literature on \BNN models.  The lack of such documentation creates
 important challenges for the development of research in the field.  Firstly, it
 inhibits comprehensive evaluation of the quality of the research. Secondly, it
@@ -303,7 +304,7 @@ makes replication of existing research difficult.
 # Par 4
 Replication and reproducibility are critical to the development of computational
 models of the brain.  Information contained within the compact tables in
-Chapters 3 and 4 show the methods for model replication suggested by
+Chapters \ref{sec:ModelChapter} and \ref{sec:AMChapter} show the methods for model replication suggested by
 \citet{NordlieGewaltigEtAl:2009}.  Reproducibility of simulations is best
 supported by making software of the model and analysis scripts publicly
 available and open source.  It is intended that code developed in this thesis
@@ -340,12 +341,12 @@ contributes to the reproducibility of techniques in modelling the CNSM.
 # Understanding the limitations of experimental data facilitates setting out constraints in fitness functions.
 # The results of Chapter 5 indicate that genetic algorithms are a suitable tool for optimisation in medium to large BNN models.
 # }
-## FIXME ^^^^^^^
+# # FIXME ^^^^^^^
 
 # Simultaneous  --
 # Substantial progression of the use of BNNs in neuroscience ...
 # Using standard phenomenologically accurate models from inputs to membrane currents to recognised connections.
-## FIXME ^^^^^^^
+# # FIXME ^^^^^^^
 
 
 
@@ -358,17 +359,16 @@ contributes to the reproducibility of techniques in modelling the CNSM.
 
 
 The specific limitations of the studies in this thesis were canvassed in the
-relevant chapters. The limitations of the \CNSM model, described and developed in Chapter 3, relate
-to the specificity of the neural models' morphology and the exclusion of synaptic connections
-without solid empirical foundations.
+relevant chapters. The limitations of the \CNSM model, described and developed
+in Chapter \ref{sec:ModelChapter}, relate to the specificity of the neural models' morphology and the
+exclusion of synaptic connections without solid empirical foundations.
 # inclusion or exclusion of experimental data used in each optimisation step
 # A number of caveats need to be noted regarding the present study.
-#The most important limitation lies in the fact that
-The \CNSM model does not include cells and synaptic connections that have known
-interactions with neurons in the microcircuit.  Key examples of these are the
-\DCN cells connecting with TV cells
-\citep{SpirouDavisEtAl:1999,YoungDavis:2002}; commisural inhibition from DS
-neurons of the contralateral \CN
+The most important limitation lies in the fact that The \CNSM model does not
+include cells and synaptic connections that have known interactions with neurons
+in the microcircuit.  Key examples of these are the \DCN cells connecting with
+TV cells \citep{SpirouDavisEtAl:1999,YoungDavis:2002}; commisural inhibition
+from DS neurons of the contralateral \CN
 \citep{NeedhamPaolini:2007,NeedhamPaolini:2006,NeedhamPaolini:2003}; GABAergic
 collaterals of the periolivary region
 \citep{EvansZhao:1998,EvansZhao:1993a,BackoffShadduckEtAl:1999,CasparyBackoffEtAl:1994,PalombiCaspary:1992};
@@ -464,14 +464,13 @@ their robustness to various sources of noise.
 
 * Concluding Remarks
 
-In computational neuroscience the development of \BNN models is a promising means
-by which we can understand highly complex neural processing.  The accuracy of
-this understanding relies on the quality of design and optimisation methods, and
- experimental data used.  This thesis presented a novel \BNN model of the
- stellate microcircuit of the \CN, which was optimised using rigorous
-sequential and simultaneous methods.  The thesis demonstrates
-the utility of this approach for BNN models and enhancing our understanding of neural
-processing in the \CN.
+In computational neuroscience the development of \BNN models is a promising
+means by which we can understand highly complex neural processing.  The accuracy
+of this understanding relies on the quality of design and optimisation methods,
+and experimental data used.  This thesis presented a novel \BNN model of the
+stellate microcircuit of the \CN, which was optimised using rigorous sequential
+and simultaneous methods.  The thesis demonstrates the utility of this approach
+for BNN models and enhancing our understanding of neural processing in the \CN.
 
 # \yellownote{Conclusions: Be reflective and honest. What were the lessons
 # learned? What were the overall insights? Did you solve the problem completely?
