@@ -319,7 +319,7 @@
        \\pretolerance=150 \\tolerance=100
        \\setlength{\\emergencystretch}{3em} 
        \\overfullrule=1mm 
-     % \\usepackage[notcite]{showkeys} 
+       \\usepackage[notcite]{showkeys} 
        \\lfoot{\\footnotesize\\today\\ at \\thistime}"
 ; [NO-DEFAULT-PACKAGES]
 ;       [NO-PACKAGES]" 
