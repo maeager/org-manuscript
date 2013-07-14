@@ -2,11 +2,10 @@
 #+AUTHOR: Michael A Eager
 #+DATE:
 #+LATEX_CLASS: UoM-draft-org-article
-#+LATEX_HEADER: \usepackage[notcite]{showkeys}
 #+BIBLIOGRAPHY: ../org-manuscript/bib/MyBib plainnat
 #+TODO: REFTEX
 
-#+LaTeX:\glsunsetall
+#+LaTeX: \glsresetall[main,acronym]
 #+LaTeX:\setcounter{chapter}{5}
 #+LaTeX: \chapter{Discussion and Conclusion}\label{sec:FinalChapter}
 
