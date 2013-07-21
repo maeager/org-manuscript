@@ -419,7 +419,21 @@ sustained and transient chopper units?  While answering these questions was
 beyond the scope of this thesis, the model and optimisation methods established
 by the thesis provide valuable tools for use in those inquiries.
 
-\yellownote{DG expand on how recommendations can be achieved using detailed explanations}
+
+The most appropriate next steps in the future use of the CNSM model.
+- The investigation of blocking synaptic connections within the microcircuit
+  with direct experimental examples that used pharmacological blockers of GABA
+  and glycine especially to AM tones
+  \citep{EvansZhao:1998,EvansZhao:1993a,BackoffShadduckEtAl:1999,CasparyBackoffEtAl:1994,PalombiCaspary:1992}
+- Similarly to the investigation in Chapter 4, a further investigation of the
+  output responses in the current CNSM model to complex stimuli (such as harmonic complexes \cite{Recio:2001,PressnitzerPattersonEtAl:1999}, vowels \cite{May:2003}, vowels in
+  noise \citep{MaySachs:1998,MayPrellEtAl:1998}, consonant-vowel tokens \citep{ClareyPaoliniEtAl:2004}, and simultaneous double vowels \cite{KeilsonRichardsEtAl:1997})
+- The investigation and optimisation of new synaptic connections within the
+  microcircuit, including TV to DS, TS to TV, and recurrent TS to TS cell
+  connections, and their effects in the processing of simple tones and noise and
+  AM tones.  The inclusion of feedback connection would require a full network
+  optimisation method - further development of the genetic algorithm method used
+  Chapter \ref{sec:GAChapter}
 
 # \yellownote{Further studies in simulating effects of blocking specific
 # connections can be achieved through manipulation of the \CNSM model's
