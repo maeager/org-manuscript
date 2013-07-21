@@ -202,7 +202,7 @@ showed the limiting effect of the \ANFs on \CF, which is exacerbated by
 saturation at the IHC-AN synapse.
 # The \rMTF responses of \HSR\space \ANFs
 Encoding of temporal information in \MTFs of \HSR\space \ANFs is strongest in
-the lateral frequency sidebands of the stimulus energy.  \Gls{LSR}\space \ANFs
+the lateral frequency sidebands of the fibre's response area.  \Gls{LSR}\space \ANFs
 had moderate to high temporal encoding of AM tones throughout their response
 area.  In the absence of experimental evidence of \GLG cells' response to \AM
 tones, the novel \GLG cell model within the \CNSM model proposed that GLG cells
