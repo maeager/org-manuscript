@@ -48,7 +48,7 @@ optimised \CNSM model's neurons to \AM tones were also investigated.
 
 Additionally, the thesis applied simultaneous optimisation methods to all
 network parameters in the \CNSM model using \GAs and the sensitivity of
-parameters given the noise in neural inputs.  It further developed cost
+parameters given the noise in neural inputs.  It developed cost
 functions to condense the neural outputs of the whole network into a single
 value. These cost functions investigated different analysis modalities including
 intracellular responses, spike times and time-varying average firing rate as
@@ -185,13 +185,14 @@ synaptic inputs (receiving inputs from all other neurons in the microcircuit).
 In the CNSM model, the TS cells were classified into three chopper subtypes
 using spike-based and average intracellular responses to tones
 \citep{PaoliniClareyEtAl:2005}.
+\yellownote{One more paragraph here to discuss TS model}
 
 # -------------------
 The study of AM tone responses in the \CNSM model in Chapter \ref{sec:AMChapter}
 investigated the rate and temporal responses of cells in the stellate
 microcircuit.
 # Temporal information in the auditory system is important for animal communications and location of sounds.
-In the AN, temporal information is encoded through finely timed spikes that
+In the AN, temporal information is encoded through finely-timed spikes that
 phase-lock to the envelope of the stimulus.  This poses problems for hearing
 in loud, noisy and reverberant environments and also in neural transfer.  The
 stellate microcircuit is the first step in transforming timing-based temporal
@@ -222,7 +223,9 @@ integration of predominantly LSR inputs and strong inhibition from \DS cells
 meant that the \TV cell model's AM tone responses were equivalent to a half-wave
 rectification and low-pass filter transformation.
 
-\yellownote{TODO -- TS cells in ch 4 .  Be more specific in the Ch5 }
+\yellownote{TODO -- TS cells in ch 4.}
+
+\yellownote{Be more specific in the Ch5 para. limited benefits of each? }
 
 Chapter \ref{sec:GAChapter} reported on the use of \GAs and three novel cost
 functions to simultaneously optimise \BNN parameters. For this analysis, a
@@ -249,12 +252,12 @@ functions.
 # Reliability and predictability of phenomenological behaviour is essential in \BNN models.
 
 The \CNSM model comprises a phenomenologically-realistic \AN input model
-\citep{ZilanyCarney:2010} that allows arbitrary stimuli to be used in
+\citep{ZilanyCarney:2010} that allows arbitrary auditory stimuli to be used in
 simulations, especially temporally complex sounds such as AM tones and speech.
 The \citet{ZilanyCarney:2010} ANF model used in this thesis was modified to
 avoid the addition of fractional Gaussian noise in the AN synapse to ensure
 deterministic spontaneous rates in the \HSR and \LSR\space \ANF models.  The
-neural and synaptic models in the \CNSM model are deterministic and the the
+neural and synaptic models in the \CNSM model are deterministic and the
 introduction of noise comes from the stimulus input and the spike generators of
 the \ANF and \GLG cell models.
 # Allocation of synaptic connections in the \CNSM model is a Gaussian process. 
@@ -264,10 +267,10 @@ the \ANF and \GLG cell models.
 This thesis contributes to the understanding of neural processing performed
 within the stellate microcircuit of the \CN.  It utilises a framework of
 state-of-the-art input, neural and synapse models along with connectivity
-reflecting substantial experimental evidence to create a \BNN model of the microcircuit
+reflecting substantial experimental evidence, to create a \BNN model of the microcircuit
 across the whole nuclei.  Its methodology demonstrates the steps required to fit
 a large number of parameters to achieve necessary neural outputs in an ordered
-and sequential manner using a variety of experimental data.
+and sequential manner, using a variety of experimental data.
 
 # The optimisation and reporting studies comprising the thesis ...
 # The variety of methods used throughout the thesis generated insights into neural modelling optimisation and understanding of the CNSM.
@@ -311,11 +314,11 @@ makes replication of existing research difficult.
 
 # Par 4
 Replication and reproducibility are critical to the development of computational
-models of the brain.  Information contained within the compact tables in
-Chapters \ref{sec:ModelChapter} and \ref{sec:AMChapter} show the methods for model replication suggested by
-\citet{NordlieGewaltigEtAl:2009}.  Reproducibility of simulations is best
-supported by making software of the model and analysis scripts publicly
-available and open source.  It is intended that code developed in this thesis
+models of the brain.  The compact tables in Chapters \ref{sec:ModelChapter} and
+\ref{sec:AMChapter} contain the information required for model replication, as
+suggested by \citet{NordlieGewaltigEtAl:2009}.  Reproducibility of simulations
+is best supported by making the model software and analysis scripts publicly
+available and open-source.  It is intended that code developed in this thesis
 will be made available online.  Through the use of these approaches, the thesis
 contributes to the reproducibility of techniques in modelling the CNSM.
 
@@ -428,28 +431,26 @@ sustained and transient chopper units?  While answering these questions was
 beyond the scope of this thesis, the model and optimisation methods established
 by the thesis provide valuable tools for use in those inquiries.
 
-\yellownote{Review this paragraph - } 
 Through the use of open-source software
 and reproducible reporting methods, the CNSM model and the optimisation methods
-can be used in future research.  The most appropriate next steps in the future
-use of the CNSM model.
-- The investigation of blocking synaptic connections within the microcircuit
-  with direct experimental examples that used pharmacological blockers of GABA
-  and glycine especially to AM tones
-  \citep{EvansZhao:1998,EvansZhao:1993a,BackoffShadduckEtAl:1999,CasparyBackoffEtAl:1994,PalombiCaspary:1992}
-- Similarly to the investigation in Chapter 4, a further comparison with
-  experimental data of the output responses in the current CNSM model to complex
-  stimuli (such as harmonic complexes
-  \citep{Recio:2001,PressnitzerPattersonEtAl:1999}, vowels \citep{May:2003},
-  vowels in noise \citep{MaySachs:1998,MayPrellEtAl:1998}, consonant-vowel
-  tokens \citep{ClareyPaoliniEtAl:2004}, and simultaneous double vowels
-  \citep{KeilsonRichardsEtAl:1997})
-- The investigation and optimisation of new synaptic connections within the
-  microcircuit, including TV to DS, TS to TV, and recurrent TS to TS cell
-  connections, and their effects in the processing of simple tones and noise and
-  AM tones.  The inclusion of feedback connection would require a full network
-  optimisation method - further development of the genetic algorithm method used
-  Chapter \ref{sec:GAChapter}
+can be used in future research.  One most promising next step in the future use
+of the CNSM model, would be to investigate of blocking synaptic connections
+within the microcircuit with direct experimental examples that used
+pharmacological blockers of GABA and glycine especially to AM tones
+\citep{EvansZhao:1998,EvansZhao:1993a,BackoffShadduckEtAl:1999,CasparyBackoffEtAl:1994,PalombiCaspary:1992}
+Another would be to build on the investigation in Chapter 4 through further
+comparison with experimental data of the output responses in the current CNSM
+model to complex stimuli (such as harmonic complexes
+\citep{Recio:2001,PressnitzerPattersonEtAl:1999}, vowels \citep{May:2003},
+vowels in noise \citep{MaySachs:1998,MayPrellEtAl:1998}, consonant-vowel tokens
+\citep{ClareyPaoliniEtAl:2004}, and simultaneous double vowels
+\citep{KeilsonRichardsEtAl:1997}) The CNSM model could be further exploited
+through the investigation and optimisation of new synaptic connections within
+the microcircuit, including TV to DS, TS to TV, and recurrent TS to TS cell
+connections, and their effects in the processing of simple tones and noise and
+AM tones.  The inclusion of feedback connection would require a full network
+optimisation method, necessitating further development of the genetic algorithm
+method used Chapter \ref{sec:GAChapter}.
 
 # \yellownote{Further studies in simulating effects of blocking specific
 # connections can be achieved through manipulation of the \CNSM model's
@@ -466,7 +467,7 @@ use of the CNSM model.
 # tones \citep{NeedhamPaolini:2007,NeedhamPaolini:2006,NeedhamPaolini:2003}.}
 
 Additionally, enhanced understanding of the complex neural processing done by
-the CNSM has strong potential to contribute to the refinement of
+the CNSM model has strong potential to contribute to the refinement of
 hearing-impairment devices.  Further insight into the processing of sound in
 noisy environments within the network could aid in developing new sound
 processing strategies for the cochlear implant and hearing aids.
@@ -482,10 +483,10 @@ processing strategies for the cochlear implant and hearing aids.
 
 Simultaneous optimisation of \BNN models requires further exploration.  In
 particular, attention is required to improve the final best parameter outcome
-using modification of GAs or hybrid algorithms.  Multi-unit recording of
+using modification of \GAs or hybrid algorithms.  Multi-unit recording of
 populations of neurons opens new doors to understanding microcircuits and
 introduces additional problems for modelling.  Cost function methods need to be
-developed that can use the limited number of neural outputs and enhance their
+developed that can use a limited number of neural outputs and enhance their
 robustness to various sources of noise.
 
 # , especially for sensitivity and
