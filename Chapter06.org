@@ -125,8 +125,8 @@ refined model development and optimisation approaches.
 
 # --------------------
 Chapter \ref{sec:MethodsChapter} presented the general methods used to create
-and optimise the CNSM model.  The methods were used to improve the design and
-development of the CNSM model as a NEURON package, [[latex:progname][cnstellate]].  This model
+and optimise the \CNSM model.  The methods were used to improve the design and
+development of the \CNSM model as a NEURON package, [[latex:progname][cnstellate]].  This model
 integrated extensive studies of AN models, physiological experimentation data at
 the synapse and cell levels and, more broadly, evidence of connectivity across the nuclei
 into a more realistic model.
@@ -160,7 +160,7 @@ The \DS cell model's intrinsic and extrinsic parameters were optimised using
 responses to tones, noise and click pairs.  \DS cells are known to be wide band,
 onset, glycinergic inhibitors of the stellate microcircuit.  Their intracellular
 behaviour is characteristic of a coincidence detector and was modelled using the
-type I-II \RM neural model.  The leak conductance of the model and parameters
+type I-II \RM neural model \citep{RothmanManis:2003b}.  The leak conductance of the model and parameters
 controlling synaptic connections were optimised to mimic the physiological
 responses of DS cells to tones and noise \citep{ArnottWallaceEtAl:2004}.
 Further optimisation was required to modify the \GABAa synapse on \DS cells to
