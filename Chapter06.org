@@ -28,7 +28,7 @@
 
 This thesis investigated the key physiological mechanisms involved in neural
 processing in the stellate microcircuit of the \CN.  It focused specifically on
-rate-place and temporal processing enhancement in the microcircuits regulating
+rate-place and temporal processing enhancement in the microcircuit regulating
 the output of \TS cells.  It achieved this through the development and testing
 of a \CNSM model and methods used to set parameters based on experimental
 data.  Computer modelling enhances our knowledge of complex neural interactions
@@ -48,7 +48,7 @@ optimised \CNSM model's neurons to \AM tones were also investigated.
 
 Additionally, the thesis applied simultaneous optimisation methods to all
 network parameters in the \CNSM model using \GAs and the sensitivity of
-parameters given the noise in neural inputs.  It further developed novel cost
+parameters given the noise in neural inputs.  It further developed cost
 functions to condense the neural outputs of the whole network into a single
 value. These cost functions investigated different analysis modalities including
 intracellular responses, spike times and time-varying average firing rate as
@@ -127,8 +127,8 @@ refined model development and optimisation approaches.
 Chapter \ref{sec:MethodsChapter} presented the general methods used to create
 and optimise the CNSM model.  The methods were used to improve the design and
 development of the CNSM model as a NEURON package, [[latex:progname][cnstellate]].  This model
-collated extensive studies of AN models, physiological experimentation data at
-the synapse and cell levels and, more broadly, the connectivity across the nuclei
+integrated extensive studies of AN models, physiological experimentation data at
+the synapse and cell levels and, more broadly, evidence of connectivity across the nuclei
 into a more realistic model.
 
 
@@ -146,7 +146,7 @@ into a more realistic model.
 # development of cell models and their connectivity in the CNSM model ...
 
 Chapter \ref{sec:ModelChapter} developed output responses of each neuron in the
-\CNSM model through a detailed, experiment evidence-driven, sequential optimisation using simple stimuli.
+\CNSM model through a detailed, evidence-driven, sequential optimisation using simple stimuli.
 # and connectivity parameters in the \CNSM model can be created to replicate known
 # behaviour to tones and noise.
 The \GLG cell model was developed using a novel filter-based neural model due to
