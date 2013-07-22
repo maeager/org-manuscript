@@ -437,9 +437,13 @@ use of the CNSM model.
   with direct experimental examples that used pharmacological blockers of GABA
   and glycine especially to AM tones
   \citep{EvansZhao:1998,EvansZhao:1993a,BackoffShadduckEtAl:1999,CasparyBackoffEtAl:1994,PalombiCaspary:1992}
-- Similarly to the investigation in Chapter 4, a further investigation of the
-  output responses in the current CNSM model to complex stimuli (such as harmonic complexes \cite{Recio:2001,PressnitzerPattersonEtAl:1999}, vowels \cite{May:2003}, vowels in
-  noise \citep{MaySachs:1998,MayPrellEtAl:1998}, consonant-vowel tokens \citep{ClareyPaoliniEtAl:2004}, and simultaneous double vowels \cite{KeilsonRichardsEtAl:1997})
+- Similarly to the investigation in Chapter 4, a further comparison with
+  experimental data of the output responses in the current CNSM model to complex
+  stimuli (such as harmonic complexes
+  \citep{Recio:2001,PressnitzerPattersonEtAl:1999}, vowels \citep{May:2003},
+  vowels in noise \citep{MaySachs:1998,MayPrellEtAl:1998}, consonant-vowel
+  tokens \citep{ClareyPaoliniEtAl:2004}, and simultaneous double vowels
+  \citep{KeilsonRichardsEtAl:1997})
 - The investigation and optimisation of new synaptic connections within the
   microcircuit, including TV to DS, TS to TV, and recurrent TS to TS cell
   connections, and their effects in the processing of simple tones and noise and
