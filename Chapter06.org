@@ -182,9 +182,13 @@ notch noise.
 studies of the \CN, have heterogeneous responses to stimuli due to their unique
 membrane channels (\IKA is not present in any other neurons) and variability in
 synaptic inputs (receiving inputs from all other neurons in the microcircuit).
-In the CNSM model, the TS cells were classified into three chopper subtypes
-using spike-based and average intracellular responses to tones
+In the Chapter \ref{sec:ModelChapter}, the network parameters of TS cells were fit into three chopper subtypes
+using spike-based and average intracellular responses to tones based on experimental data
 \citep{PaoliniClareyEtAl:2005}.
+
+
+
+
 \yellownote{One more paragraph here to discuss TS model}
 
 # -------------------
