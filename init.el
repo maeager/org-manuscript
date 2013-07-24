@@ -256,6 +256,7 @@
 \\makeglossaries
 % \\hypersetup{ pdftitle = \\myTitle, pdfauthor = Michael A Eager, pdfsubject= PhD thesis, pdfkeywords = auditory system, cochlear nucleus, microcircuit, computational neuroscience, optimisation  }
 \\graphicspath{{../LiteratureReview/gfx/}%
+{../MethodsChapter/gfx/}%
 {../SimpleResponsesChapter/gfx/}%
 {../VowelProcessingChapter/gfx/}{../figures/}%
 {/media/data/Work/cnstellate/golgi/}%
