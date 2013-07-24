@@ -61,7 +61,7 @@ the implications of the research for the design and optimisation of \BNNs.
 Finally, it describes the limitations of the research and makes recommendations
 for future work arising out of the thesis.
 
-# \yellownote{ Restating in the aims of the thesis }
+# \note{ Restating in the aims of the thesis }
 # This project was undertaken to design ...... and evaluate .....
 
 
@@ -77,7 +77,7 @@ for future work arising out of the thesis.
 
 * Overview of Research Findings
 
-# \yellownote{Summary of the findings and general implications}
+# \note{Summary of the findings and general implications}
 # These findings suggest that in general ......
 # The results of this research support the idea that .......
 # using standard phenomenologically accurate models
@@ -192,11 +192,11 @@ using spike-based and average intracellular responses to tones based on experime
 \yellownote{One more paragraph here to discuss TS model}
 
 # -------------------
-The study of AM tone responses in the \CNSM model in Chapter \ref{sec:AMChapter}
+The study of \AM tone responses in the \CNSM model in Chapter \ref{sec:AMChapter}
 investigated the rate and temporal responses of cells in the stellate
 microcircuit.
 # Temporal information in the auditory system is important for animal communications and location of sounds.
-In the AN, temporal information is encoded through finely-timed spikes that
+In the \AN, temporal information is encoded through finely-timed spikes that
 phase-lock to the envelope of the stimulus.  This poses problems for hearing
 in loud, noisy and reverberant environments and also in neural transfer.  The
 stellate microcircuit is the first step in transforming timing-based temporal
@@ -207,27 +207,29 @@ frequency.
 
 The non-linear response of the \AN model to increasing \AM sound intensity
 showed the limiting effect of the \ANFs on \CF, which is exacerbated by
-saturation at the IHC-AN synapse.
+saturation at the \IHC-\AN synapse.
 # The \rMTF responses of \HSR\space \ANFs
 Encoding of temporal information in \MTFs of \HSR\space \ANFs is strongest in
 the lateral frequency sidebands of the fibre's response area.  \Gls{LSR}\space \ANFs
 had moderate to high temporal encoding of AM tones throughout their response
 area.  In the absence of experimental evidence of \GLG cells' response to \AM
-tones, the novel \GLG cell model within the \CNSM model proposed that GLG cells
-diminish timing information contained in their ANF inputs.  This approach
+tones, the novel \GLG cell model within the \CNSM model proposed that \GLG cells
+diminish timing information contained in their \ANF inputs.  This approach
 derives from the hypothesis that \GLG cells are purely rate-level encoders and
 contribute to automatic gain mechanisms in the microcircuit
-\citep{FerragamoGoldingEtAl:1998}.  The DS cell model's response to AM tones
+\citep{FerragamoGoldingEtAl:1998}.  The DS cell model's response to \AM tones
 matched the extensive experimental evidence of DS cells
 \citep{RhodeGreenberg:1994,JorisSchreinerEtAl:2004,FrisinaSmithEtAl:1990}.
-Phase-locking in DS cells is greatly enhanced, relative to ANFs, due to their
+Phase-locking in DS cells is greatly enhanced, relative to \ANFs, due to their
 receipt of large numbers of \ANF inputs and fast intrinsic membrane mechanisms.
-Experimental evidence of \TV cells' response to AM tones is inconclusive.  The
-integration of predominantly LSR inputs and strong inhibition from \DS cells
-meant that the \TV cell model's AM tone responses were equivalent to a half-wave
+Experimental evidence of \TV cells' response to \AM tones is inconclusive.  The
+integration of predominantly \LSR inputs and strong inhibition from \DS cells
+meant that the \TV cell model's \AM tone responses were equivalent to a half-wave
 rectification and low-pass filter transformation.
 
 \yellownote{TODO -- TS cells in ch 4.}
+
+
 
 \yellownote{Be more specific in the Ch5 para. limited benefits of each? }
 
