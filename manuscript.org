@@ -18,7 +18,7 @@
 #+LATEX_HEADER: \setcounter{secnumdepth}{5}
 
 
-* ThesisStart
+# * ThesisStart
 
 
 # # Chapter 1: intro and literature review
@@ -335,6 +335,9 @@
 
 
 #+END_SRC
+
+#+RESULTS:
+| lambda | nil | (setq case-fold-search nil) | (goto-char (point-min)) | (search-forward \begin{document}) | (push-mark) | (while (re-search-forward \( \ | \n\)\\ref nil t) (replace-match ~\\ref nil nil)) | (goto-char (mark)) | (while (re-search-forward \( \ | \n\)\\cite nil t) (replace-match \\ \\cite nil nil)) | (goto-char (mark)) | (while (re-search-forward \\section{\(.*\): nil t) (replace-match \\section[\1]{\1: nil nil)) | (goto-char (mark)) | (while (re-search-forward item[~\\] nil t) (replace-match item  nil nil)) | (goto-char (mark)) | (while (re-search-forward \([A-Z][A-Zs]\) \([\\A-Z]\) nil t) (replace-match \1\\ \2 nil nil)) | (goto-char (mark)) | (goto-char (mark)) | (while (re-search-forward \(\\um\)\( \ | \n\) nil t) (replace-match \1\\ \2 nil nil)) | (goto-char (mark)) | (while (re-search-forward \([0-9]\) \([\\A-Za-z]\) nil t) (replace-match \1\\ \2 nil nil)) | (goto-char (mark)) | (while (re-search-forward i\.e\.  nil t) (replace-match i.e.\\  nil nil)) | (goto-char (mark)) | (while (re-search-forward htb nil t) (replace-match t! nil nil)) | (goto-char (mark)) | (while (re-search-forward \\texttt{\\$\(.*\)\\$} nil t) (replace-match $\1$ nil nil)) | (goto-char (mark)) | (goto-char (mark)) | (while (re-search-forward \\{\(.*\)\\} nil t) (replace-match {\1} nil nil)) | (goto-char (mark)) | (replace-regexp \\section{ThesisStart}\n\\label{sec-1}  ) |
 
 
 
