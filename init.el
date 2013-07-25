@@ -258,11 +258,12 @@
 \\graphicspath{{../LiteratureReview/gfx/}%
 {../MethodsChapter/gfx/}%
 {../SimpleResponsesChapter/gfx/}%
-{../VowelProcessingChapter/gfx/}{../figures/}%
-{/media/data/Work/cnstellate/golgi/}%
-{/media/data/Work/cnstellate/TV_RateLevel/}%
-{/media/data/Work/cnstellate/}%
-{/media/data/Work/cnstellate/ResponsesNoComp/ModulationTransferFunction/}%
+{../VowelProcessingChapter/gfx/}%
+{../../cnstellate/Responses_CT2}%
+%{/media/data/Work/cnstellate/golgi/}%
+%{/media/data/Work/cnstellate/TV_RateLevel/}%
+%{/media/data/Work/cnstellate/}%
+%{/media/data/Work/cnstellate/ResponsesNoComp/ModulationTransferFunction/}%
 {../GAChapter/}{../GAChapter/gfx/}}
 \\newcommand{\\manuscript}{}
  [NO-DEFAULT-PACKAGES]
