@@ -40,6 +40,12 @@
 					;(add-to-list 'load-path "~/elisp/org-mode/contrib/babel/lisp/")
 					;(add-to-list 'load-path "~/elisp/org-mode/contrib/babel/lisp/langs/")
 
+
+;; (org-babel-lob-ingest "~/elisp/org-mode/doc/library-of-babel.org")
+(org-babel-lob-ingest "../SimpleResponsesChapter/Chapter03.org")
+(org-babel-lob-ingest "../VowelProcessingChapter/Chapter04.org")
+
+
 (org-babel-do-load-languages
  'org-babel-load-languages
  '(
