@@ -57,9 +57,10 @@
 # ##
 # ## Appendicies
 # ##
-# # + LATEX:   \begin{appendix}
+#+LATEX:  \begin{appendix}
 # # Use \chapter{Appendix A}\label{appendixA} in first
-# # + include: ../SimpleResponsesChapter/Chapter03Appendix.org
+#+include: ../MethodsChapter/Chapter02Appendix.org
+#+include: ../SimpleResponsesChapter/Chapter03Appendix.org
 # # \newpage
 # # + include: ../VowelResponsesChapter/Chapter04Appendix.org
 # # Optimisation of BNNs using Ideal inputs
@@ -67,8 +68,8 @@
 # # Sensitivity Analysis of Individual Parameters near the Global Optimum
 # # + include: ../GAChapter/Chapter05.org :lines "1722-2114"
 # #\newpage
-# #+include: ../GAChapter/Chapter05Appendix.org
-# # + LATEX:   \end{appendix}
+#+include: ../GAChapter/Chapter05Appendix.org
+#+LATEX: \end{appendix}
 
 # #
 # # Bibliography

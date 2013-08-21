@@ -274,7 +274,7 @@
 \\newcommand{\\manuscript}{}
  [NO-DEFAULT-PACKAGES]
  [NO-PACKAGES]" 
-	       ("\n\\newpage\n\\section{%s}" . "\n\\newpage\n\\section{%s}")
+	       ("\n\\clearpage\n\\section{%s}" . "\n\\clearpage\n\\section{%s}")
 	       ("\n\n\\subsection{%s}" . "\n\n\\subsection{%s}") 
 	       ("\n\n\\subsubsection{%s}" . "\n\\subsubsection{%s}") 
 	       ("\n\\paragraph{%s}" . "\n\\paragraph{%s}"))) 
