@@ -160,15 +160,15 @@ The \DS cell model's intrinsic and extrinsic parameters were optimised using
 responses to tones, noise and click pairs.  \DS cells are known to be wide band,
 onset, glycinergic inhibitors of the stellate microcircuit.  Their intracellular
 behaviour is characteristic of a coincidence detector and was modelled using the
-type I-II \RM neural model \citep{RothmanManis:2003b}.  The leak conductance of the model and parameters
-controlling synaptic connections were optimised to mimic the physiological
-responses of DS cells to tones and noise \citep{ArnottWallaceEtAl:2004}.
-Further optimisation was required to modify the \GABAa synapse on \DS cells to
-best model the response recovery to click pairs \citep{BackoffPalombiEtAl:1997}.
-The primary function of \DS cells in the microcircuit is lateral inhibition
-(enhancing rate-place response in \TS and \TV cells) but further research has
-shown the importance of precisely timed phasic input to enhance temporal output
-in \TS cells.
+type I-II \RM neural model \citep{RothmanManis:2003b}.  The leak conductance of
+the model and parameters controlling synaptic connections were optimised to
+mimic the physiological responses of DS cells to tones and noise
+\citep{ArnottWallaceEtAl:2004}.  Further optimisation was required to modify the
+\GABAa synapse on \DS cells to best model the response recovery to click pairs
+\citep{BackoffPalombiEtAl:1997}.  The primary function of \DS cells in the
+microcircuit is lateral inhibition (enhancing rate-place response in \TS and \TV
+cells) but further research has shown the importance of precisely timed phasic
+input to enhance temporal output in \TS cells.
 
 The \TV cell model's synaptic inputs were optimised using rate level curves of
 tones and noise to fit the typical type II \DCN unit behaviour
@@ -176,47 +176,45 @@ tones and noise to fit the typical type II \DCN unit behaviour
 \DS cell to \TV cell connectivity using notch noise did not confirm the
 asymmetry suggested by \citet{ReissYoung:2005}; however, the model demonstrated
 that LSR inputs contribute to the asymmetry in the response of type II units to
-notch noise.  
+notch noise.
 
-\TS cells, the main focus of many experimental and modelling
-studies of the \CN, have heterogeneous responses to stimuli due to their unique
-membrane channels (\IKA is not present in any other neurons) and variability in
-synaptic inputs (receiving inputs from all other neurons in the microcircuit).
-In the Chapter \ref{sec:ModelChapter}, the network parameters of TS cells were fit into three chopper subtypes
-using spike-based and average intracellular responses to tones based on experimental data
-\citep{PaoliniClareyEtAl:2005}.
+\TS cells, the main focus of many experimental and modelling studies of the \CN,
+have heterogeneous responses to stimuli due to their unique membrane channels
+(\IKA is not present in any other neurons) and variability in synaptic inputs
+(receiving inputs from all other neurons in the microcircuit).  In the Chapter
+\ref{sec:ModelChapter}, the network parameters of TS cells were fit into three
+chopper subtypes using spike-based and average intracellular responses to tones
+based on experimental data \citep{PaoliniClareyEtAl:2005}.
 
 
 
 
 \yellownote{One more paragraph here to discuss TS model}
 
-# -------------------
-The study of \AM tone responses in the \CNSM model in Chapter \ref{sec:AMChapter}
-investigated the rate and temporal responses of cells in the stellate
-microcircuit.
-# Temporal information in the auditory system is important for animal communications and location of sounds.
-In the \AN, temporal information is encoded through finely-timed spikes that
-phase-lock to the envelope of the stimulus.  This poses problems for hearing
-in loud, noisy and reverberant environments and also in neural transfer.  The
-stellate microcircuit is the first step in transforming timing-based temporal
-information to a more stable rate-based code in the \IC.  The rate and temporal
-responses of each cell in the \CNSM model were investigated after the
-presentation of \AM tones of varying sound intensity and envelope modulation
-frequency.
+
+The study of \AM tone responses in the \CNSM model in Chapter
+\ref{sec:AMChapter} investigated the rate and temporal responses of cells in the
+stellate microcircuit.  In the \AN, temporal information is encoded through
+finely-timed spikes that phase-lock to the envelope of the stimulus.  This poses
+problems for hearing in loud, noisy and reverberant environments and also in
+neural transfer.  The stellate microcircuit is the first step in transforming
+timing-based temporal information to a more stable rate-based code in the \IC.
+The rate and temporal responses of each cell in the \CNSM model were
+investigated after the presentation of \AM tones of varying sound intensity and
+envelope modulation frequency.
 
 The non-linear response of the \AN model to increasing \AM sound intensity
 showed the limiting effect of the \ANFs on \CF, which is exacerbated by
 saturation at the \IHC-\AN synapse.
 # The \rMTF responses of \HSR\space \ANFs
 Encoding of temporal information in \MTFs of \HSR\space \ANFs is strongest in
-the lateral frequency sidebands of the fibre's response area.  \Gls{LSR}\space \ANFs
-had moderate to high temporal encoding of AM tones throughout their response
-area.  In the absence of experimental evidence of \GLG cells' response to \AM
-tones, the novel \GLG cell model within the \CNSM model proposed that \GLG cells
-diminish timing information contained in their \ANF inputs.  This approach
-derives from the hypothesis that \GLG cells are purely rate-level encoders and
-contribute to automatic gain mechanisms in the microcircuit
+the lateral frequency sidebands of the fibre's response area.  
+\Gls{LSR}\space \ANFs had moderate to high temporal encoding of AM tones throughout their
+response area.  In the absence of experimental evidence of \GLG cells' response
+to \AM tones, the novel \GLG cell model within the \CNSM model proposed that
+\GLG cells diminish timing information contained in their \ANF inputs.  This
+approach derives from the hypothesis that \GLG cells are purely rate-level
+encoders and contribute to automatic gain mechanisms in the microcircuit
 \citep{FerragamoGoldingEtAl:1998}.  The DS cell model's response to \AM tones
 matched the extensive experimental evidence of DS cells
 \citep{RhodeGreenberg:1994,JorisSchreinerEtAl:2004,FrisinaSmithEtAl:1990}.
@@ -224,14 +222,29 @@ Phase-locking in DS cells is greatly enhanced, relative to \ANFs, due to their
 receipt of large numbers of \ANF inputs and fast intrinsic membrane mechanisms.
 Experimental evidence of \TV cells' response to \AM tones is inconclusive.  The
 integration of predominantly \LSR inputs and strong inhibition from \DS cells
-meant that the \TV cell model's \AM tone responses were equivalent to a half-wave
-rectification and low-pass filter transformation.
+meant that the \TV cell model's \AM tone responses were equivalent to a
+half-wave rectification and low-pass filter transformation.
 
-\yellownote{TODO -- TS cells in ch 4.}
+# # \yellownote{TODO -- TS cells in ch 4.}
+# # What did the model show? Why is the microcircuit important?
 
 
 
-\yellownote{Be more specific in the Ch5 para. limited benefits of each? }
+Enhanced synchronisation relative to ANFs.
+BMF selectivity 
+Robustness to increase in sound level
+
+CHS -> CHT1 -> ChT2
+or
+ChS -> ChT
+
+
+
+
+
+
+
+# # \yellownote{Be more specific in the Ch5 para. limited benefits of each? }
 
 Chapter \ref{sec:GAChapter} reported on the use of \GAs and three novel cost
 functions to simultaneously optimise \BNN parameters. For this analysis, a

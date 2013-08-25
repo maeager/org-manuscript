@@ -96,441 +96,441 @@
 \listoftodos
 
 
-* Prelude                                                          :noexport:
-
-#+name: my-thesis-latex-export
-#+begin_src emacs-lisp
-      (setq org-latex-to-pdf-process '("pdfquick %f"))
-      ;; (setq org-latex-to-pdf-process '("xelatex -interaction nonstopmode %f"
-      ;;                                  "makeglossaries %b" "bibtex %b" "xelatex -interaction nonstopmode %f"
-      ;;                                  "xelatex -interaction nonstopmode %f" ))
-      ;; (setq org-latex-to-pdf-process '("lapdf Chapter3"))
-      (setq org-export-latex-final-hook ())
-      (add-hook 'org-export-latex-final-hook
-               (lambda ()
-                   (setq case-fold-search nil)
-                   (goto-char (point-min))
-                   (search-forward "\\begin{document}")
-                   (push-mark)
-                   (replace-regexp "\\( \\|\n\\)\\\\ref"
-                                   "~\\\\ref")
-                  (goto-char (mark))
-                  (replace-regexp "\\( \\|\n\\)\\\\citep"
-                                  "\\\\ \\\\citep")
-                  ;; shorten section titles
-                  (goto-char (mark))
-                  (replace-regexp "\\\\section{\\(.*\\):"
-                                  "\\\\section[\\1]{\\1:")
-                  ;; Go back to start
-                  (goto-char (mark))
-                  ;; Correct for citations immediately after an item
-                  (replace-regexp "item[~\\\\]"
-                                  "item ")
-                  ;; Acronyms or Capitals at the end of a sentence cause poor spacing
-                  (goto-char (mark))
-                  (replace-regexp "\\([A-Z][A-Z]\\)\\.\\( \\|\n\\)"
-                                  "\\1\\\\@. ")
-                  ;; Double acronyms
-                  (goto-char (mark))
-                  (replace-regexp "\\([A-Z][A-Zs]\\) \\([\\\\A-Z]\\)"
-                                  "\\1\\\\ \\2")
-                  ;; Force a space between numbers followed by text or acronym
-                  (goto-char (mark))
-                  (replace-regexp "\\([0-9]\\) \\([\\\\A-Za-z]\\)"
-                                  "\\1\\\\ \\2")
-                  ;; silly repeats corrected
-                  (goto-char (mark))
-                  (replace-regexp "\\\\}\\([^{]*\\)\\\\{"
-                                  "}\\1{")
-                  (goto-char (mark))
-                  (replace-regexp "\\\\{"
-                                  "{")
-                  (goto-char (mark))
-                  (replace-regexp "\\\\}"
-                                  "}")
-    ;;        ;; Correct for poor tildas
-    ;;      ;                  (goto-char (mark))
-    ;;      ;                  (replace-regexp "\\\\~\\{\\}"
-    ;;      ;                                  "~")
-    ;;              (goto-char (mark))
-    ;;              (replace "^#\\+LATEX_HEADER:.*$" "")
-    ;;             (goto-char (mark))
-    ;;              (replace-regexp "i\\.e\\. "  "i.e.\\\\ ")
-    ;;              (goto-char (mark))
-    ;;              (replace-regexp "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ " "\\\\ ")
-                  (goto-char (mark))
-                  (replace-regexp "\\\\section{ThesisStart}\n\\\\label{sec-1}"
-                                  " ")
-                 ))
-     (add-to-list 'org-export-latex-classes
-                  '("UoM-thesis-org"
-    "\%\% -*- mode: latex; mode: tex-fold; TeX-PDF-mode: t; TeX-master t  -*-
-     \\documentclass[12pt,a4paper,titlepage,twoside,openright]{book}
-     % Use the UniMelb Dissertation Template
-     \\usepackage{style/uomthesis}
-     % For drafts uncomment the following line
-     \\usepackage[light,timestamp,first]{draftcopy}
-     % Comment out the following line TO MARK blank pages with the
-     % text This page intentionally left blank.
-     \\newcommand{\\markblankpages}{}
-     % Comment out the following line for the copy submitted to the library
-     \\newcommand{\\archivalpapernote}{}
-     % User defined commands
-     \\usepackage[nonumberlist,acronym]{glossaries}
-     \\input{misc/glossary}
-     \\input{misc/user-defined}
-     \\setcounter{secnumdepth}{5}
-     \\makeglossaries
-     % \\includeonly{Chapter05}
-     % \\hypersetup{ pdftitle = \\myTitle, pdfauthor = Michael A Eager, pdfsubject= PhD thesis, pdfkeywords = auditory system, cochlear nucleus, microcircuit, computational neuroscience, optimisation  , T-stellate cells, biophysically-realistic neural networks}
-     \\graphicspath{{../LiteratureReview/gfx/}%
-     {../SimpleResponsesChapter/gfx/}%
-     {../VowelResponsesChapter/gfx/}{../figures/}%
-     {/media/data/Work/cnstellate/golgi/}%
-     {/media/data/Work/cnstellate/TV_RateLevel/}%
-     {/media/data/Work/cnstellate/}%
-     {/media/data/Work/cnstellate/ResponsesNoComp/ModulationTransferFunction/}%
-     {../GAChapter/}{../GAChapter/gfx/}{./GAChapter/archive/}}
-     \\newcommand{\\manuscript}{}
-      [NO-DEFAULT-PACKAGES]
-      [NO-PACKAGES]"
-                    ("\n\n\\section{%s}" . "\n\n\\section{%s}")
-                    ("\n\n\\subsection{%s}" . "\n\n\\subsection{%s}")
-                    ("\n\n\\subsubsection{%s}" . "\n\\subsubsection{%s}")
-                    ("\n\\paragraph{%s}" . "\n\\paragraph{%s}")))
-     (setq org-export-latex-title-command "\n
-     %% Front matter
-     %%
-     \\begin{frontmatter}
-       \\frontmatterheadings
-       % Collect the dissertation information for the title page
-        \\input{misc/metadata}
-        % Generate the title page
-        \\maketitle
-        \\input{misc/abstract}
-        % Author declaration
-        \\makedeclaration
-        % Acknowledgements
-  %       \\input{misc/acknowledgements}
-        % Preface
-        \\input{misc/preface}
-        % Dedications...
-         \\input{misc/dedication}
-        % TOC, LOF, LOT
-        {%
-                \\singlespacing%
-                \\pdfbookmark[1]{\\contentsname}{tableofcontents}
-                \\tableofcontents
-                \\pdfbookmark[1]{\\listfigurename}{lof}
-                \\listoffigures%
-       % Do not include a list of tables if you have less
-       % than 10 tables, as per SGS suggestion.
-                \\pdfbookmark[1]{\\listtablename}{lot}
-                \\listoftables
-                \\pdfbookmark[1]{Glossary of Terms}{glossary}
-                \\printglossaries
-                \\clearpage
-          }%
-     \\end{frontmatter}
-     \\begin{mainmatter}
-
-     \\mainmatterheadings
-    ")
-     (setq TeX-master t)
-#+end_src
-: t
-
-#+RESULTS: my-thesis-latex-export
-: t
-
-#+RESULTS:
-
-
-#+BEGIN_SRC emacs-lisp
-
-  (setq  org-export-latex-final-hook nil)
-  (add-hook 'org-export-latex-final-hook
-            (lambda ()
-              (setq case-fold-search nil)
-              (goto-char (point-min))
-              (search-forward "\\begin{document}")
-              (push-mark)
-
-              ;; Force hard space before references
-              (while (re-search-forward "\\( \\|\n\\)\\\\ref" nil t)
-                (replace-match "~\\\\ref" nil nil))
-
-              ;; Force space before citation
-              (goto-char (mark))
-              (while (re-search-forward "\\( \\|\n\\)\\\\cite" nil t)
-                (replace-match "\\\\ \\\\cite" nil nil))
-
-              ;; add shortened section titles
-              (goto-char (mark))
-              (while (re-search-forward "\\\\section{\\(.*\\):" nil t)
-                (replace-match "\\\\section[\\1]{\\1:" nil nil))
-
-              ;; Correct for citations immediately after an item
-              (goto-char (mark))
-              (while (re-search-forward "item[~\\\\]" nil t)
-                (replace-match "item " nil nil))
-
-              ;; Force space between double acronyms or acronyms and slashs
-              (goto-char (mark))
-              ;(replace-regexp "\\([A-Zu][A-Zsm]\\) \\([\\\\A-Z]\\)"
-  ;                   "\\1\\\\ \\2")
-              (while (re-search-forward  "\\([A-Z][A-Zs]\\) \\([\\\\A-Z]\\)" nil t)
-                (replace-match "\\1\\\\ \\2" nil nil))
-
-              ;; Force \@ between acronyms and period.
-              (goto-char (mark))
-  ;           (while (re-search-forward  "\\([A-Zu][A-Z]\\)[\\.] " nil t)
-  ;             (replace-match "\\1\\\\@. " nil nil))
-
-              ;; Acronyms or Capitals at the end of a sentence cause poor spacing.
-              ;; White space reproduced for occurance preceeding \item
-              ;; (goto-char (mark))
-              ;; (replace-regexp "\\([A-Z][A-Zs]\\)\\.\\( \\|\n\\)"
-              ;;                 "\\1\\\\@.  \\2")
-
-              ;; Force space after acronym '\um'
-              (goto-char (mark))
-              (while (re-search-forward "\\(\\\\um\\)\\( \\|\n\\)" nil t)
-                (replace-match "\\1\\\\ \\2" nil nil))
-
-              ;; Force a space between numbers followed by text or acronym
-              (goto-char (mark))
-              (while (re-search-forward "\\([0-9]\\) \\([\\\\A-Za-z]\\)" nil t)
-                (replace-match "\\1\\\\ \\2" nil nil))
-
-              ;; Force a space between numbers followed by text or acronym
-              (goto-char (mark))
-              (while (re-search-forward "i\\.e\\. " nil t)
-                (replace-match "i.e.\\\\ " nil nil))
-
-              ;; Force  floating tables and figures to be at the top
-              (goto-char (mark))
-              (while (re-search-forward "htb" nil t)
-                (replace-match "t!" nil nil))
-
-              ;; Correct org-babel source block formatted outputs
-              (goto-char (mark))
-              (while (re-search-forward "\\\\texttt{\\\\$\\(.*\\)\\\\$}" nil t)
-                (replace-match "$\\1$" nil nil))
-
-              (goto-char (mark))
-              ;; Correct for poor tilda conversions
-                                          ;                  (goto-char (mark))
-                                          ;                  (replace-regexp "\\\\~\\{\\}"
-                                          ;                                  "~")
-              ;; double check \{ ... \}
-              (goto-char (mark))
-              (while (re-search-forward "\\\\{\\(.*\\)\\\\}" nil t)
-                (replace-match "{\\1}" nil nil))
-
-                  (goto-char (mark))
-                  (replace-regexp "\\\\section{ThesisStart}\n\\\\label{sec-1}"
-                                  " ")
-
-              ))
-
-
-#+END_SRC
-
-#+RESULTS:
-| lambda | nil | (setq case-fold-search nil) | (goto-char (point-min)) | (search-forward \begin{document}) | (push-mark) | (while (re-search-forward \( \ | \n\)\\ref nil t) (replace-match ~\\ref nil nil)) | (goto-char (mark)) | (while (re-search-forward \( \ | \n\)\\cite nil t) (replace-match \\ \\cite nil nil)) | (goto-char (mark)) | (while (re-search-forward \\section{\(.*\): nil t) (replace-match \\section[\1]{\1: nil nil)) | (goto-char (mark)) | (while (re-search-forward item[~\\] nil t) (replace-match item  nil nil)) | (goto-char (mark)) | (while (re-search-forward \([A-Z][A-Zs]\) \([\\A-Z]\) nil t) (replace-match \1\\ \2 nil nil)) | (goto-char (mark)) | (goto-char (mark)) | (while (re-search-forward \(\\um\)\( \ | \n\) nil t) (replace-match \1\\ \2 nil nil)) | (goto-char (mark)) | (while (re-search-forward \([0-9]\) \([\\A-Za-z]\) nil t) (replace-match \1\\ \2 nil nil)) | (goto-char (mark)) | (while (re-search-forward i\.e\.  nil t) (replace-match i.e.\\  nil nil)) | (goto-char (mark)) | (while (re-search-forward htb nil t) (replace-match t! nil nil)) | (goto-char (mark)) | (while (re-search-forward \\texttt{\\$\(.*\)\\$} nil t) (replace-match $\1$ nil nil)) | (goto-char (mark)) | (goto-char (mark)) | (while (re-search-forward \\{\(.*\)\\} nil t) (replace-match {\1} nil nil)) | (goto-char (mark)) | (replace-regexp \\section{ThesisStart}\n\\label{sec-1}  ) |
-
-
-
-
-
-
-**** Source blocks      :noexport:
-
-
-#+name: GLGRL_RMS
-#+BEGIN_SRC octave
- pkg load nan
- dat = load('../SimpleResponsesChapter/gfx/golgi/GolgiRateLevel_Opt.dat');
- % Relative error
- RE_tone= mean(abs((dat(:,2) - dat(:,3))./(dat(:,2))));
-
- % root mean squared error
- RMS= sqrt(meansq((dat(1:end,2) - dat(1:end,3))));
- sprintf("RE tone %.2f%%   RMS total %.2f",RE_tone*100, RMS)
-#+END_SRC
-
-
-
-#+name: DSClick_RMS
-#+BEGIN_SRC octave  :export none
- pkg load nan
- dat = load('../SimpleResponsesChapter/gfx/DS_ClickRecovery/DS_ClickRecovery.Fit.dat');
- % root mean squared error
- RMS= sqrt(meansq((dat(1:end,3)./dat(1:end,2) - dat(1:end,5)./dat(1:end,4))));
- sprintf("%.3f",RMS)
-#+END_SRC
-
-
-
-#+name: DSRL_RMS
-#+BEGIN_SRC octave  :export none
- pkg load nan
- dat = load('../SimpleResponsesChapter/gfx/DS_RateLevel/DS_RateLevel.Fit.dat');
- % Relative error
- RE_all= mean(abs((dat(:,2) - dat(:,3))./(dat(:,3))));
- RE_noise= mean(abs((dat(1:12,2) - dat(1:12,3))./(dat(1:12,3))));
- RE_tone= mean(abs((dat(13:end,2) - dat(13:end,3))./(dat(13:end,3))));
-
- % Non zero elements
-  nz=find (dat(:,2)~=0);
-  RZ_noise= mean(abs((dat(nz(1:9),2) - dat(nz(1:9),3))./(dat(nz(1:9),3))));
-  RZ_tone= mean(abs((dat(nz(10:end),2) - dat(nz(10:end),3))./(dat(nz(10:end),3))));
-  RZ_all= mean(abs((dat(nz,2) - dat(nz,3))./(dat(nz,3))));
-
- % root mean squared error
- RMS_noise= sqrt(meansq((dat(1:12,2) - dat(1:12,3))));
- RMS_tone= sqrt(meansq((dat(13:end,2) - dat(13:end,3))));
-
- RMS= sqrt(meansq((dat(:,2) - dat(:,3))));
- sprintf("RE tone %.2f%%  noise %.2f%% all %.2f%%  RZ tone %.2f%% noise %.2f%% all %.2f%% RMS tone %.2f noise %.2f sum %.2f", RE_tone*100, RE_noise*100,RE_all*100,RZ_tone*100, RZ_noise*100,RZ_all*100, RMS_tone, RMS_noise, RMS)
-#+END_SRC
-
-
-
-#+name: DS_final_error
-#+BEGIN_SRC sh :results replace raw
- grep -e '^# Weighted Final error' ../SimpleResponsesChapter/gfx/DS_RateLevel/DS_RateLevel.Fit.dat | awk -F'=' '{printf("%.3g",$2)}'
-#+END_SRC
-
-#+name: DS_tone_error
-#+BEGIN_SRC sh :results replace raw
- grep -e '^# RL RMS error' ../SimpleResponsesChapter/gfx/DS_RateLevel/DS_RateLevel.Fit.dat | awk -F'=' '{printf("%.3g",$2)}'
-#+END_SRC
-
-
-#+name: DS_noise_error
-#+BEGIN_SRC sh :results replace raw
- grep -e '^# NRL RMS error' ../SimpleResponsesChapter/gfx/DS_RateLevel/DS_RateLevel.Fit.dat | awk -F'=' '{printf("%.3g",$2)}'
-#+END_SRC
-
-
-#+BEGIN_SRC sh
-  grep -e '[Ee]rror' ../SimpleResponsesChapter/gfx/DS_RateLevel/DS_RateLevel.Fit.dat
-  # | awk -F'=' '{print $2}'
-#+END_SRC
-
-
-# Get optimisation parameter: Floating point with optional exponent format
-
-#+name: TVopt_param
-#+BEGIN_SRC sh :results replace raw :var factor=1.0
- par=`echo "$param" | sed -e 's/\([^\\]\)\[/\1\\\\[/g' -e 's/\([^\\]\)\]/\1\\\\]/g'`
- grep ${par} ../SimpleResponsesChapter/gfx/TV_RateLevel/TV_RateLevel.Fit.dat | awk -F' ' '{$3=sprintf("%.3g",$3*'${factor}');printf("%.3g",$3)}'
-#+END_SRC
-
-#+name: TVopt_error
-#+BEGIN_SRC sh :results replace raw
- grep -e '^# .inal error' ../SimpleResponsesChapter/gfx/TV_RateLevel/TV_RateLevel.Fit.dat | awk '{$5=sprintf("%g",$5);printf("%.2f",$5)}'
-#+END_SRC
+# * Prelude                                                          :noexport:
+
+# #+name: my-thesis-latex-export
+# #+begin_src emacs-lisp
+#       (setq org-latex-to-pdf-process '("pdfquick %f"))
+#       ;; (setq org-latex-to-pdf-process '("xelatex -interaction nonstopmode %f"
+#       ;;                                  "makeglossaries %b" "bibtex %b" "xelatex -interaction nonstopmode %f"
+#       ;;                                  "xelatex -interaction nonstopmode %f" ))
+#       ;; (setq org-latex-to-pdf-process '("lapdf Chapter3"))
+#       (setq org-export-latex-final-hook ())
+#       (add-hook 'org-export-latex-final-hook
+#                (lambda ()
+#                    (setq case-fold-search nil)
+#                    (goto-char (point-min))
+#                    (search-forward "\\begin{document}")
+#                    (push-mark)
+#                    (replace-regexp "\\( \\|\n\\)\\\\ref"
+#                                    "~\\\\ref")
+#                   (goto-char (mark))
+#                   (replace-regexp "\\( \\|\n\\)\\\\citep"
+#                                   "\\\\ \\\\citep")
+#                   ;; shorten section titles
+#                   (goto-char (mark))
+#                   (replace-regexp "\\\\section{\\(.*\\):"
+#                                   "\\\\section[\\1]{\\1:")
+#                   ;; Go back to start
+#                   (goto-char (mark))
+#                   ;; Correct for citations immediately after an item
+#                   (replace-regexp "item[~\\\\]"
+#                                   "item ")
+#                   ;; Acronyms or Capitals at the end of a sentence cause poor spacing
+#                   (goto-char (mark))
+#                   (replace-regexp "\\([A-Z][A-Z]\\)\\.\\( \\|\n\\)"
+#                                   "\\1\\\\@. ")
+#                   ;; Double acronyms
+#                   (goto-char (mark))
+#                   (replace-regexp "\\([A-Z][A-Zs]\\) \\([\\\\A-Z]\\)"
+#                                   "\\1\\\\ \\2")
+#                   ;; Force a space between numbers followed by text or acronym
+#                   (goto-char (mark))
+#                   (replace-regexp "\\([0-9]\\) \\([\\\\A-Za-z]\\)"
+#                                   "\\1\\\\ \\2")
+#                   ;; silly repeats corrected
+#                   (goto-char (mark))
+#                   (replace-regexp "\\\\}\\([^{]*\\)\\\\{"
+#                                   "}\\1{")
+#                   (goto-char (mark))
+#                   (replace-regexp "\\\\{"
+#                                   "{")
+#                   (goto-char (mark))
+#                   (replace-regexp "\\\\}"
+#                                   "}")
+#     ;;        ;; Correct for poor tildas
+#     ;;      ;                  (goto-char (mark))
+#     ;;      ;                  (replace-regexp "\\\\~\\{\\}"
+#     ;;      ;                                  "~")
+#     ;;              (goto-char (mark))
+#     ;;              (replace "^#\\+LATEX_HEADER:.*$" "")
+#     ;;             (goto-char (mark))
+#     ;;              (replace-regexp "i\\.e\\. "  "i.e.\\\\ ")
+#     ;;              (goto-char (mark))
+#     ;;              (replace-regexp "\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ " "\\\\ ")
+#                   (goto-char (mark))
+#                   (replace-regexp "\\\\section{ThesisStart}\n\\\\label{sec-1}"
+#                                   " ")
+#                  ))
+#      (add-to-list 'org-export-latex-classes
+#                   '("UoM-thesis-org"
+#     "\%\% -*- mode: latex; mode: tex-fold; TeX-PDF-mode: t; TeX-master t  -*-
+#      \\documentclass[12pt,a4paper,titlepage,twoside,openright]{book}
+#      % Use the UniMelb Dissertation Template
+#      \\usepackage{style/uomthesis}
+#      % For drafts uncomment the following line
+#      \\usepackage[light,timestamp,first]{draftcopy}
+#      % Comment out the following line TO MARK blank pages with the
+#      % text This page intentionally left blank.
+#      \\newcommand{\\markblankpages}{}
+#      % Comment out the following line for the copy submitted to the library
+#      \\newcommand{\\archivalpapernote}{}
+#      % User defined commands
+#      \\usepackage[nonumberlist,acronym]{glossaries}
+#      \\input{misc/glossary}
+#      \\input{misc/user-defined}
+#      \\setcounter{secnumdepth}{5}
+#      \\makeglossaries
+#      % \\includeonly{Chapter05}
+#      % \\hypersetup{ pdftitle = \\myTitle, pdfauthor = Michael A Eager, pdfsubject= PhD thesis, pdfkeywords = auditory system, cochlear nucleus, microcircuit, computational neuroscience, optimisation  , T-stellate cells, biophysically-realistic neural networks}
+#      \\graphicspath{{../LiteratureReview/gfx/}%
+#      {../SimpleResponsesChapter/gfx/}%
+#      {../VowelResponsesChapter/gfx/}{../figures/}%
+#      {/media/data/Work/cnstellate/golgi/}%
+#      {/media/data/Work/cnstellate/TV_RateLevel/}%
+#      {/media/data/Work/cnstellate/}%
+#      {/media/data/Work/cnstellate/ResponsesNoComp/ModulationTransferFunction/}%
+#      {../GAChapter/}{../GAChapter/gfx/}{./GAChapter/archive/}}
+#      \\newcommand{\\manuscript}{}
+#       [NO-DEFAULT-PACKAGES]
+#       [NO-PACKAGES]"
+#                     ("\n\n\\section{%s}" . "\n\n\\section{%s}")
+#                     ("\n\n\\subsection{%s}" . "\n\n\\subsection{%s}")
+#                     ("\n\n\\subsubsection{%s}" . "\n\\subsubsection{%s}")
+#                     ("\n\\paragraph{%s}" . "\n\\paragraph{%s}")))
+#      (setq org-export-latex-title-command "\n
+#      %% Front matter
+#      %%
+#      \\begin{frontmatter}
+#        \\frontmatterheadings
+#        % Collect the dissertation information for the title page
+#         \\input{misc/metadata}
+#         % Generate the title page
+#         \\maketitle
+#         \\input{misc/abstract}
+#         % Author declaration
+#         \\makedeclaration
+#         % Acknowledgements
+#   %       \\input{misc/acknowledgements}
+#         % Preface
+#         \\input{misc/preface}
+#         % Dedications...
+#          \\input{misc/dedication}
+#         % TOC, LOF, LOT
+#         {%
+#                 \\singlespacing%
+#                 \\pdfbookmark[1]{\\contentsname}{tableofcontents}
+#                 \\tableofcontents
+#                 \\pdfbookmark[1]{\\listfigurename}{lof}
+#                 \\listoffigures%
+#        % Do not include a list of tables if you have less
+#        % than 10 tables, as per SGS suggestion.
+#                 \\pdfbookmark[1]{\\listtablename}{lot}
+#                 \\listoftables
+#                 \\pdfbookmark[1]{Glossary of Terms}{glossary}
+#                 \\printglossaries
+#                 \\clearpage
+#           }%
+#      \\end{frontmatter}
+#      \\begin{mainmatter}
+
+#      \\mainmatterheadings
+#     ")
+#      (setq TeX-master t)
+# #+end_src
+# : t
+
+# #+RESULTS: my-thesis-latex-export
+# : t
+
+# #+RESULTS:
+
+
+# #+BEGIN_SRC emacs-lisp
+
+#   (setq  org-export-latex-final-hook nil)
+#   (add-hook 'org-export-latex-final-hook
+#             (lambda ()
+#               (setq case-fold-search nil)
+#               (goto-char (point-min))
+#               (search-forward "\\begin{document}")
+#               (push-mark)
+
+#               ;; Force hard space before references
+#               (while (re-search-forward "\\( \\|\n\\)\\\\ref" nil t)
+#                 (replace-match "~\\\\ref" nil nil))
+
+#               ;; Force space before citation
+#               (goto-char (mark))
+#               (while (re-search-forward "\\( \\|\n\\)\\\\cite" nil t)
+#                 (replace-match "\\\\ \\\\cite" nil nil))
+
+#               ;; add shortened section titles
+#               (goto-char (mark))
+#               (while (re-search-forward "\\\\section{\\(.*\\):" nil t)
+#                 (replace-match "\\\\section[\\1]{\\1:" nil nil))
+
+#               ;; Correct for citations immediately after an item
+#               (goto-char (mark))
+#               (while (re-search-forward "item[~\\\\]" nil t)
+#                 (replace-match "item " nil nil))
+
+#               ;; Force space between double acronyms or acronyms and slashs
+#               (goto-char (mark))
+#               ;(replace-regexp "\\([A-Zu][A-Zsm]\\) \\([\\\\A-Z]\\)"
+#   ;                   "\\1\\\\ \\2")
+#               (while (re-search-forward  "\\([A-Z][A-Zs]\\) \\([\\\\A-Z]\\)" nil t)
+#                 (replace-match "\\1\\\\ \\2" nil nil))
+
+#               ;; Force \@ between acronyms and period.
+#               (goto-char (mark))
+#   ;           (while (re-search-forward  "\\([A-Zu][A-Z]\\)[\\.] " nil t)
+#   ;             (replace-match "\\1\\\\@. " nil nil))
+
+#               ;; Acronyms or Capitals at the end of a sentence cause poor spacing.
+#               ;; White space reproduced for occurance preceeding \item
+#               ;; (goto-char (mark))
+#               ;; (replace-regexp "\\([A-Z][A-Zs]\\)\\.\\( \\|\n\\)"
+#               ;;                 "\\1\\\\@.  \\2")
+
+#               ;; Force space after acronym '\um'
+#               (goto-char (mark))
+#               (while (re-search-forward "\\(\\\\um\\)\\( \\|\n\\)" nil t)
+#                 (replace-match "\\1\\\\ \\2" nil nil))
+
+#               ;; Force a space between numbers followed by text or acronym
+#               (goto-char (mark))
+#               (while (re-search-forward "\\([0-9]\\) \\([\\\\A-Za-z]\\)" nil t)
+#                 (replace-match "\\1\\\\ \\2" nil nil))
+
+#               ;; Force a space between numbers followed by text or acronym
+#               (goto-char (mark))
+#               (while (re-search-forward "i\\.e\\. " nil t)
+#                 (replace-match "i.e.\\\\ " nil nil))
+
+#               ;; Force  floating tables and figures to be at the top
+#               (goto-char (mark))
+#               (while (re-search-forward "htb" nil t)
+#                 (replace-match "t!" nil nil))
+
+#               ;; Correct org-babel source block formatted outputs
+#               (goto-char (mark))
+#               (while (re-search-forward "\\\\texttt{\\\\$\\(.*\\)\\\\$}" nil t)
+#                 (replace-match "$\\1$" nil nil))
+
+#               (goto-char (mark))
+#               ;; Correct for poor tilda conversions
+#                                           ;                  (goto-char (mark))
+#                                           ;                  (replace-regexp "\\\\~\\{\\}"
+#                                           ;                                  "~")
+#               ;; double check \{ ... \}
+#               (goto-char (mark))
+#               (while (re-search-forward "\\\\{\\(.*\\)\\\\}" nil t)
+#                 (replace-match "{\\1}" nil nil))
+
+#                   (goto-char (mark))
+#                   (replace-regexp "\\\\section{ThesisStart}\n\\\\label{sec-1}"
+#                                   " ")
+
+#               ))
+
+
+# #+END_SRC
+
+# #+RESULTS:
+# | lambda | nil | (setq case-fold-search nil) | (goto-char (point-min)) | (search-forward \begin{document}) | (push-mark) | (while (re-search-forward \( \ | \n\)\\ref nil t) (replace-match ~\\ref nil nil)) | (goto-char (mark)) | (while (re-search-forward \( \ | \n\)\\cite nil t) (replace-match \\ \\cite nil nil)) | (goto-char (mark)) | (while (re-search-forward \\section{\(.*\): nil t) (replace-match \\section[\1]{\1: nil nil)) | (goto-char (mark)) | (while (re-search-forward item[~\\] nil t) (replace-match item  nil nil)) | (goto-char (mark)) | (while (re-search-forward \([A-Z][A-Zs]\) \([\\A-Z]\) nil t) (replace-match \1\\ \2 nil nil)) | (goto-char (mark)) | (goto-char (mark)) | (while (re-search-forward \(\\um\)\( \ | \n\) nil t) (replace-match \1\\ \2 nil nil)) | (goto-char (mark)) | (while (re-search-forward \([0-9]\) \([\\A-Za-z]\) nil t) (replace-match \1\\ \2 nil nil)) | (goto-char (mark)) | (while (re-search-forward i\.e\.  nil t) (replace-match i.e.\\  nil nil)) | (goto-char (mark)) | (while (re-search-forward htb nil t) (replace-match t! nil nil)) | (goto-char (mark)) | (while (re-search-forward \\texttt{\\$\(.*\)\\$} nil t) (replace-match $\1$ nil nil)) | (goto-char (mark)) | (goto-char (mark)) | (while (re-search-forward \\{\(.*\)\\} nil t) (replace-match {\1} nil nil)) | (goto-char (mark)) | (replace-regexp \\section{ThesisStart}\n\\label{sec-1}  ) |
+
+
+
+
+
+
+# **** Source blocks      :noexport:
+
+
+# #+name: GLGRL_RMS
+# #+BEGIN_SRC octave
+#  pkg load nan
+#  dat = load('../SimpleResponsesChapter/gfx/golgi/GolgiRateLevel_Opt.dat');
+#  % Relative error
+#  RE_tone= mean(abs((dat(:,2) - dat(:,3))./(dat(:,2))));
+
+#  % root mean squared error
+#  RMS= sqrt(meansq((dat(1:end,2) - dat(1:end,3))));
+#  sprintf("RE tone %.2f%%   RMS total %.2f",RE_tone*100, RMS)
+# #+END_SRC
+
+
+
+# #+name: DSClick_RMS
+# #+BEGIN_SRC octave  :export none
+#  pkg load nan
+#  dat = load('../SimpleResponsesChapter/gfx/DS_ClickRecovery/DS_ClickRecovery.Fit.dat');
+#  % root mean squared error
+#  RMS= sqrt(meansq((dat(1:end,3)./dat(1:end,2) - dat(1:end,5)./dat(1:end,4))));
+#  sprintf("%.3f",RMS)
+# #+END_SRC
+
+
+
+# #+name: DSRL_RMS
+# #+BEGIN_SRC octave  :export none
+#  pkg load nan
+#  dat = load('../SimpleResponsesChapter/gfx/DS_RateLevel/DS_RateLevel.Fit.dat');
+#  % Relative error
+#  RE_all= mean(abs((dat(:,2) - dat(:,3))./(dat(:,3))));
+#  RE_noise= mean(abs((dat(1:12,2) - dat(1:12,3))./(dat(1:12,3))));
+#  RE_tone= mean(abs((dat(13:end,2) - dat(13:end,3))./(dat(13:end,3))));
+
+#  % Non zero elements
+#   nz=find (dat(:,2)~=0);
+#   RZ_noise= mean(abs((dat(nz(1:9),2) - dat(nz(1:9),3))./(dat(nz(1:9),3))));
+#   RZ_tone= mean(abs((dat(nz(10:end),2) - dat(nz(10:end),3))./(dat(nz(10:end),3))));
+#   RZ_all= mean(abs((dat(nz,2) - dat(nz,3))./(dat(nz,3))));
+
+#  % root mean squared error
+#  RMS_noise= sqrt(meansq((dat(1:12,2) - dat(1:12,3))));
+#  RMS_tone= sqrt(meansq((dat(13:end,2) - dat(13:end,3))));
+
+#  RMS= sqrt(meansq((dat(:,2) - dat(:,3))));
+#  sprintf("RE tone %.2f%%  noise %.2f%% all %.2f%%  RZ tone %.2f%% noise %.2f%% all %.2f%% RMS tone %.2f noise %.2f sum %.2f", RE_tone*100, RE_noise*100,RE_all*100,RZ_tone*100, RZ_noise*100,RZ_all*100, RMS_tone, RMS_noise, RMS)
+# #+END_SRC
+
+
+
+# #+name: DS_final_error
+# #+BEGIN_SRC sh :results replace raw
+#  grep -e '^# Weighted Final error' ../SimpleResponsesChapter/gfx/DS_RateLevel/DS_RateLevel.Fit.dat | awk -F'=' '{printf("%.3g",$2)}'
+# #+END_SRC
+
+# #+name: DS_tone_error
+# #+BEGIN_SRC sh :results replace raw
+#  grep -e '^# RL RMS error' ../SimpleResponsesChapter/gfx/DS_RateLevel/DS_RateLevel.Fit.dat | awk -F'=' '{printf("%.3g",$2)}'
+# #+END_SRC
+
+
+# #+name: DS_noise_error
+# #+BEGIN_SRC sh :results replace raw
+#  grep -e '^# NRL RMS error' ../SimpleResponsesChapter/gfx/DS_RateLevel/DS_RateLevel.Fit.dat | awk -F'=' '{printf("%.3g",$2)}'
+# #+END_SRC
+
+
+# #+BEGIN_SRC sh
+#   grep -e '[Ee]rror' ../SimpleResponsesChapter/gfx/DS_RateLevel/DS_RateLevel.Fit.dat
+#   # | awk -F'=' '{print $2}'
+# #+END_SRC
+
+
+# # Get optimisation parameter: Floating point with optional exponent format
+
+# #+name: TVopt_param
+# #+BEGIN_SRC sh :results replace raw :var factor=1.0
+#  par=`echo "$param" | sed -e 's/\([^\\]\)\[/\1\\\\[/g' -e 's/\([^\\]\)\]/\1\\\\]/g'`
+#  grep ${par} ../SimpleResponsesChapter/gfx/TV_RateLevel/TV_RateLevel.Fit.dat | awk -F' ' '{$3=sprintf("%.3g",$3*'${factor}');printf("%.3g",$3)}'
+# #+END_SRC
+
+# #+name: TVopt_error
+# #+BEGIN_SRC sh :results replace raw
+#  grep -e '^# .inal error' ../SimpleResponsesChapter/gfx/TV_RateLevel/TV_RateLevel.Fit.dat | awk '{$5=sprintf("%g",$5);printf("%.2f",$5)}'
+# #+END_SRC
 
 
-#+name: TVRL_RMS
-#+BEGIN_SRC octave  :export none
- pkg load nan
- dat = load('~/mnt/m2home/Code/cnstellate/TV_RateLevel/TV_RateLevel.Fit.dat');
- %dat = load('~/Work/cnstellate/TV_RateLevel/TV_RateLevel.Fit.dat');
- %dat = load('../SimpleResponsesChapter/gfx/TV_RateLevel/TV_RateLevel.Fit.dat');
- % Relative error
- RE= mean(abs((dat(1:end,2) - dat(1:end,3))./(dat(1:end,3))));
- % root mean squared error
- RMS_tone_control= sqrt(meansq((dat(16:end,2) - dat(16:end,4))));
- RMS_tone_nods= sqrt(meansq((dat(16:end,3) - dat(16:end,5))));
+# #+name: TVRL_RMS
+# #+BEGIN_SRC octave  :export none
+#  pkg load nan
+#  dat = load('~/mnt/m2home/Code/cnstellate/TV_RateLevel/TV_RateLevel.Fit.dat');
+#  %dat = load('~/Work/cnstellate/TV_RateLevel/TV_RateLevel.Fit.dat');
+#  %dat = load('../SimpleResponsesChapter/gfx/TV_RateLevel/TV_RateLevel.Fit.dat');
+#  % Relative error
+#  RE= mean(abs((dat(1:end,2) - dat(1:end,3))./(dat(1:end,3))));
+#  % root mean squared error
+#  RMS_tone_control= sqrt(meansq((dat(16:end,2) - dat(16:end,4))));
+#  RMS_tone_nods= sqrt(meansq((dat(16:end,3) - dat(16:end,5))));
 
- RMS_noise_control= sqrt(meansq((dat(1:15,3) - dat(1:15,5))));
- RMS_noise_nods= sqrt(meansq((dat(1:15,3) - dat(1:15,5))));
+#  RMS_noise_control= sqrt(meansq((dat(1:15,3) - dat(1:15,5))));
+#  RMS_noise_nods= sqrt(meansq((dat(1:15,3) - dat(1:15,5))));
 
- sprintf("%.1f%%     %.2f (%.2f + %.2f +%.2f + %.2f)",RE*100,RMS_tone_control+ RMS_tone_nods+RMS_noise_control+RMS_noise_nods, RMS_tone_control, RMS_tone_nods, RMS_noise_control,RMS_noise_nods)
-#+END_SRC
+#  sprintf("%.1f%%     %.2f (%.2f + %.2f +%.2f + %.2f)",RE*100,RMS_tone_control+ RMS_tone_nods+RMS_noise_control+RMS_noise_nods, RMS_tone_control, RMS_tone_nods, RMS_noise_control,RMS_noise_nods)
+# #+END_SRC
 
 
 
 
 
-# Get optimisation parameter: default
-#+name: opt_param
-#+BEGIN_SRC sh :results replace raw
- par=`echo "$param" | sed -e 's/\([^\\]\)\[/\1\\\\[/g' -e 's/\([^\\]\)\]/\1\\\\]/g'`
- grep ${par} ../SimpleResponsesChapter/gfx/TStellate2_${type}/TStellate.Fit.dat | awk -F' ' '{$3=sprintf("%.3g",$3);print $3}'
-#+END_SRC
+# # Get optimisation parameter: default
+# #+name: opt_param
+# #+BEGIN_SRC sh :results replace raw
+#  par=`echo "$param" | sed -e 's/\([^\\]\)\[/\1\\\\[/g' -e 's/\([^\\]\)\]/\1\\\\]/g'`
+#  grep ${par} ../SimpleResponsesChapter/gfx/TStellate2_${type}/TStellate.Fit.dat | awk -F' ' '{$3=sprintf("%.3g",$3);print $3}'
+# #+END_SRC
 
-# Get optimisation parameter: Floating point with optional exponent format
-#+name: opt_paramf
-#+BEGIN_SRC sh :results replace raw :var factor=1.0
- par=`echo "$param" | sed -e 's/\([^\\]\)\[/\1\\\\[/g' -e 's/\([^\\]\)\]/\1\\\\]/g'`
- grep ${par} ../SimpleResponsesChapter/gfx/TStellate2_${type}/TStellate.Fit.dat | awk -F' ' '{$3=sprintf("%.3g",$3*'${factor}');printf("%.4g",$3)}'
-#+END_SRC
+# # Get optimisation parameter: Floating point with optional exponent format
+# #+name: opt_paramf
+# #+BEGIN_SRC sh :results replace raw :var factor=1.0
+#  par=`echo "$param" | sed -e 's/\([^\\]\)\[/\1\\\\[/g' -e 's/\([^\\]\)\]/\1\\\\]/g'`
+#  grep ${par} ../SimpleResponsesChapter/gfx/TStellate2_${type}/TStellate.Fit.dat | awk -F' ' '{$3=sprintf("%.3g",$3*'${factor}');printf("%.4g",$3)}'
+# #+END_SRC
 
-# get the ts_gleak parameter : forced exponent format
-#+name: param_ts_gleak
-#+BEGIN_SRC sh :results replace raw
- grep ts_gleak ../SimpleResponsesChapter/gfx/TStellate2_${type}/TStellate.Fit.dat | awk '{$3=sprintf("%.3g",$3);printf(" %.3e ",$3)}'
-#+END_SRC
+# # get the ts_gleak parameter : forced exponent format
+# #+name: param_ts_gleak
+# #+BEGIN_SRC sh :results replace raw
+#  grep ts_gleak ../SimpleResponsesChapter/gfx/TStellate2_${type}/TStellate.Fit.dat | awk '{$3=sprintf("%.3g",$3);printf(" %.3e ",$3)}'
+# #+END_SRC
 
-#+name: opt_error
-#+BEGIN_SRC sh :results replace raw
- grep 'final error' ../SimpleResponsesChapter/gfx/TStellate2_${type}/TStellate.Fit.dat |  awk -F'=' '{$2=sprintf("%.3g",$2);printf("%.3g",$2)}'
-#+END_SRC
+# #+name: opt_error
+# #+BEGIN_SRC sh :results replace raw
+#  grep 'final error' ../SimpleResponsesChapter/gfx/TStellate2_${type}/TStellate.Fit.dat |  awk -F'=' '{$2=sprintf("%.3g",$2);printf("%.3g",$2)}'
+# #+END_SRC
 
-#+name: TSopt_error
-#+BEGIN_SRC sh :results replace raw :var type="CS"
- grep -e '^# .inal error' ../SimpleResponsesChapter/gfx/TStellate2_${type}/TStellate.Fit.dat | awk -F'=' '{$2=sprintf("%g",$2);printf("%.20f",$2)}'
-#+END_SRC
+# #+name: TSopt_error
+# #+BEGIN_SRC sh :results replace raw :var type="CS"
+#  grep -e '^# .inal error' ../SimpleResponsesChapter/gfx/TStellate2_${type}/TStellate.Fit.dat | awk -F'=' '{$2=sprintf("%g",$2);printf("%.20f",$2)}'
+# #+END_SRC
 
 
-#+name: CS_rate
-#+BEGIN_SRC sh :results replace raw :exports none
-  grep -A 14 'at spl '$SPLreTh''  ../SimpleResponsesChapter/gfx/TStellate2_CS/TStellate.Fit.dat | tail -6  | awk 'BEGIN{sum=0;} {sum+=$3;} END{printf("$%.1f$",sum/5.0)}'
-#+END_SRC
+# #+name: CS_rate
+# #+BEGIN_SRC sh :results replace raw :exports none
+#   grep -A 14 'at spl '$SPLreTh''  ../SimpleResponsesChapter/gfx/TStellate2_CS/TStellate.Fit.dat | tail -6  | awk 'BEGIN{sum=0;} {sum+=$3;} END{printf("$%.1f$",sum/5.0)}'
+# #+END_SRC
 
-#+name: CT1_rate
-#+BEGIN_SRC sh  :results replace raw :exports none
-  grep -A 14 'at spl '$SPLreTh''  ../SimpleResponsesChapter/gfx/TStellate2_CT1/TStellate.Fit.dat |  tail -6  | awk 'BEGIN{sum=0;} {sum+=$3;} END{printf("$%.1f$",sum/5.0)}'
-#+END_SRC
+# #+name: CT1_rate
+# #+BEGIN_SRC sh  :results replace raw :exports none
+#   grep -A 14 'at spl '$SPLreTh''  ../SimpleResponsesChapter/gfx/TStellate2_CT1/TStellate.Fit.dat |  tail -6  | awk 'BEGIN{sum=0;} {sum+=$3;} END{printf("$%.1f$",sum/5.0)}'
+# #+END_SRC
 
-#+name: CT2_rate
-#+BEGIN_SRC sh :results replace raw :exports none
-  grep -A 14 'at spl '$SPLreTh''  ../SimpleResponsesChapter/gfx/TStellate2_CT2/TStellate.Fit.dat | tail -6  | awk 'BEGIN{sum=0;} {sum+=$3;} END{printf("$%.1f$",sum/5.0)}'
-#+END_SRC
+# #+name: CT2_rate
+# #+BEGIN_SRC sh :results replace raw :exports none
+#   grep -A 14 'at spl '$SPLreTh''  ../SimpleResponsesChapter/gfx/TStellate2_CT2/TStellate.Fit.dat | tail -6  | awk 'BEGIN{sum=0;} {sum+=$3;} END{printf("$%.1f$",sum/5.0)}'
+# #+END_SRC
 
-#+name: CT2_fsl
-#+BEGIN_SRC sh :results replace raw :exports none
-   grep -A33 'at spl '$SPLreTh'' ../SimpleResponsesChapter/gfx/TStellate2_CT2/TStellate.Fit.dat | tail -1 | tr ',' ' '  | awk '{printf("$%.2f\\pm%.2f$\n",$4,$7)}'
-#+END_SRC
+# #+name: CT2_fsl
+# #+BEGIN_SRC sh :results replace raw :exports none
+#    grep -A33 'at spl '$SPLreTh'' ../SimpleResponsesChapter/gfx/TStellate2_CT2/TStellate.Fit.dat | tail -1 | tr ',' ' '  | awk '{printf("$%.2f\\pm%.2f$\n",$4,$7)}'
+# #+END_SRC
 
-#+name: CV_RMS
-#+BEGIN_SRC octave :var CH="CS"  :export none :results replace raw
- % really should do this in awk but running out of time
- system(sprintf("grep -A4 -e 'CV reference' ../SimpleResponsesChapter/gfx/TStellate2_%s/TStellate.Fit.dat | tr '#' ' ' | tr '-' '\n'| grep -v -e 'CV' > /tmp/CV_RMS.txt",CH))
- dat = load('/tmp/CV_RMS.txt');
- sprintf ("%.3f",sqrt(meansq (dat(:,2)-dat(:,3))))
- % Relative error
- % RE= mean(abs((dat(1:end,2) - dat(1:end,3))./(dat(1:end,3))));
-#+END_SRC
+# #+name: CV_RMS
+# #+BEGIN_SRC octave :var CH="CS"  :export none :results replace raw
+#  % really should do this in awk but running out of time
+#  system(sprintf("grep -A4 -e 'CV reference' ../SimpleResponsesChapter/gfx/TStellate2_%s/TStellate.Fit.dat | tr '#' ' ' | tr '-' '\n'| grep -v -e 'CV' > /tmp/CV_RMS.txt",CH))
+#  dat = load('/tmp/CV_RMS.txt');
+#  sprintf ("%.3f",sqrt(meansq (dat(:,2)-dat(:,3))))
+#  % Relative error
+#  % RE= mean(abs((dat(1:end,2) - dat(1:end,3))./(dat(1:end,3))));
+# #+END_SRC
 
 
 
 
-call_mean_vsSPIKES_onCF[ :in-file ~/Work/cnstellate/MASSIVE/cnstellate/TStellate2_CS/ModulationTransferFunction/20/vsSPIKES.2.dat ]()[ :results raw replace ]
+# call_mean_vsSPIKES_onCF[ :in-file ~/Work/cnstellate/MASSIVE/cnstellate/TStellate2_CS/ModulationTransferFunction/20/vsSPIKES.2.dat ]()[ :results raw replace ]
 
 
-call_mean_vsSPIKES_onCF[ :in-file ~/Work/cnstellate/MASSIVE/cnstellate/TStellate2_CT2/ModulationTransferFunction/40/vsSPIKES.2.dat ]()[ :results raw replace ]
+# call_mean_vsSPIKES_onCF[ :in-file ~/Work/cnstellate/MASSIVE/cnstellate/TStellate2_CT2/ModulationTransferFunction/40/vsSPIKES.2.dat ]()[ :results raw replace ]
 
-call_mean_vsSPIKES_onCF[ :in-file ~/Work/cnstellate/MASSIVE/cnstellate/TStellate2_CT2/ModulationTransferFunction/60/vsSPIKES.2.dat ]()[ :results raw replace ]
+# call_mean_vsSPIKES_onCF[ :in-file ~/Work/cnstellate/MASSIVE/cnstellate/TStellate2_CT2/ModulationTransferFunction/60/vsSPIKES.2.dat ]()[ :results raw replace ]
 
-call_mean_vsSPIKES_onCF[ :in-file ~/Work/cnstellate/MASSIVE/cnstellate/TStellate2_CS/ModulationTransferFunction/80/vsSPIKES.2.dat ]()[ :results raw replace ]
+# call_mean_vsSPIKES_onCF[ :in-file ~/Work/cnstellate/MASSIVE/cnstellate/TStellate2_CS/ModulationTransferFunction/80/vsSPIKES.2.dat ]()[ :results raw replace ]
 
 
 
 
-\clearpage
+# \clearpage
