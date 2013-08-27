@@ -26,16 +26,17 @@
 :CUSTOM_ID: sec:FinalChapter:Intro
 :END:
 
-This thesis investigated the key physiological mechanisms involved in neural
-processing in the stellate microcircuit of the \CN.  It focused specifically on
-rate-place and temporal processing enhancement in the microcircuit regulating
-the output of \TS cells.  It achieved this through the development and testing
-of a \CNSM model and methods used to set parameters based on experimental
-data.  Computer modelling enhances our knowledge of complex neural interactions
-in \TS cells and provides further understanding of inputs to higher centres.  By
-developing a \BNN with a high degree of realism at the individual cell level,
-this thesis has contributed to our understanding of the influence of synaptic
-organisation on physiological behaviour in the stellate microcircuit.
+This thesis investigated neural modelling techniques with the aim of opening new
+insights into neural processing mechanisms in the stellate microcircuit of the
+\CN.  It focused specifically on rate-place and temporal processing enhancement
+in the microcircuit regulating the output of \TS cells.  It achieved this
+through the development and testing of a \CNSM model and methods used to set
+parameters based on experimental data.  Computer modelling enhances our
+knowledge of complex neural interactions in \TS cells and provides further
+understanding of inputs to higher centres.  By developing a \BNN with a high
+degree of realism at the individual cell level, this thesis has contributed to
+our understanding of the influence of synaptic organisation on physiological
+behaviour in the stellate microcircuit.
 
 This thesis argued that the \BNN models of the \CN or models of individual cells
 in the \CNSM model have not been sufficiently considerate of the most current
@@ -270,15 +271,15 @@ functions.
 # Par 4
 # Reliability and predictability of phenomenological behaviour is essential in \BNN models.
 
-The \CNSM model comprises a phenomenologically-realistic \AN input model
-\citep{ZilanyCarney:2010} that allows arbitrary auditory stimuli to be used in
-simulations, especially temporally complex sounds such as AM tones and speech.
-The \citet{ZilanyCarney:2010} ANF model used in this thesis was modified to
-avoid the addition of fractional Gaussian noise in the AN synapse to ensure
-deterministic spontaneous rates in the \HSR and \LSR\space \ANF models.  The
-neural and synaptic models in the \CNSM model are deterministic and the
-introduction of noise comes from the stimulus input and the spike generators of
-the \ANF and \GLG cell models.
+The \CNSM model comprises a phenomenologically-realistic \AN input model that
+allows arbitrary auditory stimuli to be used in simulations, especially
+temporally complex sounds such as AM tones and speech
+\citep{ZilanyCarney:2010,ZilanyBruceEtAl:2009,ZilanyBruce:2007}.  The ANF model
+used in this thesis was modified to avoid the addition of fractional Gaussian
+noise in the AN synapse to ensure deterministic spontaneous rates in the \HSR
+and \LSR\space \ANF models.  The neural and synaptic models in the \CNSM model
+are deterministic and the introduction of noise comes from the stimulus input
+and the spike generators of the \ANF and \GLG cell models.
 # Allocation of synaptic connections in the \CNSM model is a Gaussian process. 
 
 # present tense
