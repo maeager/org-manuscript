@@ -4,6 +4,57 @@
 %
 %\PARstart{T}{he} 
 %
+
+%% Problem statement 
+\Gls{BNN} models provide an important means to improve understanding of neural processing of sound.
+The quality of BNN models is dependent upon the experimental data and optimisation methods used in their development.
+The \CNSM provides a robust
+spectral representation of sound and plays an essential part in speech
+communication.
+Existing \BNN models of the \CNSM have not been sufficiently considerate of the most current
+physiological data.  Additionally, optimisation methods used in these models have not been adequately documented.
+
+
+%% This is what I did to address the issue
+This thesis presents a novel \BNN model of the \CNSM.  The model was optimised using rigorous sequential methods and
+simultaneous \GAs. 
+
+%% Study 1 did:
+The first investigation developed the neural models and synaptic connections of
+the \CNSM model in a sequential optimisation procedure.  \Gls{ANF} input to the CNSM
+model used phenomenologically-accurate output of the Carney AN model.  Each
+\CNSM cell type model was designed using appropriately detailed neural models. Their
+synaptic parameters were optimised based on established
+physiological data.
+
+
+%% Study 2 did
+The second investigation analysed the output responses of the optimised \CNSM
+model to \AM tones.  Encoding of \AM tones undergoes important transformations in
+the \CN from purely spike-timing temporal encoding in \ANFs to feature-based
+rate encoding in higher auditory centres. Rate and temporal information was
+analysed in each CNSM cell type in response to changes in sound level and
+modulation frequencies.  The \CNSM model adequately reproduced experimental
+responses.
+
+
+%% Study 3 did
+The third investigation used \GAs to simultaneously fit all network parameters to
+a simplified CNSM model.  Pre-defined target parameters were used to generate
+surrogate data for the optimisation to fit.  The ability of novel \BNN cost
+functions to constrain the model was also investigated,  including (1) dynamic spike-time programming
+(finding minimum distance between two spike trains), (2) instantaneous firing
+rate comparisons, and (3) average intracellular voltage comparisons.
+ 
+
+%% Summary of thesis contribution
+ 
+Through the design and optimisation of the CNSM model, the thesis demonstrates the utility of 
+evidence-based sequential methods and whole-network simultaneous optimisation methods using \GAs for \BNN development.
+ 
+
+
+
 \end{abstract}
 
 \clearpage
