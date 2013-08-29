@@ -2,7 +2,7 @@
 #+DATE:
 #+AUTHOR: Michael A Eager
 #+LANGUAGE: en_GB-ise-wo_accents
-#+OPTIONS:   H:5 num:t toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t >:t
+#+OPTIONS:   H:6 num:t toc:nil \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t >:t
 #+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
 #+EXPORT_SELECT_TAGS: export
 #+EXPORT_EXCLUDE_TAGS: noexport
@@ -18,7 +18,7 @@
 #+LATEX_HEADER: \setcounter{secnumdepth}{5}
 
 
-* ThesisStart
+# * ThesisStart
 
 
 # # Chapter 1: intro and literature review
@@ -36,12 +36,12 @@
 
 # # Chapter 4 without appendix
 #+LaTeX: \clearpage
-#+INCLUDE: ../VowelProcessingChapter/Chapter04.org
+# + INCLUDE: ../VowelProcessingChapter/Chapter04.org
 
 
 # # Chapter 5: GA paper
 #+LaTeX: \cleardoublepage
-#+INCLUDE: ../GAChapter/Chapter05.org
+# + INCLUDE: ../GAChapter/Chapter05.org
 
 
 #+LaTeX: \cleardoublepage
@@ -60,7 +60,7 @@
 
 #+LATEX:  \begin{appendix}
 # # Use \chapter{Appendix A}\label{appendixA} in first
-#+include: ../MethodsChapter/Chapter02Appendix.org
+# + include: ../MethodsChapter/Chapter02Appendix.org
 # + include: ../SimpleResponsesChapter/Chapter03Appendix.org
 # # \newpage
 # # + include: ../VowelResponsesChapter/Chapter04Appendix.org
@@ -89,10 +89,9 @@
 #+LATEX: \end{backmatter}
 
 
-
-# ... and of eight years work! :-)
+# ... and of nine years work! :-)
 
 # # DRAFTING
-\newpage
-\listoftodos
+# \newpage
+# \listoftodos
 
