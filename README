@@ -1,6 +1,17 @@
 # -*- mode: org; -*-
 
-Notes on using Emacs' org-mode for creating a PhD manuscript 
+Notes on using Emacs' org-mode for creating my PhD manuscript 
+
+* Requirements
+  - Emacs 24
+    - Org-mode module (works for version less than 8.0, changes after version 8.0 upgrade change export to latex)
+    - Auctex and reftex modules (not necessary for compilation but good for editing in emacs)
+  - GNUplot - (CVS development version preferred)
+    - fixbb fix eps bounding box (See www.gnuplot.info/scripts/fixbb and http://tex.stackexchange.com/questions/22063/how-to-fix-eps-with-incorrect-bounding-box)
+  - Octave - signal processing toolbox needed, development version with Cairo PDF preferred
+  - NEURON - mainly to generate raw data
+  - latex-makefile http://www.bouncingchairs.net/oss
+  - makeglossaries - better acronym indexing
 
 * Set up
   - org-mode latex export configuration is done in init.el
@@ -16,7 +27,7 @@ Notes on using Emacs' org-mode for creating a PhD manuscript
 
 * Makefile 
 
-I use latex-makefile as the basis in generating the final manuscript and each
+I use [[http://www.bouncingchairs.net/os][latex-makefile]] as the basis in generating the final manuscript and each
 chapter individually.  The makefile searches for graphics and other included
 files for dependencies -- and re-compiles when necessary.  The =Variables.ini=
 file in each subdirectory contains additional commands where required.
@@ -26,25 +37,23 @@ file in each subdirectory contains additional commands where required.
 
 ** LaTeX export organisation and template skeleton
   - University of Melbourne LaTeX skeleton based on John Papandriopoulos' latex
-    template for thesis called uomthesis
+    template for thesis called uomthesis (see style/uomthesis.sty and misc/user-defined.tex)
   - front matter, main matter, appendicies, and backmatter separated into
     =\begin/\end= blocks -- these are wrapped in org-mode latex source blocks
   - glossaries and acronyms are organised by makeglossaries package and all
     entries are in =misc/glossaries.tex=.  To shorten calls,  /\gls{*}/ commands were
     declared in new latex commands, including plurals. For example: 
-
 : \newacronym{ANF}{ANF}{Auditory nerve fibre}
 : \newcommand{\ANF}{\gls{ANF}}
 : \newcommand{\ANFs}{\glspl{ANF}}
- 
-     
 
-  - The master manuscript includes chapter org-mode files using =#+include: file=
+** Including org files
+  - The master manuscript includes chapter org-mode files using =#+include: filename.org=
+  - (Orgmode >8.0: use quotation marks in file name and mindepth arg, =#+INCLUDE: "filename.org" :mindepth 0= )
   - Appendices, unfortunately these have to be in separate files 
-    - you can use sections from a file using arguments to the =#+include:
-      file :lines "<>"=, see the manual (=info org 'include files'=).
-
-
+    - you can use sections from a file using arguments to the =#+include: filename.org :lines "<>"=, see the manual (=info org 'include files'=).
+    
+** Chapters
   - each Chapter org-mode file should have the following header options 
 
 : #+TITLE: <title>
